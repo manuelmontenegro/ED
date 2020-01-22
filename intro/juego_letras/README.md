@@ -1,4 +1,4 @@
-# juego
+# Carpeta `juego_letras`
 
 Ejemplo que motiva la necesidad de los Tipos Abstractos de Datos (TADs).
 
