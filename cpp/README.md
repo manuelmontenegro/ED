@@ -7,3 +7,4 @@ Contiene los ejemplos que aparecen en los vídeos en los que se explican algunos
  * `03_metodos_constantes`: Vídeo de *C++ - Métodos const*.
  * `04_stack_heap`: Vídeo de *C++ - Objetos y memoria dinámica*.
  * `05_destructores`: Vídeo de *C++ - Destructores*.
+ * `06_constructor_copia`: Vídeo de *C++ - Constructores de copia*.
