@@ -1,0 +1,5 @@
+all: Test1
+
+Test1: Test1.cpp Fecha.h
+	g++ -o Test1 Test1.cpp
+
