@@ -11,7 +11,7 @@
  /*
   * Implementación del TAD Lista mediante arrays.
   *
-  * Esta versión introduce los constructures de copia.
+  * Esta versión introduce los constructores de copia.
   */
 
 #ifndef __LIST_ARRAY_H
