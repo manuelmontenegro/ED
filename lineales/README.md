@@ -38,4 +38,7 @@ Contiene los ejemplos relativos a los tipos de datos lineales (también llamados
  * `queue_array`: Versión implementada mediante vectores.
  * `queue_linkedlist`: Versión implementada mediante listas enlazadas simples.
  
+## Implementación del TAD Doble Cola (deque)
+ 
+ * `deque`: Versión implementada mediante listas doblemente enlazadas circulares.
  
