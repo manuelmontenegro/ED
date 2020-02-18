@@ -10,3 +10,4 @@ Contiene los ejemplos que aparecen en los vídeos en los que se explican algunos
  * `06_constructor_copia`: Vídeo de *C++ - Constructores de copia*.
  * `07_sobrecarga_operadores`: Vídeo de *C++ - Sobrecarga de operadores*.
  * `08_operador_asignación`: Vídeo de *C++ - Operador de asignación*.
+ * `09_plantillas`: Vídeo de *C++ - Plantillas en clases*.
