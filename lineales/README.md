@@ -32,5 +32,10 @@ Contiene los ejemplos relativos a los tipos de datos lineales (también llamados
  * `stack_array`: Versión implementada mediante vectores.
  * `stack_linkedlist`: Versión implementada mediante listas enlazadas simples.
  
+
+## Implementación del TAD Cola
+ 
+ * `queue_array`: Versión implementada mediante vectores.
+ * `queue_linkedlist`: Versión implementada mediante listas enlazadas simples.
  
  
