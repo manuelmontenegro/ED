@@ -8,6 +8,7 @@ Contiene los ejemplos relativos a los tipos de datos lineales (también llamados
  * `list_array_v2`: Versión correspondiente al vídeo *Modificación de listas mediante referencias*.
  * `list_array_v3`: Versión correspondiente al vídeo *Constructores de copia en el TAD Lista*.
  * `list_array_v4`: Versión correspondiente al vídeo *Sobrecargando operadores en el TAD Lista*.
+ * `list_array_v5`: Versión correspondiente al vídeo *Plantillas en clases*.
 
  
 ## Implementación del TAD Lista mediante listas enlazadas simples
