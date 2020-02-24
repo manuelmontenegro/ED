@@ -27,6 +27,8 @@ Contiene los ejemplos relativos a los tipos de datos lineales (también llamados
  * `list_linked_double_v4`: Versión correspondiente al vídeo *Sobrecargando operadores en el TAD Lista*. 
  * `list_linked_double_v5`: Versión correspondiente al vídeo *Plantillas en clases*. 
  * `list_linked_double_v6`: Versión correspondiente al vídeo *Iteradores y listas enlazadas*. 
+ * `list_linked_double_v7`: Versión correspondiente al vídeo *Iteradores constantes*. 
+ * `list_linked_double_v8`: Versión correspondiente al vídeo *Adaptando la sintaxis de los iteradores*. 
  
 ## Implementación del TAD Pila
  
