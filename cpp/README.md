@@ -11,3 +11,5 @@ Contiene los ejemplos que aparecen en los vídeos en los que se explican algunos
  * `07_sobrecarga_operadores`: Vídeo de *C++ - Sobrecarga de operadores*.
  * `08_operador_asignación`: Vídeo de *C++ - Operador de asignación*.
  * `09_plantillas`: Vídeo de *C++ - Plantillas en clases*.
+ * `10_stl_lineales`: Vídeo de *C++ - Introducción a la STL*.
+ * `11_smart_pointers`: Vídeo de *C++ - Punteros inteligentes*.
