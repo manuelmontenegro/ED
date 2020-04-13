@@ -157,7 +157,7 @@ private:
 
         iterator_gen operator++(int) {
             iterator_gen previous = *this;
-            (*this)++;
+            ++(*this);
             return previous;
         }
 
