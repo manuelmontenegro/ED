@@ -111,19 +111,19 @@ public:
     }
 
     const_iterator begin() const {
-        return iterator(root_node);
+        return const_iterator(root_node);
     }
 
     const_iterator end() const {
-        return iterator();
+        return const_iterator();
     }
 
     const_iterator cbegin() {
-        return iterator(root_node);
+        return const_iterator(root_node);
     }
 
     const_iterator cend() {
-        return iterator();
+        return const_iterator();
     }  
 
 private:
@@ -161,11 +161,11 @@ private:
             return previous;
         }
 
-        bool operator==(const iterator &other) {
+        bool operator==(const iterator_gen &other) {
             return st == other.st;
         }
 
-        bool operator!=(const iterator &other) {
+        bool operator!=(const iterator_gen &other) {
             return !this->operator==(other);
         }
 
