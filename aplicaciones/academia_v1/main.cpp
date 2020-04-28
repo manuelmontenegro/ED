@@ -21,13 +21,13 @@ using namespace std;
 int main() {
   Academia ac;
 
-  ac.anyadirCurso("Introducción a la rubismática", 20);
-  ac.anyadirCurso("Fundamentos de pastificio", 2);
-  ac.matricular("Genaro Pérez", "Introducción a la rubismática");
-  ac.matricular("Santiago Carvajal", "Introducción a la rubismática");
-  ac.matricular("Mireia Casado", "Introducción a la rubismática");
+  ac.anyadir_curso("Introducción a la rubismática", 20);
+  ac.anyadir_curso("Fundamentos de pastificio", 2);
+  ac.matricular_en_curso("Genaro Pérez", "Introducción a la rubismática");
+  ac.matricular_en_curso("Santiago Carvajal", "Introducción a la rubismática");
+  ac.matricular_en_curso("Mireia Casado", "Introducción a la rubismática");
 
-  ac.matricular("Genaro Pérez", "Fundamentos de pastificio");
+  ac.matricular_en_curso("Genaro Pérez", "Fundamentos de pastificio");
 
   cout << ac.plazas_libres("Introducción a la rubismática") << endl;
   for (const Estudiante &e: ac.estudiantes_matriculados("Introducción a la rubismática")) {

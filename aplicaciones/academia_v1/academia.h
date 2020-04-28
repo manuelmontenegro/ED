@@ -24,62 +24,83 @@
 
 
 using Estudiante = std::string;
+using Curso = std::string;
 
 class Academia {
 public:
   
-  void anyadirCurso(const std::string &nombre, int numero_plazas) {
-    assert(cursos.find(nombre) == cursos.end());
-    cursos.insert({nombre, Curso(nombre, numero_plazas)});
+  void anyadir_curso(const std::string &nombre, int numero_plazas) {
+    if (cursos.contains(nombre)) {
+      throw std::domain_error("curso ya existente");
+    }
+    cursos.insert({nombre, InfoCurso(nombre, numero_plazas)});
   }
 
-  void eliminarCurso(const std::string &nombre) {
-    auto it = cursos.find(nombre);
-    assert(it != cursos.end());
-    cursos.erase(it);
+  void eliminar_curso(const Curso &curso) {
+    auto it = cursos.find(curso);
+    if (it != cursos.end()) {
+      InfoCurso &info_curso = it->second;
+      cursos.erase(it);
+    }
   }
 
-  int plazas_libres(const std::string nombre_curso) const {
-    auto it = cursos.find(nombre_curso);
-    assert(it != cursos.end());
-    const Curso &curso = it->second;
-    return curso.numero_plazas - curso.estudiantes.size();
+  int plazas_libres(const Curso &curso) const {
+    const InfoCurso &info_curso = buscar_curso(curso);
+    return info_curso.numero_plazas - info_curso.estudiantes.size();
   }
 
-  void matricular(const Estudiante &estudiante, const std::string nombre_curso) {
-    auto it_curso = cursos.find(nombre_curso);
-    assert(it_curso != cursos.end());
-    Curso &curso = it_curso->second;
+  void matricular_en_curso(const Estudiante &est, const Curso &curso) {
+    InfoCurso &info_curso = buscar_curso(curso);
+    if (info_curso.estudiantes.contains(est)) {
+      throw std::domain_error("estudiante ya matriculado");
+    }
+    if (info_curso.estudiantes.size() < info_curso.numero_plazas) {
+      info_curso.estudiantes.insert(est);
+    } else {
+      throw std::domain_error("no hay plazas disponibles");
+    }
+  }  
 
-    assert(!curso.estudiantes.contains(estudiante));
-    assert(curso.numero_plazas > curso.estudiantes.size());
-
-    curso.estudiantes.insert(estudiante);
-  }
-
-  std::vector<Estudiante> estudiantes_matriculados(const std::string &nombre_curso) const {
-    auto it_curso = cursos.find(nombre_curso);
-    assert(it_curso != cursos.end());
-    const Curso &curso = it_curso->second;
+  std::vector<Estudiante> estudiantes_matriculados(const Curso &curso) const {
+    const InfoCurso &info_curso = buscar_curso(curso);
     
     std::vector<Estudiante> result;
-    copy(curso.estudiantes.begin(), curso.estudiantes.end(),
+    copy(info_curso.estudiantes.begin(), info_curso.estudiantes.end(),
          std::back_insert_iterator<std::vector<Estudiante>>(result));
          
     return result;
   }
 
+  
 private:
-  struct Curso {
+  struct InfoCurso {
     std::string nombre;
     int numero_plazas;
 
     std::set<Estudiante> estudiantes;
 
-    Curso(const std::string &nombre, int numero_plazas): nombre(nombre), numero_plazas(numero_plazas) { }
+    InfoCurso(const std::string &nombre, int numero_plazas): nombre(nombre), numero_plazas(numero_plazas) { }
   };
 
-  std::unordered_map<std::string, Curso> cursos;  
+  const InfoCurso &buscar_curso(const Curso &nombre) const {
+    auto it_curso = cursos.find(nombre);
+    if (it_curso == cursos.end()) {
+      throw std::domain_error("curso no encontrado");
+    } else {
+      return it_curso->second;
+    }
+  }
+  
+  InfoCurso &buscar_curso(const Curso &nombre) {
+    auto it_curso = cursos.find(nombre);
+    if (it_curso == cursos.end()) {
+      throw std::domain_error("curso no encontrado");
+    } else {
+      return it_curso->second;
+    }
+  }
+  
+  std::unordered_map<Curso, InfoCurso> cursos;  
 };
 
 #endif
