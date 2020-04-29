@@ -272,8 +272,9 @@ private:
     static Node * remove_lowest(Node * &root) {
         assert (root != nullptr);
         if (root->left == nullptr) {
+            Node *root_to_remove = root;
             root = root->right;
-            return root;
+            return root_to_remove;
         } else {
             return remove_lowest(root->left);
         }
