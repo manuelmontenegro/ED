@@ -113,3 +113,15 @@ TEST_CASE("removing elements from sets", "SetTree") {
         REQUIRE(s.contains(21));
     }
 }
+
+TEST_CASE("deletion in a balanced tree") {
+    SetTree<int> s;
+    s.insert(2);
+    s.insert(1);
+    s.insert(3);
+
+    SECTION("removing root") {
+        s.erase(2);
+        REQUIRE (s.size() == 2);
+    }
+}

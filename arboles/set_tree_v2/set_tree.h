@@ -156,8 +156,9 @@ private:
     static Node * remove_lowest(Node * &root) {
         assert (root != nullptr);
         if (root->left == nullptr) {
+            Node *result = root;
             root = root->right;
-            return root;
+            return result;
         } else {
             return remove_lowest(root->left);
         }
