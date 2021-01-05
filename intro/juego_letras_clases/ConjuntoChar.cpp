@@ -8,7 +8,7 @@
  * ---------------------------------------------------
  */
 
-/* 
+/*
  * Implementación de los métodos de ConjuntoChar.h
  */
 
@@ -22,7 +22,7 @@ ConjuntoChar::ConjuntoChar() {
   }
 }
 
-bool ConjuntoChar::pertenece(char l) const {
+bool ConjuntoChar::contiene(char l) const {
   assert (l >= 'A' && l <= 'Z');
   return esta[l - (int)'A'];
 }

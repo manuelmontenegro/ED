@@ -8,47 +8,23 @@
  * ---------------------------------------------------
  */
 
-/* 
+/*
  * Segunda versión del juego de adivinar letras, en el que
  * se representa un conjunto mediante un array de elementos,
  * y se respeta la encapsulación en la función main().
  */
 #include <iostream>
-#include <cassert>
-
 #include "utils.h"
 
-const int MAX_CHARS = 26;
+// Puedes alternar entre las dos implementaciones descomentando uno de los siguientes #include
+// manteniendo comentado el otro. ¡El método main no cambia!
 
-struct ConjuntoChar {
-  int num_chars;
-  char elementos[MAX_CHARS];
-};
-
-
-bool pertenece(char c, const ConjuntoChar &conjunto) {
-  int i = 0;
-  while (i < conjunto.num_chars && conjunto.elementos[i] != c) {
-    i++;
-  }
-  return conjunto.elementos[i] == c;
-}
-
-void vacio(ConjuntoChar &conjunto) {
-  conjunto.num_chars = 0;
-}
-
-void anyadir(char letra, ConjuntoChar &conjunto) {
-  assert (conjunto.num_chars < MAX_CHARS);
-  assert (letra >= 'A' && letra <= 'Z');
-  conjunto.elementos[conjunto.num_chars] = letra;
-  conjunto.num_chars++;
-}
-
+#include "ConjuntoCharArray.h"
+//#include "ConjuntoCharBool.h"
 
 int main() {
   int jugador_actual = 1;
-  
+
   ConjuntoChar letras_nombradas;
   vacio(letras_nombradas);
 
@@ -62,6 +38,6 @@ int main() {
 
   std::cout << "Jugador " << jugador_actual << " ha perdido!" << std::endl;
   std::cout << "La letra repetida ha sido: " << letra_actual << std::endl;
-  
+
   return 0;
 }

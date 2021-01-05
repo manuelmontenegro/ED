@@ -8,7 +8,7 @@
  * ---------------------------------------------------
  */
 
-/* 
+/*
  * Definición del TAD ConjuntoChar mediante una clase
  * con un array de booleanos.
  */
@@ -21,9 +21,9 @@ class ConjuntoChar {
 public:
   ConjuntoChar();
 
-  bool pertenece(char letra) const;
+  bool contiene(char letra) const;
   void anyadir(char letra);
-  
+
 private:
   bool esta[MAX_CHARS];
 };

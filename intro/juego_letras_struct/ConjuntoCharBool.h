@@ -8,15 +8,11 @@
  * ---------------------------------------------------
  */
 
-/* 
- * Tercera versión del juego de adivinar letras, en el que
- * se representa un conjunto mediante un array de booleanos,
- * y se respeta la encapsulación en la función main().
+/*
+ * TAD ConjuntoChar, implementado mediante un array de booleanos
  */
-#include <iostream>
-#include <cassert>
 
-#include "utils.h"
+#include <cassert>
 
 const int MAX_CHARS = 26;
 
@@ -39,25 +35,4 @@ void vacio(ConjuntoChar &result) {
 void anyadir(char letra, ConjuntoChar &conjunto) {
   assert (letra >= 'A' && letra <= 'Z');
   conjunto.esta[letra - 'A'] = true;
-}
-
-
-int main() {
-  int jugador_actual = 1;
-  
-  ConjuntoChar letras_nombradas;
-  vacio(letras_nombradas);
-
-  char letra_actual = preguntar_letra(jugador_actual);
-
-  while (!pertenece(letra_actual, letras_nombradas)) {
-    anyadir(letra_actual, letras_nombradas);
-    jugador_actual = cambio_jugador(jugador_actual);
-    letra_actual = preguntar_letra(jugador_actual);
-  }
-
-  std::cout << "Jugador " << jugador_actual << " ha perdido!" << std::endl;
-  std::cout << "La letra repetida ha sido: " << letra_actual << std::endl;
-  
-  return 0;
 }
