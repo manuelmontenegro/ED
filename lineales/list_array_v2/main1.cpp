@@ -7,11 +7,11 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Pruebas con el TAD Lista
  */
- 
+
 #include <iostream>
 #include "list_array.h"
 

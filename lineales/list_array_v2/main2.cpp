@@ -7,7 +7,7 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Pruebas con el TAD Lista
  */
@@ -26,6 +26,8 @@ int main() {
 
   l.push_back("David");
 
+  // La referencia 'javier' apunta a memoria ya liberada!
+  // Esto puede provocar un error en tiempo de ejecución.
   javier = "Javier Francisco";
 
   return 0;
