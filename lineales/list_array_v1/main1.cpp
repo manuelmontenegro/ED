@@ -7,7 +7,7 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Pruebas con el TAD Lista
  */
@@ -22,11 +22,11 @@ int main() {
   l.push_back("Elvira");
 
   l.display(); std::cout << std::endl;
-  
+
   std::cout << "Elemento 1: " << l.at(1) << std::endl;
 
   l.pop_front();
   l.display(); std::cout << std::endl;
-  
+
   return 0;
 }
