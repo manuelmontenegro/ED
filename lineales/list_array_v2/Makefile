@@ -1,4 +1,4 @@
-all: tests main1 main2 main3
+all: tests main1 main2
 
 tests: run_tests
 	./run_tests
