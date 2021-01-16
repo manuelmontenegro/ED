@@ -8,17 +8,15 @@
  * ---------------------------------------------------
  */
 
-
 /*
  * Este programa provoca un error en tiempo de ejecución,
  * al intentar modificar una referencia que queda invalidada
  * tras haber movido los elementos del vector de un array
  * a otro más grande.
  */
- 
-#include <iostream>
-#include "list_array.h"
 
+#include "list_array.h"
+#include <iostream>
 
 int main() {
   ListArray l(3);

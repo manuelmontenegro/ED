@@ -8,9 +8,8 @@
  * ---------------------------------------------------
  */
 
-#include <iostream>
 #include "list_array.h"
-
+#include <iostream>
 
 int contar_caracteres(const ListArray &l) {
   int suma = 0;
@@ -20,7 +19,6 @@ int contar_caracteres(const ListArray &l) {
   return suma;
 }
 
-
 int main() {
   ListArray l;
   l.push_back("David");
@@ -29,17 +27,8 @@ int main() {
 
   std::string &m = l.at(1);
   m = "Manuel";
-  l.display(); std::cout << std::endl;
+  l.display();
+  std::cout << std::endl;
 
   std::cout << contar_caracteres(l) << std::endl;
-  /*
-  l.display(); std::cout << std::endl;
-  
-  std::cout << "Elemento 1: " << l.at(1) << std::endl;
-
-  l.pop_front();
-  l.display(); std::cout << std::endl;
-  
-  return 0;
-  */
 }

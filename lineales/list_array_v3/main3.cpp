@@ -7,14 +7,13 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Pruebas con el constructor de copia.
  */
 
-#include <iostream>
 #include "list_array.h"
-
+#include <iostream>
 
 int main() {
   ListArray l1;
@@ -24,7 +23,7 @@ int main() {
 
   ListArray l2 = l1;
   l2.front() = "Pepe";
-  
+
   l1.display();
   std::cout << std::endl;
   l2.display();
