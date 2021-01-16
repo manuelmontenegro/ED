@@ -1,34 +1,20 @@
-#include <iostream>
 #include "list_linked_single.h"
-
-int contar_caracteres(const ListLinkedSingle &l) {
-  int suma = 0;
-  for (int i = 0; i < l.size(); i++) {
-    suma += l.at(i).length();
-  }
-  return suma;
-}
-
+#include <iostream>
 
 int main() {
-  ListLinkedSingle l;
-  l.push_back("David");
-  l.push_back("Maria");
-  l.push_back("Elvira");
+  ListLinkedSingle l1;
+  l1.push_back("David");
+  l1.push_back("Maria");
+  l1.push_back("Elvira");
 
-  std::string &m = l.at(1);
-  m = "Manuel";
-  l.display(); std::cout << std::endl;
+  ListLinkedSingle l2 = l1;
 
-  std::cout << contar_caracteres(l) << std::endl;
-  /*
-  l.display(); std::cout << std::endl;
-  
-  std::cout << "Elemento 1: " << l.at(1) << std::endl;
+  // La siguiente inserción debería afectar solamente a l2
+  l2.push_back("Daniel");
 
-  l.pop_front();
-  l.display(); std::cout << std::endl;
-  
-  return 0;
-  */
+  // Comprobamos que l1 sigue intacto
+  l1.display();
+  std::cout << std::endl;
+  l2.display();
+  std::cout << std::endl;
 }
