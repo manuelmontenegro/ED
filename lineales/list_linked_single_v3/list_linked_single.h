@@ -7,13 +7,13 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
  /*
   * Implementación del TAD Lista mediante listas enlazadas simples.
   *
   * Esta versión introduce el nodo fantasma.
   */
-  
+
 #ifndef __LIST_LINKED_SINGLE_H
 #define __LIST_LINKED_SINGLE_H
 
@@ -30,11 +30,11 @@ private:
   };
 
 public:
-  ListLinkedSingle() { 
+  ListLinkedSingle() {
     head = new Node;
     head->next = nullptr;
   }
-  
+
   ~ListLinkedSingle() {
     delete_list(head);
   }
@@ -63,7 +63,7 @@ public:
   bool empty() const {
     return head->next == nullptr;
   };
-  
+
   const std::string & front() const {
     assert (head->next != nullptr);
     return head->next->value;
@@ -81,7 +81,7 @@ public:
   std::string & back() {
     return last_node()->value;
   }
-  
+
   const std::string & at(int index) const {
     Node *result_node = nth_node(index);
     assert (result_node != nullptr);
@@ -95,7 +95,7 @@ public:
   }
 
   void display(std::ostream &out) const;
-  
+
   void display() const {
     display(std::cout);
   }
