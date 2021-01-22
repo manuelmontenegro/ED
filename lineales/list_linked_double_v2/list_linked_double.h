@@ -7,14 +7,14 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
  /*
   * Implementación del TAD Lista mediante listas enlazadas dobles.
   *
   * Esta versión añade los atributos last y num_elems para obtener
   * implementaciones más eficientes.
   */
-  
+
 
 #ifndef __LIST_LINKED_DOUBLE_H
 #define __LIST_LINKED_DOUBLE_H
@@ -33,13 +33,13 @@ private:
   };
 
 public:
-  ListLinkedDouble(): num_elems(0) { 
+  ListLinkedDouble(): num_elems(0) {
     head = new Node;
     head->next = nullptr;
     head->prev = nullptr;
     last = head;
   }
-  
+
   ~ListLinkedDouble() {
     delete_list(head);
   }
@@ -95,7 +95,7 @@ public:
   bool empty() const {
     return (num_elems == 0);
   };
-  
+
   const std::string & front() const {
     assert (num_elems > 0);
     return head->next->value;
@@ -115,7 +115,7 @@ public:
     assert (num_elems > 0);
     return last->value;
   }
-  
+
   const std::string & at(int index) const {
     assert (0 <= index && index < num_elems);
     Node *result_node = nth_node(index);
@@ -129,7 +129,7 @@ public:
   }
 
   void display(std::ostream &out) const;
-  
+
   void display() const {
     display(std::cout);
   }
