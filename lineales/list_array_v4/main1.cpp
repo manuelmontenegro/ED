@@ -1,6 +1,5 @@
-#include <iostream>
 #include "list_array.h"
-
+#include <iostream>
 
 int contar_caracteres(const ListArray &l) {
   int suma = 0;
@@ -9,7 +8,6 @@ int contar_caracteres(const ListArray &l) {
   }
   return suma;
 }
-
 
 int main() {
   ListArray l1;

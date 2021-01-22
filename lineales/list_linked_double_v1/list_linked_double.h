@@ -8,11 +8,11 @@
  * ---------------------------------------------------
  */
 
- /*
-  * Implementación del TAD Lista mediante listas enlazadas dobles.
-  *
-  * Esta es la primera versión.
-  */
+/*
+ * Implementación del TAD Lista mediante listas enlazadas dobles.
+ *
+ * Esta es la primera versión.
+ */
 
 #ifndef __LIST_LINKED_DOUBLE_H
 #define __LIST_LINKED_DOUBLE_H
@@ -20,7 +20,6 @@
 #include <cassert>
 #include <iostream>
 #include <string>
-
 
 class ListLinkedDouble {
 private:
@@ -37,15 +36,13 @@ public:
     head->prev = nullptr;
   }
 
-  ~ListLinkedDouble() {
-    delete_list(head);
-  }
+  ~ListLinkedDouble() { delete_list(head); }
 
   ListLinkedDouble(const ListLinkedDouble &other)
-    : head(copy_nodes(other.head)) { }
+      : head(copy_nodes(other.head)) {}
 
   void push_front(const std::string &elem) {
-    Node *new_node = new Node { elem, head->next, head };
+    Node *new_node = new Node{elem, head->next, head};
     if (head->next != nullptr) {
       head->next->prev = new_node;
     }
@@ -54,12 +51,12 @@ public:
 
   void push_back(const std::string &elem) {
     Node *last = last_node();
-    Node *new_node = new Node { elem, nullptr, last };
+    Node *new_node = new Node{elem, nullptr, last};
     last->next = new_node;
   }
 
   void pop_front() {
-    assert (head->next != nullptr);
+    assert(head->next != nullptr);
     Node *target = head->next;
     head->next = target->next;
     if (target->next != nullptr) {
@@ -69,7 +66,7 @@ public:
   }
 
   void pop_back() {
-    assert (head->next != nullptr);
+    assert(head->next != nullptr);
     Node *last = last_node();
     last->prev->next = nullptr;
     delete last;
@@ -77,45 +74,37 @@ public:
 
   int size() const;
 
-  bool empty() const {
-    return head->next == nullptr;
-  };
+  bool empty() const { return head->next == nullptr; };
 
-  const std::string & front() const {
-    assert (head->next != nullptr);
+  const std::string &front() const {
+    assert(head->next != nullptr);
     return head->next->value;
   }
 
-  std::string & front() {
-    assert (head->next != nullptr);
+  std::string &front() {
+    assert(head->next != nullptr);
     return head->next->value;
   }
 
-  const std::string & back() const {
-    return last_node()->value;
-  }
+  const std::string &back() const { return last_node()->value; }
 
-  std::string & back() {
-    return last_node()->value;
-  }
+  std::string &back() { return last_node()->value; }
 
-  const std::string & at(int index) const {
+  const std::string &at(int index) const {
     Node *result_node = nth_node(index);
-    assert (result_node != nullptr);
+    assert(result_node != nullptr);
     return result_node->value;
   }
 
-  std::string & at(int index) {
+  std::string &at(int index) {
     Node *result_node = nth_node(index);
-    assert (result_node != nullptr);
+    assert(result_node != nullptr);
     return result_node->value;
   }
 
   void display(std::ostream &out) const;
 
-  void display() const {
-    display(std::cout);
-  }
+  void display() const { display(std::cout); }
 
 private:
   Node *head;
@@ -124,13 +113,12 @@ private:
   Node *last_node() const;
   Node *nth_node(int n) const;
   Node *copy_nodes(Node *start_node) const;
-
 };
 
-ListLinkedDouble::Node * ListLinkedDouble::copy_nodes(Node *start_node) const {
+ListLinkedDouble::Node *ListLinkedDouble::copy_nodes(Node *start_node) const {
   if (start_node != nullptr) {
     Node *copy_next = copy_nodes(start_node->next);
-    Node *result = new Node { start_node->value, copy_next, nullptr };
+    Node *result = new Node{start_node->value, copy_next, nullptr};
     if (copy_next != nullptr) {
       copy_next->prev = result;
     }
@@ -159,8 +147,7 @@ int ListLinkedDouble::size() const {
   return num_nodes;
 }
 
-
-ListLinkedDouble::Node * ListLinkedDouble::last_node() const {
+ListLinkedDouble::Node *ListLinkedDouble::last_node() const {
   Node *current = head;
   while (current->next != nullptr) {
     current = current->next;
@@ -168,8 +155,8 @@ ListLinkedDouble::Node * ListLinkedDouble::last_node() const {
   return current;
 }
 
-ListLinkedDouble::Node * ListLinkedDouble::nth_node(int n) const {
-  assert (0 <= n);
+ListLinkedDouble::Node *ListLinkedDouble::nth_node(int n) const {
+  assert(0 <= n);
   int current_index = 0;
   Node *current = head->next;
 
@@ -193,6 +180,5 @@ void ListLinkedDouble::display(std::ostream &out) const {
   }
   out << "]";
 }
-
 
 #endif

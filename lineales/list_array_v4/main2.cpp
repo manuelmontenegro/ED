@@ -1,6 +1,5 @@
-#include <iostream>
 #include "list_array.h"
-
+#include <iostream>
 
 int main() {
   ListArray l(3);

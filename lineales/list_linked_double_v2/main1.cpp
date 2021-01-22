@@ -1,5 +1,5 @@
-#include <iostream>
 #include "list_linked_double.h"
+#include <iostream>
 
 int contar_caracteres(const ListLinkedDouble &l) {
   int suma = 0;
@@ -9,7 +9,6 @@ int contar_caracteres(const ListLinkedDouble &l) {
   return suma;
 }
 
-
 int main() {
   ListLinkedDouble l;
   l.push_back("David");
@@ -18,7 +17,8 @@ int main() {
 
   std::string &m = l.at(1);
   m = "Manuel";
-  l.display(); std::cout << std::endl;
+  l.display();
+  std::cout << std::endl;
 
   std::cout << contar_caracteres(l) << std::endl;
 }

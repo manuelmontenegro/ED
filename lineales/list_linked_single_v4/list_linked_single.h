@@ -7,20 +7,19 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
- /*
-  * Implementación del TAD Lista mediante listas enlazadas simples.
-  *
-  * Esta versión introduce la sobrecarga de los operadores <<, [] y asignación
-  */
-  
+
+/*
+ * Implementación del TAD Lista mediante listas enlazadas simples.
+ *
+ * Esta versión introduce la sobrecarga de los operadores <<, [] y asignación
+ */
+
 #ifndef __LIST_LINKED_SINGLE_H
 #define __LIST_LINKED_SINGLE_H
 
 #include <cassert>
 #include <iostream>
 #include <string>
-
 
 class ListLinkedSingle {
 private:
@@ -30,27 +29,25 @@ private:
   };
 
 public:
-  ListLinkedSingle() { 
+  ListLinkedSingle() {
     head = new Node;
     head->next = nullptr;
   }
-  
-  ~ListLinkedSingle() {
-    delete_list(head);
-  }
+
+  ~ListLinkedSingle() { delete_list(head); }
 
   ListLinkedSingle(const ListLinkedSingle &other)
-    : head(copy_nodes(other.head)) { }
+      : head(copy_nodes(other.head)) {}
 
   void push_front(const std::string &elem) {
-    Node *new_node = new Node { elem, head->next };
+    Node *new_node = new Node{elem, head->next};
     head->next = new_node;
   }
 
   void push_back(const std::string &elem);
 
   void pop_front() {
-    assert (head->next != nullptr);
+    assert(head->next != nullptr);
     Node *old_head = head->next;
     head->next = head->next->next;
     delete old_head;
@@ -60,41 +57,35 @@ public:
 
   int size() const;
 
-  bool empty() const {
-    return head->next == nullptr;
-  };
-  
-  const std::string & front() const {
-    assert (head->next != nullptr);
+  bool empty() const { return head->next == nullptr; };
+
+  const std::string &front() const {
+    assert(head->next != nullptr);
     return head->next->value;
   }
 
-  std::string & front() {
-    assert (head->next != nullptr);
+  std::string &front() {
+    assert(head->next != nullptr);
     return head->next->value;
   }
 
-  const std::string & back() const {
-    return last_node()->value;
-  }
+  const std::string &back() const { return last_node()->value; }
 
-  std::string & back() {
-    return last_node()->value;
-  }
-  
-  const std::string & operator[](int index) const {
+  std::string &back() { return last_node()->value; }
+
+  const std::string &operator[](int index) const {
     Node *result_node = nth_node(index);
-    assert (result_node != nullptr);
+    assert(result_node != nullptr);
     return result_node->value;
   }
 
-  std::string & operator[](int index) {
+  std::string &operator[](int index) {
     Node *result_node = nth_node(index);
-    assert (result_node != nullptr);
+    assert(result_node != nullptr);
     return result_node->value;
   }
 
-  ListLinkedSingle & operator=(const ListLinkedSingle &other) {
+  ListLinkedSingle &operator=(const ListLinkedSingle &other) {
     if (this != &other) {
       delete_list(head);
       head = copy_nodes(other.head);
@@ -103,10 +94,8 @@ public:
   }
 
   void display(std::ostream &out) const;
-  
-  void display() const {
-    display(std::cout);
-  }
+
+  void display() const { display(std::cout); }
 
 private:
   Node *head;
@@ -115,12 +104,11 @@ private:
   Node *last_node() const;
   Node *nth_node(int n) const;
   Node *copy_nodes(Node *start_node) const;
-
 };
 
-ListLinkedSingle::Node * ListLinkedSingle::copy_nodes(Node *start_node) const {
+ListLinkedSingle::Node *ListLinkedSingle::copy_nodes(Node *start_node) const {
   if (start_node != nullptr) {
-    Node *result = new Node { start_node->value, copy_nodes(start_node->next) };
+    Node *result = new Node{start_node->value, copy_nodes(start_node->next)};
     return result;
   } else {
     return nullptr;
@@ -135,12 +123,12 @@ void ListLinkedSingle::delete_list(Node *start_node) {
 }
 
 void ListLinkedSingle::push_back(const std::string &elem) {
-  Node *new_node = new Node { elem, nullptr };
+  Node *new_node = new Node{elem, nullptr};
   last_node()->next = new_node;
 }
 
 void ListLinkedSingle::pop_back() {
-  assert (head->next != nullptr);
+  assert(head->next != nullptr);
   Node *previous = head;
   Node *current = head->next;
 
@@ -165,7 +153,7 @@ int ListLinkedSingle::size() const {
   return num_nodes;
 }
 
-ListLinkedSingle::Node * ListLinkedSingle::last_node() const {
+ListLinkedSingle::Node *ListLinkedSingle::last_node() const {
   Node *current = head;
   while (current->next != nullptr) {
     current = current->next;
@@ -173,8 +161,8 @@ ListLinkedSingle::Node * ListLinkedSingle::last_node() const {
   return current;
 }
 
-ListLinkedSingle::Node * ListLinkedSingle::nth_node(int n) const {
-  assert (0 <= n);
+ListLinkedSingle::Node *ListLinkedSingle::nth_node(int n) const {
+  assert(0 <= n);
   int current_index = 0;
   Node *current = head->next;
 
@@ -199,11 +187,9 @@ void ListLinkedSingle::display(std::ostream &out) const {
   out << "]";
 }
 
-
-std::ostream & operator<<(std::ostream &out, const ListLinkedSingle &l) {
+std::ostream &operator<<(std::ostream &out, const ListLinkedSingle &l) {
   l.display(out);
   return out;
 }
 
 #endif
-
