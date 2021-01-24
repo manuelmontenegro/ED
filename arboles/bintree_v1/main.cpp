@@ -8,18 +8,20 @@
  * ---------------------------------------------------
  */
 
+#include "bintree.h"
 #include <iostream>
 #include <sstream>
-#include "bintree.h"
 
 int main() {
-  /*
-  BinTree<std::string> left("3");
-  BinTree<std::string> right(BinTree<std::string>("9"), "*",  BinTree<std::string>("7"));
-  BinTree<std::string> tree(left, "+", right);
-  */
+  BinTree<std::string> tree = {{"3"}, "+", {{"9"}, "*", {"7 "}}};
 
-  BinTree<std::string> tree = { { "3" } , "+", { { "9" } , "*", { "7 " }} };
+  /*
+  La linea anterior equivale a estas tres:
+
+  BinTree<std::string> left("3");
+  BinTree<std::string> right(BinTree<std::string>("9"), "*",
+  BinTree<std::string>("7")); BinTree<std::string> tree(left, "+", right);
+  */
 
   std::cout << tree << std::endl;
 

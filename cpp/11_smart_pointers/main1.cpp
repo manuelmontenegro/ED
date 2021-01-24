@@ -7,11 +7,11 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /* Uso de punteros inteligentes exclusivos (unique_ptr) */
 
-#include <iostream>
 #include "Fecha.h"
+#include <iostream>
 #include <memory>
 
 using namespace std;
@@ -31,7 +31,6 @@ int main() {
   f1 = nullptr;
 
   std::cout << "Vale" << std::endl;
-  
-  
+
   return 0;
 }

@@ -8,13 +8,12 @@
  * ---------------------------------------------------
  */
 
+#include "bintree.h"
 #include <iostream>
 #include <sstream>
-#include "bintree.h"
 
 // Coste lineal con respecto al número de nodos de tree.
-template<typename T>
-int height(const BinTree<T> &tree) {
+template <typename T> int height(const BinTree<T> &tree) {
   if (tree.empty()) {
     return 0;
   } else {
@@ -22,11 +21,8 @@ int height(const BinTree<T> &tree) {
   }
 }
 
-
 // Coste cuadrático con respecto al número de nodos de tree.
-
-template<typename T>
-bool balanced(const BinTree<T> &tree) {
+template <typename T> bool balanced1(const BinTree<T> &tree) {
   if (tree.empty()) {
     return true;
   } else {
@@ -38,17 +34,15 @@ bool balanced(const BinTree<T> &tree) {
   }
 }
 
-
 // Coste lineal con respecto al número de nodos de tree.
-template<typename T>
-bool balanced(const BinTree<T> &tree) {
+template <typename T> bool balanced2(const BinTree<T> &tree) {
   bool balanced;
   int height;
   balanced_height(tree, balanced, height);
   return balanced;
 }
 
-template<typename T>
+template <typename T>
 void balanced_height(const BinTree<T> &tree, bool &balanced, int &height) {
   if (tree.empty()) {
     balanced = true;
@@ -64,17 +58,16 @@ void balanced_height(const BinTree<T> &tree, bool &balanced, int &height) {
 }
 
 int main() {
-  BinTree<std::string> tree = { { "3" } , "+", { { "9" } , "*", { "7 " }} };
+  BinTree<std::string> tree = {{"3"}, "+", {{"9"}, "*", {"7 "}}};
   std::cout << tree << std::endl;
 
   std::istringstream istr("(((. 9 .) + (. 5 .)) * ((. 10 .) + (. 6 .)))");
   BinTree<std::string> other = read_tree<std::string>(istr);
   std::cout << other << std::endl;
 
-
-  BinTree<int> comun = {{ 7 }, 3, { 9 }};
+  BinTree<int> comun = {{7}, 3, {9}};
   BinTree<int> t1 = {{}, 5, comun};
-  BinTree<int> t2 = {comun, 4, { 8 }};
+  BinTree<int> t2 = {comun, 4, {8}};
 
   std::cout << t1 << std::endl;
   std::cout << t2 << std::endl;
@@ -85,11 +78,11 @@ int main() {
   std::cout << "Altura de 't2': " << height(t2) << std::endl;
   std::cout << "Altura de 'comun': " << height(comun) << std::endl;
 
-  std::cout << "¿Está 'tree' equilibrado? " << balanced(tree) << std::endl;
-  std::cout << "¿Está 'other' equilibrado? " << balanced(other) << std::endl;
-  std::cout << "¿Está 't1' equilibrado? " << balanced(t1) << std::endl;
-  std::cout << "¿Está 't2' equilibrado? " << balanced(t2) << std::endl;
-  std::cout << "¿Está 'comun' equilibrado? " << balanced(comun) << std::endl;
+  std::cout << "¿Está 'tree' equilibrado? " << balanced2(tree) << std::endl;
+  std::cout << "¿Está 'other' equilibrado? " << balanced2(other) << std::endl;
+  std::cout << "¿Está 't1' equilibrado? " << balanced2(t1) << std::endl;
+  std::cout << "¿Está 't2' equilibrado? " << balanced2(t2) << std::endl;
+  std::cout << "¿Está 'comun' equilibrado? " << balanced2(comun) << std::endl;
 
   return 0;
 }
