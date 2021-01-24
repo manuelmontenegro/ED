@@ -7,9 +7,9 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
-#include <iostream>
+
 #include "list_linked_double.h"
+#include <iostream>
 
 // Recorrido de elementos sin iterador: coste cuadrático
 int suma_elems(ListLinkedDouble<int> &l) {
@@ -34,12 +34,12 @@ int suma_elems_iterator(ListLinkedDouble<int> &l) {
 // Recorrido de elementos con iterador mediante un bucle for: coste lineal
 int suma_elems_iterator_for(ListLinkedDouble<int> &l) {
   int suma = 0;
-  for (ListLinkedDouble<int>::iterator it = l.begin(); it != l.end(); it.advance()) {
+  for (ListLinkedDouble<int>::iterator it = l.begin(); it != l.end();
+       it.advance()) {
     suma += it.elem();
   }
   return suma;
 }
-
 
 int main() {
   ListLinkedDouble<int> l;

@@ -1,8 +1,15 @@
-#include <iostream>
+/*
+ * ---------------------------------------------------
+ *                ESTRUCTURAS DE DATOS
+ * ---------------------------------------------------
+ *              Manuel Montenegro Montes
+ *              Facultad de Informática
+ *         Universidad Complutense de Madrid
+ * ---------------------------------------------------
+ */
+
 #include "stack_array.h"
-
-
-
+#include <iostream>
 
 int main() {
   StackArray<int> s;

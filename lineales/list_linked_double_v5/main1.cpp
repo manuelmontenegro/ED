@@ -1,5 +1,15 @@
-#include <iostream>
+/*
+ * ---------------------------------------------------
+ *                ESTRUCTURAS DE DATOS
+ * ---------------------------------------------------
+ *              Manuel Montenegro Montes
+ *              Facultad de Informática
+ *         Universidad Complutense de Madrid
+ * ---------------------------------------------------
+ */
+
 #include "list_linked_double.h"
+#include <iostream>
 
 int contar_caracteres(const ListLinkedDouble<std::string> &l) {
   int suma = 0;
@@ -8,7 +18,6 @@ int contar_caracteres(const ListLinkedDouble<std::string> &l) {
   }
   return suma;
 }
-
 
 int main() {
   ListLinkedDouble<std::string> l;
@@ -21,14 +30,4 @@ int main() {
   std::cout << l << std::endl;
 
   std::cout << contar_caracteres(l) << std::endl;
-  /*
-  l.display(); std::cout << std::endl;
-  
-  std::cout << "Elemento 1: " << l.at(1) << std::endl;
-
-  l.pop_front();
-  l.display(); std::cout << std::endl;
-  
-  return 0;
-  */
 }

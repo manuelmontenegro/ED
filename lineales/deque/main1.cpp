@@ -7,16 +7,13 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
- /*
-  * Pruebas con el TAD doble cola
-  */
-  
 
-#include <iostream>
+/*
+ * Pruebas con el TAD doble cola
+ */
+
 #include "dequeue.h"
-
-
+#include <iostream>
 
 int main() {
   Dequeue<int> dq1;
@@ -26,13 +23,13 @@ int main() {
 
   Dequeue<int> dq2 = dq1;
 
-  while(!dq1.empty()) {
+  while (!dq1.empty()) {
     std::cout << dq1.back() << " ";
     dq1.pop_back();
   }
   std::cout << std::endl;
 
-  while(!dq2.empty()) {
+  while (!dq2.empty()) {
     std::cout << dq2.front() << " ";
     dq2.pop_front();
   }

@@ -1,4 +1,4 @@
-all: tests main1 postfix
+all: tests main1
 tests: run_tests
 	./run_tests
 
@@ -10,12 +10,6 @@ main1: main1.o
 
 main1.o: main1.cpp stack_linkedlist.h
 	g++ -o main1.o -c main1.cpp
-
-postfix: postfix.o
-	g++ -o postfix postfix.o
-
-postfix.o: postfix.cpp stack_linkedlist.h
-	g++ -o postfix.o -c postfix.cpp
 
 run_tests.o: run_tests.cpp
 	g++ -o run_tests.o -c run_tests.cpp

@@ -7,10 +7,9 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
-#include <iostream>
-#include "list_array.h"
 
+#include "list_array.h"
+#include <iostream>
 
 int main() {
   ListArray<std::string> l1;
@@ -20,7 +19,7 @@ int main() {
 
   ListArray<std::string> l2 = l1;
   l2.front() = "Pepe";
-    
+
   std::cout << l1 << std::endl;
   std::cout << l2 << std::endl;
 }

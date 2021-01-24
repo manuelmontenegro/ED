@@ -8,10 +8,8 @@
  * ---------------------------------------------------
  */
 
-#include <iostream>
 #include "list_array.h"
-
-
+#include <iostream>
 
 int contar_caracteres(const ListArray<std::string> &l) {
   int suma = 0;

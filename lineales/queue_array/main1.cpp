@@ -1,7 +1,19 @@
-#include <iostream>
+/*
+ * ---------------------------------------------------
+ *                ESTRUCTURAS DE DATOS
+ * ---------------------------------------------------
+ *              Manuel Montenegro Montes
+ *              Facultad de Informática
+ *         Universidad Complutense de Madrid
+ * ---------------------------------------------------
+ */
+
+/*
+ * Uso del TAD Cola
+ */
+
 #include "queue_array.h"
-
-
+#include <iostream>
 
 int main() {
   QueueArray<int> q;
@@ -15,6 +27,4 @@ int main() {
   q.pop();
   std::cout << q.front() << std::endl;
   q.pop();
-
-  
 }

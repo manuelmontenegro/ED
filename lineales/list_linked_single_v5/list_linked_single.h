@@ -7,12 +7,12 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
- /*
-  * Implementación del TAD Lista mediante listas enlazadas simples.
-  *
-  * Esta versión introduce la genericidad mediante plantillas.
-  */
+
+/*
+ * Implementación del TAD Lista mediante listas enlazadas simples.
+ *
+ * Esta versión introduce genericidad mediante plantillas.
+ */
 
 #ifndef __LIST_LINKED_SINGLE_H
 #define __LIST_LINKED_SINGLE_H
@@ -21,9 +21,7 @@
 #include <iostream>
 #include <string>
 
-
-template<typename Elem>
-class ListLinkedSingle {
+template <typename Elem> class ListLinkedSingle {
 private:
   struct Node {
     Elem value;
@@ -31,27 +29,25 @@ private:
   };
 
 public:
-  ListLinkedSingle() { 
+  ListLinkedSingle() {
     head = new Node;
     head->next = nullptr;
   }
-  
-  ~ListLinkedSingle() {
-    delete_list(head);
-  }
+
+  ~ListLinkedSingle() { delete_list(head); }
 
   ListLinkedSingle(const ListLinkedSingle &other)
-    : head(copy_nodes(other.head)) { }
+      : head(copy_nodes(other.head)) {}
 
   void push_front(const Elem &elem) {
-    Node *new_node = new Node { elem, head->next };
+    Node *new_node = new Node{elem, head->next};
     head->next = new_node;
   }
 
   void push_back(const Elem &elem);
 
   void pop_front() {
-    assert (head->next != nullptr);
+    assert(head->next != nullptr);
     Node *old_head = head->next;
     head->next = head->next->next;
     delete old_head;
@@ -61,41 +57,35 @@ public:
 
   int size() const;
 
-  bool empty() const {
-    return head->next == nullptr;
-  };
-  
-  const Elem & front() const {
-    assert (head->next != nullptr);
+  bool empty() const { return head->next == nullptr; };
+
+  const Elem &front() const {
+    assert(head->next != nullptr);
     return head->next->value;
   }
 
-  Elem & front() {
-    assert (head->next != nullptr);
+  Elem &front() {
+    assert(head->next != nullptr);
     return head->next->value;
   }
 
-  const Elem & back() const {
-    return last_node()->value;
-  }
+  const Elem &back() const { return last_node()->value; }
 
-  Elem & back() {
-    return last_node()->value;
-  }
-  
-  const Elem & operator[](int index) const {
+  Elem &back() { return last_node()->value; }
+
+  const Elem &operator[](int index) const {
     Node *result_node = nth_node(index);
-    assert (result_node != nullptr);
+    assert(result_node != nullptr);
     return result_node->value;
   }
 
-  Elem & operator[](int index) {
+  Elem &operator[](int index) {
     Node *result_node = nth_node(index);
-    assert (result_node != nullptr);
+    assert(result_node != nullptr);
     return result_node->value;
   }
 
-  ListLinkedSingle & operator=(const ListLinkedSingle &other) {
+  ListLinkedSingle &operator=(const ListLinkedSingle &other) {
     if (this != &other) {
       delete_list(head);
       head = copy_nodes(other.head);
@@ -104,10 +94,8 @@ public:
   }
 
   void display(std::ostream &out) const;
-  
-  void display() const {
-    display(std::cout);
-  }
+
+  void display() const { display(std::cout); }
 
 private:
   Node *head;
@@ -116,20 +104,20 @@ private:
   Node *last_node() const;
   Node *nth_node(int n) const;
   Node *copy_nodes(Node *start_node) const;
-
 };
 
-template<typename Elem>
-typename ListLinkedSingle<Elem>::Node * ListLinkedSingle<Elem>::copy_nodes(Node *start_node) const {
+template <typename Elem>
+typename ListLinkedSingle<Elem>::Node *
+ListLinkedSingle<Elem>::copy_nodes(Node *start_node) const {
   if (start_node != nullptr) {
-    Node *result = new Node { start_node->value, copy_nodes(start_node->next) };
+    Node *result = new Node{start_node->value, copy_nodes(start_node->next)};
     return result;
   } else {
     return nullptr;
   }
 }
 
-template<typename Elem>
+template <typename Elem>
 void ListLinkedSingle<Elem>::delete_list(Node *start_node) {
   if (start_node != nullptr) {
     delete_list(start_node->next);
@@ -137,15 +125,14 @@ void ListLinkedSingle<Elem>::delete_list(Node *start_node) {
   }
 }
 
-template<typename Elem>
+template <typename Elem>
 void ListLinkedSingle<Elem>::push_back(const Elem &elem) {
-  Node *new_node = new Node { elem, nullptr };
+  Node *new_node = new Node{elem, nullptr};
   last_node()->next = new_node;
 }
 
-template<typename Elem>
-void ListLinkedSingle<Elem>::pop_back() {
-  assert (head->next != nullptr);
+template <typename Elem> void ListLinkedSingle<Elem>::pop_back() {
+  assert(head->next != nullptr);
   Node *previous = head;
   Node *current = head->next;
 
@@ -158,8 +145,7 @@ void ListLinkedSingle<Elem>::pop_back() {
   previous->next = nullptr;
 }
 
-template<typename Elem>
-int ListLinkedSingle<Elem>::size() const {
+template <typename Elem> int ListLinkedSingle<Elem>::size() const {
   int num_nodes = 0;
 
   Node *current = head->next;
@@ -171,8 +157,9 @@ int ListLinkedSingle<Elem>::size() const {
   return num_nodes;
 }
 
-template<typename Elem>
-typename ListLinkedSingle<Elem>::Node * ListLinkedSingle<Elem>::last_node() const {
+template <typename Elem>
+typename ListLinkedSingle<Elem>::Node *
+ListLinkedSingle<Elem>::last_node() const {
   Node *current = head;
   while (current->next != nullptr) {
     current = current->next;
@@ -180,9 +167,10 @@ typename ListLinkedSingle<Elem>::Node * ListLinkedSingle<Elem>::last_node() cons
   return current;
 }
 
-template<typename Elem>
-typename ListLinkedSingle<Elem>::Node * ListLinkedSingle<Elem>::nth_node(int n) const {
-  assert (0 <= n);
+template <typename Elem>
+typename ListLinkedSingle<Elem>::Node *
+ListLinkedSingle<Elem>::nth_node(int n) const {
+  assert(0 <= n);
   int current_index = 0;
   Node *current = head->next;
 
@@ -194,7 +182,7 @@ typename ListLinkedSingle<Elem>::Node * ListLinkedSingle<Elem>::nth_node(int n) 
   return current;
 }
 
-template<typename Elem>
+template <typename Elem>
 void ListLinkedSingle<Elem>::display(std::ostream &out) const {
   out << "[";
   if (head->next != nullptr) {
@@ -208,12 +196,10 @@ void ListLinkedSingle<Elem>::display(std::ostream &out) const {
   out << "]";
 }
 
-
-template<typename Elem>
-std::ostream & operator<<(std::ostream &out, const ListLinkedSingle<Elem> &l) {
+template <typename Elem>
+std::ostream &operator<<(std::ostream &out, const ListLinkedSingle<Elem> &l) {
   l.display(out);
   return out;
 }
 
 #endif
-

@@ -1,8 +1,15 @@
-#include <iostream>
+/*
+ * ---------------------------------------------------
+ *                ESTRUCTURAS DE DATOS
+ * ---------------------------------------------------
+ *              Manuel Montenegro Montes
+ *              Facultad de Informática
+ *         Universidad Complutense de Madrid
+ * ---------------------------------------------------
+ */
+
 #include "stack_linkedlist.h"
-
-
-
+#include <iostream>
 
 int main() {
   StackLinkedList<int> s;
@@ -16,6 +23,4 @@ int main() {
   s.pop();
   std::cout << s.top() << std::endl;
   s.pop();
-
-  
 }
