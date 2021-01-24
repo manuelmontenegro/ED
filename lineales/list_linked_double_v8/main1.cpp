@@ -1,5 +1,19 @@
-#include <iostream>
+/*
+ * ---------------------------------------------------
+ *                ESTRUCTURAS DE DATOS
+ * ---------------------------------------------------
+ *              Manuel Montenegro Montes
+ *              Facultad de Informática
+ *         Universidad Complutense de Madrid
+ * ---------------------------------------------------
+ */
+
+/*
+ * Uso de los operadores ++ y * sobre iteradores.
+ */
+
 #include "list_linked_double.h"
+#include <iostream>
 
 int suma_elems(ListLinkedDouble<int> &l) {
   int suma = 0;
@@ -9,8 +23,6 @@ int suma_elems(ListLinkedDouble<int> &l) {
   return suma;
 }
 
-#include <utility>
-
 int suma_elems_iterator(const ListLinkedDouble<int> &l) {
   int suma = 0;
   for (int x : l) {
@@ -18,7 +30,7 @@ int suma_elems_iterator(const ListLinkedDouble<int> &l) {
   }
   return suma;
 }
- 
+
 void mult_by_two(ListLinkedDouble<int> &l) {
   /*
   for (auto it = l.begin(); it != l.end(); ++it) {

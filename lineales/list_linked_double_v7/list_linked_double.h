@@ -7,12 +7,12 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
- /*
-  * Implementación del TAD Lista mediante listas doblemente enlazadas circulares.
-  *
-  * Versión con iteradores constantes y métodos de inserción y borrado.
-  */
+
+/*
+ * Implementación del TAD Lista mediante listas doblemente enlazadas circulares.
+ *
+ * Versión con iteradores constantes y métodos de inserción y borrado.
+ */
 
 #ifndef __LIST_LINKED_DOUBLE_H
 #define __LIST_LINKED_DOUBLE_H
@@ -20,9 +20,7 @@
 #include <cassert>
 #include <iostream>
 
-
-template <typename T>
-class ListLinkedDouble {
+template <typename T> class ListLinkedDouble {
 private:
   struct Node {
     T value;
@@ -31,7 +29,7 @@ private:
   };
 
 public:
-  ListLinkedDouble(): num_elems(0) { 
+  ListLinkedDouble() : num_elems(0) {
     head = new Node;
     head->next = head;
     head->prev = head;
@@ -42,24 +40,16 @@ public:
     num_elems = other.num_elems;
   }
 
-  ~ListLinkedDouble() {
-    delete_nodes();
-  }
+  ~ListLinkedDouble() { delete_nodes(); }
 
-  void push_front(const T &elem) {
-    insert(cbegin(), elem);
-  }
+  void push_front(const T &elem) { insert(cbegin(), elem); }
 
-  void push_back(const T &elem) {
-    insert(cend(), elem);
-  }
+  void push_back(const T &elem) { insert(cend(), elem); }
 
-  void pop_front() {
-    erase(cbegin());
-  }
+  void pop_front() { erase(cbegin()); }
 
   void pop_back() {
-    assert (num_elems > 0);
+    assert(num_elems > 0);
     Node *target = head->prev;
     target->prev->next = head;
     head->prev = target->prev;
@@ -67,47 +57,43 @@ public:
     num_elems--;
   }
 
-  int size() const {
-    return num_elems;
-  }
+  int size() const { return num_elems; }
 
-  bool empty() const {
-    return num_elems == 0;
-  };
-  
-  const T & front() const {
-    assert (num_elems > 0);
+  bool empty() const { return num_elems == 0; };
+
+  const T &front() const {
+    assert(num_elems > 0);
     return head->next->value;
   }
 
-  T & front() {
-    assert (num_elems > 0);
+  T &front() {
+    assert(num_elems > 0);
     return head->next->value;
   }
 
-  const T & back() const {
-    assert (num_elems > 0);
+  const T &back() const {
+    assert(num_elems > 0);
     return head->prev->value;
   }
 
-  T & back() {
-    assert (num_elems > 0);
+  T &back() {
+    assert(num_elems > 0);
     return head->prev->value;
   }
-  
-  const T & operator[](int index) const {
-    assert (0 <= index && index < num_elems);
+
+  const T &operator[](int index) const {
+    assert(0 <= index && index < num_elems);
     Node *result_node = nth_node(index);
     return result_node->value;
   }
 
-  T & operator[](int index) {
-    assert (0 <= index && index < num_elems);
+  T &operator[](int index) {
+    assert(0 <= index && index < num_elems);
     Node *result_node = nth_node(index);
     return result_node->value;
   }
 
-  ListLinkedDouble & operator=(const ListLinkedDouble &other) {
+  ListLinkedDouble &operator=(const ListLinkedDouble &other) {
     if (this != &other) {
       delete_nodes();
       head = new Node;
@@ -119,21 +105,14 @@ public:
   }
 
   void display(std::ostream &out) const;
-  
-  void display() const {
-    display(std::cout);
-  }
 
-  template <typename U>
-  class gen_iterator {
+  void display() const { display(std::cout); }
+
+  template <typename U> class gen_iterator {
   public:
-    void advance() {
-      current = current->next;
-    }
+    void advance() { current = current->next; }
 
-    U & elem() {
-      return current->value;
-    }
+    U &elem() { return current->value; }
 
     bool operator==(const gen_iterator &other) const {
       return (head == other.head) && (current == other.current);
@@ -146,7 +125,7 @@ public:
     friend class ListLinkedDouble;
 
   private:
-    gen_iterator(Node *head, Node *current): head(head), current(current) { }
+    gen_iterator(Node *head, Node *current) : head(head), current(current) {}
     Node *head;
     Node *current;
   };
@@ -154,27 +133,19 @@ public:
   using iterator = gen_iterator<T>;
   using const_iterator = gen_iterator<const T>;
 
-  iterator begin() {
-    return iterator(head, head->next);
-  }
+  iterator begin() { return iterator(head, head->next); }
 
-  iterator end() {
-    return iterator(head, head);
-  }
+  iterator end() { return iterator(head, head); }
 
-  const_iterator cbegin() const {
-    return const_iterator(head, head->next);
-  }
+  const_iterator cbegin() const { return const_iterator(head, head->next); }
 
-  const_iterator cend() const {
-    return const_iterator(head, head);
-  }
+  const_iterator cend() const { return const_iterator(head, head); }
 
   iterator insert(const_iterator it, const T &elem) {
     // Comprobamos que el iterador pertenece a la misma
     // lista en la que realizamos la inserción.
     assert(it.head == head);
-    Node *new_node = new Node { elem, it.current, it.current->prev };
+    Node *new_node = new Node{elem, it.current, it.current->prev};
     it.current->prev->next = new_node;
     it.current->prev = new_node;
     num_elems++;
@@ -204,10 +175,8 @@ private:
   void copy_nodes_from(const ListLinkedDouble &other);
 };
 
-
-
 template <typename T>
-typename ListLinkedDouble<T>::Node * ListLinkedDouble<T>::nth_node(int n) const {
+typename ListLinkedDouble<T>::Node *ListLinkedDouble<T>::nth_node(int n) const {
   int current_index = 0;
   Node *current = head->next;
 
@@ -219,8 +188,7 @@ typename ListLinkedDouble<T>::Node * ListLinkedDouble<T>::nth_node(int n) const 
   return current;
 }
 
-template <typename T>
-void ListLinkedDouble<T>::delete_nodes() {
+template <typename T> void ListLinkedDouble<T>::delete_nodes() {
   Node *current = head->next;
   while (current != head) {
     Node *target = current;
@@ -237,7 +205,7 @@ void ListLinkedDouble<T>::copy_nodes_from(const ListLinkedDouble &other) {
   Node *last = head;
 
   while (current_other != other.head) {
-    Node *new_node = new Node { current_other->value, head, last };
+    Node *new_node = new Node{current_other->value, head, last};
     last->next = new_node;
     last = new_node;
     current_other = current_other->next;
@@ -260,7 +228,7 @@ void ListLinkedDouble<T>::display(std::ostream &out) const {
 }
 
 template <typename T>
-std::ostream & operator<<(std::ostream &out, const ListLinkedDouble<T> &l) {
+std::ostream &operator<<(std::ostream &out, const ListLinkedDouble<T> &l) {
   l.display(out);
   return out;
 }
