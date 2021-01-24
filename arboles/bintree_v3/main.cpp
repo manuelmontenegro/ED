@@ -11,6 +11,7 @@
 #include "bintree.h"
 #include <iostream>
 #include <sstream>
+#include <utility>
 
 // Coste lineal con respecto al número de nodos de tree.
 template <typename T> int height(const BinTree<T> &tree) {
@@ -22,7 +23,7 @@ template <typename T> int height(const BinTree<T> &tree) {
 }
 
 // Coste cuadrático con respecto al número de nodos de tree.
-template <typename T> bool balanced1(const BinTree<T> &tree) {
+template <typename T> bool balanced_naive(const BinTree<T> &tree) {
   if (tree.empty()) {
     return true;
   } else {
@@ -35,25 +36,21 @@ template <typename T> bool balanced1(const BinTree<T> &tree) {
 }
 
 // Coste lineal con respecto al número de nodos de tree.
-template <typename T> bool balanced2(const BinTree<T> &tree) {
-  bool balanced;
-  int height;
-  balanced_height(tree, balanced, height);
-  return balanced;
+template <typename T> bool balanced(const BinTree<T> &tree) {
+  return balanced_height(tree).first;
 }
 
 template <typename T>
-void balanced_height(const BinTree<T> &tree, bool &balanced, int &height) {
+std::pair<bool, int> balanced_height(const BinTree<T> &tree) {
   if (tree.empty()) {
-    balanced = true;
-    height = 0;
+    return {true, 0};
   } else {
-    bool bal_left, bal_right;
-    int height_left, height_right;
-    balanced_height(tree.left(), bal_left, height_left);
-    balanced_height(tree.right(), bal_right, height_right);
-    balanced = bal_left && bal_right && abs(height_left - height_right) <= 1;
-    height = 1 + std::max(height_left, height_right);
+    auto [bal_left, height_left] = balanced_height(tree.left());
+    auto [bal_right, height_right] = balanced_height(tree.right());
+    bool balanced =
+        bal_left && bal_right && abs(height_left - height_right) <= 1;
+    int height = 1 + std::max(height_left, height_right);
+    return {balanced, height};
   }
 }
 
@@ -78,11 +75,11 @@ int main() {
   std::cout << "Altura de 't2': " << height(t2) << std::endl;
   std::cout << "Altura de 'comun': " << height(comun) << std::endl;
 
-  std::cout << "¿Está 'tree' equilibrado? " << balanced2(tree) << std::endl;
-  std::cout << "¿Está 'other' equilibrado? " << balanced2(other) << std::endl;
-  std::cout << "¿Está 't1' equilibrado? " << balanced2(t1) << std::endl;
-  std::cout << "¿Está 't2' equilibrado? " << balanced2(t2) << std::endl;
-  std::cout << "¿Está 'comun' equilibrado? " << balanced2(comun) << std::endl;
+  std::cout << "¿Está 'tree' equilibrado? " << balanced(tree) << std::endl;
+  std::cout << "¿Está 'other' equilibrado? " << balanced(other) << std::endl;
+  std::cout << "¿Está 't1' equilibrado? " << balanced(t1) << std::endl;
+  std::cout << "¿Está 't2' equilibrado? " << balanced(t2) << std::endl;
+  std::cout << "¿Está 'comun' equilibrado? " << balanced(comun) << std::endl;
 
   return 0;
 }
