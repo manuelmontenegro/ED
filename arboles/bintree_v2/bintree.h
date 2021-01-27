@@ -9,8 +9,6 @@
  */
 
 /*
- * Implementación inicial del TAD de los árboles binarios.
- *
  * Esta implementación libera la memoria producida, pero a
  * cambio de realizar copias de los nodos cada vez que construye
  * un árbol a partir de sus hijos.

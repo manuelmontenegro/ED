@@ -9,8 +9,6 @@
  */
 
 /*
- * Implementación inicial del TAD de los árboles binarios.
- *
  * Esta implementación utiliza smart pointers para prevenir
  * fugas de memoria y problemas con la destrucción.
  */

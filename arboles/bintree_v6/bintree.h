@@ -9,8 +9,6 @@
  */
 
 /*
- * Implementación inicial del TAD de los árboles binarios.
- * 
  * Se sustituye el recorrido en inorden recursivo por una
  * versión iterativa.
  */
@@ -35,12 +33,12 @@ private:
 public:
 
   BinTree(): root_node(nullptr) { }
-  
+
   BinTree(const T &elem): root_node(std::make_shared<TreeNode>(nullptr, elem, nullptr)) { }
-  
+
   BinTree(const BinTree &left, const T &elem, const BinTree &right)
     :root_node(std::make_shared<TreeNode>(left.root_node, elem, right.root_node)) { }
-  
+
 
   bool empty() const {
     return root_node == nullptr;
@@ -77,15 +75,15 @@ public:
   template <typename U>
   void inorder(U func) const {
     std::stack<NodePointer> st;
-    
+
     descend_and_push(root_node, st);
-    
+
     while (!st.empty()) {
       NodePointer current = st.top();
       st.pop();
-      
+
       func(current->elem);
-      
+
       descend_and_push(current->right, st);
     }
   }
@@ -121,7 +119,7 @@ private:
   }
 
   static void descend_and_push(const NodePointer &node, std::stack<NodePointer> &st);
-  
+
   template <typename U>
   static void preorder(const NodePointer &node, U func);
 

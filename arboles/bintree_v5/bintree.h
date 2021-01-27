@@ -9,8 +9,6 @@
  */
 
 /*
- * Implementación inicial del TAD de los árboles binarios.
- * 
  * Aquí se introducen los recorridos parametrizados con respecto
  * al tipo de acción que se desea realizar en cada visita.
  */
@@ -35,12 +33,12 @@ private:
 public:
 
   BinTree(): root_node(nullptr) { }
-  
+
   BinTree(const T &elem): root_node(std::make_shared<TreeNode>(nullptr, elem, nullptr)) { }
-  
+
   BinTree(const BinTree &left, const T &elem, const BinTree &right)
     :root_node(std::make_shared<TreeNode>(left.root_node, elem, right.root_node)) { }
-  
+
 
   bool empty() const {
     return root_node == nullptr;

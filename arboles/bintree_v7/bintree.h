@@ -9,9 +9,7 @@
  */
 
 /*
- * Implementación inicial del TAD de los árboles binarios.
- * 
- * Se añaden iteradores.
+ * Se añaden iteradores con respecto a la versión anterior.
  */
 
 #ifndef __BINTREE_H
@@ -40,12 +38,12 @@ public:
 
 
   BinTree(): root_node(nullptr) { }
-  
+
   BinTree(const T &elem): root_node(std::make_shared<TreeNode>(nullptr, elem, nullptr)) { }
-  
+
   BinTree(const BinTree &left, const T &elem, const BinTree &right)
     :root_node(std::make_shared<TreeNode>(left.root_node, elem, right.root_node)) { }
-  
+
 
   bool empty() const {
     return root_node == nullptr;
@@ -82,15 +80,15 @@ public:
   template <typename U>
   void inorder(U func) const {
     std::stack<NodePointer> st;
-    
+
     descend_and_push(root_node, st);
-    
+
     while (!st.empty()) {
       NodePointer current = st.top();
       st.pop();
-      
+
       func(current->elem);
-      
+
       descend_and_push(current->right, st);
     }
   }
@@ -126,10 +124,10 @@ public:
 
   const_iterator cend() {
     return const_iterator();
-  }  
+  }
 private:
 
- 
+
   struct TreeNode {
     TreeNode(const NodePointer &left, const T &elem, const NodePointer &right): elem(elem), left(left), right(right) { }
 
@@ -142,7 +140,7 @@ private:
   template <typename S>
   class iterator_gen {
   public:
-    
+
     S operator*() const {
       assert(!st.empty());
       return st.top()->elem;
@@ -197,13 +195,13 @@ private:
   }
 
   static void descend_and_push(const NodePointer &node, std::stack<NodePointer> &st);
-  
+
   template <typename U>
   static void preorder(const NodePointer &node, U func);
 
   template <typename U>
   static void postorder(const NodePointer &node, U func);
-  
+
 };
 
 
