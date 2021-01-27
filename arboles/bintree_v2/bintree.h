@@ -36,7 +36,7 @@ public:
 
   ~BinTree() { delete_with_children(root_node); }
 
-  bool empty() const { return root == nullptr; }
+  bool empty() const { return root_node == nullptr; }
 
   const T &root() const {
     assert(root_node != nullptr);
@@ -46,14 +46,14 @@ public:
   BinTree left() const {
     assert(root_node != nullptr);
     BinTree result;
-    result.root = root_node->left;
+    result.root_node = copy_with_children(root_node->left);
     return result;
   }
 
   BinTree right() const {
     assert(root_node != nullptr);
     BinTree result;
-    result.root = root_node->right;
+    result.root_node = copy_with_children(root_node->right);
     return result;
   }
 
