@@ -19,6 +19,9 @@
 #include <limits>
 #include <utility>
 
+// Devuelve un par de enteros.
+// - La primera componente es el valor mínimo del array
+// - La segunda componente es el valor máximo del array
 std::pair<int, int> min_max(int *array, int longitud) {
   int min = std::numeric_limits<int>::max();
   int max = std::numeric_limits<int>::min();
@@ -48,3 +51,4 @@ int main() {
 
   return 0;
 }
+

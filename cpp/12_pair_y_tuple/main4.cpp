@@ -20,6 +20,11 @@
 #include <limits>
 #include <tuple>
 
+// Devuelve una tupla con tres componentes:
+// - La primera componente es el valor mínimo del array
+// - La segunda componente es el valor máximo del array
+// - La tercera componente es la suma de los valores del array
+
 std::tuple<int, int, int> min_max_sum(int *array, int longitud) {
   int min = std::numeric_limits<int>::max();
   int max = std::numeric_limits<int>::min();
