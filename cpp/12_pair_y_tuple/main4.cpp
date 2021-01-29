@@ -15,10 +15,10 @@
    de dos valores.
    */
 
+#include <algorithm>
 #include <iostream>
 #include <limits>
 #include <tuple>
-#include <algorithm>
 
 std::tuple<int, int, int> min_max_sum(int *array, int longitud) {
   int min = std::numeric_limits<int>::max();
@@ -40,14 +40,16 @@ int main() {
   int longitud = sizeof(arr) / sizeof(int);
 
   std::tuple<int, int, int> t = min_max_sum(arr, longitud);
-  std::cout << "Min = " << std::get<0>(t) << " | Max = " << std::get<1>(t) << " | Sum = " << std::get<2>(t) << std::endl;
+  std::cout << "Min = " << std::get<0>(t) << " | Max = " << std::get<1>(t)
+            << " | Sum = " << std::get<2>(t) << std::endl;
 
   // Uso de la sintaxis permitida a partir de C++17
 
-  // Si no se acepta por Visual Studio 2019: modificar, en las opciones de proyecto,
-  // la opción 'Estándar de lenguaje C++' a '/std:c++latest'
+  // Si no se acepta por Visual Studio 2019: modificar, en las opciones de
+  // proyecto, la opción 'Estándar de lenguaje C++' a '/std:c++latest'
   auto [min, max, sum] = min_max_sum(arr, longitud);
-  std::cout << "Min = " << min << " | Max = " << max << " | Sum = " << sum << std::endl;
+  std::cout << "Min = " << min << " | Max = " << max << " | Sum = " << sum
+            << std::endl;
 
   return 0;
 }

@@ -14,10 +14,10 @@
    Aquí se muestra el uso de la clase pair
    */
 
+#include <algorithm>
 #include <iostream>
 #include <limits>
 #include <utility>
-#include <algorithm>
 
 std::pair<int, int> min_max(int *array, int longitud) {
   int min = std::numeric_limits<int>::max();
@@ -41,8 +41,8 @@ int main() {
 
   // Uso de la sintaxis permitida a partir de C++17
 
-  // Si no se acepta por Visual Studio 2019: modificar, en las opciones de proyecto,
-  // la opción 'Estándar de lenguaje C++' a '/std:c++latest'
+  // Si no se acepta por Visual Studio 2019: modificar, en las opciones de
+  // proyecto, la opción 'Estándar de lenguaje C++' a '/std:c++latest'
   auto [min, max] = min_max(arr, longitud);
   std::cout << "Min = " << min << " | Max = " << max << std::endl;
 

@@ -14,9 +14,9 @@
    Aquí se muestra el uso de una tipo específico para el resultado.
    */
 
+#include <algorithm>
 #include <iostream>
 #include <limits>
-#include <algorithm>
 
 struct MinMaxResult {
   int min;

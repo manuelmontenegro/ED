@@ -14,9 +14,9 @@
    Aquí se muestra el uso de parámetros de salida.
 */
 
+#include <algorithm>
 #include <iostream>
 #include <limits>
-#include <algorithm>
 
 // Función que calcula el mínimo de los elementos de un array
 
