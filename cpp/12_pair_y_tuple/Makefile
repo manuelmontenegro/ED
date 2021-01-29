@@ -1,6 +1,6 @@
 CXXFLAGS=-std=c++17
 
-all: main1 main2 main3
+all: main1 main2 main3 main4
 
 main1: main1.cpp
 

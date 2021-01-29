@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <limits>
+#include <algorithm>
 
 struct MinMaxResult {
   int min;

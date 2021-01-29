@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <limits>
+#include <algorithm>
 
 // Función que calcula el mínimo de los elementos de un array
 
