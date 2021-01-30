@@ -8,13 +8,12 @@
  * ---------------------------------------------------
  */
 
+#include "bintree.h"
 #include <iostream>
 #include <sstream>
-#include "bintree.h"
-
 
 int main() {
-  BinTree<int> tree {{{ 9 }, 4, { 5 }}, 7, {{ 10 }, 4, { 6 }}};
+  BinTree<int> tree{{{9}, 4, {5}}, 7, {{10}, 4, {6}}};
 
   std::vector<int> vec;
   std::cout << "Recorrido en preorden: " << std::endl;
@@ -30,7 +29,7 @@ int main() {
   std::cout << std::endl;
 
   std::cout << "Recorrido por niveles: " << std::endl;
-  tree.levelorder();  
+  tree.levelorder();
   std::cout << std::endl;
 
   return 0;
