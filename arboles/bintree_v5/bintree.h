@@ -23,71 +23,61 @@
 #include <queue>
 #include <stack>
 
-template<class T>
-class BinTree {
+template <class T> class BinTree {
 
 private:
   struct TreeNode;
   using NodePointer = std::shared_ptr<TreeNode>;
 
 public:
+  BinTree() : root_node(nullptr) {}
 
-  BinTree(): root_node(nullptr) { }
-
-  BinTree(const T &elem): root_node(std::make_shared<TreeNode>(nullptr, elem, nullptr)) { }
+  BinTree(const T &elem)
+      : root_node(std::make_shared<TreeNode>(nullptr, elem, nullptr)) {}
 
   BinTree(const BinTree &left, const T &elem, const BinTree &right)
-    :root_node(std::make_shared<TreeNode>(left.root_node, elem, right.root_node)) { }
+      : root_node(std::make_shared<TreeNode>(left.root_node, elem,
+                                             right.root_node)) {}
 
+  bool empty() const { return root_node == nullptr; }
 
-  bool empty() const {
-    return root_node == nullptr;
-  }
-
-  const T & root() const {
+  const T &root() const {
     assert(root_node != nullptr);
     return root_node->elem;
   }
 
   BinTree left() const {
-    assert (root_node != nullptr);
+    assert(root_node != nullptr);
     BinTree result;
     result.root_node = root_node->left;
     return result;
   }
 
   BinTree right() const {
-    assert (root_node != nullptr);
+    assert(root_node != nullptr);
     BinTree result;
     result.root_node = root_node->right;
     return result;
   }
 
-  void display(std::ostream &out) const {
-    display_node(root_node, out);
-  }
+  void display(std::ostream &out) const { display_node(root_node, out); }
 
-  template <typename U>
-  void preorder(U func) const {
+  template <typename U> void preorder(U func) const {
     preorder(root_node, func);
   }
 
-  template <typename U>
-  void inorder(U func) const {
-    inorder(root_node, func);
-  }
+  template <typename U> void inorder(U func) const { inorder(root_node, func); }
 
-  template <typename U>
-  void postorder(U func) const {
+  template <typename U> void postorder(U func) const {
     postorder(root_node, func);
   }
 
-  template <typename U>
-  void levelorder(U func) const;
+  template <typename U> void levelorder(U func) const;
 
 private:
   struct TreeNode {
-    TreeNode(const NodePointer &left, const T &elem, const NodePointer &right): elem(elem), left(left), right(right) { }
+    TreeNode(const NodePointer &left, const T &elem, const NodePointer &right)
+        : elem(elem), left(left), right(right) {}
 
     T elem;
     NodePointer left, right;
@@ -107,18 +97,15 @@ private:
     }
   }
 
-  template <typename U>
-  static void preorder(const NodePointer &node, U func);
+  template <typename U> static void preorder(const NodePointer &node, U func);
 
-  template <typename U>
-  static void inorder(const NodePointer &node, U func);
+  template <typename U> static void inorder(const NodePointer &node, U func);
 
-  template <typename U>
-  static void postorder(const NodePointer &node, U func);
+  template <typename U> static void postorder(const NodePointer &node, U func);
 };
 
-template<typename T>
-template<typename U>
+template <typename T>
+template <typename U>
 void BinTree<T>::preorder(const NodePointer &node, U func) {
   if (node != nullptr) {
     func(node->elem);
@@ -127,8 +114,8 @@ void BinTree<T>::preorder(const NodePointer &node, U func) {
   }
 }
 
-template<typename T>
-template<typename U>
+template <typename T>
+template <typename U>
 void BinTree<T>::inorder(const NodePointer &node, U func) {
   if (node != nullptr) {
     inorder(node->left, func);
@@ -137,8 +124,8 @@ void BinTree<T>::inorder(const NodePointer &node, U func) {
   }
 }
 
-template<typename T>
-template<typename U>
+template <typename T>
+template <typename U>
 void BinTree<T>::postorder(const NodePointer &node, U func) {
   if (node != nullptr) {
     postorder(node->left, func);
@@ -147,9 +134,8 @@ void BinTree<T>::postorder(const NodePointer &node, U func) {
   }
 }
 
-
-template<typename T>
-template<typename U>
+template <typename T>
+template <typename U>
 void BinTree<T>::levelorder(U func) const {
   std::queue<NodePointer> pending;
   if (root_node != nullptr) {
@@ -168,32 +154,28 @@ void BinTree<T>::levelorder(U func) const {
   }
 }
 
-
-template<typename T>
-std::ostream & operator<<(std::ostream &out, const BinTree<T> &tree) {
+template <typename T>
+std::ostream &operator<<(std::ostream &out, const BinTree<T> &tree) {
   tree.display(out);
   return out;
 }
 
-
-template<typename T>
-BinTree<T> read_tree(std::istream &in) {
+template <typename T> BinTree<T> read_tree(std::istream &in) {
   char c;
   in >> c;
   if (c == '.') {
     return BinTree<T>();
   } else {
-    assert (c == '(');
+    assert(c == '(');
     BinTree<T> left = read_tree<T>(in);
     T elem;
     in >> elem;
     BinTree<T> right = read_tree<T>(in);
     in >> c;
-    assert (c == ')');
+    assert(c == ')');
     BinTree<T> result(left, elem, right);
     return result;
   }
-
 }
 
 #endif
