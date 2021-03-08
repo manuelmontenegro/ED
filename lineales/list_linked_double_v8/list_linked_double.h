@@ -29,6 +29,8 @@ private:
     Node *prev;
   };
 
+  template <typename U> class gen_iterator;
+
 public:
   ListLinkedDouble() : num_elems(0) {
     head = new Node;
@@ -109,42 +111,6 @@ public:
 
   void display() const { display(std::cout); }
 
-  template <typename U> class gen_iterator {
-  public:
-    gen_iterator &operator++() {
-      assert(current != head);
-      current = current->next;
-      return *this;
-    }
-
-    gen_iterator operator++(int) {
-      assert(current != head);
-      gen_iterator antes = *this;
-      current = current->next;
-      return antes;
-    }
-
-    U &operator*() const {
-      assert(current != head);
-      return current->value;
-    }
-
-    bool operator==(const gen_iterator &other) const {
-      return (head == other.head) && (current == other.current);
-    }
-
-    bool operator!=(const gen_iterator &other) const {
-      return !(*this == other);
-    }
-
-    friend class ListLinkedDouble;
-
-  private:
-    gen_iterator(Node *head, Node *current) : head(head), current(current) {}
-    Node *head;
-    Node *current;
-  };
-
   using iterator = gen_iterator<T>;
   using const_iterator = gen_iterator<const T>;
 
@@ -188,6 +154,42 @@ public:
 private:
   Node *head;
   int num_elems;
+
+  template <typename U> class gen_iterator {
+  public:
+    gen_iterator &operator++() {
+      assert(current != head);
+      current = current->next;
+      return *this;
+    }
+
+    gen_iterator operator++(int) {
+      assert(current != head);
+      gen_iterator antes = *this;
+      current = current->next;
+      return antes;
+    }
+
+    U &operator*() const {
+      assert(current != head);
+      return current->value;
+    }
+
+    bool operator==(const gen_iterator &other) const {
+      return (head == other.head) && (current == other.current);
+    }
+
+    bool operator!=(const gen_iterator &other) const {
+      return !(*this == other);
+    }
+
+    friend class ListLinkedDouble;
+
+  private:
+    gen_iterator(Node *head, Node *current) : head(head), current(current) {}
+    Node *head;
+    Node *current;
+  };
 
   Node *nth_node(int n) const;
   void delete_nodes();

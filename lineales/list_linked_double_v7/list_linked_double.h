@@ -27,6 +27,7 @@ private:
     Node *next;
     Node *prev;
   };
+  template <typename U> class gen_iterator;
 
 public:
   ListLinkedDouble() : num_elems(0) {
@@ -108,28 +109,6 @@ public:
 
   void display() const { display(std::cout); }
 
-  template <typename U> class gen_iterator {
-  public:
-    void advance() { current = current->next; }
-
-    U &elem() { return current->value; }
-
-    bool operator==(const gen_iterator &other) const {
-      return (head == other.head) && (current == other.current);
-    }
-
-    bool operator!=(const gen_iterator &other) const {
-      return !(*this == other);
-    }
-
-    friend class ListLinkedDouble;
-
-  private:
-    gen_iterator(Node *head, Node *current) : head(head), current(current) {}
-    Node *head;
-    Node *current;
-  };
-
   using iterator = gen_iterator<T>;
   using const_iterator = gen_iterator<const T>;
 
@@ -167,6 +146,28 @@ public:
   }
 
 private:
+  template <typename U> class gen_iterator {
+  public:
+    void advance() { current = current->next; }
+
+    U &elem() { return current->value; }
+
+    bool operator==(const gen_iterator &other) const {
+      return (head == other.head) && (current == other.current);
+    }
+
+    bool operator!=(const gen_iterator &other) const {
+      return !(*this == other);
+    }
+
+    friend class ListLinkedDouble;
+
+  private:
+    gen_iterator(Node *head, Node *current) : head(head), current(current) {}
+    Node *head;
+    Node *current;
+  };
+
   Node *head;
   int num_elems;
 
