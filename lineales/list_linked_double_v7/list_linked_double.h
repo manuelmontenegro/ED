@@ -116,6 +116,10 @@ public:
 
   iterator end() { return iterator(head, head); }
 
+  const_iterator begin() const { return const_iterator(head, head->next); }
+
+  const_iterator end() const { return const_iterator(head, head); }
+
   const_iterator cbegin() const { return const_iterator(head, head->next); }
 
   const_iterator cend() const { return const_iterator(head, head); }
