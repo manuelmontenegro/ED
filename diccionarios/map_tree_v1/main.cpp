@@ -7,7 +7,7 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Uso del TAD Diccionario
  */
@@ -17,22 +17,22 @@
 using namespace std;
 
 int main() {
-    MapTree<string, int> dicc;
-    dicc.insert({"Javier", 23});
-    dicc.insert({"David", 25});
-    dicc.insert({"Marga", 29});
+  MapTree<string, int> dicc;
+  dicc.insert({"Javier", 23});
+  dicc.insert({"David", 25});
+  dicc.insert({"Marga", 29});
 
-    cout << dicc << endl;
+  cout << dicc << endl;
 
-    cout << "Edad de Marga: " << dicc.at("Marga") << endl;
-    
-    dicc.at("Marga") = 30;
+  cout << "Edad de Marga: " << dicc.at("Marga") << endl;
 
-    dicc["Diana"] = 41;
+  dicc.at("Marga") = 30;
 
-    dicc["Javier"]++;
+  dicc["Diana"] = 41;
 
-    cout << dicc << endl;
+  dicc["Javier"]++;
 
-    return 0;
+  cout << dicc << endl;
+
+  return 0;
 }
