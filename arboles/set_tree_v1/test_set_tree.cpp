@@ -50,7 +50,7 @@ TEST_CASE("creation of sets", "SetTree") {
         REQUIRE(s.contains(2));
         REQUIRE(s.contains(4));
         REQUIRE_FALSE(s.contains(1));
-    }    
+    }
 
     SECTION("if two elements are inserted in reverse order, both are in the set") {
         s.insert(4);
@@ -60,7 +60,7 @@ TEST_CASE("creation of sets", "SetTree") {
         REQUIRE_FALSE(s.contains(1));
         REQUIRE_FALSE(s.contains(3));
         REQUIRE_FALSE(s.contains(5));
-    }       
+    }
 
     SECTION("if three elements are inserted, the three are in the set") {
         s.insert(1);
@@ -79,7 +79,7 @@ TEST_CASE("creation of sets", "SetTree") {
         s.insert(1);
         REQUIRE(s.size() == 1);
         s.insert(1);
-        REQUIRE(s.size() == 1);        
+        REQUIRE(s.size() == 1);
     }
 }
 
@@ -123,5 +123,21 @@ TEST_CASE("deletion in a balanced tree") {
     SECTION("removing root") {
         s.erase(2);
         REQUIRE (s.size() == 2);
+    }
+}
+
+TEST_CASE("deletion in an (almost) degenerate tree") {
+    SetTree<int> s;
+    s.insert(1);
+    s.insert(4);
+    s.insert(3);
+    s.insert(2);
+
+    SECTION("removing root") {
+        s.erase(1);
+        REQUIRE_FALSE(s.contains(1));
+        REQUIRE(s.contains(2));
+        REQUIRE(s.contains(3));
+        REQUIRE(s.contains(4));
     }
 }
