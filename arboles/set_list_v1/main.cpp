@@ -7,7 +7,7 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Uso del TAD Conjunto
  */
@@ -17,20 +17,20 @@
 using namespace std;
 
 int main() {
-    SetList<int> sv;
+  SetList<int> sv;
 
-    sv.insert(10);
-    sv.insert(20);
+  sv.insert(10);
+  sv.insert(20);
 
-    cout << sv << endl;
+  cout << sv << endl;
 
-    sv.insert(15);
+  sv.insert(15);
 
-    cout << sv << endl;
+  cout << sv << endl;
 
-    cout << sv.contains(10) << endl;
-    sv.erase(10);
-    cout << sv.contains(10) << endl;
-    
-    return 0;
+  cout << boolalpha << sv.contains(10) << endl;
+  sv.erase(10);
+  cout << boolalpha << sv.contains(10) << endl;
+
+  return 0;
 }
