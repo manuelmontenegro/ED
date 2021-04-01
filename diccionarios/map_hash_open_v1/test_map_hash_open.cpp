@@ -68,7 +68,7 @@ TEST_CASE("nonempty maps", "MapHash") {
     REQUIRE(map.contains("B"));
     REQUIRE_FALSE(map.contains("C"));
     REQUIRE(map.at("B") == 20);
-  }  
+  }
 
   SECTION("After removing three elements, map is empty") {
     map.erase("A");
@@ -79,7 +79,7 @@ TEST_CASE("nonempty maps", "MapHash") {
     REQUIRE_FALSE(map.contains("A"));
     REQUIRE_FALSE(map.contains("B"));
     REQUIRE_FALSE(map.contains("C"));
-  }    
+  }
 
   SECTION("After removing two elements and adding one of them ...") {
     map.erase("A");
@@ -91,9 +91,10 @@ TEST_CASE("nonempty maps", "MapHash") {
     REQUIRE_FALSE(map.contains("C"));
     REQUIRE(map.at("A") == 15);
     REQUIRE(map.at("B") == 20);
-  }    
+  }
 
-  SECTION("After removing two elements and adding one of them, and another unrelated") {
+  SECTION("After removing two elements and adding one of them, and another "
+          "unrelated") {
     map.erase("A");
     map.insert({"D", 14});
     map.erase("C");
@@ -152,9 +153,8 @@ TEST_CASE("nonempty maps", "MapHash") {
     REQUIRE(map.at("B") == 20);
     REQUIRE(map.at("C") == 30);
     REQUIRE(map.at("D") == 23);
-  }  
+  }
 }
-
 
 TEST_CASE("hash map with collisions", "MapHash") {
   MapHash<int, int> map;
@@ -172,13 +172,15 @@ TEST_CASE("hash map with collisions", "MapHash") {
     }
   }
 
-  SECTION("map contains every number between 1 and 1000 associated with its double") {
+  SECTION("map contains every number between 1 and 1000 associated with its "
+          "double") {
     for (int i = 1; i <= 1000; i++) {
       REQUIRE(map.at(i) == 2 * i);
     }
   }
 
-  SECTION("map contains every number between 1 and 1000 associated with its double") {
+  SECTION("map contains every number between 1 and 1000 associated with its "
+          "double") {
     for (int i = 1; i <= 1000; i++) {
       REQUIRE(map[i] == 2 * i);
     }
@@ -189,7 +191,7 @@ TEST_CASE("hash map with collisions", "MapHash") {
       map.erase(i);
     }
     REQUIRE(map.size() == 500);
-  }  
+  }
 
   SECTION("after removing every element, map is empty") {
     for (int i = 1; i <= 1000; i++) {
@@ -197,5 +199,5 @@ TEST_CASE("hash map with collisions", "MapHash") {
     }
     REQUIRE(map.size() == 0);
     REQUIRE(map.empty());
-  }  
+  }
 }
