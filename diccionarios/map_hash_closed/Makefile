@@ -1,3 +1,5 @@
+CXXFLAGS="-std=c++17"
+
 all: tests main
 
 tests: run_tests
