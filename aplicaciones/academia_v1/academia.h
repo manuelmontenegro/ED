@@ -7,28 +7,27 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Primera implementación del TAD Academia, con operaciones
  * básicas de añadir cursos y estudiantes.
  */
- 
+
 #ifndef __ACADEMIA_H
 #define __ACADEMIA_H
 
-#include <string>
-#include <vector>
-#include <unordered_map>
-#include <set>
 #include <cassert>
-
+#include <set>
+#include <stdexcept>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 using Estudiante = std::string;
 using Curso = std::string;
 
 class Academia {
 public:
-  
   void anyadir_curso(const std::string &nombre, int numero_plazas) {
     if (cursos.contains(nombre)) {
       throw std::domain_error("curso ya existente");
@@ -59,19 +58,18 @@ public:
     } else {
       throw std::domain_error("no hay plazas disponibles");
     }
-  }  
+  }
 
   std::vector<Estudiante> estudiantes_matriculados(const Curso &curso) const {
     const InfoCurso &info_curso = buscar_curso(curso);
-    
+
     std::vector<Estudiante> result;
     copy(info_curso.estudiantes.begin(), info_curso.estudiantes.end(),
          std::back_insert_iterator<std::vector<Estudiante>>(result));
-         
+
     return result;
   }
 
-  
 private:
   struct InfoCurso {
     std::string nombre;
@@ -79,7 +77,8 @@ private:
 
     std::set<Estudiante> estudiantes;
 
-    InfoCurso(const std::string &nombre, int numero_plazas): nombre(nombre), numero_plazas(numero_plazas) { }
+    InfoCurso(const std::string &nombre, int numero_plazas)
+        : nombre(nombre), numero_plazas(numero_plazas) {}
   };
 
   const InfoCurso &buscar_curso(const Curso &nombre) const {
@@ -90,7 +89,7 @@ private:
       return it_curso->second;
     }
   }
-  
+
   InfoCurso &buscar_curso(const Curso &nombre) {
     auto it_curso = cursos.find(nombre);
     if (it_curso == cursos.end()) {
@@ -99,8 +98,8 @@ private:
       return it_curso->second;
     }
   }
-  
-  std::unordered_map<Curso, InfoCurso> cursos;  
+
+  std::unordered_map<Curso, InfoCurso> cursos;
 };
 
 #endif

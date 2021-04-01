@@ -7,14 +7,13 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * Ejemplo de uso del TAD Academia
  */
- 
+
 #include "academia.h"
 #include <iostream>
-
 
 using namespace std;
 
@@ -30,7 +29,8 @@ int main() {
   ac.matricular_en_curso("Genaro Pérez", "Fundamentos de pastificio");
 
   cout << ac.plazas_libres("Introducción a la rubismática") << endl;
-  for (const Estudiante &e: ac.estudiantes_matriculados("Introducción a la rubismática")) {
+  for (const Estudiante &e :
+       ac.estudiantes_matriculados("Introducción a la rubismática")) {
     cout << e << endl;
   }
 
