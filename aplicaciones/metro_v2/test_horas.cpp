@@ -1,8 +1,8 @@
 #include "../../catch.hpp"
 
-#include <string>
-#include <sstream>
 #include "hora.h"
+#include <sstream>
+#include <string>
 
 std::string hora_to_str(const Hora &h) {
   std::ostringstream out;
@@ -41,7 +41,8 @@ TEST_CASE("Creación de horas", "hora") {
 }
 
 TEST_CASE("Diferencia de horas", "hora") {
-  Hora h1(0, 0, 0), h2(10, 15, 23), h3(10, 15, 25), h4(11, 00, 00), h5(24, 0, 0);
+  Hora h1(0, 0, 0), h2(10, 15, 23), h3(10, 15, 25), h4(11, 00, 00),
+      h5(24, 0, 0);
 
   SECTION("Diferencia entre todas") {
     REQUIRE(h2 - h1 == 36923);
@@ -55,13 +56,14 @@ TEST_CASE("Diferencia de horas", "hora") {
 }
 
 TEST_CASE("Suma de horas", "hora") {
-  Hora h1(0, 0, 0), h2(10, 15, 12), h3(10, 15, 59), h4(10, 59, 59), h5(23, 59, 59);
+  Hora h1(0, 0, 0), h2(10, 15, 12), h3(10, 15, 59), h4(10, 59, 59),
+      h5(23, 59, 59);
 
   SECTION("Suma de horas") {
     REQUIRE(hora_to_str(h1 + 10) == "00:00:10");
-    REQUIRE(hora_to_str(h2 + 7) ==  "10:15:19");
-    REQUIRE(hora_to_str(h3 + 7) ==  "10:16:06");
-    REQUIRE(hora_to_str(h4 + 1) ==  "11:00:00");
-    REQUIRE(hora_to_str(h5 + 1) ==  "24:00:00");
+    REQUIRE(hora_to_str(h2 + 7) == "10:15:19");
+    REQUIRE(hora_to_str(h3 + 7) == "10:16:06");
+    REQUIRE(hora_to_str(h4 + 1) == "11:00:00");
+    REQUIRE(hora_to_str(h5 + 1) == "24:00:00");
   }
 }

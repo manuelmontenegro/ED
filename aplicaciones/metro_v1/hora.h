@@ -7,49 +7,41 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
- /*
-  * TAD para gestionar horas
-  */
 
+/*
+ * TAD para gestionar horas
+ */
 
 #ifndef __HORA_H
 #define __HORA_H
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+#include <stdexcept>
 
 class Hora {
 public:
-  Hora(int horas, int minutos, int segundos): Hora(horas * 3600 + minutos * 60 + segundos) {
-    if (horas < 0 || minutos < 0 || minutos >= 60 || segundos < 0 || segundos >= 60) {
+  Hora(int horas, int minutos, int segundos)
+      : Hora(horas * 3600 + minutos * 60 + segundos) {
+    if (horas < 0 || minutos < 0 || minutos >= 60 || segundos < 0 ||
+        segundos >= 60) {
       throw std::domain_error("hora no válida");
     }
   }
-  
-  int horas() const {
-    return num_segundos / 3600;
-  }
 
-  int minutos() const {
-    return (num_segundos / 60) % 60;
-  }
+  int horas() const { return num_segundos / 3600; }
 
-  int segundos() const {
-    return num_segundos % 60;
-  }
+  int minutos() const { return (num_segundos / 60) % 60; }
 
-  Hora operator+(int segs) const {
-    return Hora(num_segundos + segs);
-  }
+  int segundos() const { return num_segundos % 60; }
 
-  int operator-(const Hora& otra) const {
+  Hora operator+(int segs) const { return Hora(num_segundos + segs); }
+
+  int operator-(const Hora &otra) const {
     return num_segundos - otra.num_segundos;
   }
 
-  Hora operator-(int segs) const {
-    return Hora(num_segundos - segs);
-  }
+  Hora operator-(int segs) const { return Hora(num_segundos - segs); }
 
   bool operator==(const Hora &otra) const {
     return num_segundos == otra.num_segundos;
@@ -60,13 +52,13 @@ public:
   }
 
   void display(std::ostream &out) const {
-    out << std::setw(2) << std::setfill('0') << horas() << ":"
-        << std::setw(2) << std::setfill('0') << minutos() << ":"
-        << std::setw(2) << std::setfill('0') << segundos();
+    out << std::setw(2) << std::setfill('0') << horas() << ":" << std::setw(2)
+        << std::setfill('0') << minutos() << ":" << std::setw(2)
+        << std::setfill('0') << segundos();
   }
 
 private:
-  Hora(int num_segundos): num_segundos(num_segundos) { }
+  Hora(int num_segundos) : num_segundos(num_segundos) {}
   int num_segundos;
 };
 

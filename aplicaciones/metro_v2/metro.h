@@ -7,20 +7,20 @@
  *         Universidad Complutense de Madrid
  * ---------------------------------------------------
  */
- 
+
 /*
  * TAD para gestionar líneas de metro (versión alternativa)
  */
 
-
 #ifndef __METRO_H
 #define __METRO_H
 
-#include <string>
-#include <map>
-#include <vector>
-#include <set>
 #include "hora.h"
+#include <map>
+#include <set>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 using Linea = std::string;
 using Parada = std::string;
@@ -34,7 +34,8 @@ public:
     lineas.insert({nombre, InfoLinea(nombre)});
   }
 
-  void nueva_parada(const Linea &nombre, const Parada &nueva_parada, int tiempo_desde_anterior) {
+  void nueva_parada(const Linea &nombre, const Parada &nueva_parada,
+                    int tiempo_desde_anterior) {
     InfoLinea &linea = buscar_linea(nombre);
     linea.tiempo_total += tiempo_desde_anterior;
     linea.tiempos_desde_cabecera.insert({nueva_parada, linea.tiempo_total});
@@ -50,7 +51,8 @@ public:
     return linea.salida_trenes.size();
   }
 
-  int tiempo_proximo_tren(const Linea &linea, const Parada &parada, const Hora &hora_actual) {
+  int tiempo_proximo_tren(const Linea &linea, const Parada &parada,
+                          const Hora &hora_actual) {
     const InfoLinea &info_linea = buscar_linea(linea);
     int segs_desde_cabecera = buscar_parada(info_linea, parada);
     Hora hora_salida = hora_actual - segs_desde_cabecera;
@@ -59,12 +61,12 @@ public:
     if (it == info_linea.salida_trenes.end()) {
       return -1;
     }
-   
+
     const Hora &hora_salida_siguiente = *it;
-    const Hora &hora_parada_siguiente = hora_salida_siguiente + segs_desde_cabecera;
+    const Hora &hora_parada_siguiente =
+        hora_salida_siguiente + segs_desde_cabecera;
     return hora_parada_siguiente - hora_actual;
   }
-
 
 private:
   struct InfoLinea {
@@ -73,20 +75,20 @@ private:
     int tiempo_total;
     std::unordered_map<Parada, int> tiempos_desde_cabecera;
 
-    InfoLinea(const Linea &nombre): nombre(nombre), tiempo_total(0) { }
+    InfoLinea(const Linea &nombre) : nombre(nombre), tiempo_total(0) {}
   };
 
   std::unordered_map<Linea, InfoLinea> lineas;
 
-  const InfoLinea & buscar_linea(const Linea &linea) const {
+  const InfoLinea &buscar_linea(const Linea &linea) const {
     auto it = lineas.find(linea);
     if (it == lineas.end()) {
       throw std::domain_error("línea no encontrada");
     }
     return it->second;
   }
-  
-  InfoLinea & buscar_linea(const Linea &linea) {
+
+  InfoLinea &buscar_linea(const Linea &linea) {
     auto it = lineas.find(linea);
     if (it == lineas.end()) {
       throw std::domain_error("línea no encontrada");
@@ -101,9 +103,6 @@ private:
     }
     return it->second;
   }
-  
 };
-
-
 
 #endif
