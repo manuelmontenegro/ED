@@ -30,7 +30,7 @@ public:
     V value;
 
     MapEntry(K key, V value) : key(key), value(value) {}
-    MapEntry(K key) : key(key) {}
+    MapEntry(K key) : key(key), value() {}
   };
 
   MapHash() : num_elems(0), buckets(new List[CAPACITY]){};

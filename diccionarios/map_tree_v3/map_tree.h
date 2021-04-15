@@ -35,7 +35,7 @@ public:
     V value;
 
     MapEntry(K key, V value) : key(key), value(value) {}
-    MapEntry(K key) : key(key) {}
+    MapEntry(K key) : key(key), value() {}
   };
 
   using const_iterator = iterator_gen<const MapEntry &>;
