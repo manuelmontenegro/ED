@@ -26,20 +26,20 @@
 
 template <typename K, typename V, typename ComparatorFunction = std::less<K>>
 class MapTree {
-  private:
+private:
   template <typename S> class iterator_gen;
 
 public:
   struct MapEntry {
-    K key;
+    const K key;
     V value;
 
     MapEntry(K key, V value) : key(key), value(value) {}
     MapEntry(K key) : key(key), value() {}
   };
 
-  using const_iterator = iterator_gen<const MapEntry &>;
-  using iterator = iterator_gen<MapEntry &>;
+  using const_iterator = iterator_gen<const MapEntry>;
+  using iterator = iterator_gen<MapEntry>;
 
   MapTree() : root_node(nullptr), num_elems(0) {}
   MapTree(ComparatorFunction less_than)
@@ -133,10 +133,12 @@ private:
 
   template <typename S> class iterator_gen {
   public:
-    S operator*() const {
+    S &operator*() const {
       assert(!st.empty());
       return st.top()->entry;
     }
+
+    S *operator->() const { return &operator*(); }
 
     iterator_gen &operator++() {
       assert(!st.empty());
@@ -166,6 +168,14 @@ private:
     iterator_gen(Node *root) { descend_and_push(root, st); }
 
     std::stack<Node *> st;
+
+    static void descend_and_push(Node *node, std::stack<Node *> &st) {
+      Node *current = node;
+      while (current != nullptr) {
+        st.push(current);
+        current = current->left;
+      }
+    }
   };
 
   static Node *copy_nodes(const Node *node) {
@@ -286,14 +296,6 @@ private:
         out << ", ";
         display(root->right, out);
       }
-    }
-  }
-
-  static void descend_and_push(Node *node, std::stack<Node *> &st) {
-    Node *current = node;
-    while (current != nullptr) {
-      st.push(current);
-      current = current->left;
     }
   }
 };
