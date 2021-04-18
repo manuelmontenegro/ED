@@ -22,63 +22,50 @@
 #include <queue>
 #include <stack>
 
-template<class T>
-class BinTree {
+template <class T> class BinTree {
 
 private:
   struct TreeNode;
-  template <typename S>
-  class iterator_gen;
-
   using NodePointer = std::shared_ptr<TreeNode>;
 
 public:
-  using const_iterator = iterator_gen<const T &>;
-  using iterator = iterator_gen<T &>;
+  BinTree() : root_node(nullptr) {}
 
-
-  BinTree(): root_node(nullptr) { }
-
-  BinTree(const T &elem): root_node(std::make_shared<TreeNode>(nullptr, elem, nullptr)) { }
+  BinTree(const T &elem)
+      : root_node(std::make_shared<TreeNode>(nullptr, elem, nullptr)) {}
 
   BinTree(const BinTree &left, const T &elem, const BinTree &right)
-    :root_node(std::make_shared<TreeNode>(left.root_node, elem, right.root_node)) { }
+      : root_node(std::make_shared<TreeNode>(left.root_node, elem,
+                                             right.root_node)) {}
 
+  bool empty() const { return root_node == nullptr; }
 
-  bool empty() const {
-    return root_node == nullptr;
-  }
-
-  const T & root() const {
+  const T &root() const {
     assert(root_node != nullptr);
     return root_node->elem;
   }
 
   BinTree left() const {
-    assert (root_node != nullptr);
+    assert(root_node != nullptr);
     BinTree result;
     result.root_node = root_node->left;
     return result;
   }
 
   BinTree right() const {
-    assert (root_node != nullptr);
+    assert(root_node != nullptr);
     BinTree result;
     result.root_node = root_node->right;
     return result;
   }
 
-  void display(std::ostream &out) const {
-    display_node(root_node, out);
-  }
+  void display(std::ostream &out) const { display_node(root_node, out); }
 
-  template <typename U>
-  void preorder(U func) const {
+  template <typename U> void preorder(U func) const {
     preorder(root_node, func);
   }
 
-  template <typename U>
-  void inorder(U func) const {
+  template <typename U> void inorder(U func) const {
     std::stack<NodePointer> st;
 
     descend_and_push(root_node, st);
@@ -93,60 +80,22 @@ public:
     }
   }
 
-  template <typename U>
-  void postorder(U func) const {
+  template <typename U> void postorder(U func) const {
     postorder(root_node, func);
   }
 
-  template <typename U>
-  void levelorder(U func) const;
+  template <typename U> void levelorder(U func) const;
 
-
-  iterator begin() {
-    return iterator(root_node);
-  }
-
-  iterator end() {
-    return iterator();
-  }
-
-  const_iterator begin() const {
-    return const_iterator(root_node);
-  }
-
-  const_iterator end() const {
-    return const_iterator();
-  }
-
-  const_iterator cbegin() {
-    return const_iterator(root_node);
-  }
-
-  const_iterator cend() {
-    return const_iterator();
-  }
-private:
-
-
-  struct TreeNode {
-    TreeNode(const NodePointer &left, const T &elem, const NodePointer &right): elem(elem), left(left), right(right) { }
-
-    T elem;
-    NodePointer left, right;
-  };
-
-  NodePointer root_node;
-
-  template <typename S>
-  class iterator_gen {
+  class iterator {
   public:
-
-    S operator*() const {
+    const T &operator*() const {
       assert(!st.empty());
       return st.top()->elem;
     }
 
-    iterator_gen & operator++() {
+    const T *operator->() const { return &operator*(); }
+
+    iterator &operator++() {
       assert(!st.empty());
       NodePointer top = st.top();
       st.pop();
@@ -154,33 +103,42 @@ private:
       return *this;
     }
 
-    iterator_gen operator++(int) {
-      iterator_gen previous = *this;
+    iterator operator++(int) {
+      iterator previous = *this;
       ++(*this);
       return previous;
     }
 
-    bool operator==(const iterator_gen &other) const {
-      return st == other.st;
-    }
+    bool operator==(const iterator &other) const { return st == other.st; }
 
-    bool operator!=(const iterator_gen &other) const {
+    bool operator!=(const iterator &other) const {
       return !this->operator==(other);
     }
 
   private:
     friend class BinTree;
 
-    iterator_gen() { }
+    iterator() {}
 
-    iterator_gen(const NodePointer &root) {
-      BinTree::descend_and_push(root, st);
-    }
+    iterator(const NodePointer &root) { BinTree::descend_and_push(root, st); }
 
     std::stack<NodePointer> st;
   };
 
+  iterator begin() const { return iterator(root_node); }
 
+  iterator end() const { return iterator(); }
+
+private:
+  struct TreeNode {
+    TreeNode(const NodePointer &left, const T &elem, const NodePointer &right)
+        : elem(elem), left(left), right(right) {}
+
+    T elem;
+    NodePointer left, right;
+  };
+
+  NodePointer root_node;
 
   static void display_node(const NodePointer &root, std::ostream &out) {
     if (root == nullptr) {
@@ -194,19 +152,17 @@ private:
     }
   }
 
-  static void descend_and_push(const NodePointer &node, std::stack<NodePointer> &st);
+  static void descend_and_push(const NodePointer &node,
+                               std::stack<NodePointer> &st);
 
-  template <typename U>
-  static void preorder(const NodePointer &node, U func);
+  template <typename U> static void preorder(const NodePointer &node, U func);
 
-  template <typename U>
-  static void postorder(const NodePointer &node, U func);
-
+  template <typename U> static void postorder(const NodePointer &node, U func);
 };
 
-
 template <typename T>
-void BinTree<T>::descend_and_push(const NodePointer &node, std::stack<NodePointer> &st) {
+void BinTree<T>::descend_and_push(const NodePointer &node,
+                                  std::stack<NodePointer> &st) {
   NodePointer current = node;
   while (current != nullptr) {
     st.push(current);
@@ -214,9 +170,8 @@ void BinTree<T>::descend_and_push(const NodePointer &node, std::stack<NodePointe
   }
 }
 
-
-template<typename T>
-template<typename U>
+template <typename T>
+template <typename U>
 void BinTree<T>::preorder(const NodePointer &node, U func) {
   if (node != nullptr) {
     func(node->elem);
@@ -225,8 +180,8 @@ void BinTree<T>::preorder(const NodePointer &node, U func) {
   }
 }
 
-template<typename T>
-template<typename U>
+template <typename T>
+template <typename U>
 void BinTree<T>::postorder(const NodePointer &node, U func) {
   if (node != nullptr) {
     postorder(node->left, func);
@@ -235,9 +190,8 @@ void BinTree<T>::postorder(const NodePointer &node, U func) {
   }
 }
 
-
-template<typename T>
-template<typename U>
+template <typename T>
+template <typename U>
 void BinTree<T>::levelorder(U func) const {
   std::queue<NodePointer> pending;
   if (root_node != nullptr) {
@@ -256,32 +210,28 @@ void BinTree<T>::levelorder(U func) const {
   }
 }
 
-
-template<typename T>
-std::ostream & operator<<(std::ostream &out, const BinTree<T> &tree) {
+template <typename T>
+std::ostream &operator<<(std::ostream &out, const BinTree<T> &tree) {
   tree.display(out);
   return out;
 }
 
-
-template<typename T>
-BinTree<T> read_tree(std::istream &in) {
+template <typename T> BinTree<T> read_tree(std::istream &in) {
   char c;
   in >> c;
   if (c == '.') {
     return BinTree<T>();
   } else {
-    assert (c == '(');
+    assert(c == '(');
     BinTree<T> left = read_tree<T>(in);
     T elem;
     in >> elem;
     BinTree<T> right = read_tree<T>(in);
     in >> c;
-    assert (c == ')');
+    assert(c == ')');
     BinTree<T> result(left, elem, right);
     return result;
   }
-
 }
 
 #endif
