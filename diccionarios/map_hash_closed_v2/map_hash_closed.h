@@ -24,7 +24,7 @@
 #include <utility>
 
 const int INITIAL_CAPACITY = 31;
-const double MAX_LOAD_FACTOR = 0.8;
+const double MAX_LOAD_FACTOR = 0.5;
 
 template <typename K, typename V, typename Hash = std::hash<K>> class MapHash {
 public:
