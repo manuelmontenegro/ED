@@ -80,6 +80,8 @@ public:
   V &operator[](const K &key) {
     auto [pos_to_insert, pos_found] = search_pos(key);
     if (pos_found == -1) {
+      resize_if_necessary();
+      auto [pos_to_insert, pos_found] = search_pos(key);
       buckets[pos_to_insert].state = State::occupied;
       buckets[pos_to_insert].entry = MapEntry(key);
       num_elems++;
