@@ -189,7 +189,7 @@ private:
   static bool is_prime(int n) {
     int i = 2;
     bool is_prime = true;
-    while (is_prime && i * i < n) {
+    while (is_prime && i * i <= n) {
       if (n % i == 0)
         is_prime = false;
       i++;
