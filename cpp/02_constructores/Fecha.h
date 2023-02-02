@@ -21,9 +21,7 @@
 class Fecha {
 public:
     Fecha(int dia, int mes, int anyo): dia(dia), mes(mes), anyo(anyo) {
-        this->dia = dia;
-        this->mes = mes;
-        this->anyo = anyo;
+        // vacío
     }
 
     Fecha(int anyo): Fecha(1, 1, anyo) {
