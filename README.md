@@ -1,4 +1,4 @@
-# Estructuras de Datos. Curso 2021/22
+# Estructuras de Datos. Curso 2023/24
 
 **Grado en Ingeniería Informática**
 
