@@ -1,0 +1,9 @@
+# Ignorar ficheros objeto
+*.o
+
+# Ignorar ejecutable run_tests
+run_tests
+
+# Ignorar configuración de VS Code
+.vscode
+
