@@ -1,0 +1,108 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que queremos representar el TAD de los números racionales. En este caso, nuestro modelo es el conjunto <math><mi>ℚ</mi></math> de los números racionales. En las siguientes preguntas vamos a contemplar distintas representaciones de este tipo de datos. Comenzamos por la siguiente:
+
+```cpp
+class Rational {
+  ...
+private:
+  int num;
+  int den;
+}
+```
+
+donde `num` y `den` denotan, respectivamente, el numerador y el denominador de una fracción correspondiente al número racional que se quiere representar. Suponiendo que `x` representa una variable de tipo `Rational` ¿Cuál de los siguientes invariantes es adecuado para la representación?
+"""
+prompt.distractors = [
+  """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>t</mi><mi>r</mi><mi>u</mi><mi>e</mi></mrow></math>""",
+  """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo>≥</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>&gt;</mo></mrow><mrow><mn>0</mn></mrow></math>."""
+]
+answer.answer = """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>≠</mo></mrow><mrow><mn>0</mn></mrow></math>"""
+context = """
+El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>t</mi><mi>r</mi><mi>u</mi><mi>e</mi></mrow></math> no es correcto, ya que admite representaciones que no corresponden a ninguna fracción real. Por ejemplo, ¿qué pasaría si tenemos una instancia `x` de `Rational` tal que `x.num = 4` y `x.den = 0`?
+
+El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo>≥</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>&gt;</mo></mrow><mrow><mn>0</mn></mrow></math> excluye fracciones tales como <math><mrow><mo>−</mo></mrow><mrow><mfrac><mn>2</mn><mn>3</mn></mfrac></mrow></math>.
+"""
+
+id = "f12eac3d-e054-464a-a642-101e518a1f77"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Partiendo de la representación anterior, supongamos que `x` es una instancia de la clase `Rational`. ¿En cual/es de los siguientes casos `x` representa a la fracción <math><mfrac><mn>1</mn><mn>3</mn></mfrac></math>?
+
+1. `x.num = -2` y `x.den = -6`
+
+2. `x.num = 4` y `x.den = 12`
+
+3. `x.num = -1` y `x.den = 3`
+
+4. `x.num = -1` y `x.den = -3`
+
+5. `x.num = 1` y `x.den = 3`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+
+"""
+answer.answer = "1 2 4 5"
+id = "5ce4a392-a78e-43ee-9920-3556ce33c945"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En el ejemplo de la clase `Rational`, supongamos que queremos exigir que la representación de un número racional esté siempre en forma de fracción **irreducible**. ¿Qué invariante debe cumplir nuestra representación?
+"""
+prompt.distractors = [
+  """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>≠</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>≥</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi></mrow></math>""",
+  """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>≠</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>m</mi><mi>o</mi><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>0</mn></mrow></math>""",
+
+  
+]
+answer.answer = """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>≠</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>m</mi><mi>c</mi><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>1</mn></mrow></math>"""
+context = """
+En efecto, si el numerador y denominador de una fracción no tienen factores comunes (es decir, <math><mrow><mi>m</mi><mi>c</mi><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>d</mi><mi>e</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>1</mn></mrow></math>), entonces la fracción es irreducible.
+"""
+id = "9092939f-ac66-441f-9c16-f2e7a91ad297"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado un `x` de la clase `Rational` ¿en que casos es una representación de <math><mfrac><mn>1</mn><mn>3</mn></mfrac></math> que satisface el invariante de la pregunta anterior?
+
+1. `x.num = -2` y `x.den = -6`
+
+2. `x.num = 4` y `x.den = 12`
+
+3. `x.num = -1` y `x.den = 3`
+
+4. `x.num = -1` y `x.den = -3`
+
+5. `x.num = 1` y `x.den = 3`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+
+"""
+answer.answer = "4 5"
+id = "f9737292-4122-4ce1-aa49-ab37840901b3"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que queremos imponer un invariante en la clase `Rational` con el fin de garantizar que no existan dos objetos `Rational` distintos que representen el mismo número racional. ¿Qué invariante deberíamos usar?
+"""
+prompt.distractors = [
+  """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>&gt;</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>m</mi><mi>c</mi><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>1</mn></mrow></math>""",
+  """El invariante <math><mi>I</mi></math> tal que <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>≠</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>m</mi><mi>c</mi><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>1</mn><mo>∧</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo>=</mo><mn>0</mn><mo stretchy="false">⇒</mo><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>=</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>""",
+
+  
+]
+answer.answer = """El invariante <math><mrow><mi>I</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>&gt;</mo></mrow><mrow><mn>0</mn><mo>∧</mo></mrow><mrow><mi>m</mi><mi>c</mi><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>1</mn><mo>∧</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>.</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo>=</mo><mn>0</mn><mo stretchy="false">⇒</mo><mi>x</mi><mi>.</mi><mi>d</mi><mi>e</mi><mi>n</mi><mo>=</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>"""
+
+context = """
+Para evitar fracciones que representen el mismo número racional (por ejemplo <math><mfrac><mn>1</mn><mrow><mo lspace="0em" rspace="0em">−</mo><mn>3</mn></mrow></mfrac></math> y <math><mfrac><mrow><mo lspace="0em" rspace="0em">−</mo><mn>1</mn></mrow><mn>3</mn></mfrac></math>) vamos a exigir que el denominador sea positivo.
+
+Además, el 0 puede representarse mediante distintas fracciones (<math><mfrac><mn>0</mn><mn>1</mn></mfrac></math>, <math><mfrac><mn>0</mn><mn>2</mn></mfrac></math>, <math><mfrac><mn>0</mn><mn>3</mn></mfrac></math>, etc.). Para evitar ambigüedad, imponemos que si el numerador es cero, el denominador sea 1.
+"""
+id = "ff72333c-bf3c-4c72-a2fb-42c309ba3e83"

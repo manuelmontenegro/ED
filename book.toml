@@ -1,0 +1,11 @@
+[book]
+authors = ["Manuel Montenegro"]
+language = "es"
+multilingual = false
+src = "src"
+title = "Estructuras de datos"
+
+[output.html]
+additional-css = ["style/style.css"]
+
+[preprocessor.quiz]

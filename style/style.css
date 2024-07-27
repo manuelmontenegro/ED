@@ -1,0 +1,31 @@
+
+.exercise {
+    background: #e0f0f0;
+    border: 2px solid #509090;
+    margin-bottom: 1em;
+}
+
+.exercise > .title {
+    background: #509090;
+    padding: 5px 5px 5px 20px;
+    font-weight: bold;
+    color: white;
+    margin: 0px;
+}
+
+.exercise > .body {
+    background: #e0f0f0;
+    padding: 5px 5px 5px 20px;
+    margin: 0px;
+}
+
+.aims {
+    background:#E0E0E0;
+    border-left:2px solid #707070;
+    padding:5px 5px 5px 20px;
+}
+
+.aims > .aims_header {
+    color:#707070;
+    font-weight: bold;
+}

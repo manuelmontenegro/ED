@@ -1,0 +1,352 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos el siguiente código:
+
+```cpp
+class Punto {
+  Punto(): x(0), y(0) {};
+  int get_x() const { return x; }
+  int get_y() const { return y; }
+private:
+  int x;
+  int y;
+};
+
+
+int main() {
+  Punto p;
+  std::cout << p.get_x() << std::endl;
+  return 0;
+}
+```
+
+¿Cuál de las siguientes afirmaciones es cierta?
+"""
+prompt.distractors = [
+  "Al ejecutar este código se imprime `0` por pantalla.",
+  "Al ejecutar este código se imprime un valor indefinido por pantalla, ya que se accede al atributo x sin haberlo inicializado previamente."
+]
+answer.answer = "Este código no compila, pues tanto el constructor como los métodos de acceso son privados."
+id = "bb68aa5c-905e-4250-a087-61b6751143b4"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente clase:
+
+```cpp
+class A {
+  int x;
+  void g();
+protected:
+  void f();
+private:
+  int y;
+public:
+  int z;
+private:
+  int w;
+};
+```
+
+¿Cuáles de estos atributos y métodos son privados?
+"""
+prompt.distractors = [
+  "`y`, `w`",
+  "`f()`, `y`, `w`",
+  "`x`, `g()`, `f()`, `y`, `w`",
+]
+answer.answer = "`x`, `g()`, `y`, `w`"
+id = "453aa0cf-36b5-4705-8f51-8e3a41aa3963"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Esta te toca buscarla en Internet, porque no la he comentado en los vídeos :-).
+
+¿Cuál es la diferencia entre un registro (`struct`) y una clase (`class`)?
+
+"""
+prompt.distractors = [
+  "Podemos tener especificadores de acceso (`public`, `private`, `protected`) dentro la definición de una clase, pero no dentro de la definición de un registro.",
+  "Las clases pueden tener métodos; los registros solamente atributos."
+]
+answer.answer = "Los atributos y métodos de las clases son privados por defecto; los de los registros son públicos por defecto."
+id = "14e0ef90-08ee-4c4f-8c20-2b164c20beca"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente clase:
+
+```cpp
+class A {
+  int x;
+  void g();
+protected:
+  void f();
+private:
+  int y;
+public:
+  int z;
+private:
+  int w;
+};
+```
+
+¿Cuáles de estos atributos y métodos son públicos?
+"""
+prompt.distractors = [
+  "`x`, `g()`, `z`",
+  "`x`, `g()`, `f()`, `z`"
+]
+answer.answer = "`z`"
+id = "9d71375c-05fc-46b6-8e63-23db632085b6"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Dada la siguiente declaración:
+
+```cpp
+class A {
+public:
+  int get_x();
+private:
+  int x;
+};
+```
+
+Supongamos que quiero implementar el método `get_x()` fuera de la declaración de la clase `A`. ¿Cuál es la forma correcta de hacerlo?
+"""
+prompt.distractors = [
+  "`int get_x() { return x; }`",
+  "No es posible. Al ser la implementación tan corta, es necesario declararla dentro de la clase `A`."
+]
+answer.answer = "`int A::get_x() { return x; }`"
+id = "e8bbb7ae-f74d-430f-ba93-3047485d270f"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Los atributos y métodos con el especificador `[__________]` son accesibles desde los métodos de la clase en la que se definen y en sus subclases, pero no desde fuera de la clase.
+
+"""
+prompt.distractors = [
+  "`private`",
+  "`public`",
+]
+answer.answer = "`protected`"
+id = "2cf74dd7-3519-4897-b421-8b7c319e2e74"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+La siguiente declaración
+
+```cpp
+Fecha f;
+```
+
+"""
+prompt.distractors = [
+  "Declara una instancia de la clase `Fecha`, inicializada al puntero nulo (`nullptr`).",
+  "Es sintácticamente incorrecta, aunque la clase `Fecha` tenga constructor por defecto. Si se desea llamar a este último, habría que declararla como `Fecha f();`.",
+]
+answer.answer = "Declara una instancia de la clase `Fecha` y la inicializa llamando al constructor por defecto."
+id = "102dbb0d-9009-41ce-8e54-2d2947cc66ad"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+La siguiente clase:
+
+```cpp
+class A {
+public:
+  A(int x);
+}
+```
+
+tiene un constructor por defecto.
+"""
+prompt.distractors = [
+  "Verdadero",
+]
+answer.answer = "Falso"
+id = "de857de4-5b9e-4c81-b3d7-6df74997c5c4"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Partimos del siguiente código:
+
+```cpp
+class B {
+public:
+  B(int x, int y): x(2 * x), y( y ) { }
+  int x;
+  int y;
+};
+
+class A {
+public:
+  A(int x): b(x + 1, 3) { }
+  B b;
+};
+
+
+int main() {
+  A a(10);
+  std::cout << a.b.x << ", " << a.b.y << std::endl;
+  return 0;
+}
+```
+
+¿Qué se imprime por pantalla al ejecutarlo?
+
+"""
+answer.answer = "22, 3"
+id = "3998e6ff-67a2-4dd5-84f3-b3605706f145"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Partimos del siguiente código:
+
+```cpp
+class B {
+public:
+  B() {
+    std::cout << "B";
+  }
+};
+class A {
+public:
+  A(): b() {
+    std::cout << "A1";
+  }
+  A(int x): A() {
+    std::cout << "A2";
+  }
+private:
+  B b;
+};
+
+int main() {
+  A a(3);
+}
+```
+
+¿Qué se imprime por pantalla al ejecutarlo?
+
+"""
+answer.answer = "BA1A2"
+context = """
+1. El constructor con parámetro de A llama al constructor por defecto de A.
+
+2. El constructor por defecto de A inicializa el atributo b, llamando al constructor por defecto de B.
+
+3. El constructor por defecto de B imprime la cadena `B`.
+
+4. Volvemos al constructor por defecto de A, que imprime `A1`.
+
+5. Volvemos al constructor con parámetro de A, que imprime `A2`.
+"""
+id = "3ec6fb4f-9ab7-4bb7-be0a-1d0dbb4ca579"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponemos la siguiente declaración:
+
+```cpp
+class A {
+public:
+  void f();
+  void g() const;
+  void h() const;
+  int y;
+private:
+  int x;
+};
+```
+
+¿Qué podemos hacer dentro de la implementación de `h()`?
+"""
+prompt.distractors = [
+  "`x = 10;`",
+  "`f();`",
+  "`y = 20;`",
+]
+answer.answer = "`g();`"
+context = """
+El método `h()` es `const`, por lo que su implementación no puede modificar atributos del objeto, ni llamar a `f()`, ya que este último no está definido como `const`.
+"""
+id = "0d9039e2-6b5f-4563-acec-075a4b06d091"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Con la misma declaración que en la pregunta anterior:
+
+```cpp
+class A {
+public:
+  void f();
+  void g() const;
+  void h() const;
+  int y;
+private:
+  int x;
+};
+```
+
+¿Qué **no** podemos hacer dentro de la implementación de `h()`?
+"""
+prompt.distractors = [
+  "`std::cout << y << std::endl;`",
+  "`std::cout << x << std::endl;`",
+  "`std::cout << this->x << std::endl;`",
+]
+answer.answer = "`this->x = 10;`"
+
+context = """
+No se pueden modificar atributos del objeto desde un método `const`.
+"""
+id = "6521ea11-2338-46a5-b517-9be45bb89451"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponemos que tenemos una variable de tipo `const Fecha &`. ¿Qué podemos hacer con ella?
+
+"""
+prompt.distractors = [
+  "Leer y modificar los valores de los atributos públicos de `Fecha`.",
+  "Llamar a todos los métodos públicos de `Fecha`.",
+]
+answer.answer = "Llamar a todos los métodos públicos de `Fecha`, siempre que sean constantes."
+id = "cf59297f-84c4-4c10-8e47-1f1cfb40908e"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Si un método no altera el estado del objeto debería declararse como `const`, aunque el compilador no dará ningún mensaje de error si omitimos el const.
+"""
+prompt.distractors = [
+  "Falso",
+]
+answer.answer = "Verdadero"
+id = "ae85e219-5739-4f4d-9485-211948f0211f"
+
+
