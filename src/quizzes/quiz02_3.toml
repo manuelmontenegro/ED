@@ -1,0 +1,102 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `at()` de la clase `ListLinkedSingle` tiene coste constante.
+"""
+prompt.distractors = [
+  "Verdadero",
+]
+answer.answer = "Falso"
+context = "En una lista enlazada, el método `at` tiene coste lineal con respecto al índice al que se desea acceder, ya que hay que recorrer todos los nodos desde el principio de la lista hasta dicho índice."
+id = "d3e4f23a-5677-43cb-b704-393d2a44a3cf"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `back` de la clase `ListArray` tiene coste, en el caso peor, lineal con respecto a `num_elems`.
+"""
+prompt.distractors = [
+  "Verdadero",
+]
+answer.answer = "Falso"
+
+context = "Tiene coste constante, ya que basta con acceder a la posición del array `num_elems - 1`."
+id = "b5960a85-414f-4980-b960-2070544f58ff"
+
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `pop_front()` de la clase `ListArray` tiene coste, en el caso peor, lineal con respecto a `num_elems`.
+"""
+prompt.distractors = [
+  "Falso",
+]
+answer.answer = "Verdadero"
+context = "Si eliminamos por el principio, hay que desplazar los restantes elementos del array una posición hacia la izquierda, y eso conlleva coste lineal con respecto al número de elementos del array."
+id = "9906e2a5-62f6-4ef0-bf02-6725bcd252e3"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `back` de la clase `ListLinkedSingle` tiene coste constante.
+"""
+prompt.distractors = [
+  "Verdadero",
+]
+answer.answer = "Falso"
+
+context = "Tiene coste lineal con respecto al número de elementos de la lista, ya que tenemos que navegar desde el principio de la lista hasta el final para situarnos en el último nodo."
+id = "9c2692b1-c580-4788-b066-7a9a76b9e561"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `push_back` de la clase `ListArray` tiene coste constante en el caso en que `num_elems < capacity` y coste lineal con respecto a `num_elems` si `num_elems == capacity`.
+"""
+prompt.distractors = [
+  "Falso",
+]
+answer.answer = "Verdadero"
+id = "3ea2d01d-99f5-4b8b-a275-2613897251ce"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `push_back` de la clase `ListLinkedSingle` tiene coste lineal con respecto al número de elementos de la lista sobre la que se aplica.
+"""
+prompt.distractors = [
+  "Falso",
+]
+answer.answer = "Verdadero"
+context = "En efecto, es necesario navegar hasta el último nodo de la lista para insertar un nodo justo después de él."
+id = "1683a617-0f63-4bd7-b14b-ccad696fa0fe"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `push_front` de la clase `ListArray` tiene coste constante en el caso en que `num_elems < capacity`.
+"""
+prompt.distractors = [
+  "Verdadero",
+]
+answer.answer = "Falso"
+context = "Tiene coste lineal, ya que han de desplazarse previamente todos los elementos un lugar hacia la derecha en el array."
+id = "cb62d966-7ce9-4546-96e4-500bb2599674"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `push_front` de la clase `ListLinkedSingle` tiene coste lineal con respecto al número de elementos de la lista sobre la que se aplica.
+"""
+prompt.distractors = [
+  "Verdadero",
+]
+answer.answer = "Falso"
+context = "Tiene coste constante, ya que solo hay que crear un nodo, engancharlo con el primer nodo de la lista, y actualizar el atributo `head` para que apunte al nodo recién creado."
+id = "83e9d86e-5adf-4bda-bd5e-ca7dc6a49efe"

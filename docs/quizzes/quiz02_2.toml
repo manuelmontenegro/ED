@@ -1,0 +1,171 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+En este ejercicio y en los siguientes consideramos la siguiente clase:
+
+```cpp
+class A{
+public:
+    A(int x): x(x) { }
+    ~A() {
+        std::cout << x;
+    }
+private:
+    int x;
+};
+```
+
+¿Qué imprime el siguiente programa?
+
+```cpp
+int main() {
+    A a1(1);
+}
+```
+"""
+answer.answer = "1"
+context = """
+Se llama al destructor de `a1` cuando la variable `a1` sale de ámbito en la función `main`.
+"""
+id = "c1dd42af-a434-43c5-bb66-07e5462a402e"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Continuando con la misma clase:
+
+```cpp
+class A{
+public:
+    A(int x): x(x) { }
+    ~A() {
+        std::cout << x;
+    }
+private:
+    int x;
+};
+```
+
+¿Qué imprime el siguiente programa?
+
+```cpp
+int main() {
+    A a1(1);    
+    A *a2 = new A(2);
+}
+```
+"""
+answer.answer = "1"
+context = """
+Se llama al destructor de `a1` cuando la variable `a1` sale de ámbito en la función `main`. El destructor de `a2` no es invocado, porque no se hace `delete` sobre `a2`.
+"""
+id = "ce43929c-b0eb-4d5f-82e8-bd941bfbccf7"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Continuando con la misma clase:
+
+```cpp
+class A{
+public:
+    A(int x): x(x) { }
+    ~A() {
+        std::cout << x;
+    }
+private:
+    int x;
+};
+```
+
+¿Qué imprime el siguiente programa?
+
+```cpp
+int main() {
+    A a1(1);    
+    A *a2 = new A(2);
+    delete a2;
+}
+```
+"""
+answer.answer = "21"
+context = """
+Se llama al destructor de `a2` cuando se ejecuta `delete a2`. Después se llama al destructor de `a1` cuando finaliza la función `main`, ya que en ese momento la variable `a1` deja de estar en ámbito.
+"""
+id = "da604840-6847-4e2c-920d-e0f5d1b630c6"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Continuando con la misma clase:
+
+```cpp
+class A{
+public:
+    A(int x): x(x) { }
+    ~A() {
+        std::cout << x;
+    }
+private:
+    int x;
+};
+```
+
+¿Qué imprime el siguiente programa?
+
+```cpp
+void f() {
+    A a3(3);
+}
+
+int main() {
+    A a1(1);
+    f();    
+}
+```
+"""
+answer.answer = "31"
+context = """
+Una vez creado `a1`, se llama a `f`. Ahí se crea un objeto `a3`. Cuando finaliza `f` se llama al destructor de `a3`, ya que esta variable sale de ámbito. Después vuelve a la función `main` que finaliza inmediatamente después. Ahí se llama al destructor de `a1`, ya que queda fuera de ámbito.
+
+"""
+id = "d35670c6-40e5-4d97-982c-6202243c9185"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Continuando con la misma clase:
+
+```cpp
+class A{
+public:
+    A(int x): x(x) { }
+    ~A() {
+        std::cout << x;
+    }
+private:
+    int x;
+};
+```
+
+¿Qué imprime el siguiente programa?
+
+```cpp
+void f() {
+    A a3(3);
+}
+
+int main() {
+    A *a1 = new A(1);
+    delete a1;
+    f();    
+}
+```
+"""
+answer.answer = "13"
+context = """
+Una vez creado `a1`, se libera inmediatamente mediante `delete`. Esto provoca la llamada al destructor de `a1`. Después se llama a `f`. Ahí se crea un objeto `a3`. Cuando finaliza `f` se llama al destructor de `a3`, ya que esta variable sale de ámbito.
+"""
+id = "aafc5f1d-df41-4813-a29b-6127e89d16f3"

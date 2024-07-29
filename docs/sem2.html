@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Vectores y listas enlazadas simples - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html" class="active"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">3.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">4.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">5.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">6.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">7.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html"><strong aria-hidden="true">8.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="semana-2---tad-lista-vectores-y-listas-enlazadas-simples"><a class="header" href="#semana-2---tad-lista-vectores-y-listas-enlazadas-simples">Semana 2 - TAD Lista. Vectores y listas enlazadas simples</a></h1>
+<div class="aims">
+<div class="aims_header">
+✔️ Objetivos
+</div>
+<ul>
+<li>
+<p>Distinguir entre las dos regiones de memoria más importantes en C++: pila y <em>heap</em>.</p>
+</li>
+<li>
+<p>Conocer las operaciones básicas del TAD Lista.</p>
+</li>
+<li>
+<p>Saber implementar un TAD Lista mediante vectores redimensionables y mediante listas enlazadas simples.</p>
+</li>
+<li>
+<p>Poder extender las operaciones soportadas por un TAD Lista en cualquiera de las dos implementaciones mencionadas.</p>
+</li>
+<li>
+<p>Identificar los casos en los que es necesario escribir un constructor de copia en C++.</p>
+</li>
+</ul>
+<div class="aims_header">
+✔️ Tiempo de estudio
+</div>
+<ul>
+<li>
+<p><strong>Vídeos</strong>: 1h 13min</p>
+</li>
+<li>
+<p><strong>Total</strong> <em>(incluyendo vídeos, cuestionarios y actividades de autoevaluación)</em>: 2h 30min</p>
+</li>
+</ul>
+</div>
+<h2 id="21-gestión-de-memoria-dinámica-en-c"><a class="header" href="#21-gestión-de-memoria-dinámica-en-c">2.1. Gestión de memoria dinámica en C++</a></h2>
+<p>Esta primera sección es importante. Muy importante. Gran parte de los problemas que aparecen cuando programamos en cualquier lenguaje provienen de la compartición entre las distintas estructuras de datos. Si no somos conscientes de esta compartición, los cambios en una estructura de datos podrían afectar a otras estructuras de manera inadvertida para el/la programador/a. Este problema es especialmente llamativo en C++, donde, al contrario que en Java o Python, somos responsables de liberar la memoria que creamos. Si lo hacemos de manera incorrecta, el programa podría provocar un error en tiempo de ejecución y abortar.</p>
+<p>En el primer vídeo se introducen las principales regiones de memoria que entran en juego en ejecución: pila y <em>heap</em>. El vídeo es largo, pero es muy importante entenderlo. Ten paciencia y no te lo saltes:</p>
+<p>▶️ ️<a href="https://youtu.be/grWqwqvIrIo">C++ - Objetos y memoria dinámica</a> (16:54)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/cpp/04_stack_heap">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.1
+</div>
+<div class="body">
+<p>Vamos a poner a prueba los conceptos vistos en el vídeo anterior.</p>
+<p>❓ <a href="quizzes/sem02_1.html">Cuestionario de autoevaluación - Objetos y memoria dinámica</a></p>
+</div>
+</div>
+<p>Cuando tenemos objetos que apuntan a otros dentro del heap, puede ser difícil liberar de manera ordenada toda la maraña de objetos. Los destructores de C++ nos facilitan esta tarea:</p>
+<p>▶️ ️<a href="https://youtu.be/bb6Pa-72wEg">C++ - Destructores</a> (5:47)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/cpp/05_destructores">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.2
+</div>
+<div class="body">
+<p>Vamos a poner a prueba los conceptos vistos en el vídeo anterior.</p>
+<p>❓ <a href="quizzes/sem02_2.html">Cuestionario de autoevaluación - Destructores</a></p>
+</div>
+</div>
+<h2 id="22-tad-lista-y-su-implementación-mediante-vectores"><a class="header" href="#22-tad-lista-y-su-implementación-mediante-vectores">2.2. TAD Lista y su implementación mediante vectores</a></h2>
+<p>A continuación os presento uno de los tipos de datos más utilizados en la mayoría de lenguajes de programación: las <strong>listas</strong>.</p>
+<p>Comencemos viendo qué es una lista, y qué operaciones soporta:</p>
+<p>▶️ <a href="https://youtu.be/xjt7ICIwrbk">El TAD Lista</a>  (6:10)</p>
+<p>Ya sabemos las operaciones que ha de soportar este TAD. Ahora nos toca implementarlo. ¿Cómo lo hacemos?. Existen varias maneras:</p>
+<ol>
+<li>Utilizando un array unidimensional (es decir, un vector) para almacenar elementos.</li>
+<li>Utilizando una lista enlazada simple.</li>
+<li>Utilizando una lista doblemente enlazada.</li>
+<li>Utilizando una lista doblemente enlazada circular.</li>
+</ol>
+<p>La primera de estas maneras se explica en esta misma sección. La segunda se explica en la sección siguiente, y las dos restantes se estudiarán la semana que viene.</p>
+<p>La implementación de una lista mediante un array parece una tarea sencilla, pero cuidado: los arrays tienen una longitud fija, por lo que tendremos que tratar de modo especial el caso en que queramos añadir un elemento a la lista (operaciones <code>push_back</code> y <code>push_front</code>), y el array esté "completo". Para ello necesitamos un array que se redimensione a medida que se vaya quedando sin espacio libre.</p>
+<p>▶️ <a href="https://youtu.be/fH07NP2dd-E">Implementación del TAD Lista mediante arrays</a> (9:38)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_array_v1">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.3
+</div>
+<div class="body">
+<p>Hasta ahora podemos añadir elementos y eliminar elementos de la lista. Una operación que nos puede interesar es la de <em>actualizar</em> un elemento de la lista. Es decir, reemplazar un elemento de la lista por otro. En el siguiente enlace tienes la implementación de listas que tenemos hasta ahora.</p>
+<p>💻 <a href="https://godbolt.org/z/bvKPEY6bj">Añadir método update</a></p>
+<p>💻 <a href="https://godbolt.org/z/rKxPTEP8Y">Solución</a></p>
+<p>Añade el siguiente método a la clase <code>ListArray</code>:</p>
+<pre><code class="language-cpp">void update(int indice, const std::string &amp;elem);
+</code></pre>
+<p>Este método ha de reemplazar el elemento de la posición <code>indice</code> de la lista por el elemento <code>elem</code> pasado como parámetro.</p>
+</div>
+</div>
+<p>Aunque un método <code>update</code> como el del ejercicio anterior podría ser útil en un TAD Lista (de hecho, las listas de la biblioteca estándar Java lo implementan), en C++ se utiliza otro enfoque distinto. Para actualizar elementos se hace uso de las <em>referencias</em>, que ya conocéis como mecanismo de paso de parámetros en C++. Se explica en el siguiente vídeo.</p>
+<p>▶️ <a href="https://youtu.be/FnetQzRu25E">Modificación de listas mediante referencias</a> (9:43)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_array_v2">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.4
+</div>
+<div class="body">
+<p>En el siguiente programa podrás poner en práctica las referencias. Echa un vistazo al método <code>main</code> y sigue las instrucciones que aparecen allí.</p>
+<p>💻 <a href="https://godbolt.org/z/njrh8j1er">Prácticas con referencias</a></p>
+<p>💻 <a href="https://godbolt.org/z/7vaa4cfYx">Solución</a></p>
+</div>
+</div>
+<h2 id="23-tad-lista-y-su-implementación-mediante-listas-enlazadas-simples"><a class="header" href="#23-tad-lista-y-su-implementación-mediante-listas-enlazadas-simples">2.3. TAD Lista y su implementación mediante listas enlazadas simples</a></h2>
+<p>A continuación viene una de las implementaciones más importantes del TAD Lista: la implementación mediante listas enlazadas. Ojo a esta versión, porque vamos a ir profundizando en ella a lo largo de las siguientes semanas.</p>
+<p>▶️ <a href="https://youtu.be/Rk_kt1uIm3c">Implementación del TAD Lista mediante listas enlazadas</a> (13:09)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_single_v1">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.5
+</div>
+<div class="body">
+<p>Ahora que conoces dos implementaciones del TAD Lista, vamos a comparar los costes de sus operaciones:</p>
+<p>❓ <a href="quizzes/sem02_3.html">Cuestionario de autoevaluación - Coste de operaciones en el TAD lista</a></p>
+</div>
+</div>
+<div class="info">
+<div class="title">
+ℹ️  Sobre el invariante de representación (opcional)
+</div>
+<div class="body">
+<p>En el vídeo anterior (minuto 3:55) no soy demasiado preciso en lo que respecta al invariante de representación. Es cierto que este invariante no impone ninguna restricción sobre el atributo <code>head</code>, pero también hay que tener en cuenta la información de los nodos. En particular, los atributos <code>next</code> de los nodos definen la "forma" de la lista enlazada, y están sujetos a una serie de restricciones:</p>
+<ol>
+<li>
+<p>Si un nodo <code>x</code> pertenece a la lista, el nodo <code>x-&gt;next</code> ha de ser <code>nullptr</code> o apuntar a un nodo que también debe pertenecer a la lista enlazada.</p>
+</li>
+<li>
+<p>Si partimos del nodo <code>head</code> y seguimos la cadena de nodos <code>next</code>, en algún momento debemos llegar a <code>nullptr</code>. Es decir, la secuencia de punteros <code>next</code> no puede formar ningún ciclo.</p>
+</li>
+<li>
+<p>Un nodo pertenece a una única lista. Es decir, no se puede tener dos instancias de <code>ListLinkedSingle</code> tales que, si seguimos la cadena de nodos desde sus respectivos punteros <code>head</code>, ambas confluyen en un nodo común.</p>
+</li>
+</ol>
+<p>Estas tres restricciones no se pueden expresar mediante una fórmula lógica simple. Dado que la verificación formal no es uno de los objetivos principales del curso, decidí no mencionar estas tres restricciones en el vídeo, pero deben satisfacerse en todo caso.</p>
+<p>La segunda restricción podría expresarse fácilmente con ayuda de un predicado auxiliar recursivo. Sin embargo, para expresar las restricciones 1 y 3 necesitamos un concepto adicional, que es el <em>footprint</em> de un TAD. Si te interesa el área de la verificación formal de programas, puedes consultar las siguientes referencias:</p>
+<ul>
+<li>R. Leino. <a href="https://www.microsoft.com/en-us/research/uploads/prod/2008/12/Dafny_krml190.pdf">Specification and Verification of Object-Oriented Software</a>.</li>
+<li>J. Blázquez, M. Montenegro, C. Segura. <a href="https://www.sciencedirect.com/science/article/pii/S2352220823000299?via%3Dihub">Verification of mutable linear data structures and iterator-based algorithms in Dafny</a></li>
+</ul>
+</div>
+</div>
+<h2 id="24-el-constructor-de-copia-en-c"><a class="header" href="#24-el-constructor-de-copia-en-c">2.4. El constructor de copia en C++</a></h2>
+<p>Descansamos un poco del mundo de los TADs para ver una característica de C++ que no se encuentra en otros lenguajes orientados a objetos. C++ nos permite personalizar la forma en la que se inicializa un objeto a partir de otro. Para ello tenemos que implementar el constructor de copia:</p>
+<p>▶️ <a href="https://youtu.be/5SKWoMnKF30">C++ - Constructores de copia</a> (8:39)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/cpp/06_constructor_copia">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.6
+</div>
+<div class="body">
+<p>Las implementaciones del TAD Lista que hemos visto hasta ahora piden a gritos un constructor de copia, para evitar compartición no deseada. Es tu turno: ¿puedes implementarlo en ambas?</p>
+<p>💻 <a href="https://godbolt.org/z/oWq4oGsbb">Añadir constructor de copia a implementación mediante arrays</a></p>
+<p>💻 <a href="https://godbolt.org/z/Pb6x7ffco">Añadir constructor de copia a implementación mediante listas enlazadas</a></p>
+</div>
+</div>
+<p>En el siguiente vídeo se muestra una posible forma de implementar el constructor de copia para los TAD vistos hasta ahora:</p>
+<p>▶️ <a href="https://youtu.be/cbmjmZM4-Rg">Constructores de copia en el TAD Lista</a> (3:04)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_array_v3">Código fuente (implementación mediante vectores)</a></p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_single_v2">Código fuente (implementación mediante listas enlazadas)</a></p>
+<div class="info">
+<div class="title">
+ℹ️  Información adicional sobre Java (opcional)
+</div>
+<div class="body">
+<p>En Java existe el constructor de copia como tal, pero es tratado como un constructor cualquiera. Por ejemplo, supongamos la siguiente clase:</p>
+<pre><code class="language-java">class MiClase { ... }
+</code></pre>
+<p>Si asignamos un objeto <code>c1</code> a un objeto <code>c2</code>,</p>
+<pre><code class="language-java">MiClase c1 = new MiClase();
+MiClase c2 = c1;
+</code></pre>
+<p>en realidad estamos haciendo que <code>c2</code> apunte al mismo objeto que <code>c1</code>. Es decir, en Java no se llama a ningún constructor de copia.</p>
+<p>Es posible implementar un constructor de copia en Java, declarándolo como un constructor que recibe otra instancia de <code>MiClase</code>.</p>
+<pre><code class="language-java">class MiClase {
+    public MiClase() {/* constructor por defecto */}
+    public MiClase(MiClase other) {/* constructor de copia */}
+    // ...
+}
+</code></pre>
+<p>En este caso, tendríamos que llamar al constructor explícitamente para hacer uso de él</p>
+<pre><code class="language-java">MiClase c1 = new MiClase();
+MiClase c2 = new MiClase(c1);  // Llama al constructor de copia
+</code></pre>
+<p>Una alternativa al constructor de copia en Java es la clase <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Cloneable.html"><code>Cloneable</code></a> y el método <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()"><code>clone()</code></a> de la clase
+<code>Object</code>.</p>
+</div>
+</div>
+<h2 id="25-problemas-de-laboratorio"><a class="header" href="#25-problemas-de-laboratorio">2.5. Problemas de laboratorio</a></h2>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.7
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L02-1.pdf">Repetir los elementos de una lista</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 2.8
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L02-2.pdf">Escamochar una lista</a></p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="sem1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="quizzes/sem01_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="sem1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="quizzes/sem01_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

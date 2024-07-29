@@ -167,3 +167,38 @@ El siguiente cuestionario presenta más ejemplos de TADs y sus correspondientes 
 </div>
 
 
+## 1.4. Problemas de laboratorio
+
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 1.6
+</div>
+<div class="body">
+
+💻 [TAD de Matrices de Toeplitz](assignments/L01-1.pdf)
+
+</div>
+</div>
+
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 1.7
+</div>
+<div class="body">
+
+💻 [Butacas en el teatro](assignments/L01-2.pdf)
+
+</div>
+</div>
+
+
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 1.8
+</div>
+<div class="body">
+
+💻 [Wordle numérico](assignments/L01-3.pdf)
+
+</div>
+</div>

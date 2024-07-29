@@ -29,3 +29,23 @@
     color:#707070;
     font-weight: bold;
 }
+
+.info {
+    background: #F0E0D0;
+    border: 2px solid #907050;
+    margin-bottom: 1em;
+}
+
+.info > .title {
+    background: #907050;
+    padding: 5px 5px 5px 20px;
+    font-weight: bold;
+    color: white;
+    margin: 0px;
+}
+
+.info > .body {
+    background: #F0E0D0;
+    padding: 5px 5px 5px 20px;
+    margin: 0px;
+}

@@ -1,0 +1,359 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué fragmento de código genera una situación como la de la siguiente figura?
+
+![Array en pila, cuyos elementos están en heap](02_1/01.png)
+
+"""
+prompt.distractors = [
+  """
+```cpp
+int *x = new int[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;  
+```""",
+  """
+```cpp
+int x[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;  
+```""",
+  """
+```cpp
+int **x = new int*[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);  
+```""",
+]
+answer.answer = """
+```cpp
+int *x[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);
+```
+"""
+context = """
+Con la declaración `int *x[3]` estamos creando un array de tres elementos de tipo `int *`. Es decir, el array está en la pila, pero los elementos son punteros a enteros. En las tres líneas siguientes se crean los elementos en el *heap*.
+"""
+id = "8db3604a-98ca-4803-b950-e12b5a09554f"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué fragmento de código genera una situación como la de la siguiente figura?
+
+![Array en pila, cuyos elementos están en la pila](02_1/02.png)
+
+"""
+prompt.distractors = [
+  """
+```cpp
+int *x = new int[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;  
+```""",
+  """
+```cpp
+int *x[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);
+```""",
+  """
+```cpp
+int **x = new int*[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);  
+```""",
+]
+answer.answer = """
+```cpp
+int x[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;  
+```
+"""
+context = """
+En este caso declaramos un array de tres enteros en la pila. Los tres elementos son de tipo `int`. Como no son punteros, se están almacenando "dentro" del array.
+"""
+id = "897f3399-427c-4b82-9b6b-90795221e286"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué fragmento de código genera una situación como la de la siguiente figura?
+
+![Array en heap, cuyos elementos están dentro del array](02_1/03.png)
+
+"""
+prompt.distractors = [
+  """
+```cpp
+int x[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;
+```""",
+  """
+```cpp
+int *x[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);
+```""",
+  """
+```cpp
+int **x = new int*[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);
+```""",
+]
+answer.answer = """
+```cpp
+int *x = new int[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;
+```
+"""
+context = """
+En este caso declaramos un array de tres enteros en el *heap*. Los tres elementos son de tipo `int`. Como no son punteros, se están almacenando "dentro" del array.
+"""
+id = "00a3c89a-a5cc-4fde-9bd8-e05964bbdf0f"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué fragmento de código genera una situación como la de la siguiente figura?
+
+![Array en heap, cuyos elementos están en la heap](02_1/04.png)
+
+"""
+prompt.distractors = [
+  """
+```cpp
+int x[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;
+```""",
+  """
+```cpp
+int *x[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);
+```""",
+  """
+```cpp
+int *x = new int[3];
+x[0] = 8;
+x[1] = 6;
+x[2] = 3;
+```""",
+]
+answer.answer = """
+```cpp
+int **x = new int*[3];
+x[0] = new int(8);
+x[1] = new int(6);
+x[2] = new int(3);
+```
+"""
+context = """
+En este caso declaramos un array de tres enteros en el *heap*. Los tres elementos son de tipo `int *`. Además, los elementos del array también se están creando en el heap.
+"""
+id = "2c910b54-7d32-4720-97d7-59b8743c2bcd"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponemos que tenemos el siguiente código:
+
+```cpp
+int *x = new int[3];
+x[0] = 1;
+x[1] = 2;
+x[2] = 3;
+```
+
+¿Cómo se libera la memoria del *heap* reservada en el código anterior?
+"""
+prompt.distractors = [
+  """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+delete[] x;
+```""",
+  """No es necesario. Se libera automáticamente.""",
+  """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+```""",
+]
+answer.answer = """
+```cpp
+delete[] x;
+```
+"""
+context = """
+El array se ha creado en el *heap* mediante `new`. Los elementos del array no. Por tanto, solamente tenemos que liberar el array.
+"""
+id = "d36b81db-eb46-441d-a661-59238785feb5"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponemos que tenemos el siguiente código:
+
+```cpp
+int **x = new int*[3];
+x[0] = new int(1);
+x[1] = new int(2);
+x[2] = new int(3);
+```
+
+¿Cómo se libera la memoria del *heap* reservada en el código anterior?
+"""
+prompt.distractors = [
+  """
+```cpp
+delete[] x;
+```""",
+  """No es necesario. Se libera automáticamente.""",
+  """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+```""",
+  """
+```cpp
+delete[] x;
+delete x[0];
+delete x[1];
+delete x[2];
+```
+"""
+]
+answer.answer = """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+delete[] x;
+```
+"""
+context = """
+En este caso, tanto el array como los elementos se han creado en el *heap*. Primero liberamos los elementos, y luego el array que almacena los punteros a esos elementos.
+
+La siguiente opción:
+
+```cpp
+delete[] x;
+delete x[0];
+delete x[1];
+delete x[2];
+```
+
+es incorrecta, ya que si se libera la memoria del array, luego no podemos acceder a los componentes de ese array, aunque sea solamente para liberarlos.
+"""
+id = "e1d00c5d-ebbd-400c-b2b2-f6fb4ed21a66"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponemos que tenemos el siguiente código:
+
+```cpp
+int x[3];
+x[0] = 1;
+x[1] = 2;
+x[2] = 3;
+```
+
+¿Cómo se libera la memoria reservada en el código anterior?
+"""
+prompt.distractors = [
+  """
+```cpp
+delete[] x;
+```""",
+  """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+```""",
+  """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+delete[] x;
+```
+"""
+]
+answer.answer = """
+No es necesario. Se libera automáticamente.
+"""
+context = """
+En este caso, no se está alojando nada en el *heap*, ya que no hacemos uso de `new`.
+"""
+id = "3890727e-51e3-467f-a8b7-58a74653fafa"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponemos que tenemos el siguiente código:
+
+```cpp
+int *x[3];
+x[0] = new int(1);
+x[1] = new int(2);
+x[2] = new int(3);
+```
+
+¿Cómo se libera la memoria del *heap* reservada en el código anterior?
+"""
+prompt.distractors = [
+  """
+```cpp
+delete[] x;
+```""",
+  """No es necesario. Se libera automáticamente.""",
+  """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+delete[] x;
+```
+"""
+]
+answer.answer = """
+```cpp
+delete x[0];
+delete x[1];
+delete x[2];
+```
+"""
+context = """
+En este caso solo hay que liberar los elementos, que son los que están alojados en el *heap*. El array que contiene los punteros a esos elementos está en la pila, por lo que no es necesario liberar su memoria. 
+"""
+id = "967542da-62ec-4464-b71c-772f7873fcf1"

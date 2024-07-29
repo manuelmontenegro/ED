@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Como usar compiler explorer - Estructuras de datos</title>
+        <title>Coste de operaciones en TAD lista - Estructuras de datos</title>
 
 
         <!-- Custom HTML head -->
@@ -12,31 +12,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="../style/style.css">
 
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">3.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">4.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">5.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">6.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">7.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html" class="active"><strong aria-hidden="true">8.</strong> Como usar compiler explorer</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="../sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="../sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="../quizzes/sem01_1.html"><strong aria-hidden="true">3.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem01_2.html"><strong aria-hidden="true">4.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_1.html"><strong aria-hidden="true">5.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_2.html"><strong aria-hidden="true">6.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_3.html" class="active"><strong aria-hidden="true">7.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="../compiler_explorer.html"><strong aria-hidden="true">8.</strong> Como usar compiler explorer</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -145,7 +145,7 @@
                     <h1 class="menu-title">Estructuras de datos</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -174,31 +174,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="cómo-usar-compiler-explorer"><a class="header" href="#cómo-usar-compiler-explorer">Cómo usar compiler explorer</a></h1>
-<p>La pantalla de Compiler Explorer se divide en tres zonas:</p>
-<p><img src="compiler_explorer/CompilerExplorer.png" alt="Interfaz de Compiler Explorer" /></p>
-<ul>
-<li>
-<p><strong>Código fuente</strong>: Aquí se escribe el código C++ del programa que quieres ejecutar. Cada vez que lo modificas, se compila automáticamente.</p>
-</li>
-<li>
-<p><strong>Entrada</strong>: La información que recibirá el programa a través de la salida estándar. Cada vez que tu programa ejecute <code>cin &gt;&gt; ...</code>, la lectura se realizará a partir de lo que haya en el cuadro de texto.</p>
-</li>
-<li>
-<p><strong>Salida</strong>: Salida estándar escrita por tu programa mediante <code>cout &lt;&lt; ...</code>. Si hubiera errores de compilación en tu código, se mostrarían aquí. Aquí también aparece una línea con el texto <code>Program returned: N</code>, donde <code>N</code> es un número. Si <code>N</code> es 0, el programa ha finalizado correctamente. Si es un número distinto de 0, es que tu programa ha producido un error en tiempo de ejecución (división por cero, acceso a puntero inválido, acceso a un array más allá de sus límites, etc).</p>
-</li>
-</ul>
-<h2 id="y-si-no-me-aparece-el-panel-de-entrada-y-salida"><a class="header" href="#y-si-no-me-aparece-el-panel-de-entrada-y-salida">¿Y si no me aparece el panel de Entrada y Salida?</a></h2>
-<p>Encima del código fuente, haz clic en el menú <em>Add new...</em> y selecciona <em>Execution Only</em>.</p>
-
+                        <h1 id="cuestionario---coste-de-operaciones-en-tad-lista"><a class="header" href="#cuestionario---coste-de-operaciones-en-tad-lista">Cuestionario - Coste de operaciones en TAD lista</a></h1>
+<div class="quiz-placeholder" data-quiz-name="quiz02_3"  data-quiz-questions="{&quot;questions&quot;:[{&quot;context&quot;:&quot;En una lista enlazada, el método `at` tiene coste lineal con respecto al índice al que se desea acceder, ya que hay que recorrer todos los nodos desde el principio de la lista hasta dicho índice.&quot;,&quot;id&quot;:&quot;d3e4f23a-5677-43cb-b704-393d2a44a3cf&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;El método `at()` de la clase `ListLinkedSingle` tiene coste constante.\n&quot;}},{&quot;context&quot;:&quot;Tiene coste constante, ya que basta con acceder a la posición del array `num_elems - 1`.&quot;,&quot;id&quot;:&quot;b5960a85-414f-4980-b960-2070544f58ff&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;El método `back` de la clase `ListArray` tiene coste, en el caso peor, lineal con respecto a `num_elems`.\n&quot;}},{&quot;context&quot;:&quot;Si eliminamos por el principio, hay que desplazar los restantes elementos del array una posición hacia la izquierda, y eso conlleva coste lineal con respecto al número de elementos del array.&quot;,&quot;id&quot;:&quot;9906e2a5-62f6-4ef0-bf02-6725bcd252e3&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Verdadero&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Falso&quot;],&quot;prompt&quot;:&quot;El método `pop_front()` de la clase `ListArray` tiene coste, en el caso peor, lineal con respecto a `num_elems`.\n&quot;}},{&quot;context&quot;:&quot;Tiene coste lineal con respecto al número de elementos de la lista, ya que tenemos que navegar desde el principio de la lista hasta el final para situarnos en el último nodo.&quot;,&quot;id&quot;:&quot;9c2692b1-c580-4788-b066-7a9a76b9e561&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;El método `back` de la clase `ListLinkedSingle` tiene coste constante.\n&quot;}},{&quot;id&quot;:&quot;3ea2d01d-99f5-4b8b-a275-2613897251ce&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Verdadero&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Falso&quot;],&quot;prompt&quot;:&quot;El método `push_back` de la clase `ListArray` tiene coste constante en el caso en que `num_elems &lt; capacity` y coste lineal con respecto a `num_elems` si `num_elems == capacity`.\n&quot;}},{&quot;context&quot;:&quot;En efecto, es necesario navegar hasta el último nodo de la lista para insertar un nodo justo después de él.&quot;,&quot;id&quot;:&quot;1683a617-0f63-4bd7-b14b-ccad696fa0fe&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Verdadero&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Falso&quot;],&quot;prompt&quot;:&quot;El método `push_back` de la clase `ListLinkedSingle` tiene coste lineal con respecto al número de elementos de la lista sobre la que se aplica.\n&quot;}},{&quot;context&quot;:&quot;Tiene coste lineal, ya que han de desplazarse previamente todos los elementos un lugar hacia la derecha en el array.&quot;,&quot;id&quot;:&quot;cb62d966-7ce9-4546-96e4-500bb2599674&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;El método `push_front` de la clase `ListArray` tiene coste constante en el caso en que `num_elems &lt; capacity`.\n&quot;}},{&quot;context&quot;:&quot;Tiene coste constante, ya que solo hay que crear un nodo, engancharlo con el primer nodo de la lista, y actualizar el atributo `head` para que apunte al nodo recién creado.&quot;,&quot;id&quot;:&quot;83e9d86e-5adf-4bda-bd5e-ca7dc6a49efe&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;El método `push_front` de la clase `ListLinkedSingle` tiene coste lineal con respecto al número de elementos de la lista sobre la que se aplica.\n&quot;}}]}" ></div>
+<script type="text/javascript" src="../quiz/quiz-embed.iife.js"></script><link rel="stylesheet" type="text/css" href="../quiz/style.css">
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="quizzes/sem02_3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../quizzes/sem02_2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../compiler_explorer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -206,10 +195,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="quizzes/sem02_3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../quizzes/sem02_2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../compiler_explorer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -222,13 +214,13 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
