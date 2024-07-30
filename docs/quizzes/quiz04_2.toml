@@ -1,0 +1,72 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Qué imprime por pantalla el siguiente programa?
+
+```cpp
+StackArray st;
+st.push(3);
+st.push(4);
+std::cout << st.top();
+st.push(5);
+std::cout << st.top();
+st.pop();
+std::cout << st.top();
+st.pop();
+std::cout << st.top();
+```
+"""
+answer.answer = "4543"
+id = "84931d7c-5271-47cb-aed7-1a0a4545c1e7"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En la implementación del TAD Pila mediante listas enlazadas simples. ¿Cuál de las siguientes condiciones denota que la pila está vacía?
+"""
+prompt.distractors = [
+    "`top_node->next == nullptr`",
+    "`top_node->value == 0`"
+]
+answer.answer = "`top_node == nullptr`"
+id = "25301a8f-4f95-4c45-8293-adb7e17d7356"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+En una implementación del TAD Pila mediante listas enlazadas, ¿cuáles de las siguientes operaciones tienen coste, en el caso peor, constante?
+
+1. `push`
+
+2. `top`
+
+3. `empty`
+
+4. `pop`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "1 2 3 4"
+id = "72274d45-f244-4735-aede-4830c18ab077"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+En una implementación del TAD Pila mediante arrays, ¿cuáles de las siguientes operaciones tienen coste, en el caso peor, constante?
+
+1. `push`
+
+2. `top`
+
+3. `empty`
+
+4. `pop`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "2 3 4"
+
+context = "`push` tiene coste lineal en el caso en el que haya que redimensionar el array para acomodar el nuevo elemento insertado."
+id = "dc6a2d68-a6aa-4a69-aaf3-2961d351871f"

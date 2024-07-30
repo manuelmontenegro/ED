@@ -1,0 +1,145 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Es correcta la siguiente definición de función? ¿Qué hace?
+
+```cpp
+template<typename T>
+ListArray<T> flatten(ListArray<ListArray<T>> list) {
+    ListArray<T> result;
+    for (int i = 0; i < list.size(); i++) {
+        for (int j = 0; j < list[i].size(); j++) {
+            result.push_back(list[i][j]);
+        }
+    }
+    return result;
+}
+```
+"""
+prompt.distractors = [
+  "Es incorrecta. No es posible integrar listas dentro de listas."
+]
+answer.answer = "Es correcta. Recibe una lista l comprendida de varias listas `[l1, ..., ln]` y devuelve el resultado de concatenar todas las listas `l[i]` en una sola."
+
+context = "Aquí tienes la prueba: [https://godbolt.org/z/pqddyC](https://godbolt.org/z/pqddyC)"
+id = "4a51d895-6eb2-49da-8059-bc8b1282eede"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos la siguiente función genérica para calcular la media de dos elementos:
+
+```cpp
+template <typename T>
+T media(T x, T y) {
+    return (x + y) / 2;
+}
+```
+
+¿Cuáles de las siguientes llamadas a `media` son correctas?
+
+1. `media(4, 3.4);`
+
+2. `media("Omar", "Ander");`
+
+3. `media(3, 5);`
+
+4. `media(3.6, 5.2);`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "3 4"
+
+context = """
+En la opción 1, ¿qué tipo se inferiría para la variable T?
+
+La opción 2 es incorrecta porque el operador de división no está definido para las cadenas.
+
+En la opción 3 se instancia la función para  `T = int`.
+
+En la opción 4 se instancia la función para  `T = double`.
+"""
+id = "c1bd3279-3a49-4317-8407-90138d560f09"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos la siguiente función genérica que suma sus dos parámetros y devuelve el resultado:
+
+```cpp
+template <typename T>
+T suma(T x, T y) {
+    return x + y;
+}
+```
+
+Queremos llamar a la función `suma` ¿Cuáles de las siguientes sentencias son correctas?
+
+1. `std::string f = suma<std::string>("Cristopher", "Estefania");`
+
+2. `int x = suma<int>(3, 5);`
+
+3. `Node *n = suma<Node *>(n1, n2);`, donde `n1` y `n2` son variables de tipo `Node *`
+
+4. `float f = suma(3.4, 5.5);`
+
+5. `cout << suma(5, "David");`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+
+answer.answer = "1 2 4"
+
+context = """
+La opción 1 es correcta, ya que el operador `+` está sobrecargado para las cadenas (indica concatenación).
+
+La opción 2 es correcta, ya que el operador `+` es, en este caso, la suma sobre números enteros.
+
+La opción 3 no es correcta, ya que no podemos aplicar `+` a dos punteros.
+
+La opción 4 es correcta, y se infiere el tipo `double` en la llamada.
+
+La opción 5 es incorrecta. ¿Qué tipo se infiere para la variable `T`? ¿`int` o `string`?
+"""
+id = "87e4009c-e910-4b65-8d68-fc1862afde8d"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente función genérica:
+
+```cpp
+template<typename T>
+void cosa(T elem) {
+    cout << *elem;
+    elem++;
+}
+```
+
+Supongamos que he definido una clase `A`. ¿Puedo llamar a `cosa` pasando como argumento una variable de tipo `A`?
+"""
+prompt.distractors = [
+  "No, es incorrecto en cualquier caso.",
+  "Sí, pero los resultados en ejecución serán impredecibles."
+]
+answer.answer = "Sí, pero solo si la clase A sobrecarga los operadores de indirección (`*`) y postincremento (`++`)."
+id = "1d28d79e-60da-4311-b7ee-e0d9fd439c97"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+La implementación genérica del TAD Lista permite mezclar dentro de una misma lista elementos de distintos tipos, por ejemplo, enteros y booleanos.
+"""
+prompt.distractors = [
+  "Verdadero"
+]
+
+answer.answer = "Falso"
+
+context = "Si la lista fuese heterogénea (es decir, con elementos de distintos tipos), ¿cuál sería el tipo de la lista?"
+id = "145478aa-3152-40a5-817c-d870cb2993de"
+
+
+

@@ -1,0 +1,90 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Qué imprime por pantalla el siguiente programa?
+
+```cpp
+QueueArray<int> st;
+st.push(3);
+st.push(4);
+std::cout << st.front();
+st.push(5);
+std::cout << st.front();
+st.pop();
+std::cout << st.front();
+st.pop();
+std::cout << st.front();
+```
+"""
+answer.answer = "3345"
+id = "22bae5d2-68cd-4734-a9e0-cbea82f1a481"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+En una implementación del TAD Cola mediante vectores circulares, ¿cuáles de las siguientes operaciones tienen coste, en el caso peor, constante?
+
+1. `empty`
+
+2. `pop`
+
+3. `push`, suponiendo que el elemento a insertar cabe en el vector
+
+4. `front`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "1 2 3 4"
+id = "c3b7b4fb-917c-4420-9b18-2568f375ccae"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+En una implementación del TAD Cola mediante listas enlazadas, ¿cuáles de las siguientes operaciones tienen coste, en el caso peor, constante?
+
+1. `empty`
+
+2. `pop`
+
+3. `push`, suponiendo que el elemento a insertar cabe en el vector
+
+4. `front`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "1 2 3 4"
+id = "ff7411a6-fe1c-4922-9e1c-6ea149486c4f"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En la implementación del TAD Cola mediante vectores circulares. ¿Cuál de las siguientes condiciones denota que la cola está vacía?
+"""
+prompt.distractors = [
+    "`back_pos == 0`",
+    "`front_pos == 0`",
+    "`front_pos == (back_pos + 1) % CAPACITY`"
+]
+answer.answer = "`front_pos == back_pos`"
+id = "9a387f6c-c3ed-4959-aff0-0997bf2c09a7"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponemos una implementación del TAD Cola mediante vectores circulares. Suponemos que el vector tiene tamaño `CAPACITY`. ¿Cuál es el número máximo de elementos que puede almacenar la cola?
+"""
+prompt.distractors = [
+    "`CAPACITY`",
+    "`CAPACITY + 1`",
+    "`(CAPACITY + 1) % CAPACITY`"
+]
+
+answer.answer = "`CAPACITY - 1`"
+
+context = """
+¿Por qué no `CAPACITY`? Si el array está al completo, tendríamos que `front_pos == back_pos`, pero justo utilizamos esa condición para denotar que la cola está vacía.
+
+Como consecuencia de ello, en un vector circular siempre hemos de tener una posición "sin ocupar".
+"""
+id = "520dc2a3-2278-4aed-ae9b-d888262fc4ed"

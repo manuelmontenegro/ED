@@ -1,0 +1,81 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Qué imprime por pantalla el siguiente programa?
+
+```cpp
+Dequeue<int> dq;
+dq.push_back(1);
+dq.push_back(2);
+dq.push_back(3);
+dq.push_front(4);
+dq.push_front(5);
+cout << dq.back();
+cout << dq.front();
+dq.pop_back();
+cout << dq.back();
+cout << dq.front();
+dq.pop_back();
+cout << dq.back();
+cout << dq.front();
+dq.pop_front();
+cout << dq.back();
+cout << dq.front();
+```
+"""
+answer.answer = "35251514"
+id = "6a88cea2-61c7-423e-b755-cd58eeea771c"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuáles de las siguientes operaciones **no** están soportadas por las colas dobles?
+
+1. `at`
+
+2. `push_back`
+
+3. `front`
+
+4. `push_front`
+
+5. `back`
+
+6. `size`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "1 6"
+
+context = """Algunas implementaciones soportan la operación `size` para obtener el tamaño de la cola doble. Sin embargo, en la implementación que hemos mostrado en los vídeos esta operación no estaba disponible.
+
+Es más raro encontrarse una implementación de colas dobles que soporte la operación `at`, ya que eso contradice el hecho de que a una cola doble debe accederse solamente por los extremos. Si haces uso de esta operación, quizás deberías utilizar una lista, y no una cola doble.
+"""
+id = "c183b8a0-817b-42fc-a175-43ed7e47a894"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+A continuación se muestran una serie de estructuras de datos. ¿Cuáles de ellas serían adecuadas para el TAD `deque` si queremos que todas las operaciones tengan coste constante? En el caso de los vectores, puedes suponer que el vector es lo suficientemente grande para almacenar los elementos que se deseen insertar en la doble cola, y que no es necesario redimensionarlo.
+
+1. Vector no circular (esto es, todos los elementos de la doble cola estarán comprendidos entre las posiciones 0 y `num_elems` del vector)
+
+2. Vector circular
+
+3. Lista doblemente enlazada circular
+
+4. Lista doblemente enlazada no circular, con puntero `last` al último nodo
+
+5. Lista enlazada simple con puntero `last` al último nodo
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "2 3 4"
+
+context = """
+En la opción 1, la operación `pop_front` no tendría coste constante, ya que tendría que desplazar todos los elementos una posición hacia la izquierda.
+
+En la opción 5, la operación `pop_back` no tendría coste constante, ya que tendría que hacer que el puntero `last` apunte al "nuevo último" nodo, y para eso hay que recorrer la lista de principio a fin.
+"""
+id = "dddb2df9-6626-4927-a915-9b4f8b70db0d"
+

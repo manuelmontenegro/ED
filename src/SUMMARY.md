@@ -5,6 +5,7 @@
 - [Introducción a los TADs](./sem1.md)
 - [Vectores y listas enlazadas simples](./sem2.md)
 - [Listas enlazadas dobles y circulares](./sem3.md)
+- [Pilas, colas y colas dobles](./sem4.md)
 
 
 # Apéndices
@@ -20,4 +21,8 @@
 - [Listas enlazadas simples](./quizzes/sem03_3.md)
 - [Listas enlazadas dobles y circulares](./quizzes/sem03_4.md)
 - [Sobrecarga de operadores](./quizzes/sem03_5.md)
+- [Plantillas en C++](./quizzes/sem04_1.md)
+- [Pilas](./quizzes/sem04_2.md)
+- [Colas](./quizzes/sem04_3.md)
+- [Colas dobles](./quizzes/sem04_4.md)
 - [Como usar compiler explorer](./compiler_explorer.md)
