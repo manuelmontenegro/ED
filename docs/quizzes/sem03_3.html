@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Como usar compiler explorer - Estructuras de datos</title>
+        <title>Listas enlazadas simples - Estructuras de datos</title>
 
 
         <!-- Custom HTML head -->
@@ -12,31 +12,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="../style/style.css">
 
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">4.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">5.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">6.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">7.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">8.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_1.html"><strong aria-hidden="true">9.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_2.html"><strong aria-hidden="true">10.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_3.html"><strong aria-hidden="true">11.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_4.html"><strong aria-hidden="true">12.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_5.html"><strong aria-hidden="true">13.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html" class="active"><strong aria-hidden="true">14.</strong> Como usar compiler explorer</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="../sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="../sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="../quizzes/sem01_1.html"><strong aria-hidden="true">4.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem01_2.html"><strong aria-hidden="true">5.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_1.html"><strong aria-hidden="true">6.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_2.html"><strong aria-hidden="true">7.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_3.html"><strong aria-hidden="true">8.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_1.html"><strong aria-hidden="true">9.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_2.html"><strong aria-hidden="true">10.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_3.html" class="active"><strong aria-hidden="true">11.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_4.html"><strong aria-hidden="true">12.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_5.html"><strong aria-hidden="true">13.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="../compiler_explorer.html"><strong aria-hidden="true">14.</strong> Como usar compiler explorer</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -145,7 +145,7 @@
                     <h1 class="menu-title">Estructuras de datos</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -174,31 +174,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="cómo-usar-compiler-explorer"><a class="header" href="#cómo-usar-compiler-explorer">Cómo usar compiler explorer</a></h1>
-<p>La pantalla de Compiler Explorer se divide en tres zonas:</p>
-<p><img src="compiler_explorer/CompilerExplorer.png" alt="Interfaz de Compiler Explorer" /></p>
-<ul>
-<li>
-<p><strong>Código fuente</strong>: Aquí se escribe el código C++ del programa que quieres ejecutar. Cada vez que lo modificas, se compila automáticamente.</p>
-</li>
-<li>
-<p><strong>Entrada</strong>: La información que recibirá el programa a través de la salida estándar. Cada vez que tu programa ejecute <code>cin &gt;&gt; ...</code>, la lectura se realizará a partir de lo que haya en el cuadro de texto.</p>
-</li>
-<li>
-<p><strong>Salida</strong>: Salida estándar escrita por tu programa mediante <code>cout &lt;&lt; ...</code>. Si hubiera errores de compilación en tu código, se mostrarían aquí. Aquí también aparece una línea con el texto <code>Program returned: N</code>, donde <code>N</code> es un número. Si <code>N</code> es 0, el programa ha finalizado correctamente. Si es un número distinto de 0, es que tu programa ha producido un error en tiempo de ejecución (división por cero, acceso a puntero inválido, acceso a un array más allá de sus límites, etc).</p>
-</li>
-</ul>
-<h2 id="y-si-no-me-aparece-el-panel-de-entrada-y-salida"><a class="header" href="#y-si-no-me-aparece-el-panel-de-entrada-y-salida">¿Y si no me aparece el panel de Entrada y Salida?</a></h2>
-<p>Encima del código fuente, haz clic en el menú <em>Add new...</em> y selecciona <em>Execution Only</em>.</p>
-
+                        <h1 id="cuestionario---listas-enlazadas-simples"><a class="header" href="#cuestionario---listas-enlazadas-simples">Cuestionario - Listas enlazadas simples</a></h1>
+<div class="quiz-placeholder" data-quiz-name="quiz03_3"  data-quiz-questions="{&quot;questions&quot;:[{&quot;id&quot;:&quot;1c1a1a5b-b15f-4b9b-900a-978acae8041d&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Verdadero&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Falso&quot;],&quot;prompt&quot;:&quot;En una implementación de listas con nodo fantasma, siempre se cumple que `head != nullptr`\n&quot;}},{&quot;id&quot;:&quot;61dabf21-e0c2-4af2-96d3-bb05929b74ee&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;2 3 4&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Supongamos una lista enlazada simple con nodo fantasma y **sin** puntero `last` al último elemento. ¿Cuáles de las siguientes operaciones **no** tienen coste constante?\n\n1. `push_front`\n\n2. `at`\n\n3. `back`\n\n4. `push_back`\n\nIndica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)\n&quot;}},{&quot;context&quot;:&quot;El método `pop_back` requeriría actualizar `last` para que apunte al nodo que quedaría en último lugar tras el borrado. Eso requiere recorrer toda la lista.&quot;,&quot;id&quot;:&quot;7e7f8cb0-0bf0-47b7-b46f-a5074dbb9b7f&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;`pop_back`&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;`push_back`&quot;,&quot;`back`&quot;,&quot;`push_front`&quot;,&quot;`pop_front`&quot;],&quot;prompt&quot;:&quot;Supongamos una lista enlazada simple con un puntero `head` al nodo fantasma y un puntero `last` al último elemento de la lista. ¿Cuál de las siguientes operaciones **no** tiene coste en tiempo constante?\n&quot;}},{&quot;context&quot;:&quot;Con un nodo fantasma, el primer elemento de la lista está en `this-&gt;head-&gt;next`. Por tanto, es ese nodo el que tenemos que mirar.&quot;,&quot;id&quot;:&quot;5a2f15eb-20ed-43fa-8008-7d9e8f56ff35&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;En una lista enlazada simple con nodo fantasma, la siguiente implementación del método `front` es correcta:\n\n```cpp\nstd::string &amp; front() {\n  assert(this-&gt;head != nullptr);\n  return this-&gt;head-&gt;value;\n}\n```\n&quot;}},{&quot;context&quot;:&quot;El hecho de añadir un nodo fantasma simplifica algunas de las implementaciones, en tanto que podemos evitar distinguir el caso de la lista vacía. No obstante, no obtenemos ninguna mejora de eficiencia (en términos asintóticos) solo por añadir un nodo fantasma.&quot;,&quot;id&quot;:&quot;10fa48e2-e0c9-4e01-9e7b-d5dd06dfbc99&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;La introducción de un nodo fantasma en una lista enlazada simple mejora el coste asintótico del método `push_front`, que pasa de ser lineal con respecto al tamaño de la lista a ser constante.\n&quot;}}]}" ></div>
+<script type="text/javascript" src="../quiz/quiz-embed.iife.js"></script><link rel="stylesheet" type="text/css" href="../quiz/style.css">
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="quizzes/sem03_5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../quizzes/sem03_2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../quizzes/sem03_4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -206,10 +195,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="quizzes/sem03_5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../quizzes/sem03_2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../quizzes/sem03_4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -222,13 +214,13 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

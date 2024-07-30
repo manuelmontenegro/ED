@@ -1,0 +1,16 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Añadiendo los atributos `last` y `last_but_one`, ya se puede actualizar el atributo `last` en tiempo constante dentro del método `pop_back`. Con ello conseguimos que este método tenga coste constante en tiempo.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+
+context = """
+En efecto, tras el borrado del último elemento, podría actualizar
+`last` para que apunte al mismo nodo que `last_but_one` pero... *¡también
+tenemos que actualizar `last_but_one` para que apunte al nodo anterior!*
+"""
+id = "c7d11354-37d5-476a-ab6a-63237f266fcf"
+

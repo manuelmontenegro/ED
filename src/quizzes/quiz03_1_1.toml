@@ -1,0 +1,36 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Esta es una posible solución al problema anterior:
+
+```cpp
+void ListLinkedSingle::display_reverse() const {
+    std::cout << "[";
+    int tamanyo = size();
+    if (tamanyo > 0) {
+        std::cout << back();
+        for (int i = tamanyo - 2; i >= 0; i--) {
+            std::cout << ", " << at(i);
+        }
+    }
+    std::cout << "]";
+}
+```
+
+¿Cuál es el coste, en el caso peor de esta solución?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>, donde *size* es el número de elementos de la lista.
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+]
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mi>i</mi><mi>z</mi><msup><mi>e</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>, donde *size* es el número de elementos de la lista.
+"""
+context = """
+Ten en cuenta que el método `at` tiene coste lineal con respecto al índice al que se desea acceder, y que hay un bucle que realiza llamadas a `at` desde el índice 0 hasta el índice `n-1`.
+"""
+id = "e2eee5f4-52c6-40f4-92dd-0944f477f816"

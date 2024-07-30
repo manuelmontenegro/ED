@@ -1,0 +1,47 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Este es el resultado: 
+
+```cpp
+void ListLinkedSingle::display_reverse() const {
+    std::cout << "[";
+    if (head->next != nullptr) {
+        display_reverse_aux(head->next);
+    }
+    std::cout << "]";
+}
+
+void ListLinkedSingle::display_reverse_aux(Node *init) const {
+    assert(init != nullptr);
+    if (init->next == nullptr) {
+        std::cout << init->value;
+    } else {
+        display_reverse_aux(init->next);
+        std::cout << ", " << init->value;
+    }
+}
+```
+
+ ¿Cuál es el coste en tiempo de `display_reverse` en función del tamaño de la lista sobre la que se aplica?"""
+prompt.distractors = [
+"""
+Constante
+""",
+"""
+Cuadrático con respecto al tamaño de la lista
+""",
+]
+answer.answer = """
+Lineal con respecto al tamaño de la lista
+"""
+context = """
+La recurrencia es la siguiente. Si `T` es el coste en función del tamaño de la lista:
+
+```
+T(1) = k1
+T(n) = k2 + T(n - 1)   (para n > 1) 
+```
+Donde `k1` y `k2` son constantes. Por tanto <math><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo></mrow><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>, donde *n* es el tamaño de la lista.
+"""
+id = "94f9ced1-3421-473d-8b28-7ed30f4bfa3a"

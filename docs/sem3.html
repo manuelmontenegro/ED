@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Listas enlazadas dobles y circulares - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="sem3.html" class="active"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">4.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">5.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">6.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">7.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">8.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_1.html"><strong aria-hidden="true">9.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_2.html"><strong aria-hidden="true">10.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_3.html"><strong aria-hidden="true">11.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_4.html"><strong aria-hidden="true">12.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_5.html"><strong aria-hidden="true">13.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html"><strong aria-hidden="true">14.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="semana-3---tad-lista-listas-enlazadas-dobles-y-circulares"><a class="header" href="#semana-3---tad-lista-listas-enlazadas-dobles-y-circulares">Semana 3 - TAD Lista. Listas enlazadas dobles y circulares</a></h1>
+<div class="aims">
+<div class="aims_header">
+✔️ Objetivos
+</div>
+<ul>
+<li>
+<p>Simplificar las implementaciones de listas mediante el uso de nodos fantasma.</p>
+</li>
+<li>
+<p>Conocer las listas doblemente enlazadas y circulares.</p>
+</li>
+<li>
+<p>Aplicar los mecanismos de sobrecarga de operadores de C++ a los TADs para mejorar la legibilidad de los programas.</p>
+</li>
+</ul>
+<div class="aims_header">
+✔️ Tiempo de estudio
+</div>
+<ul>
+<li>
+<p><strong>Vídeos</strong>: 1h 4min</p>
+</li>
+<li>
+<p><strong>Total</strong> <em>(incluyendo vídeos, cuestionarios y actividades de autoevaluación)</em>: 2h 30min</p>
+</li>
+</ul>
+</div>
+<h2 id="31-incorporando-un-nodo-fantasma"><a class="header" href="#31-incorporando-un-nodo-fantasma">3.1. Incorporando un nodo fantasma</a></h2>
+<p>La semana pasada presentamos las listas enlazadas simples como mecanismo de implementación del TAD Lista. Ahora vamos a incorporar una pequeña mejora en nuestra implementación. Consiste en introducir un nodo extra al principio de la lista enlazada, al que llamaremos <em>nodo fantasma</em>.</p>
+<p>¿Para qué sirve esto? Aparentemente, es absurdo tener en memoria un nodo extra cuya información es irrelevante. Sin embargo, este nodo va a simplificar mucho las implementaciones.</p>
+<p>▶️ ️<a href="https://youtu.be/YDE5_oIRG-U">Nodos fantasma</a> (9:07)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_single_v3">Código fuente</a></p>
+<p>Puede que después de esto pienses: <em>«Bueno, tampoco hemos ganado tanto. Solo se han simplificado dos métodos»</em>. Ten paciencia. Los beneficios del nodo fantasma serán más evidentes cuando lleguemos a las listas enlazadas circulares.</p>
+<h2 id="32-listas-doblemente-enlazadas"><a class="header" href="#32-listas-doblemente-enlazadas">3.2. Listas doblemente enlazadas</a></h2>
+<p>En los ejercicios que hemos hecho durante la semana pasada hemos tenido que recorrer una lista enlazada simple para manipular sus punteros. Estos recorridos se hacían de izquierda a derecha, ya que es más fácil avanzar por los nodos de una lista enlazada siguiendo el flujo de los punteros que retroceder por ellos. Al fin y al cabo, cada nodo contiene una conexión directa con el siguiente, pero no con el anterior.</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 3.1
+</div>
+<div class="body">
+<p>Para motivar mejor la utilidad de lo que viene a continuación, vamos a hacer un ejercicio, similar a los de la semana pasada, pero más sencillo (para que os dé menos pereza hacerlo :-)).</p>
+<p>💻 <a href="quizzes/sem03_1.html">Ejercicio - Imprimir los elementos de una lista al revés</a></p>
+</div>
+</div>
+<p>Pasamos ahora a introducir las listas doblemente enlazadas:</p>
+<p>▶️ ️<a href="https://youtu.be/lPHRYDIVrko">Listas doblemente enlazadas (1)</a> (7:20)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_double_v1">Código fuente</a></p>
+<p>¿Y bien? ¿Dónde esta la mejora en eficiencia que os he prometido? Pues ahora vamos a ello: ¿cuáles son las operaciones que siguen teniendo coste lineal con respecto al tamaño de la lista? Aquellas que manipulan la lista por el final, ya que nos obligan a navegar por todos nodos de la lista hasta llegar al último de ellos, y hacer allí los cambios correspondientes. Sería ideal tener una manera directa de llegar a este último nodo sin recorrer la lista entera. A continuación lo haremos:</p>
+<p>▶️ ️<a href="https://youtu.be/hd2KfYBKyRc">Listas doblemente enlazadas (2)</a> (7:21)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_double_v2">Código fuente</a></p>
+<p>Bueno, parece que por fin hemos mejorado el coste de algunas de las operaciones gracias a este nuevo puntero al último elemento de la lista.</p>
+<p><em>SPOILER: no os encariñéis demasiado con el atributo <code>last</code>, porque no se va a quedar mucho tiempo con nosotros :-)</em></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 3.2
+</div>
+<div class="body">
+<p>Antes de continuar, tengo una pregunta importante: ¿Por qué no hemos aplicado esta misma idea a las listas enlazadas <em>simples</em>? Al fin y al cabo, si yo tuviera un puntero al último nodo, el coste de muchas de las operaciones mejorarían... ¿o no?. Veámoslo:</p>
+<p>💻 <a href="quizzes/sem03_2.html">Ejercicio - Listas enlazadas simples con puntero al último nodo</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 3.3
+</div>
+<div class="body">
+<p>En el siguiente cuestionario puedes repasar todos los conceptos vistos hasta ahora:</p>
+<p>❓ <a href="quizzes/sem03_3.html">Cuestionario de autoevaluación - Listas enlazadas simples</a></p>
+</div>
+</div>
+<h2 id="33-listas-enlazadas-circulares"><a class="header" href="#33-listas-enlazadas-circulares">3.3. Listas enlazadas circulares</a></h2>
+<p>Pasamos a introducir el último tipo de listas enlazadas: las listas doblemente enlazadas circulares.</p>
+<p>▶️ ️<a href="https://youtu.be/zUXxg2WU9aw">Listas enlazadas circulares</a> (6:36)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_double_v3">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 3.4
+</div>
+<div class="body">
+<p>En el siguiente cuestionario puedes poner a prueba lo visto en el vídeo anterior:</p>
+<p>❓ <a href="quizzes/sem03_4.html">Cuestionario de autoevaluación - Listas doblemente enlazadas y circulares</a></p>
+</div>
+</div>
+<h2 id="34-sobrecarga-de-operadores-en-c"><a class="header" href="#34-sobrecarga-de-operadores-en-c">3.4. Sobrecarga de operadores en C++</a></h2>
+<p>Vamos a tomarnos un descanso de engarzar punteros entre los nodos de una lista enlazada para presentar una característica interesante de C++: la sobrecarga de operadores. Esta característica también se encuentra en otros lenguajes de programación (Python, C#, Lua, etc.), pero no en Java.</p>
+<p>▶️ ️<a href="https://youtu.be/ny18HCghKBQ">C++ - Sobrecarga de operadores</a> (12:35)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/cpp/07_sobrecarga_operadores/Complejo_v2">Código fuente</a></p>
+<p>En una de las diapositivas del vídeo anterior aparecía la lista de operadores sobrecargables. Entre ellos estaba el operador <code>=</code>. Hay que prestar atención a este operador, porque a veces vamos a tener que sobrecargarlo si no queremos que nuestras clases tengan comportamientos inesperados.</p>
+<p>¿Qué es lo que hace el operador <code>=</code>?. Ya lo conocéis desde el año pasado. Si tenemos lo siguiente:</p>
+<pre><code class="language-cpp">int x;
+x = 2 + 4;
+</code></pre>
+<p>El operador <code>=</code> evalúa lo que tiene a su lado derecho (<code>2 + 4</code>) y sobreescribe el valor de la variable del lado izquierdo con el resultado de la evaluación.</p>
+<p>Ahora bien ¿Qué pasa si yo hago una asignación de un registro a otro?</p>
+<pre><code class="language-cpp">struct Punto {
+  int x;
+  int y;
+};
+// ...
+Punto p1;
+p1.x = 1;
+p1.y = 2;
+Punto p2;
+p2 = p1;        // &lt;-- Asignación de p1 a p2
+</code></pre>
+<p>Por defecto, y salvo que indiquemos lo contrario, el operador <code>=</code> asigna el valor del campo <code>p1.x</code> a <code>p2.x</code> y similarmente con <code>p1.y</code>. El código sería equivalente al siguiente:</p>
+<pre><code class="language-cpp">struct Punto {
+  int x;
+  int y;
+};
+// ...
+Punto p1;
+p1.x = 1;
+p1.y = 2;
+Punto p2;
+p2.x = p1.x;    // &lt;-- Asignación del atributo x de p1 al atributo x de p2
+p2.y = p1.y;    // &lt;-- Asignación del atributo y de p1 al atributo x de p2
+</code></pre>
+<p>El transferir la información, atributo por atributo, de un objeto a otro puede ser razonable en muchos casos, pero no en otros. Este problema ya lo hemos tenido la semana pasada con el constructor de copia. Si uno de los atributos del objeto a copiar es un puntero a otro, no me interesa copiar el puntero sin más, sino hacer una copia del contenido apuntado por ese puntero.</p>
+<p>Estos problemas y otros similares son el objeto del siguiente vídeo:</p>
+<p>▶️ ️<a href="https://youtu.be/5T-29lMX0VQ">C++ - Operador de asignación</a> (12:19)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/cpp/08_operador_asignacion">Código fuente</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 3.5
+</div>
+<div class="body">
+<p>En el siguiente cuestionario podrás repasar lo visto en el vídeo anterior:</p>
+<p>❓ <a href="quizzes/sem03_5.html">Cuestionario de autoevaluación - Sobrecarga de operadores</a></p>
+</div>
+</div>
+<p>Ya que hemos aprendido cómo se sobrecargan operadores, vamos a ver cómo podemos aplicar la sobrecarga a las clases del TAD lista que hemos creado hasta ahora. En particular, vamos a sobrecargar los operadores de desplazamiento (<code>&lt;&lt;</code>), indexación (<code>[]</code>) y asignación (<code>=</code>).</p>
+<p>▶️ <a href="https://youtu.be/y6RSQWj-WY4">Sobrecargando operadores en el TAD Lista</a> (8:01)</p>
+<p>Las implementaciones de nuestras versiones del TAD Lista quedan del siguiente modo:</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_array_v4">Código fuente (TAD Lista mediante arrays)</a></p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_single_v4">Código fuente (TAD Lista mediante listas enlazadas simples)</a></p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/tree/main/lineales/list_linked_double_v4">Código fuente (TAD Lista mediante listas doblemente enlazadas circulares)</a></p>
+<h2 id="35-problemas-de-laboratorio"><a class="header" href="#35-problemas-de-laboratorio">3.5. Problemas de laboratorio</a></h2>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 3.6
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L03-1.pdf">Sumar a un elemento de una lista ordenada</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 3.7
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L03-2.pdf">Ordenación por selección</a></p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="sem2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="quizzes/sem01_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="sem2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="quizzes/sem01_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos la siguiente cabecera para sobrecargar el operador de desplazamiento `<<`. ¿Es correcta?
+
+```cpp
+void operator<<(std::ostream &out, const ListLinkedSingle &l);
+```
+
+"""
+prompt.distractors = [
+  "Es incorrecta. El parámetro `out` debe ser una referencia constante.",
+  "Es incorrecta. El operador `<<` debe devolver necesariamente un objeto `ostream`.",
+]
+answer.answer = "Es correcta, pero no nos permitirá encadenar operaciones de salida en una misma sentencia (p.ej. `cout << l1 << l2`)."
+id = "0436433b-7ea0-429a-abc0-826ede632567"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿En cuáles de los siguientes casos es necesario sobrecargar el operador de asignación para una determinada clase?
+"""
+prompt.distractors = [
+  "Cuando quiero asignar, atributo por atributo, el contenido del lado de derecho del operador al lado izquierdo.",
+  "Es obligatoria la sobrecarga del operador de asignación para cualquier clase.",
+  "No es recomendable sobrecargar este operador en ningún caso, pero C++ permite hacerlo.",
+]
+answer.answer = "Cuando la clase tiene atributos de tipo puntero, y no quiero que los objetos apuntados sean compartidos por el lado izquierdo y el lado derecho de la asignación."
+id = "5e153b66-c76e-40a0-a246-8444b4133e44"

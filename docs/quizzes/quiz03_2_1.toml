@@ -1,0 +1,42 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `back` mejoraría su eficiencia, pasando a tener coste constante en lugar de lineal con respecto al número de elementos de la lista.
+"""
+prompt.distractors = ["Falso"]
+
+answer.answer = "Verdadero"
+
+context = """
+En efecto, se puede sustituir la llamada a `last_node()`, que tiene coste lineal con respecto al número de elementos, por el atributo `last`, cuyo acceso tiene coste constante.
+"""
+id = "a749e2a9-85ff-4267-b7ee-d628aadd1492"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `push_back` mejoraría su eficiencia, pasando a tener coste constante en lugar de lineal con respecto al número de elementos de la lista.
+"""
+prompt.distractors = ["Falso"]
+
+answer.answer = "Verdadero"
+
+context = """
+En efecto, se puede sustituir la llamada a `last_node()`, que tiene coste lineal con respecto al número de elementos, por el atributo `last`, cuyo acceso tiene coste constante. Eso sí, también hay que **actualizar** el atributo `last` para que apunte al nodo recien creado.
+"""
+id = "b39ad6b3-e7df-4580-9d14-a12489047442"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El método `pop_back` mejoraría su eficiencia, pasando a tener coste constante en lugar de lineal con respecto al número de elementos de la lista.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+
+context = """
+Puedes eliminar el nodo apuntado por `last` sin tener que recorrer toda la lista, pero luego **hay que actualizar el atributo** `last` para que apunte al nodo anterior, y no tenemos acceso directo a ese nodo, por lo que habría que recorrer otra vez la lista entera para llegar al nuevo nodo `last`.
+"""
+id = "9f5ac158-d348-4395-aca4-d29159142d4c"
+

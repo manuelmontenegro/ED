@@ -1,0 +1,72 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En una implementación de listas con nodo fantasma, siempre se cumple que `head != nullptr`
+"""
+prompt.distractors = ["Falso"]
+
+answer.answer = "Verdadero"
+id = "1c1a1a5b-b15f-4b9b-900a-978acae8041d"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos una lista enlazada simple con nodo fantasma y **sin** puntero `last` al último elemento. ¿Cuáles de las siguientes operaciones **no** tienen coste constante?
+
+1. `push_front`
+
+2. `at`
+
+3. `back`
+
+4. `push_back`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "2 3 4"
+id = "61dabf21-e0c2-4af2-96d3-bb05929b74ee"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos una lista enlazada simple con un puntero `head` al nodo fantasma y un puntero `last` al último elemento de la lista. ¿Cuál de las siguientes operaciones **no** tiene coste en tiempo constante?
+"""
+prompt.distractors = [
+  "`push_back`",
+  "`back`",
+  "`push_front`",
+  "`pop_front`"
+]
+answer.answer = "`pop_back`"
+context = "El método `pop_back` requeriría actualizar `last` para que apunte al nodo que quedaría en último lugar tras el borrado. Eso requiere recorrer toda la lista."
+id = "7e7f8cb0-0bf0-47b7-b46f-a5074dbb9b7f"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En una lista enlazada simple con nodo fantasma, la siguiente implementación del método `front` es correcta:
+
+```cpp
+std::string & front() {
+  assert(this->head != nullptr);
+  return this->head->value;
+}
+```
+"""
+prompt.distractors = ["Verdadero"]
+answer.answer = "Falso"
+context = "Con un nodo fantasma, el primer elemento de la lista está en `this->head->next`. Por tanto, es ese nodo el que tenemos que mirar."
+id = "5a2f15eb-20ed-43fa-8008-7d9e8f56ff35"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+La introducción de un nodo fantasma en una lista enlazada simple mejora el coste asintótico del método `push_front`, que pasa de ser lineal con respecto al tamaño de la lista a ser constante.
+"""
+prompt.distractors = ["Verdadero"]
+answer.answer = "Falso"
+context = "El hecho de añadir un nodo fantasma simplifica algunas de las implementaciones, en tanto que podemos evitar distinguir el caso de la lista vacía. No obstante, no obtenemos ninguna mejora de eficiencia (en términos asintóticos) solo por añadir un nodo fantasma."
+id = "10fa48e2-e0c9-4e01-9e7b-d5dd06dfbc99"
+
