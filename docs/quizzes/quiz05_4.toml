@@ -1,0 +1,114 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que `v` es un `vector<int>` de tamaño par. ¿Qué hace el siguiente programa?
+
+```cpp
+auto it = v.begin();
+int half_size = v.size() / 2;
+for (int i = 0; i < half_size; i++) {
+    *(it + half_size) = *it;
+    ++it;
+}
+```
+"""
+prompt.distractors = [
+	"Suma `half_size` a los elementos de `v` que están en la primera mitad del vector.",
+	"Copia los elementos que están en la segunda mitad de `v` a la primera mitad de `v`.",
+	"Suma `half_size` a todos los elementos de `v`."
+]
+answer.answer = "Copia los elementos que están en la primera mitad de `v` a la segunda mitad de `v`."
+id = "1787ee63-5ac2-4258-8265-02a9b04691b6"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El siguiente programa realiza un recorrido de un `vector<int>`, imprimiendo sus elementos desde el final hasta el principio.
+
+```cpp
+auto it = v.end();
+while (it != v.begin()) {
+    it--;
+    cout << *it << " ";
+}
+```
+"""
+prompt.distractors = [
+	"Falso",
+]
+answer.answer = "Verdadero"
+id = "6794f0b5-8973-447b-951d-ab886a6fdae8"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El siguiente programa realiza un recorrido de un `vector<int>`, imprimiendo sus elementos desde el final hasta el principio.
+
+```cpp
+auto it = v.end();
+while (it != v.begin()) {
+    cout << *it << " ";
+    it--;
+}
+```
+"""
+prompt.distractors = [
+	"Verdadero",
+]
+answer.answer = "Falso"
+context = """
+Ten en cuenta que en la primera iteración del bucle se tiene que `it` tiene el valor `v.end()`. El iterador devuelto por `end` es un cursor al final de la lista, pero no apunta a un elemento específico. Por tanto, no se puede hacer `*it`, cuando `it` es `v.end()`.
+"""
+id = "ed2718bc-dc4a-4bc1-b8b3-d5eca30f1216"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos el siguiente código, donde `v` es un `vector<int>` que representa la lista [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+```cpp
+auto it = v.begin() + 3;
+v.insert(it + 2, 33);
+```
+
+¿Qué lista representa `v` tras ejecutar este código?
+"""
+prompt.distractors = [
+	"[0, 1, 33, 2, 3, 4, 5, 6, 7, 8, 9]",
+	"[0, 1, 2, 3, 33, 4, 5, 6, 7, 8]",
+	"[0, 1, 2, 3, 4, 33, 5, 6, 7, 8]",
+	"[0, 1, 2, 33, 3, 4, 5, 6, 7, 8, 9]",
+]
+answer.answer = "[0, 1, 2, 3, 4, 33, 5, 6, 7, 8, 9]"
+id = "6a72b971-09ce-43bb-96e4-e3bd59de36e5"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos una lista `v = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]` implementada mediante un `vector<int>`. Ahora ejecutamos lo siguiente:
+
+```cpp
+auto it1 = v.begin();
+auto it2 = it1 + 2;
+auto it3 = it1 + 3;
+auto it4 = it1 + 4;
+auto it5 = v.end();
+v.erase(v.begin() + 3);
+```
+
+Suponiendo que el array no se redimensiona durante la operación. ¿Qué iteradores se invalidan tras la operación de borrado?
+
+Escribe los nombres de los iteradores invalidados separados por espacios y en orden ascendente (por ejemplo: `it1 it3 it4`)
+"""
+
+answer.answer = "it3 it4 it5"
+
+context = """
+En la clase `vector`, cuando se realiza un borrado que no provoca redimensionamiento del array, se invalidan los iteradores que apuntan al elemento borrado y los que apuntan a un elemento posterior.
+
+Observa la diferencia con la clase `list`, que utiliza listas enlazadas. En esa clase un borrado solo invalida los iteradores que apuntan al elemento borrado, pero no los demás.
+"""
+id = "a24bda27-0a67-40b2-adeb-bfca3b320830"

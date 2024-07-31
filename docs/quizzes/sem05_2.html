@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Iteradores sobre listas - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="../sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="../sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="../sem4.html"><strong aria-hidden="true">4.</strong> Pilas, colas y colas dobles</a></li><li class="chapter-item expanded "><a href="../sem5.html"><strong aria-hidden="true">5.</strong> Iteradores</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="../quizzes/sem01_1.html"><strong aria-hidden="true">6.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem01_2.html"><strong aria-hidden="true">7.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_1.html"><strong aria-hidden="true">8.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_2.html"><strong aria-hidden="true">9.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_3.html"><strong aria-hidden="true">10.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_1.html"><strong aria-hidden="true">11.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_2.html"><strong aria-hidden="true">12.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_3.html"><strong aria-hidden="true">13.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_4.html"><strong aria-hidden="true">14.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_5.html"><strong aria-hidden="true">15.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_1.html"><strong aria-hidden="true">16.</strong> Plantillas en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_2.html"><strong aria-hidden="true">17.</strong> Pilas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_3.html"><strong aria-hidden="true">18.</strong> Colas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_4.html"><strong aria-hidden="true">19.</strong> Colas dobles</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_1.html"><strong aria-hidden="true">20.</strong> ¿Para qué sirven los iteradores?</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_2.html" class="active"><strong aria-hidden="true">21.</strong> Iteradores sobre listas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_3.html"><strong aria-hidden="true">22.</strong> TADs lineales en la STL</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_4.html"><strong aria-hidden="true">23.</strong> STL (1)</a></li><li class="chapter-item expanded "><a href="../compiler_explorer.html"><strong aria-hidden="true">24.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="cuestionario---iteradores-sobre-listas"><a class="header" href="#cuestionario---iteradores-sobre-listas">Cuestionario - Iteradores sobre listas</a></h1>
+<div class="quiz-placeholder" data-quiz-name="quiz05_2"  data-quiz-questions="{&quot;questions&quot;:[{&quot;id&quot;:&quot;61718e1e-5b3f-4d1a-a939-57ff13e78e9c&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Coste O(`i`)&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Coste O(`l.size() * i`)&quot;,&quot;Coste O(`l.size()`)&quot;],&quot;prompt&quot;:&quot;¿Cual de las siguientes aproximaciones es la más precisa para describir el coste en tiempo de la siguiente función?\n\n```\ntemplate &lt;typename T&gt;\n T &amp; at(ListLinkedDouble&lt;T&gt; &amp;l, int i) {\n   assert (0 &lt;= i &amp;&amp; i &lt; l.size());\n   ListLinkedDouble&lt;T&gt;::iterator it = l.begin();\n   while (i &gt; 0) {\n     it.advance();\n     --i;\n   }\n   return it.elem();\n}\n```\n&quot;}},{&quot;id&quot;:&quot;23864b44-0f8c-4d03-8822-f6930d3d4645&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;1 2 3 4&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;En una clase `ListLinkedDouble` con listas doblemente enlazadas circulares. ¿Cuáles de las siguientes operaciones tienen coste constante?\n\n1. `elem` de la clase `ListLinkedDouble&lt;T&gt;::iterator`\n\n2. `advance` de la clase `ListLinkedDouble&lt;T&gt;::iterator`\n\n3. `begin`\n\n4. `end`\n\nIndica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)\n&quot;}},{&quot;context&quot;:&quot;1. `l.insert(l.begin(), 23)`: Correcto. En este caso, se inserta un elemento antes de `l.begin()`, que es el primero de la lista. Es decir, se añadirá el elemento 23 al principio de la lista. La llamada es correcta.\n\n2. `l.begin().elem()`: Correcto. Esto denota el primer elemento de la lista.\n\n3. `l.erase(l.begin())`: Correcto. Elimina el primer elemento de la lista.\n\n4. `l.begin().advance()`: Correcto. Avanza el iterador al segundo elemento de la lista, o al final de ella si no hay más.\n&quot;,&quot;id&quot;:&quot;41a944fc-44c7-4b86-8446-0647b7060797&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;1 2 3 4&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;¿Cuáles de las siguientes expresiones son válidas? Suponemos que `l` es una lista de enteros **no vacía**.\n\n1. `l.insert(l.begin(), 23)`\n\n2. `l.begin().elem()`\n\n3. `l.erase(l.begin())`\n\n4. `l.begin().advance()`\n\nIndica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)\n&quot;}},{&quot;context&quot;:&quot;1. `l.insert(l.end(), 23)`: Válido. En este caso, se inserta un elemento antes de `l.end()`, que denota el final de la lista. Es decir, se añadirá el elemento 23 al final de la lista. La llamada es correcta.\n\n2. `l.erase(l.end())`: No válido. El iterador `end()` no denota ningún elemento de la lista, por lo que no tiene sentido eliminar el valor apuntado por él.\n\n3. `l.end().advance()`: No válido. El iterador `end()` denota el final del recorrido. No es posible avanzar desde allí.\n\n\n4. `l.end().elem()`: No válido. El iterador `end()` no denota ningún elemento de la lista, por lo que no puede accederse al elemento señalado por él.\n&quot;,&quot;id&quot;:&quot;aeebe28d-a278-41d6-beee-f77e4eda9509&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;2 3 4&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;¿Cuáles de las siguientes expresiones **NO** son válidas? Suponemos que `l` es una lista de enteros, que puede estar vacía o no.\n\n1. `l.insert(l.end(), 23)`\n\n2. `l.erase(l.end())`\n\n3. `l.end().advance()`\n\n4. `l.end().elem()`\n\nIndica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)\n&quot;}},{&quot;context&quot;:&quot;Ten en cuenta que `it` apunta al primer elemento de la lista. Sin embargo, tras hacer `pop_front()` ese iterador queda invalidado, por lo que no se puede realizar ninguna operación sobre él. La llamada a `it.elem()` puede dar error, o devolver un valor indefinido.\n&quot;,&quot;id&quot;:&quot;a308cf05-434d-4575-8a79-f0c71b82b787&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Falso&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Verdadero&quot;],&quot;prompt&quot;:&quot;El siguiente programa devuelve y elimina el primer elemento de una lista en el caso en que dicha lista no sea vacía.\n\n```cpp\ntemplate &lt;typename T&gt;\nT pop_front(ListLinkedDouble&lt;T&gt; &amp;l) {\n  ListLinkedDouble&lt;T&gt;::iterator it = l.begin();\n  l.pop_front();\n  return it.elem();\n}\n```\n\n&quot;}},{&quot;context&quot;:&quot;Ahora sí es correcto. Hemos hecho una copia del primer elemento de la lista en la variable `result` antes de que `pop_front()` invalide el iterador.\n&quot;,&quot;id&quot;:&quot;329f58b4-f619-4f5f-acdb-a47682d4b1b6&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Verdadero&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Falso&quot;],&quot;prompt&quot;:&quot;El siguiente programa devuelve y elimina el primer elemento de una lista en el caso en que dicha lista no sea vacía.\n\n```cpp\ntemplate &lt;typename T&gt;\nT pop_front(ListLinkedDouble&lt;T&gt; &amp;l) {\n   ListLinkedDouble&lt;T&gt;::iterator it = l.begin();\n   T result = it.elem();\n   l.pop_front();\n   return result;\n}\n```\n\n&quot;}},{&quot;id&quot;:&quot;4dd19dd1-2655-4af2-83a1-83db6f5e0555&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Verdadero&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Falso&quot;],&quot;prompt&quot;:&quot;Si la lista `l` es vacía, se cumple que `l.begin() == l.end()`\n&quot;}},{&quot;id&quot;:&quot;2f7281c9-5a20-4c82-a8e3-5e9c3230ec2d&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;insert(begin(),elem);&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Intenta implementar `push_front` en la clase `ListLinkedDouble`:\n\n```cpp\ntemplate &lt;typename T&gt;\nclass ListLinkedDouble {\npublic:\n  ...\n  void push_front(const T &amp;elem) {\n  \t// COMPLETAR\n  }\n};\n```\n\nSolamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.\n\nAl llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia. \n&quot;}},{&quot;id&quot;:&quot;7729c50d-a79d-4e03-974c-484c98311997&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;erase(begin());&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Intenta implementar `pop_front` en la clase `ListLinkedDouble`:\n\n```cpp\ntemplate &lt;typename T&gt;\nclass ListLinkedDouble {\npublic:\n  ...\n  void pop_front() {\n  \tassert(!empty());\n  \t// COMPLETAR\n  }\n};\n```\n\nSolamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.\n\nAl llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia. \n&quot;}},{&quot;id&quot;:&quot;52327e22-be8e-4343-a362-39a3a87250a5&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;begin().elem()&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Completa el `return` en el siguiente método de la clase `ListLinkedDouble`:\n\n```cpp\ntemplate &lt;typename T&gt;\nclass ListLinkedDouble {\npublic:\n  ...\n  T &amp; front() {\n  \tassert(!empty());\n  \treturn [...];\n  }\n};\n```\n\nSolamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.\n\nAl llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No pongas el punto y coma al final.\n&quot;}},{&quot;id&quot;:&quot;9cc80d1f-ca67-45ef-b70d-46c9c7dca190&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;insert(end(),elem);&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Intenta implementar `push_back` en la clase `ListLinkedDouble`:\n\n```cpp\ntemplate &lt;typename T&gt;\nclass ListLinkedDouble {\npublic:\n  ...\n  void push_back(const T &amp;elem) {\n  \t// Completar\n  }\n};\n```\n\nSolamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.\n\nAl llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia.\n&quot;}},{&quot;context&quot;:&quot;El iterador `end()` no apunta al último elemento, sino a una posición ficticia después de él. Por tanto, no es correcto hacer `erase(end())`. Para poder aplicar `erase` tendríamos que hacer retroceder el iterador devuelto por `end()` para que apunte al último elemento, pero los iteradores que hemos implementado hasta ahora no lo permiten.\n\nCuando estudiemos la STL, encontraremos ejemplos de iteradores que no solo pueden avanzar por la lista, sino también retroceder por ella.\n&quot;,&quot;id&quot;:&quot;d9b8fb7f-d57e-4ced-a188-d187a35d86d2&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;NO SE PUEDE&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Intenta implementar `pop_back` en la clase `ListLinkedDouble`:\n\n```cpp\ntemplate &lt;typename T&gt;\nclass ListLinkedDouble {\npublic:\n  ...\n  void pop_back() {\n    assert (!empty());\n    // Completar\n  }\n};\n```\n\nSolamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.\n\nAl llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia.\n&quot;}},{&quot;context&quot;:&quot;El iterador `end()` no apunta al último elemento, sino a una posición ficticia después de él. Por tanto, no es correcto hacer `end().elem()`. Para poder aplicar `elem()` tendríamos que hacer retroceder el iterador devuelto por `end()` para que apunte al último elemento, pero los iteradores que hemos implementado hasta ahora no lo permiten.\n\nCuando estudiemos la STL, encontraremos ejemplos de iteradores que no solo pueden avanzar por la lista, sino también retroceder por ella.\n&quot;,&quot;id&quot;:&quot;499b4f1f-acd8-4ae5-a41d-b4930950fd7e&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;NO SE PUEDE&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Completa el `return` en el siguiente método de la clase `ListLinkedDouble`:\n\n```cpp\ntemplate &lt;typename T&gt;\nclass ListLinkedDouble {\npublic:\n  ...\n  T &amp; back() {\n    assert(!empty());\n    return [...];\n  }\n};\n```\n\nSolamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.\n\nAl llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No pongas el punto y coma al final.\n&quot;}}]}" ></div>
+<script type="text/javascript" src="../quiz/quiz-embed.iife.js"></script><link rel="stylesheet" type="text/css" href="../quiz/style.css">
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../quizzes/sem05_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../quizzes/sem05_3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../quizzes/sem05_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../quizzes/sem05_3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

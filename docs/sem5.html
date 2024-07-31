@@ -1,0 +1,454 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Iteradores - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="sem4.html"><strong aria-hidden="true">4.</strong> Pilas, colas y colas dobles</a></li><li class="chapter-item expanded "><a href="sem5.html" class="active"><strong aria-hidden="true">5.</strong> Iteradores</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">6.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">7.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">8.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">9.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">10.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_1.html"><strong aria-hidden="true">11.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_2.html"><strong aria-hidden="true">12.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_3.html"><strong aria-hidden="true">13.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_4.html"><strong aria-hidden="true">14.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_5.html"><strong aria-hidden="true">15.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_1.html"><strong aria-hidden="true">16.</strong> Plantillas en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_2.html"><strong aria-hidden="true">17.</strong> Pilas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_3.html"><strong aria-hidden="true">18.</strong> Colas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_4.html"><strong aria-hidden="true">19.</strong> Colas dobles</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_1.html"><strong aria-hidden="true">20.</strong> ¿Para qué sirven los iteradores?</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_2.html"><strong aria-hidden="true">21.</strong> Iteradores sobre listas</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_3.html"><strong aria-hidden="true">22.</strong> TADs lineales en la STL</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_4.html"><strong aria-hidden="true">23.</strong> STL (1)</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html"><strong aria-hidden="true">24.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="semana-5---iteradores"><a class="header" href="#semana-5---iteradores">Semana 5 - Iteradores</a></h1>
+<div class="aims">
+<div class="aims_header">
+✔️ Objetivos
+</div>
+<ul>
+<li>
+<p>Identificar los casos de uso de un iterador.</p>
+</li>
+<li>
+<p>Conocer la implementación de los iteradores en las distintas implementaciones del TAD Lista.</p>
+</li>
+<li>
+<p>Conocer la noción de iterador como abstracción de puntero.</p>
+</li>
+<li>
+<p>Aplicar las clases de la STL para realizar problemas concretos.</p>
+</li>
+</ul>
+<div class="aims_header">
+✔️ Tiempo de estudio
+</div>
+<ul>
+<li>
+<p><strong>Vídeos</strong>: 48min (+3 min opcional)</p>
+</li>
+<li>
+<p><strong>Total</strong> <em>(incluyendo vídeos, cuestionarios y actividades de autoevaluación)</em>: 2h</p>
+</li>
+</ul>
+</div>
+<h2 id="51-motivación-para-qué-sirven-los-iteradores"><a class="header" href="#51-motivación-para-qué-sirven-los-iteradores">5.1. Motivación. ¿Para qué sirven los iteradores?</a></h2>
+<p>Los iteradores son unos Tipos Abstractos de Datos muy utilizados para recorrer listas. Permiten a un programador moverse secuencialmente por los elementos de una lista, independientemente de si la lista está implementada mediante un vector o mediante una lista enlazada.</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.1
+</div>
+<div class="body">
+<p>Para entender mejor la utilidad de los iteradores, comienza por el siguiente cuestionario:</p>
+<p>❓ <a href="quizzes/sem05_1.html">Cuestionario de autoevaluación - ¿Para qué sirve un iterador?</a></p>
+</div>
+</div>
+<p>Ahora veamos para qué sirve el TAD Iterador y cuáles son las operaciones que soporta.</p>
+<p>▶️ <a href="https://youtu.be/W2BlFbgP6Ys">Introducción a los iteradores</a> (9:41)</p>
+<h2 id="52-iteradores-en-listas-enlazadas"><a class="header" href="#52-iteradores-en-listas-enlazadas">5.2. Iteradores en listas enlazadas</a></h2>
+<p>La primera implementación de iteradores que veremos será en el contexto de la clase <code>ListLinkedDouble</code>. En este caso, un iterador contiene un puntero al nodo que está siendo señalado actualmente por el iterador.</p>
+<p>▶️ <a href="https://youtu.be/NkLadw80I4E">Iteradores y listas enlazadas</a> (5:30)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/lineales/list_linked_double_v6/list_linked_double.h">Código fuente</a></p>
+<p>Vamos a hacer un pequeño inciso sobre un aspecto de C++ que no está cubierto en los vídeos. Observa el constructor de la clase <code>iterator</code> en el código fuente de <code>ListLinkedDouble</code>. ¡Es un constructor privado!. En primer lugar, ¿por qué es privado?. En segundo lugar, ¿cómo creo instancias de <code>iterator</code> si su constructor es privado?. Respondemos a estas preguntas a continuación:</p>
+<ul>
+<li>
+<p><strong>¿Por qué es privado?</strong> Por dos motivos. El primero es porque queremos que un/a
+usuario/a de la clase <code>ListLinkedDouble</code> solamente pueda obtener iteradores
+llamando a los métodos <code>begin</code> y <code>end</code>. El segundo motivo se debe a que el
+cliente de la clase <code>ListLinkedDouble</code> no tiene acceso al tipo <code>Node</code>, ya que
+su definición también es privada (y así debe seguir siéndolo). Por
+tanto, ¿cómo podría un/a programador/a crear un iterador directamente, si
+no tiene ningún puntero a <code>Node</code> con el que llamar a su constructor? Y si,
+aun así, tuviese acceso al tipo <code>Node</code> ¿qué garantiza que el/la
+programador/a vaya a crear un iterador de manera correcta?. Por estos
+motivos, es mejor encapsular la creación de iteradores exclusivamente
+mediante el uso de los métodos <code>begin</code> y <code>end</code>.</p>
+</li>
+<li>
+<p><strong>¿Cómo creo instancias de <code>iterator</code>?</strong> En general, no es posible acceder a
+los métodos y atributos privados de una clase desde fuera de ella, pero
+hemos hecho un pequeño «truco». La clave está en la siguiente
+<a href="https://github.com/manuelmontenegro/ED/blob/9e5fe90e3799eb72228222869c6fd98d618f1af7/lineales/list_linked_double_v6/list_linked_double.h#L140">declaración</a> dentro de la clase <code>iterator</code>:</p>
+<pre><code class="language-cpp">friend class ListLinkedDouble;
+</code></pre>
+<p>Con esto estamos diciendo que la clase <code>ListLinkedDouble</code> es <em>amiga</em> de
+<code>iterator</code>. Esto significa que la clase <code>ListLinkedDouble</code> puede acceder
+a los atributos y métodos privados de la clase <code>iterator</code>. Por este
+motivo, en los métodos <code>begin</code> y <code>end</code> hemos podido llamar a los
+constructores de <code>iterator</code>, aunque sean privados. En general, C++ nos
+permite declarar clases y funciones amigas de una determinada clase <code>A</code>.
+Estas clases y funciones podrán acceder, en su código, a los atributos y
+métodos privados de <code>A</code>. Fíjate en que la declaración <code>friend</code> debe
+estar <em>dentro</em> de la definición de la clase <code>A</code>. Con esto nos aseguramos
+de que la persona que ha creado la clase <code>A</code> indica expresamente quiénes
+son las amigas de la clase.</p>
+</li>
+</ul>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.2
+</div>
+<div class="body">
+<p>Los iteradores nos permiten hacer referencia a posiciones arbitrarias dentro de una lista.</p>
+<ul>
+<li>
+<p>¿Puedes escribir un método dentro de <code>ListLinkedDouble</code> que inserte un elemento antes de la posición indicada por un iterador?</p>
+</li>
+<li>
+<p>¿Puedes escribir un método que elimine el elemento señalado por un iterador?</p>
+</li>
+</ul>
+<p>💻 <a href="https://godbolt.org/z/Mzxs4vdTb">Ejercicio: inserción y eliminación de elementos en una lista</a></p>
+</div>
+</div>
+<p>En el siguiente vídeo se explica la solución. Ten en cuenta que las implementaciones que se detallan allí no solo realizan la inserción/borrado correspondientes, sino que también devuelven otro iterador. Es importante saber por qué.</p>
+<p>▶️ <a href="https://youtu.be/GOMNAzVbCZk">Inserción y borrado con iteradores</a> (3:16)</p>
+<p>De este vídeo se extrae un importante resultado:</p>
+<div class="warning">
+<p><strong>Aviso</strong></p>
+<p>Las operaciones que insertan o eliminan elementos de una lista pueden afectar, o incluso <strong>invalidar</strong>, los iteradores que actualmente existan sobre esa lista.</p>
+</div>
+<p>Uno de los principales errores del principiante es, precisamente, el acceso a iteradores invalidados. Cuando veamos la STL más adelante, veremos cómo saber qué operaciones sobre listas alteran o invalidan a los iteradores existentes.</p>
+ <div class="exercise">
+<div class="title">
+📝 Ejercicio 5.3
+</div>
+<div class="body">
+<p>En el siguiente cuestionario podrás practicar todo lo visto hasta ahora:</p>
+<p>❓ <a href="quizzes/sem05_2.html">Cuestionario de autoevaluación - Iteradores sobre listas</a></p>
+</div>
+</div>
+<p>En el siguiente vídeo vamos a ver la relación que existe entre los iteradores y el modificador <code>const</code>. A partir del minuto 4:20 se explican unos detalles de implementación. Si te pierdes en esos detalles, no te preocupes; no es esencial para la asignatura.</p>
+<p>▶️ <a href="https://youtu.be/-TE-3-3DEWk">Iteradores constantes</a> (5:59)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/lineales/list_linked_double_v7/list_linked_double.h">Código fuente</a></p>
+<p>Ahora viene una parte bonita, conocida como el <em>azúcar sintáctico</em>. En el siguiente vídeo vamos a renombrar los métodos <code>advance</code> y <code>elem</code> que hemos definido hasta ahora, con el objetivo de acercar la sintaxis que estamos utilizando a la sintaxis de los punteros de C++. También aprovechamos para presentar el especificador <code>auto</code> y la sintaxis de los bucles <code>for</code> que hacen uso de iterador.</p>
+<p>▶️ <a href="https://youtu.be/Prx6lK-C1Mg">Adaptando la sintaxis de los iteradores</a> (7:13)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/lineales/list_linked_double_v8/list_linked_double.h">Código fuente</a></p>
+<h2 id="53-iteradores-en-arrays"><a class="header" href="#53-iteradores-en-arrays">5.3. Iteradores en arrays</a></h2>
+<p>De nuevo, seguimos en el TAD Lista, pero ahora en su implementación mediante vectores. Gracias a la sintaxis que hemos empleado en el último vídeo (el operador <code>*</code> en lugar del método <code>elem</code> y el operador <code>++</code> en lugar del método <code>advance</code>), la incorporación de iteradores a esta implementación es extremadamente simple.</p>
+<p>Ojo a la parte final del video, que explica por qué los iteradores son una generalización de los punteros.</p>
+<p>▶️ <a href="https://youtu.be/vrNJ-575-g4">Iteradores en ListArray</a> (4:01)</p>
+<p>El concepto de iterador es omnipresente en el lenguaje C++. Hemos visto que existen iteradores para <em>strings</em>. En la sección siguiente veremos que también existen iteradores para flujos de salida (<code>ofstream</code> y compañía). De momento, vamos a practicar un poco los iteradores sobre cadenas con un par de ejercicios:</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.4 - Pasar una cadena a mayúsculas
+</div>
+<div class="body">
+<p>La función <code>toupper</code>, definida en el fichero de cabecera <code>&lt;cctype&gt;</code>, recibe un carácter y devuelve su carácter equivalente en mayúsculas. Utilizando iteradores sobre cadenas, extiende esta función para que transforme todos los caracteres de una cadena a mayúsculas:</p>
+<p>💻 <a href="https://godbolt.org/z/jGT4GYYe8">Ejercicio - Pasar una cadena a letras mayúsculas</a></p>
+<p>💻 <a href="https://godbolt.org/z/v4eEj6ajb">Solución</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.5 - Cadenas «cochanbrosas»
+</div>
+<div class="body">
+<p>Decimos que una cadena es <em>cochanbrosa</em> (sic) si contiene una letra <code>n</code> antes de una letra <code>p</code>, o antes de una letra <code>b</code>. Por ejemplo: <code>"Inbécil"</code>, <code>"Colonbia"</code>. Escribe una función que determine si una cadena es cochanbrosa. Para ello utiliza dos iteradores que recorran simultáneamente la lista.</p>
+<p>💻 <a href="https://godbolt.org/z/aszbYGG1d">Ejercicio - Cadenas cochanbrosas</a></p>
+<p>💻 <a href="https://godbolt.org/z/7Yzc845v1">Solución</a></p>
+</div>
+</div>
+<h2 id="54-introducción-a-la-stl"><a class="header" href="#54-introducción-a-la-stl">5.4. Introducción a la STL</a></h2>
+<p>El acrónimo STL proviene de Standard Template Library. La STL forma parte de la librería estándar de C++ y consiste, básicamente, en un conjunto de clases que implementan los Tipos Abstractos de Datos que hemos visto este curso, y algunos TADs más que nos quedan por ver. Además de eso, la STL implementa una gran cantidad de algoritmos que trabajan sobre estos TADs: ordenación, búsqueda, etc.</p>
+<p>En efecto, todo lo que hemos visto sobre los TADs Lista, Pila, Cola y Doble Cola ya está implementado. También todo lo relacionado con los iteradores. A partir de ahora os voy a pedir que utilicéis las clases de la STL para realizar los problemas que requieran el uso de estos TADs, en lugar de las implementaciones que os he ido proporcionando estas semanas. Pero ¡ojo!, si en algún ejercicio os pido añadir alguna operación que requiera acceso a la representación interna de los TADs, entonces sí que debéis utilizar las implementaciones que hemos ido desarrollando en los vídeos de estas semanas.</p>
+<p>Aunque la interfaz de los TADs de la STL es siempre es la misma, las implementaciones concretas dependen del compilador que utilicéis, y además suelen ser bastante crípticas debido al gran número de optimizaciones y características avanzadas de C++ de las que hacen uso.</p>
+<p>Pero entonces, si todo esto está ya implementado, ¿por qué hemos estado perdiendo el tiempo implementándolo nosotros/as?. En realidad, no hemos estado perdiendo el tiempo. Uno de los objetivos de este curso es conocer la implementación interna de estos TADs para poder tener una decisión informada sobre qué implementación nos conviene para según qué propósito.</p>
+<p>Dicho todo esto, vamos a iniciar nuestro estudio de los TADs de la STL, pero antes te voy a dar la oportunidad de que la explores tú mismo/a.</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.6
+</div>
+<div class="body">
+<p>Accede al siguiente enlace:</p>
+<p>🌎 <a href="https://en.cppreference.com/w/cpp/container">Librería de contenedores</a></p>
+<p>Investiga un poco las clases que están bajo el apartado <em>Sequence containers</em> y <em>Container adaptors</em>. A continuación, resuelve el siguiente cuestionario:</p>
+<p>❓ <a href="quizzes/sem05_3.html">TADs lineales en la STL - Cuestionario previo</a></p>
+</div>
+</div>
+<p>Ahora sí, los vídeos:</p>
+<p>▶️ <a href="https://youtu.be/p0lGTTcN7PE">C++ - Contenedores lineales en la STL</a> (3:06)</p>
+<p>▶️ <a href="https://youtu.be/jyO3QMIavrI">C++ - Iteradores en la STL</a> (3:46)</p>
+<p>▶️ <a href="https://youtu.be/RRh-JFxMl2c">C++ - Algoritmos en la STL (1)</a> (4:58)</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.7
+</div>
+<div class="body">
+<p>Aquí tienes un ejemplo para que puedas ir practicando con los algoritmos de la STL:</p>
+<p>💻 <a href="https://godbolt.org/z/YfoPrx3d8">Ejercicio: algoritmos de la STL</a></p>
+<p>💻 <a href="https://godbolt.org/z/xK4TfPvGM">Solución</a></p>
+</div>
+</div>
+<p>Queda comentar un último aspecto de la STL que es importantísimo tener en cuenta a la hora de trabajar con los iteradores. De nuevo, accede a la siguiente página:</p>
+<p>🌎 <a href="https://en.cppreference.com/w/cpp/container">Librería de contenedores</a></p>
+<p>Observa la sección <em>Iterator invalidation</em>. La tabla nos dice qué iteradores se invalidan a la hora de hacer una modificación sobre un determinado TAD. Debes recordar lo siguiente:</p>
+<ul>
+<li>
+<p>Tras hacer una inserción en un objeto de la clase <code>list</code>, los iteradores que hubiese sobre esa lista <strong>siguen siendo válidos</strong>. Si se realiza un borrado, también siguen siendo válidos <strong>excepto si apuntan al elemento borrado</strong>.</p>
+</li>
+<li>
+<p>Tras hacer una inserción en un objeto de la clase <code>vector</code>, si el array se redimensiona, todos los iteradores quedan invalidados. Si no se redimensiona, solo los iteradores que apunten antes del elemento insertado se mantienen válidos; los que apuntan después del elemento insertado quedan invalidados. Lo mismo se aplica a los borrados. Para un/a usuario/a de la clase <code>vector</code> resulta difícil predecir de antemano cuándo se produce un redimensionado del array, por lo que normalmente hay que suponer que, cuando se realiza una inserción o borrado en un <code>vector</code>, <strong>todos los iteradores se invalidan</strong>.</p>
+</li>
+</ul>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.8
+</div>
+<div class="body">
+<p>Finalizamos nuestro viaje por la STL con un cuestionario:</p>
+<p>❓ <a href="quizzes/sem05_4.html">Cuestionario de autoevaluación - STL (1)</a></p>
+</div>
+</div>
+<h2 id="55-tads-en-la-librería-estándar-de-java-opcional"><a class="header" href="#55-tads-en-la-librería-estándar-de-java-opcional">5.5. TADs en la librería estándar de Java (Opcional)</a></h2>
+<p>Aunque este curso está centrado en C++, seguramente utilizas Java en otras asignaturas. Te dejo un breve vídeo con las clases que necesitas conocer para utilizar los TADs vistos hasta ahora en Java.</p>
+<p>▶️ <a href="https://youtu.be/OtaCEwlZb_U">Java - TADs Lineales</a> (Opcional) (3:02)</p>
+<h2 id="56-problemas-de-laboratorio"><a class="header" href="#56-problemas-de-laboratorio">5.6. Problemas de laboratorio</a></h2>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.9
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L05-1.pdf">Matriz de Toeplitz</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.10
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L05-2.pdf">De postre, un chuletón</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.11
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L05-3.pdf">Suavizar una lista de números enteros</a></p>
+</div>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="sem4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="quizzes/sem01_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="sem4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="quizzes/sem01_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

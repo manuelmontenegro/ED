@@ -1,0 +1,112 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que la clase `ListLinkedDouble` implementa el TAD Lista mediante una lista doblemente enlazada circular con nodo fantasma. ¿Cuál es el coste en tiempo, en el caso peor, de la siguiente función?
+
+
+```cpp
+void suma_todos(const ListLinkedDouble &l) {
+   int suma = 0;
+   for (int i = 0; i < l.size(); i++) {
+     suma += l[i];
+   }
+   return suma;
+}
+```
+"""
+prompt.distractors = [
+	"Constante",
+	"Lineal con respecto al tamaño de la lista de entrada"
+]
+answer.answer = "Cuadrático con respecto al tamaño de la lista"
+
+context = """
+El acceso `l[i]` tiene coste lineal con respecto a `i`, porque estamos en una lista enlazada. Como se hace `l.size()` veces, el coste es cuadrático con respecto a `l.size()`.
+"""
+id = "b4b3e2b8-44c5-472e-8604-99cb89b0816b"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que la clase `ListArray` implementa el TAD Lista mediante un vector. ¿Cuál es el coste en tiempo, en el caso peor, de la siguiente función?
+
+```cpp
+void suma_todos(const ListArray &l) {
+   int suma = 0;
+   for (int i = 0; i < l.size(); i++) {
+     suma += l[i];
+   }
+   return suma;
+}
+```
+"""
+prompt.distractors = [
+	"Constante",
+	"Cuadrático con respecto al tamaño de la lista de entrada."
+]
+answer.answer = "Lineal con respecto al tamaño de la lista de entrada"
+
+context = """
+En este caso el acceso `l[i]` tiene coste constante, porque la lista está implementada mediante un vector. Como se hace `l.size()` veces, el coste es lineal con respecto a `l.size()`.
+"""
+id = "748dfcd2-c3c9-4b18-92eb-355d83512da6"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que la clase `ListLinkedDouble` implementa el TAD Lista mediante una lista doblemente enlazada con nodo fantasma. ¿Cuál es el coste en **tiempo**, en el caso peor, de la siguiente función?
+
+```cpp
+void suma_todos(const ListLinkedDouble &l) {
+   int suma = 0;
+   ListLinkedDouble copia = l;
+   while (!copia.empty()) {
+     suma += copia.front();
+     copia.pop_front();
+   }
+   return suma;
+}
+```
+"""
+prompt.distractors = [
+	"Constante",
+	"Cuadrático con respecto al tamaño de la lista de entrada."
+]
+answer.answer = "Lineal con respecto al tamaño de la lista de entrada"
+
+context = """
+Al principio se hace una copia de la lista, que tiene coste lineal con respecto a `l.size()`. Luego está el bucle, en el que los métodos `front` y `pop_front` tienen coste constante en el caso de una lista enlazada. Ambas llamadas están dentro de un bucle que se ejecuta `l.size()` veces. Por tanto, el coste del bucle es lineal con respecto a `l.size()`.
+"""
+id = "7abbf621-c6e0-4ca2-88ac-2543a3a27006"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que la clase `ListLinkedDouble` implementa el TAD Lista mediante una lista doblemente enlazada con nodo fantasma. ¿Cuál es el coste en **espacio**, en el caso peor, de la siguiente función?
+
+```cpp
+void suma_todos(const ListLinkedDouble &l) {
+   int suma = 0;
+   ListLinkedDouble copia = l;
+   while (!copia.empty()) {
+     suma += copia.front();
+     copia.pop_front();
+   }
+   return suma;
+}
+```
+
+¡Ojo! Se pide coste en **espacio**, no en tiempo.
+"""
+prompt.distractors = [
+	"Constante",
+	"Cuadrático con respecto al tamaño de la lista de entrada."
+]
+answer.answer = "Lineal con respecto al tamaño de la lista de entrada"
+
+context = """
+Se realiza una copia de la lista de entrada, por lo que el coste es lineal con respecto al tamaño de la lista de entrada.
+"""
+id = "104d3f62-ddc4-4b4a-af66-d10d1e3b9689"
+
+

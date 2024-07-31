@@ -1,0 +1,71 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cual de los siguientes métodos **NO** está disponible en la clase `list`?
+"""
+prompt.distractors = [
+	"`push_front`",
+	"`back`",
+	"`push_back`"
+]
+answer.answer = "`at` (u `operator[]`)"
+id = "24d1b0aa-c98e-46da-8b12-e04cc2b7de60"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuál de las clases de la STL implementa el TAD Doble Cola? (No pongas `std::` delante)
+"""
+answer.answer = "deque"
+id = "d9432b22-f21c-4fd0-84e2-f254f5df6f23"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuál de las clases de la STL implementa el TAD Lista utilizando una lista enlazada simple? No pongas el `std::` delante.
+"""
+answer.answer = "forward_list"
+id = "173fcc2f-9ef4-49de-b586-7e44b0a9dead"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuál de las clases de la STL implementa el TAD Lista utilizando una lista doblemente enlazada? No pongas el `std::` delante.
+"""
+answer.answer = "list"
+id = "b6b751a6-b399-4177-823a-03372ef1b9b9"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuál de las clases de la STL implementa el TAD Cola? No pongas el `std::` delante.
+"""
+answer.answer = "queue"
+id = "4ba28ad6-0d2c-4215-95d0-62db2e52a329"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuál de las clases de la STL implementa el TAD Pila? No pongas el `std::` delante.
+"""
+answer.answer = "stack"
+id = "5e525cf8-af6a-4193-ade7-97321b59509c"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Qué método de la clase `list` elimina los valores duplicados que aparecen en posiciones adyacentes de una lista?
+"""
+answer.answer = "unique"
+id = "3c394a37-825c-4bde-aae9-136bd9818e4d"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuál de las clases de la STL implementa el TAD Lista utilizando un array extensible para almacenar sus elementos? No pongas el `std::` delante.
+"""
+answer.answer = "vector"
+id = "a0acc34c-095c-4095-bb04-555a4e99b0dc"
+

@@ -1,0 +1,322 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cual de las siguientes aproximaciones es la más precisa para describir el coste en tiempo de la siguiente función?
+
+```
+template <typename T>
+ T & at(ListLinkedDouble<T> &l, int i) {
+   assert (0 <= i && i < l.size());
+   ListLinkedDouble<T>::iterator it = l.begin();
+   while (i > 0) {
+     it.advance();
+     --i;
+   }
+   return it.elem();
+}
+```
+"""
+prompt.distractors = [
+	"Coste O(`l.size() * i`)",
+	"Coste O(`l.size()`)"
+]
+answer.answer = "Coste O(`i`)"
+id = "61718e1e-5b3f-4d1a-a939-57ff13e78e9c"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+En una clase `ListLinkedDouble` con listas doblemente enlazadas circulares. ¿Cuáles de las siguientes operaciones tienen coste constante?
+
+1. `elem` de la clase `ListLinkedDouble<T>::iterator`
+
+2. `advance` de la clase `ListLinkedDouble<T>::iterator`
+
+3. `begin`
+
+4. `end`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "1 2 3 4"
+id = "23864b44-0f8c-4d03-8822-f6930d3d4645"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuáles de las siguientes expresiones son válidas? Suponemos que `l` es una lista de enteros **no vacía**.
+
+1. `l.insert(l.begin(), 23)`
+
+2. `l.begin().elem()`
+
+3. `l.erase(l.begin())`
+
+4. `l.begin().advance()`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "1 2 3 4"
+
+context = """
+1. `l.insert(l.begin(), 23)`: Correcto. En este caso, se inserta un elemento antes de `l.begin()`, que es el primero de la lista. Es decir, se añadirá el elemento 23 al principio de la lista. La llamada es correcta.
+
+2. `l.begin().elem()`: Correcto. Esto denota el primer elemento de la lista.
+
+3. `l.erase(l.begin())`: Correcto. Elimina el primer elemento de la lista.
+
+4. `l.begin().advance()`: Correcto. Avanza el iterador al segundo elemento de la lista, o al final de ella si no hay más.
+"""
+id = "41a944fc-44c7-4b86-8446-0647b7060797"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuáles de las siguientes expresiones **NO** son válidas? Suponemos que `l` es una lista de enteros, que puede estar vacía o no.
+
+1. `l.insert(l.end(), 23)`
+
+2. `l.erase(l.end())`
+
+3. `l.end().advance()`
+
+4. `l.end().elem()`
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+answer.answer = "2 3 4"
+
+context = """
+1. `l.insert(l.end(), 23)`: Válido. En este caso, se inserta un elemento antes de `l.end()`, que denota el final de la lista. Es decir, se añadirá el elemento 23 al final de la lista. La llamada es correcta.
+
+2. `l.erase(l.end())`: No válido. El iterador `end()` no denota ningún elemento de la lista, por lo que no tiene sentido eliminar el valor apuntado por él.
+
+3. `l.end().advance()`: No válido. El iterador `end()` denota el final del recorrido. No es posible avanzar desde allí.
+
+
+4. `l.end().elem()`: No válido. El iterador `end()` no denota ningún elemento de la lista, por lo que no puede accederse al elemento señalado por él.
+"""
+id = "aeebe28d-a278-41d6-beee-f77e4eda9509"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El siguiente programa devuelve y elimina el primer elemento de una lista en el caso en que dicha lista no sea vacía.
+
+```cpp
+template <typename T>
+T pop_front(ListLinkedDouble<T> &l) {
+  ListLinkedDouble<T>::iterator it = l.begin();
+  l.pop_front();
+  return it.elem();
+}
+```
+
+"""
+prompt.distractors = [
+	"Verdadero"
+]
+answer.answer = "Falso"
+
+context = """
+Ten en cuenta que `it` apunta al primer elemento de la lista. Sin embargo, tras hacer `pop_front()` ese iterador queda invalidado, por lo que no se puede realizar ninguna operación sobre él. La llamada a `it.elem()` puede dar error, o devolver un valor indefinido.
+"""
+id = "a308cf05-434d-4575-8a79-f0c71b82b787"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El siguiente programa devuelve y elimina el primer elemento de una lista en el caso en que dicha lista no sea vacía.
+
+```cpp
+template <typename T>
+T pop_front(ListLinkedDouble<T> &l) {
+   ListLinkedDouble<T>::iterator it = l.begin();
+   T result = it.elem();
+   l.pop_front();
+   return result;
+}
+```
+
+"""
+prompt.distractors = [
+	"Falso"
+]
+answer.answer = "Verdadero"
+
+context = """
+Ahora sí es correcto. Hemos hecho una copia del primer elemento de la lista en la variable `result` antes de que `pop_front()` invalide el iterador.
+"""
+id = "329f58b4-f619-4f5f-acdb-a47682d4b1b6"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Si la lista `l` es vacía, se cumple que `l.begin() == l.end()`
+"""
+prompt.distractors = [
+	"Falso"
+]
+answer.answer = "Verdadero"
+id = "4dd19dd1-2655-4af2-83a1-83db6f5e0555"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Intenta implementar `push_front` en la clase `ListLinkedDouble`:
+
+```cpp
+template <typename T>
+class ListLinkedDouble {
+public:
+  ...
+  void push_front(const T &elem) {
+  	// COMPLETAR
+  }
+};
+```
+
+Solamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.
+
+Al llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia. 
+"""
+answer.answer = "insert(begin(),elem);"
+id = "2f7281c9-5a20-4c82-a8e3-5e9c3230ec2d"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Intenta implementar `pop_front` en la clase `ListLinkedDouble`:
+
+```cpp
+template <typename T>
+class ListLinkedDouble {
+public:
+  ...
+  void pop_front() {
+  	assert(!empty());
+  	// COMPLETAR
+  }
+};
+```
+
+Solamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.
+
+Al llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia. 
+"""
+answer.answer = "erase(begin());"
+id = "7729c50d-a79d-4e03-974c-484c98311997"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Completa el `return` en el siguiente método de la clase `ListLinkedDouble`:
+
+```cpp
+template <typename T>
+class ListLinkedDouble {
+public:
+  ...
+  T & front() {
+  	assert(!empty());
+  	return [...];
+  }
+};
+```
+
+Solamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.
+
+Al llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No pongas el punto y coma al final.
+"""
+answer.answer = "begin().elem()"
+id = "52327e22-be8e-4343-a362-39a3a87250a5"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Intenta implementar `push_back` en la clase `ListLinkedDouble`:
+
+```cpp
+template <typename T>
+class ListLinkedDouble {
+public:
+  ...
+  void push_back(const T &elem) {
+  	// Completar
+  }
+};
+```
+
+Solamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.
+
+Al llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia.
+"""
+answer.answer = "insert(end(),elem);"
+id = "9cc80d1f-ca67-45ef-b70d-46c9c7dca190"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Intenta implementar `pop_back` en la clase `ListLinkedDouble`:
+
+```cpp
+template <typename T>
+class ListLinkedDouble {
+public:
+  ...
+  void pop_back() {
+    assert (!empty());
+    // Completar
+  }
+};
+```
+
+Solamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.
+
+Al llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No te olvides del `;` al final de la sentencia.
+"""
+answer.answer = "NO SE PUEDE"
+
+context = """
+El iterador `end()` no apunta al último elemento, sino a una posición ficticia después de él. Por tanto, no es correcto hacer `erase(end())`. Para poder aplicar `erase` tendríamos que hacer retroceder el iterador devuelto por `end()` para que apunte al último elemento, pero los iteradores que hemos implementado hasta ahora no lo permiten.
+
+Cuando estudiemos la STL, encontraremos ejemplos de iteradores que no solo pueden avanzar por la lista, sino también retroceder por ella.
+"""
+id = "d9b8fb7f-d57e-4ced-a188-d187a35d86d2"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Completa el `return` en el siguiente método de la clase `ListLinkedDouble`:
+
+```cpp
+template <typename T>
+class ListLinkedDouble {
+public:
+  ...
+  T & back() {
+    assert(!empty());
+    return [...];
+  }
+};
+```
+
+Solamente puedes utilizar las funciones públicas relacionadas con iteradores vistas esta semana. Si no es posible, escribe `NO SE PUEDE`.
+
+Al llamar a los métodos de la clase `ListLinkedDouble`, no pongas `this` delante ni utilices espacios entre los parámetros. No pongas el punto y coma al final.
+"""
+answer.answer = "NO SE PUEDE"
+
+context = """
+El iterador `end()` no apunta al último elemento, sino a una posición ficticia después de él. Por tanto, no es correcto hacer `end().elem()`. Para poder aplicar `elem()` tendríamos que hacer retroceder el iterador devuelto por `end()` para que apunte al último elemento, pero los iteradores que hemos implementado hasta ahora no lo permiten.
+
+Cuando estudiemos la STL, encontraremos ejemplos de iteradores que no solo pueden avanzar por la lista, sino también retroceder por ella.
+"""
+id = "499b4f1f-acd8-4ae5-a41d-b4930950fd7e"
+

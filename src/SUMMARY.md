@@ -6,6 +6,7 @@
 - [Vectores y listas enlazadas simples](./sem2.md)
 - [Listas enlazadas dobles y circulares](./sem3.md)
 - [Pilas, colas y colas dobles](./sem4.md)
+- [Iteradores](./sem5.md)
 
 
 # Apéndices
@@ -25,4 +26,8 @@
 - [Pilas](./quizzes/sem04_2.md)
 - [Colas](./quizzes/sem04_3.md)
 - [Colas dobles](./quizzes/sem04_4.md)
+- [¿Para qué sirven los iteradores?](./quizzes/sem05_1.md)
+- [Iteradores sobre listas](./quizzes/sem05_2.md)
+- [TADs lineales en la STL](./quizzes/sem05_3.md)
+- [STL (1)](./quizzes/sem05_4.md)
 - [Como usar compiler explorer](./compiler_explorer.md)
