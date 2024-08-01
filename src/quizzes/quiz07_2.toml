@@ -1,0 +1,110 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un árbol binario de números enteros, cuyo recorrido en preorden es `5 1 7 9 3 2 7` ¿Cuál es la raíz del árbol?
+"""
+prompt.distractors = [
+	"7",
+	"9",
+	"No es posible saberlo a partir del recorrido",
+]
+
+answer.answer = "5"
+id = "ba674dbd-9416-416d-8240-9855784bedec"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un árbol binario de números enteros, cuyo recorrido en inorden es `5 4 7 1 3 7 0` ¿Cuál es la raíz del árbol?
+"""
+prompt.distractors = [
+	"1",
+	"5",
+	"0"
+]
+
+answer.answer = "No es posible saberlo a partir del recorrido"
+id = "4fc1a6c9-6564-4df8-b481-f4239423d02c"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un árbol binario de números enteros, cuyo recorrido en postorden es `5 6 8 9 1 3 4` ¿Cuál es la raíz del árbol?
+"""
+prompt.distractors = [
+	"No es posible saberlo a partir del recorrido",
+	"3",
+	"5"
+]
+
+answer.answer = "4"
+id = "b43166d1-4558-4126-a296-2d0394a1a474"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuál es el coste asintótico en **memoria** del algoritmo de recorrido en anchura (o recorrido por niveles)? Suponemos que *n* es el número de nodos del árbol que se recorre.
+"""
+prompt.distractors = [
+	"""<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>""",
+	"""<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>""",
+	"""<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>""",
+]
+
+answer.answer = """<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>"""
+context = """
+En primer lugar, recordemos que, en un recorrido en anchura, mientras se están procesando los nodos del nivel *i*-ésimo, se van almacenando en la cola los del nivel *(i+1)*-ésimo. Cuando se ha terminado de recorrer un nivel completamente, la cola contiene todos los elementos del árbol que se encuentran en el nivel siguiente. Por tanto, el coste en memoria sería igual al **número de nodos que podamos encontrarnos, como máximo, en un nivel**.
+
+Supongamos el caso peor, que es aquel en el que el árbol binario está *completo*. Es decir, cada nodo tiene exactamente dos hijos, excepto las hojas del último nivel, que no tienen hijos. En este caso, el último nivel es el que determina el coste en memoria, porque es el que tiene más nodos.
+
+- Si el árbol tiene altura 1, tenemos 1 nodo que está en el último nivel.
+
+- Si el árbol tiene altura 2, tenemos 3 nodos en el árbol, de los cuales 2 están en el último nivel.
+
+- Si el árbol tiene altura 3, tenemos 7 nodos en el árbol, de los cuales 4 están en el último nivel.
+
+- Si el árbol tiene altura 4, tenemos 15 nodos en el árbol, de los cuales 8 están en el último nivel.
+
+- Si el árbol tiene altura 5, tenemos 31 nodos en el árbol, de los cuales 16 están en el último nivel.
+
+- En general, cuando el árbol tiene altura *h*, tenemos <math><mrow><msup><mn>2</mn><mi>h</mi></msup><mo>−</mo></mrow><mrow><mn>1</mn></mrow></math> nodos en el árbol, de los cuales <math><msup><mn>2</mn><mrow><mi>h</mi><mo>−</mo><mn>1</mn></mrow></msup></math> están en el último nivel.
+
+De lo anterior se deduce que el número de nodos en el último nivel de un árbol completo es aproximadamente **la mitad** del número de nodos total, porque:
+
+<math display="block" class="tml-display" style="display:block math;"><mrow><msup><mn>2</mn><mrow><mi>h</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mn>2</mn><mi>h</mi></msup><mo>≈</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="prefix" stretchy="false">(</mo><msup><mn>2</mn><mi>h</mi></msup><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>n</mi></mrow></math>
+
+donde *n* es el número de nodos del árbol.
+
+
+Por tanto, si tenemos un árbol de tamaño *n*, el número máximo de nodos en un determinado nivel es también del orden de <math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>, y así es el coste en memoria del recorrido en anchura.
+"""
+
+id = "8cd7ef1c-1f42-4e2c-898a-dbba63ff2732"
+
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos que queremos hacer una función que reciba un árbol y devuelva una lista con el recorrido en inorden de sus elementos. Completa su definición:
+
+```cpp
+template <typename T>
+list inorder_to_list(const BinTree &tree) {
+  list<T> result;
+  tree.inorder([&result](const T &x) {
+	// COMPLETAR
+  });
+  return result;
+}
+```
+
+Escribe la sentencia que debería ir en lugar del comentario indicado como `// COMPLETAR`. No utilices espacios y no te olvides del `;` al final.
+"""
+
+answer.answer = """result.push_back(x);"""
+id = "ae45d77d-a58d-4b27-9456-5ce83c0e2bc2"

@@ -1,0 +1,178 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol1.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **preorden**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "GEICFBAHD"
+id = "8a90064e-4ca1-4628-a1e4-1dad3d5d9cf3"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol1.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **inorden**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "IECFGABDH"
+id = "2b6eb767-5d6d-4bec-801f-c1a69200385c"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol1.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **postorden**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "IFCEADHBG"
+id = "3285e596-d3a9-406e-be2b-7b37abab9910"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol1.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **en anchura**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "GEBICAHFD"
+id = "e38815fa-b801-43c4-b1e9-8ff147226dd1"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol2.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **en preorden**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "GEICFBAHD"
+id = "13c2ad5c-5a5a-4c5e-a9ab-b4174cf24a48"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol3.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **en inorden**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "IECFGABDH"
+id = "492f4c29-a029-4845-9e2c-eea05c933f8d"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol4.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **en postorden**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "IFCEADHBG"
+id = "1835235c-9a6b-49f0-9749-7d7c46fe72aa"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con 9 nodos, etiquetados desde la A hasta la H](07_1/Arbol5.png)
+
+Supongamos que cada vez que se visita un nodo se imprime la letra contenida en dicho nodo. ¿Cuál es el resultado de hacer un recorrido en **en anchura**?
+
+Escribe la secuencia resultante de letras sin espacios. Por ejemplo: `ABCDEFGHI`
+"""
+
+answer.answer = "GEBICAHFD"
+id = "47341027-cc89-44da-805e-2a9f25e8b939"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Un recorrido en preorden determina unívocamente un árbol. Es decir, dada una secuencia <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>, existe un único árbol cuyo recorrido en preorden es <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+
+context = """
+Observa los ejercicios 1 y 5 de este test. Son dos árboles distintos con el mismo recorrido en preorden.
+"""
+id = "24dab1e5-2248-49da-945c-6540dd6c008f"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Un recorrido en inorden determina unívocamente un árbol. Es decir, dada una secuencia <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>, existe un único árbol cuyo recorrido en inorden es <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+
+context = """
+Observa los ejercicios 2 y 6 de este test. Son dos árboles distintos con el mismo recorrido en inorden.
+"""
+id = "dcc6043b-6e32-4b7b-811a-3809e870d64c"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Un recorrido en postorden determina unívocamente un árbol. Es decir, dada una secuencia <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>, existe un único árbol cuyo recorrido en postorden es <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+
+context = """
+Observa los ejercicios 3 y 7 de este test. Son dos árboles distintos con el mismo recorrido en postorden.
+"""
+id = "190cd52e-a73b-4a06-b6b9-fcea4023f859"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Un recorrido en anchura determina unívocamente un árbol. Es decir, dada una secuencia <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>, existe un único árbol cuyo recorrido en anchura es <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+
+context = """
+Observa los ejercicios 4 y 8 de este test. Son dos árboles distintos con el mismo recorrido en anchura.
+"""
+id = "35429ed6-0bab-44c0-869a-7209727482f8"

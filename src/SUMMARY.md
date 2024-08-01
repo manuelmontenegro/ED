@@ -8,6 +8,7 @@
 - [Pilas, colas y colas dobles](./sem4.md)
 - [Iteradores](./sem5.md)
 - [Árboles binarios](./sem6.md)
+- [Recorridos en árboles binarios](./sem7.md)
 
 
 # Apéndices
@@ -34,4 +35,6 @@
 - [Árboles](./quizzes/sem06_1.md)
 - [Número de nodos](./quizzes/sem06_2.md)
 - [Funciones sobre árboles binarios](./quizzes/sem06_3.md)
+- [Recorridos en árboles binarios](./quizzes/sem07_1.md)
+- [Implementación de recorridos](./quizzes/sem07_2.md)
 - [Como usar compiler explorer](./compiler_explorer.md)

@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Implementación de recorridos - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="../sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="../sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="../sem4.html"><strong aria-hidden="true">4.</strong> Pilas, colas y colas dobles</a></li><li class="chapter-item expanded "><a href="../sem5.html"><strong aria-hidden="true">5.</strong> Iteradores</a></li><li class="chapter-item expanded "><a href="../sem6.html"><strong aria-hidden="true">6.</strong> Árboles binarios</a></li><li class="chapter-item expanded "><a href="../sem7.html"><strong aria-hidden="true">7.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="../quizzes/sem01_1.html"><strong aria-hidden="true">8.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem01_2.html"><strong aria-hidden="true">9.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_1.html"><strong aria-hidden="true">10.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_2.html"><strong aria-hidden="true">11.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_3.html"><strong aria-hidden="true">12.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_1.html"><strong aria-hidden="true">13.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_2.html"><strong aria-hidden="true">14.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_3.html"><strong aria-hidden="true">15.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_4.html"><strong aria-hidden="true">16.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_5.html"><strong aria-hidden="true">17.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_1.html"><strong aria-hidden="true">18.</strong> Plantillas en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_2.html"><strong aria-hidden="true">19.</strong> Pilas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_3.html"><strong aria-hidden="true">20.</strong> Colas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_4.html"><strong aria-hidden="true">21.</strong> Colas dobles</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_1.html"><strong aria-hidden="true">22.</strong> ¿Para qué sirven los iteradores?</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_2.html"><strong aria-hidden="true">23.</strong> Iteradores sobre listas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_3.html"><strong aria-hidden="true">24.</strong> TADs lineales en la STL</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_4.html"><strong aria-hidden="true">25.</strong> STL (1)</a></li><li class="chapter-item expanded "><a href="../quizzes/sem06_1.html"><strong aria-hidden="true">26.</strong> Árboles</a></li><li class="chapter-item expanded "><a href="../quizzes/sem06_2.html"><strong aria-hidden="true">27.</strong> Número de nodos</a></li><li class="chapter-item expanded "><a href="../quizzes/sem06_3.html"><strong aria-hidden="true">28.</strong> Funciones sobre árboles binarios</a></li><li class="chapter-item expanded "><a href="../quizzes/sem07_1.html"><strong aria-hidden="true">29.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="../quizzes/sem07_2.html" class="active"><strong aria-hidden="true">30.</strong> Implementación de recorridos</a></li><li class="chapter-item expanded "><a href="../compiler_explorer.html"><strong aria-hidden="true">31.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="cuestionario---implementación-de-recorridos-en-árboles-binarios"><a class="header" href="#cuestionario---implementación-de-recorridos-en-árboles-binarios">Cuestionario - Implementación de recorridos en árboles binarios</a></h1>
+<div class="quiz-placeholder" data-quiz-name="quiz07_2"  data-quiz-questions="{&quot;questions&quot;:[{&quot;id&quot;:&quot;ba674dbd-9416-416d-8240-9855784bedec&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;5&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;7&quot;,&quot;9&quot;,&quot;No es posible saberlo a partir del recorrido&quot;],&quot;prompt&quot;:&quot;Supongamos un árbol binario de números enteros, cuyo recorrido en preorden es `5 1 7 9 3 2 7` ¿Cuál es la raíz del árbol?\n&quot;}},{&quot;id&quot;:&quot;4fc1a6c9-6564-4df8-b481-f4239423d02c&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;No es posible saberlo a partir del recorrido&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;1&quot;,&quot;5&quot;,&quot;0&quot;],&quot;prompt&quot;:&quot;Supongamos un árbol binario de números enteros, cuyo recorrido en inorden es `5 4 7 1 3 7 0` ¿Cuál es la raíz del árbol?\n&quot;}},{&quot;id&quot;:&quot;b43166d1-4558-4126-a296-2d0394a1a474&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;4&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;No es posible saberlo a partir del recorrido&quot;,&quot;3&quot;,&quot;5&quot;],&quot;prompt&quot;:&quot;Supongamos un árbol binario de números enteros, cuyo recorrido en postorden es `5 6 8 9 1 3 4` ¿Cuál es la raíz del árbol?\n&quot;}},{&quot;context&quot;:&quot;En primer lugar, recordemos que, en un recorrido en anchura, mientras se están procesando los nodos del nivel *i*-ésimo, se van almacenando en la cola los del nivel *(i+1)*-ésimo. Cuando se ha terminado de recorrer un nivel completamente, la cola contiene todos los elementos del árbol que se encuentran en el nivel siguiente. Por tanto, el coste en memoria sería igual al **número de nodos que podamos encontrarnos, como máximo, en un nivel**.\n\nSupongamos el caso peor, que es aquel en el que el árbol binario está *completo*. Es decir, cada nodo tiene exactamente dos hijos, excepto las hojas del último nivel, que no tienen hijos. En este caso, el último nivel es el que determina el coste en memoria, porque es el que tiene más nodos.\n\n- Si el árbol tiene altura 1, tenemos 1 nodo que está en el último nivel.\n\n- Si el árbol tiene altura 2, tenemos 3 nodos en el árbol, de los cuales 2 están en el último nivel.\n\n- Si el árbol tiene altura 3, tenemos 7 nodos en el árbol, de los cuales 4 están en el último nivel.\n\n- Si el árbol tiene altura 4, tenemos 15 nodos en el árbol, de los cuales 8 están en el último nivel.\n\n- Si el árbol tiene altura 5, tenemos 31 nodos en el árbol, de los cuales 16 están en el último nivel.\n\n- En general, cuando el árbol tiene altura *h*, tenemos &lt;math&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt; nodos en el árbol, de los cuales &lt;math&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mrow&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/math&gt; están en el último nivel.\n\nDe lo anterior se deduce que el número de nodos en el último nivel de un árbol completo es aproximadamente **la mitad** del número de nodos total, porque:\n\n&lt;math display=\&quot;block\&quot; class=\&quot;tml-display\&quot; style=\&quot;display:block math;\&quot;&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mrow&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;/msup&gt;&lt;mo&gt;≈&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;\n\ndonde *n* es el número de nodos del árbol.\n\n\nPor tanto, si tenemos un árbol de tamaño *n*, el número máximo de nodos en un determinado nivel es también del orden de &lt;math&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;, y así es el coste en memoria del recorrido en anchura.\n&quot;,&quot;id&quot;:&quot;8cd7ef1c-1f42-4e2c-898a-dbba63ff2732&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;mspace width=\&quot;0.1667em\&quot;&gt;&lt;/mspace&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;&quot;],&quot;prompt&quot;:&quot;¿Cuál es el coste asintótico en **memoria** del algoritmo de recorrido en anchura (o recorrido por niveles)? Suponemos que *n* es el número de nodos del árbol que se recorre.\n&quot;}},{&quot;id&quot;:&quot;ae45d77d-a58d-4b27-9456-5ce83c0e2bc2&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;result.push_back(x);&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Supongamos que queremos hacer una función que reciba un árbol y devuelva una lista con el recorrido en inorden de sus elementos. Completa su definición:\n\n```cpp\ntemplate &lt;typename T&gt;\nlist inorder_to_list(const BinTree &amp;tree) {\n  list&lt;T&gt; result;\n  tree.inorder([&amp;result](const T &amp;x) {\n\t// COMPLETAR\n  });\n  return result;\n}\n```\n\nEscribe la sentencia que debería ir en lugar del comentario indicado como `// COMPLETAR`. No utilices espacios y no te olvides del `;` al final.\n&quot;}}]}" ></div>
+<script type="text/javascript" src="../quiz/quiz-embed.iife.js"></script><link rel="stylesheet" type="text/css" href="../quiz/style.css">
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../quizzes/sem07_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../compiler_explorer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../quizzes/sem07_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../compiler_explorer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
