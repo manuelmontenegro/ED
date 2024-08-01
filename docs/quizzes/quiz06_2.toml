@@ -1,0 +1,56 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuántos nodos tiene, como mucho, un árbol binario de altura 2?
+"""
+
+answer.answer = "3"
+context = "1 nodo (nivel 1) + 2 nodos (nivel 2)"
+id = "60179d48-607e-43ed-8813-c1ae3fc593f8"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuántos nodos tiene, como mucho, un árbol binario de altura 3?
+"""
+
+answer.answer = "7"
+context = "1 nodo (nivel 1) + 2 nodos (nivel 2) + 4 nodos (nivel 3)"
+id = "bc4ba7f9-ce36-4813-b46f-7ca7fa127086"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuántos nodos tiene, como mucho, un árbol binario de altura 4?
+"""
+
+answer.answer = "15"
+context = "1 nodo (nivel 1) + 2 nodos (nivel 2) + 4 nodos (nivel 3) + 8 nodos (nivel 4)"
+id = "996e6742-1596-4a55-aeaa-c2dbed571c27"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuántos nodos tiene, como mucho, un árbol binario de altura 5?
+"""
+
+answer.answer = "31"
+context = "1 nodo (nivel 1) + 2 nodos (nivel 2) + 4 nodos (nivel 3) + 8 nodos (nivel 4) + 16 nodos (nivel 4)"
+id = "4db67bf7-d8a3-429b-b3cc-c96eb2ec679a"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuántos nodos tiene, como mucho, un árbol binario de altura 10?
+"""
+
+answer.answer = "1023"
+context = "En general, un árbol binario de altura <math><mi>n</mi></math> tiene, como mucho, <math><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo></mrow><mrow><mn>1</mn></mrow></math> nodos"
+id = "dd39ea50-3d90-41b3-8b94-775be65b0e9c"
+
+
+
+
+
+

@@ -1,0 +1,248 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Si *n* denota el número de nodos del árbol de entrada, ¿cuál es el coste en tiempo de la función `sum_nodes`?
+
+```cpp
+int sum_nodes(const BinTree &tree) {
+  if (tree.empty()) {
+    return 0;
+  } else {
+    return tree.root() + sum_nodes(tree.left()) + sum_nodes(tree.right());
+  }
+}
+```
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mrow><mspace 	width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+context = """
+Sigue un esquema parecido a la función `height` vista en los vídeos. En el caso base se hacen llamadas recursivas sobre los hijos, y luego se añade un coste adicional constante por la suma de ambas con `tree.root()`.
+"""
+id = "aaa31b5c-9f44-4da5-9a1b-897a9044253f"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente función
+
+```cpp
+void mi_funcion(const BinTree &t) {
+  if (t.empty()) {
+     // No hacemos nada
+  } else {
+    mi_funcion(t.left());
+    mi_funcion(t.right());
+    g(t.left());
+    g(t.right());
+  }
+}
+```
+
+Si suponemos que el árbol de entrada `t` está equilibrado y que tiene tamaño *n*, y que la función `g` tiene coste en tiempo lineal con respecto al tamaño del árbol que recibe como parámetro. ¿Cuál es el orden de complejidad de esta función?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mrow><mspace 	width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+context = """
+La recurrencia aproximada viene dada por:
+
+<math><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mrow><mo fence="true" form="prefix">{</mo><mtable><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><msub><mi>k</mi><mn>1</mn></msub></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><mrow><mn>2</mn><mi>T</mi><mrow><mo fence="true" form="prefix">(</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>k</mi><mn>2</mn></msub><mi>n</mi></mrow></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable><mo fence="true" form="postfix"></mo></mrow></mrow></math>
+"""
+id = "058ea261-ad75-48c1-9c73-895d9198e8d7"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente función:
+
+```cpp
+void mi_funcion(const BinTree &t) {
+  if (t.empty()) {
+     // No hacemos nada
+  } else {
+    mi_funcion(t.left());
+    g();
+  }
+}
+```
+
+Si suponemos que el árbol de entrada `t` está equilibrado y que tiene tamaño *n*, y que la función `g` tiene coste en tiempo constante. ¿Cuál es el orden de complejidad de esta función?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mrow><mspace 	width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+context = """
+La recurrencia aproximada viene dada por:
+
+<math><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mrow><mo fence="true" form="prefix">{</mo><mtable><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><msub><mi>k</mi><mn>1</mn></msub></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><mrow><mi>T</mi><mrow><mo fence="true" form="prefix">(</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>k</mi><mn>2</mn></msub></mrow></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable><mo fence="true" form="postfix"></mo></mrow></mrow></math>
+"""
+id = "ce9af366-1ae0-4847-8f78-5564c474ce1d"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente función:
+
+```cpp
+void mi_funcion(const BinTree &t) {
+  if (t.empty()) {
+     // No hacemos nada
+  } else {
+    if (h()) {
+      mi_funcion(t.left());
+    } else {
+      mi_funcion(t.right());
+    }
+    g();
+  }
+}
+```
+
+Si suponemos que el árbol de entrada `t` está equilibrado y que tiene tamaño *n*, y que las funciones `g` y `h` tienen coste en tiempo constante. ¿Cuál es el orden de complejidad de esta función?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mrow><mspace 	width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+context = """
+Ten en cuenta que, aunque haya llamadas recursivas sobre ambos hijos, realmente solamente se ejecuta **una de ellas**.
+
+Por tanto, la recurrencia aproximada sigue siendo la misma que en la pregunta anterior:
+
+<math><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mrow><mo fence="true" form="prefix">{</mo><mtable><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><msub><mi>k</mi><mn>1</mn></msub></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><mrow><mi>T</mi><mrow><mo fence="true" form="prefix">(</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>k</mi><mn>2</mn></msub></mrow></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable><mo fence="true" form="postfix"></mo></mrow></mrow></math>
+"""
+id = "fa2f65cf-62b5-46c0-8012-96ef381c3168"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente función:
+
+```cpp
+void mi_funcion(const BinTree &t) {
+  if (t.empty()) {
+     // No hacemos nada
+  } else {
+    mi_funcion(t.left());
+    g(t.left());
+    g(t.right());
+  }
+}
+```
+
+Si suponemos que el árbol de entrada `t` está equilibrado y que tiene tamaño *n*, y que la función `g` tiene coste en tiempo lineal con respecto al tamaño del árbol que recibe como parámetro. ¿Cuál es el orden de complejidad de esta función?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mrow><mspace 	width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+context = """
+
+La recurrencia viene dada por:
+
+<math><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mrow><mo fence="true" form="prefix">{</mo><mtable><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><msub><mi>k</mi><mn>1</mn></msub></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><mrow><mi>T</mi><mrow><mo fence="true" form="prefix">(</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>k</mi><mn>2</mn></msub><mi>n</mi></mrow></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si&nbsp;</mtext><mi>n</mi><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable><mo fence="true" form="postfix"></mo></mrow></mrow></math>
+"""
+id = "da7b847d-74cd-409a-8e54-8631e3622ad7"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Partimos de la siguiente función:
+
+```cpp
+void mi_funcion(const BinTree &t) {
+  if (t.empty()) {
+     // No hacemos nada
+  } else {
+    mi_funcion(t.left());
+    mi_funcion(t.right());
+    g(t.left());
+    g(t.right());
+  }
+}
+```
+
+Si suponemos que el árbol de entrada `t` es un árbol **degenerado** y que tiene tamaño *n*, y que la función `g` tiene coste en tiempo lineal con respecto al tamaño del árbol que recibe como parámetro. ¿Cuál es el orden de complejidad de esta función?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mrow><mspace 	width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+context = """
+
+La recurrencia viene dada por:
+
+<math><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mrow><mo fence="true" form="prefix">{</mo><mtable><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><msub><mi>k</mi><mn>1</mn></msub></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si </mtext><mi>n</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><mrow><mi>T</mi><mrow><mo fence="true" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo fence="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>k</mi><mn>2</mn></msub><mi>n</mi></mrow></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si </mtext><mi>n</mi><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable><mo fence="true" form="postfix"></mo></mrow></mrow></math>"""
+id = "7dcee496-9450-4d14-ab93-7f38fbbc46bc"

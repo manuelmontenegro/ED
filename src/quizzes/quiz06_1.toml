@@ -1,0 +1,163 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con nueve nodos](06_1/tree1.png)
+
+¿Cuáles de las siguientes afirmaciones son ciertas?
+
+1. Es un árbol de aridad 2.
+
+2. El camino que une los nodos 6, 7 y 9 es una rama.
+
+3. El nodo 1 es antepasado de 4.
+
+4. Es un árbol de aridad 3.
+
+5. Los nodos 5 y 7 son hermanos.
+
+6. El nodo 3 es una hoja.
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`)
+"""
+
+answer.answer = "3 4 6"
+
+context = """
+La opción 1 no es correcta, porque el nodo `2` tiene tres hijos.
+
+La opción 2 no es correcta porque una rama se extiende desde la raíz del árbol hasta una hoja.
+
+La opción 5 no es correcta, porque dos hermanos han de tener el mismo padre.
+"""
+id = "4156d0d5-43f5-4aa2-9577-981740bf2467"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el mismo árbol que en la pregunta anterior:
+
+![Árbol con nueve nodos](06_1/tree1.png)
+
+¿Cuál es su altura?
+"""
+
+answer.answer = "4"
+
+context = """
+Recuerda que la altura es la longitud de la rama más larga. En este caso, la rama  más larga es la que pasa por los nodos 1 - 6 - 7 - 9. La longitud de una rama es el número de aristas que contiene más 1. Por tanto, esta rama tiene longitud 3 + 1 = 4.
+"""
+id = "765080a3-bbb3-49ae-812b-9c7584bfbf6e"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Dado el siguiente árbol:
+
+![Árbol con ocho nodos](06_1/tree2.png)
+
+¿Cuáles de las siguientes afirmaciones son ciertas?
+
+1. Este árbol tiene altura 3.
+
+2. La única hoja del árbol es el nodo 8.
+
+3. 1 es el padre de 3.
+
+4. El árbol tiene 4 hojas y 4 nodos internos.
+
+5. Es un árbol 2-ario (esto es, de aridad 2).
+
+6. Los nodos 7 y 4 son hermanos.
+
+Indica tu respuesta con los números de las opciones válidas separados por espacios y de menor a mayor (por ejemplo, `1 3 4`).
+"""
+
+answer.answer = "3 4 5 6"
+
+context = """
+La opción 1 no es correcta, porque el árbol tiene altura 4.
+
+La opción 2 no es correcta, porque las hojas son los nodos 4, 7, 2 y 8.
+"""
+id = "ef26a99d-10c9-40a1-8954-dc01643208b7"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En un árbol, todas las hojas están al mismo nivel
+"""
+prompt.distractors = [
+	"Verdadero"
+]
+
+answer.answer = "Falso"
+
+context = """
+En el ejemplo de la pregunta anterior, la hoja 8 está en un nivel distinto al de las hojas 4, 7 y 2.
+"""
+id = "fce49a28-8257-4e6e-970e-8df3e1b3aca9"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En un árbol, todos los caminos pasan por una hoja
+"""
+prompt.distractors = [
+	"Verdadero"
+]
+
+answer.answer = "Falso"
+
+context = """
+Un camino puede, por ejemplo, empezar en la raíz del árbol y acabar en uno de los nodos internos.
+"""
+id = "5d7ac1ff-15b9-4cb1-9bcb-a1f4ece03fe7"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En todo árbol, dos hermanos están siempre en el mismo nivel
+"""
+prompt.distractors = [
+	"Falso"
+]
+
+answer.answer = "Verdadero"
+
+context = """
+Si el padre está en el nivel *n*, todos sus hijos están el el nivel *n + 1*.
+"""
+id = "e2e20bed-4f3f-4bf4-b905-0d7bd63bed6d"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En todo árbol el número de ramas es igual al número de hojas
+"""
+prompt.distractors = [
+	"Falso"
+]
+
+answer.answer = "Verdadero"
+id = "06098999-9fc2-4e9c-b805-e1729b1dc0fa"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+La raíz de un árbol siempre es un nodo interno
+"""
+prompt.distractors = [
+	"Verdadero"
+]
+
+answer.answer = "Falso"
+
+context = """
+Si la raíz del árbol no tiene hijos, es una hoja.
+"""
+id = "3ab2dc6d-c906-47c5-90d7-73d8ddfd5017"
+
+
+

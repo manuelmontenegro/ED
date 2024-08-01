@@ -7,6 +7,7 @@
 - [Listas enlazadas dobles y circulares](./sem3.md)
 - [Pilas, colas y colas dobles](./sem4.md)
 - [Iteradores](./sem5.md)
+- [Árboles binarios](./sem6.md)
 
 
 # Apéndices
@@ -30,4 +31,7 @@
 - [Iteradores sobre listas](./quizzes/sem05_2.md)
 - [TADs lineales en la STL](./quizzes/sem05_3.md)
 - [STL (1)](./quizzes/sem05_4.md)
+- [Árboles](./quizzes/sem06_1.md)
+- [Número de nodos](./quizzes/sem06_2.md)
+- [Funciones sobre árboles binarios](./quizzes/sem06_3.md)
 - [Como usar compiler explorer](./compiler_explorer.md)
