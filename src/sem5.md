@@ -279,7 +279,7 @@ Aunque este curso está centrado en C++, seguramente utilizas Java en otras asig
 </div>
 <div class="body">
 
-💻 [Matriz de Toeplitz](assignments/L05-1.pdf)
+💻 [Recorridos con iteradores (con solución)](assignments/L05-4.pdf)
 
 </div>
 </div>
@@ -290,7 +290,7 @@ Aunque este curso está centrado en C++, seguramente utilizas Java en otras asig
 </div>
 <div class="body">
 
-💻 [De postre, un chuletón](assignments/L05-2.pdf)
+💻 [Matriz de Toeplitz](assignments/L05-1.pdf)
 
 </div>
 </div>
@@ -298,6 +298,17 @@ Aunque este curso está centrado en C++, seguramente utilizas Java en otras asig
 <div class="exercise">
 <div class="title">
 📝 Ejercicio 5.11
+</div>
+<div class="body">
+
+💻 [De postre, un chuletón](assignments/L05-2.pdf)
+
+</div>
+</div>
+
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 5.12
 </div>
 <div class="body">
 
