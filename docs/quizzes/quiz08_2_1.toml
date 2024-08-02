@@ -1,0 +1,14 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Si elimino el 8, de modo que el nodo 10 tenga un hizo izquierdo vacío. ¿Dejaría de ser el árbol un árbol binario de búsqueda?
+"""
+prompt.distractors = [
+	"Sí, dejaría de cumplirse el invariante de los árboles binarios de búsqueda.",
+]
+answer.answer = "No, puedes eliminarlo tranquilamente."
+id = "9e8b2ca2-fde5-4a92-afe1-62eae947fb5e"
+
+
+
+

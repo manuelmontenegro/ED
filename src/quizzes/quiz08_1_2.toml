@@ -1,0 +1,18 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Ahora supongamos el siguiente árbol, del cual solamente conocemos el valor de su raíz. El resto de valores son desconocidos:
+
+![Árbol cuya raíz es 6. El resto de nodos son desconocidos](08_1/Arbol2.png)
+
+Ahora supongamos que quiero insertar el número 10. ¿En qué zona del árbol debería insertarlo?
+"""
+prompt.distractors = [
+	"En el subárbol que está a la izquierda del 6 (zona de nodos de color verde)"
+]
+answer.answer = "En el subárbol que está a la derecha del 6 (zona de nodos de color azul)"
+
+context = "Como 10 > 6, el 10 debe ir con aquellos nodos que son mayores que 6. Es decir, los del subárbol derecho."
+id = "217d7f62-3937-46f9-8b8c-4edee1c6b7d7"
+
+

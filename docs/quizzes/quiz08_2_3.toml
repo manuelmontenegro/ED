@@ -1,0 +1,26 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+¿Cuáles de los nodos ya existentes en el árbol debe ocupar el lugar de la raíz? Indica el número que aparece dentro del nodo que quieres mover.
+
+Si hay varias posibilidades, indícalas separadas por espacios y en orden ascendente (por ejemplo, `1 5 8 14`)
+"""
+
+answer.answer = "5 8"
+context = """
+No se puede poner el 3 como raíz, ya que el 5 quedaría a la izquierda del 3.
+
+No se puede poner el 1 como raíz, ya que el 3 quedaría a la izquierda del 1.
+
+No se puede poner el 10 como raíz, ya que el 8 quedaría a la derecha del 14.
+
+No se puede poner el 14 como raíz, ya que el 10 y el 8 quedarían a la derecha del 14.
+
+Las únicas posibilidades son el 5 y el 8.
+"""
+id = "6724a5e3-1846-43d5-9581-2c74ae5e8187"
+
+
+
+
+

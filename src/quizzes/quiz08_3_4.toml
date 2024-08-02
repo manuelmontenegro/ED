@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Al insertar los elementos en el orden indicado anteriormente, se obtiene también un árbol degenerado?
+"""
+prompt.distractors = [
+	"Sí, pero no es un caso general. No siempre se obtienen árboles degenerados al insertar elementos de manera ordenada.",
+	"No. El árbol resultante no es degenerado."
+]
+answer.answer = "Sí. En general, si se insertan los elementos en un ABB de manera ordenada, se obtiene un árbol degenerado."
+id = "d88be028-30da-46c0-8755-555feba07c4a"

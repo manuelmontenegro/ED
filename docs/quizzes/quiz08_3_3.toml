@@ -1,0 +1,36 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Es cierto que si recorro un ABB en inorden obtengo una secuencia ordenada ascendente?
+"""
+prompt.distractors = [
+	"No. Existen algunos ABBs en los que su recorrido en inorden no visita los elementos en orden ascendente."
+]
+answer.answer = "Sí. Al hacer un recorrido en inorden de un ABB, visito los elementos en orden ascendente."
+
+context = """
+Vamos a demostrar que si T es un árbol cuyo recorrido en inorden es <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math> entonces se cumple que <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>&lt;</mo></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>&lt;</mo></mrow><mrow><mo>⋯</mo></mrow><mrow><mo>&lt;</mo></mrow><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow></math>.
+
+Lo demostramos por inducción sobre el tamaño de T:
+
+**Caso base:**
+
+* Si T es un árbol vacío, su recorrido en inorden es una secuencia vacía, que trivialmente está ordenada.
+
+* Si T es una hoja con el valor <math><mi>x</mi></math>, su recorrido en inorden es la secuencia <math><mi>x</mi></math> con un solo elemento, que trivialmente está ordenada.
+
+**Caso recursivo:**
+
+Supongamos que T es un árbol con raíz x, hijo izquierdo T1 e hijo derecho T2.
+
+* Supongamos que el recorrido en inorden del hijo izquierdo T1 es <math><mrow><msub><mi>y</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><msub><mi>y</mi><mn>2</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>y</mi><mi>p</mi></msub></mrow></math>. Por hipótesis de inducción, este recorrido está ordenado, luego: <math><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>&lt;</mo></mrow><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>&lt;</mo></mrow><mrow><mo>⋯</mo></mrow><mrow><mo>&lt;</mo></mrow><mrow><msub><mi>y</mi><mi>p</mi></msub></mrow></math>.
+
+* Supongamos que el recorrido en inorden del hijo derecho T2 es <math><mrow><msub><mi>z</mi><mn>1</mn></msub><mo separator="true">,</mo></mrow><mrow><msub><mi>z</mi><mn>2</mn></msub><mo separator="true">,</mo></mrow><mrow><mo>…</mo></mrow><mrow><mo separator="true">,</mo></mrow><mrow><msub><mi>z</mi><mi>q</mi></msub></mrow></math>. Por hipótesis de inducción, este recorrido está ordenado, luego: <math><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>&lt;</mo></mrow><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>&lt;</mo></mrow><mrow><mo>⋯</mo></mrow><mrow><mo>&lt;</mo></mrow><mrow><msub><mi>z</mi><mi>q</mi></msub></mrow></math>.
+
+El invariante de los ABBs nos dice que la raíz x es mayor que todos los elementos del hijo izquierdo T1 y menor que todos los elementos del hijo derecho T2. Por tanto, en particular se cumple que <math><mrow><msub><mi>y</mi><mi>p</mi></msub><mo>&lt;</mo></mrow><mrow><mi>x</mi><mo>&lt;</mo></mrow><mrow><msub><mi>z</mi><mn>1</mn></msub></mrow></math>. Reuniéndolo todo, tenemos que:
+
+<math display="block" class="tml-display" style="display:block math;"><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>&lt;</mo><mo>⋯</mo><mo>&lt;</mo><msub><mi>y</mi><mi>p</mi></msub><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><msub><mi>z</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>z</mi><mn>2</mn></msub><mo>&lt;</mo><mo>⋯</mo><mo>&lt;</mo><msub><mi>z</mi><mi>q</mi></msub></mrow></math>
+
+que es, precisamente, el recorrido en inorden del árbol T.
+"""
+id = "15c51920-3c16-4dd1-9440-c1b8ae33bf9f"

@@ -1,0 +1,19 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Recuerda que quería insertar el 10.
+
+¿Que pasaría si, a la izquierda del nodo con valor 14, me hubiese encontrado un nodo con el valor 10 en lugar del árbol vacío?
+
+![Árbol cuya raíz es 6 y la raíz del subárbol derecho es 14. El resto de nodos son desconocidos](08_1/Arbol5.png)
+"""
+prompt.distractors = [
+	"Bajaría a la izquierda del 10.",
+	"Bajaría a la derecha del 10."
+]
+answer.answer = "No insertaría nada. El 10 ya está en el árbol."
+id = "5ff8d4f5-d127-4ac9-b232-84494ec471e6"
+
+
+
+

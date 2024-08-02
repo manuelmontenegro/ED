@@ -1,0 +1,26 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Se obtiene un ABB equilibrado al insertar los elementos en el orden indicado anteriormente?
+"""
+prompt.distractors = [
+	"Sí, el árbol es equilibrado.",
+	"No, el árbol no es equilibrado, pero tampoco degenerado."
+]
+answer.answer = "No. De hecho, el árbol es degenerado."
+id = "a5d22c2b-a7c5-44df-ad1e-434bb23e43aa"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Si hacemos un recorrido en inorden del árbol resultante. ¿Qué secuencia obtenemos?
+"""
+prompt.distractors = [
+	"1, 4, 5, 3, 6, 7, 2",
+	"7, 6, 5, 4, 3, 2, 1"
+]
+answer.answer = "1, 2, 3, 4, 5, 6, 7"
+id = "c40dfcda-9f6f-43f3-aaa3-31992eeb867d"
+

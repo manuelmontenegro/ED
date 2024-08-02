@@ -1,0 +1,16 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+A la izquierda del nodo 14 no hay nada. Es decir, hay un árbol vacío. ¿Dónde inserto el 10?
+
+![Árbol cuya raíz es 6 y la raíz del subárbol derecho es 14. El resto de nodos son desconocidos](08_1/Arbol4.png)
+"""
+prompt.distractors = [
+	"Vuelve a subir al nodo 14 y desde allí baja a su hijo derecho."
+]
+answer.answer = "Insertar el 10 ahí: como hijo izquierdo del 14."
+id = "e956a5c4-c4e4-4dcc-8e3e-aa752308954e"
+
+
+
+

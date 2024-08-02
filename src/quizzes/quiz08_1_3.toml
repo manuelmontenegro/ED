@@ -1,0 +1,16 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+El hijo derecho del 6 es un nodo que tiene el valor 14. ¿Dónde debería insertar el 10?
+
+![Árbol cuya raíz es 6 y la raíz del subárbol derecho es 14. El resto de nodos son desconocidos](08_1/Arbol3.png)
+"""
+prompt.distractors = [
+	"A la derecha del 14"
+]
+answer.answer = "A la izquierda del 14"
+
+context = "Como 10 < 14, el 10 debe ir con aquellos nodos que son menores que 14. Es decir, los del subárbol que es hijo izquierdo del nodo 14."
+id = "75ca4fe1-e44e-46c9-9f01-0629ad6850a5"
+
+

@@ -1,0 +1,17 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cómo arreglo el estropicio?
+"""
+prompt.distractors = [
+	"¡No toques! ¿Por qué tocas? Debiste haber dejado el árbol tranquilo.",
+	"Pon el nodo 5 en lugar del 10.",
+]
+answer.answer = "Pon el nodo 14 en lugar del 10."
+context = "No se puede colocar el 5 en lugar del 10, porque 5 < 7, y por ello el 5 debería estar en el subárbol izquierdo."
+id = "2cc51f48-ffdc-43bb-9f55-7a64eefb86bd"
+
+
+
+
+

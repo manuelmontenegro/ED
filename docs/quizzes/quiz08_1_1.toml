@@ -1,0 +1,9 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos que quiero insertar el número 4 en el árbol anterior. ¿En cuál de las posiciones A,B,C...,H debería insertarlo?
+"""
+answer.answer = "C"
+id = "6d418224-dbec-4aa1-af8b-feb96f520672"
+
+

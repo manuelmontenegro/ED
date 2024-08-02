@@ -1,0 +1,125 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una implementación del TAD Conjunto mediante ABBs que se reequilibran automáticamente (por ejemplo, árboles AVL). Si *n* es el número de elementos del conjunto, ¿cuál es el coste, en el caso peor, de la operación de saber si un elemento está o no en el conjunto (`contains`)?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+answer.answer = """
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "59ed17cd-d6ee-4d33-a078-76c66e353a19"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una implementación del TAD Conjunto mediante ABBs que **no** se reequilibran automáticamente. Si *n* es el número de elementos del conjunto, ¿cuál es el coste, en el caso peor, de la operación de saber si un elemento está o no en el conjunto (`contains`)?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+answer.answer = """
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "deb53bc1-e3c2-43b5-bb7e-cab505f0094c"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una implementación del TAD Conjunto mediante ABBs que se reequilibran automáticamente (por ejemplo, árboles AVL). Si *n* es el número de elementos del conjunto, ¿cuál es el coste, en el caso peor, de la operación de inserción de un nuevo elemento?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+answer.answer = """
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "77d3d062-c748-4833-aa8d-6ea89f6ee8ea"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una implementación del TAD Conjunto mediante ABBs que **no** se reequilibran automáticamente. Si *n* es el número de elementos del conjunto, ¿cuál es el coste, en el caso peor, de la operación de inserción de un nuevo elemento?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+answer.answer = """
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "f7d579a8-0bc8-4623-b74c-9edde2b9f9a4"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una implementación del TAD Conjunto mediante ABBs que se reequilibran automáticamente (por ejemplo, árboles AVL). Si *n* es el número de elementos del conjunto, ¿cuál es el coste, en el caso peor, de la operación para saber si un conjunto está vacío?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+answer.answer = """
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "cd82de05-1eb1-4010-9207-7d77eb9b85cb"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una implementación del TAD Conjunto mediante ABBs que se reequilibran automáticamente (por ejemplo, árboles AVL). Si *n* es el número de elementos del conjunto, ¿cuál es el coste, en el caso peor, de la operación de borrado de un nuevo elemento?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+answer.answer = """
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "a9002756-6935-479e-947e-5a145bb07697"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una implementación del TAD Conjunto mediante ABBs que **no** se reequilibran automáticamente. Si *n* es el número de elementos del conjunto, ¿cuál es el coste, en el caso peor, de la operación de borrado de un nuevo elemento?
+"""
+prompt.distractors = [
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	""",
+	"""
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+	"""
+]
+answer.answer = """
+<math><mrow><mi>O</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "ba458a7f-c5d4-4874-8b46-4b7ad718c4c9"
