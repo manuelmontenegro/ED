@@ -1,0 +1,14 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos que estamos aplicando el algoritmo de recorrido en inorden iterativo al siguiente árbol:
+
+![Árbol completo de altura 4. Se está visitando una de las hojas](09_3/Arbol1.png)
+
+Supongamos que acabamos de sacar el 9 de la pila, y que acabamos de visitar ese mismo nodo. ¿Qué otros elementos tenemos en la pila? Introduce los valores de los nodos separados por espacios, empezando por el que está en la base de la pila y terminando por el que está en la cima de la pila.
+"""
+
+answer.answer = "15 10"
+
+context = "En la pila se encuentran los antecesores del nodo que está siendo visitado actualmente, quitando aquellos que ya han sido visitados. Los antecesores del 9 son el 15, el 7 y el 10, pero el 7 ya ha sido visitado, por lo que la pila contiene únicamente el 15 y el 10. En la cima se encuentra el antecesor más cercano al 9 y en la base el antecesor más lejano. Por tanto, el 10 está en la cima y el 15 está debajo del 10 en la pila."
+id = "22135cf4-16c2-43a8-9536-6821fe8c41dd"

@@ -1,0 +1,39 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos que queremos hacer un recorrido en **inorden** del siguiente árbol.
+
+![Árbol completo de altura 4](09_2/Arbol1.png)
+
+¿Cuál es el primer nodo en ser visitado? Introduce el valor del nodo:
+"""
+
+answer.answer = "2"
+id = "c33692a3-6772-4ef6-9096-432c30c3c00b"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos que queremos hacer un recorrido en **inorden** del siguiente árbol.
+
+![Árbol completo de altura 4](09_2/Arbol2.png)
+
+¿Cuál es el primer nodo en ser visitado? Introduce el valor del nodo:
+"""
+
+answer.answer = "3"
+id = "5e6e3424-4165-4f6a-9d5e-b0eccdd9fb64"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En general, cuando queremos hacer un recorrido en inorden de un árbol binario, ¿cúal es el primer nodo visitado?
+"""
+prompt.distractors = [
+	"La raíz del árbol",
+	"Aquel que se encuentra a la mayor profundidad posible, dentro del subárbol izquierdo"
+]
+
+answer.answer = "Aquel que se encuentra bajando sucesivamente desde la raíz por los descendientes izquierdos hasta que no se pueda descender más"
+id = "3916df3e-6e74-4f9a-a484-b0142ebdc676"

@@ -10,6 +10,7 @@
 - [Árboles binarios](./sem6.md)
 - [Recorridos en árboles binarios](./sem7.md)
 - [Árboles binarios de búsqueda](./sem8.md)
+- [Diccionarios y recorridos iterativos](./sem9.md)
 
 
 # Apéndices
@@ -42,4 +43,7 @@
 - [Borrado en un ABB](./quizzes/sem08_2.md)
 - [Orden de inserción en ABB](./quizzes/sem08_3.md)
 - [El TAD conjunto](./quizzes/sem08_4.md)
+- [TAD diccionario mediante ABB](./quizzes/sem09_1.md)
+- [Siguiente nodo en inorden](./quizzes/sem09_2.md)
+- [Recorrido inorden iterativo](./quizzes/sem09_3.md)
 - [Como usar compiler explorer](./compiler_explorer.md)

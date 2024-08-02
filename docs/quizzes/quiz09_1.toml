@@ -1,0 +1,202 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuál de las siguientes operaciones está soportada por el TAD Diccionario, pero no por el TAD Conjunto?
+"""
+prompt.distractors = [
+	"""
+`erase` para borrar un elemento o entrada
+	""",
+	"""
+`insert` para añadir un elemento o entrada
+	""",
+	"""
+`contains` para saber la pertenencia de un elemento o clave
+	"""
+]
+answer.answer = """
+`at` para buscar un valor a partir de una clave
+"""
+id = "51f4933a-fb1e-48be-a66f-a159742a0403"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos un objeto de la clase `MapTree<K, V>`. ¿Qué recibe su método `erase`?
+"""
+prompt.distractors = [
+	"""
+Un valor de tipo `MapEntry<K, V>`
+	""",
+	"""
+Un valor de tipo `V`
+	"""	
+]
+answer.answer = """
+Un valor de tipo `K`
+"""
+id = "ab43bbfa-c875-4f9c-8abb-8f10b87d1d78"
+
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos un objeto de la clase `MapTree<K, V>`. ¿Qué recibe su método `insert`?
+"""
+prompt.distractors = [
+	"""
+Un valor de tipo `K`
+	""",
+	"""
+Un valor de tipo `V`
+	"""	
+]
+answer.answer = """
+Un valor de tipo `MapEntry<K, V>`
+"""
+id = "8ff6bdfb-0529-4e18-aa55-5afcee4eca29"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos el siguiente código:
+
+```cpp
+MapTree<int, int> m;
+m.insert({1, 3});
+m.insert({1, 5});
+```
+
+¿Qué devuelve `m.size()` tras ejecutar este código?
+"""
+
+answer.answer = "1"
+
+context = """
+Al insertar dos elementos con la misma clave, la segunda inserción no tiene efecto. Por tanto, el diccionario solo tiene una entrada.
+"""
+id = "d133a53d-535d-491e-a7f8-09e7bb62e1b0"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Dentro del TAD Diccionario que hemos implementado en la clase `MapTree`, ¿en qué se diferencian los métodos de búsqueda `at` y `operator[]`?
+"""
+prompt.distractors = [
+	"En el tipo del valor devuelto. En un caso se devuelve una clave; en otro un booleano.",
+	"En el coste en el caso peor"
+]
+
+answer.answer = "En la forma en la que se comportan cuando la clave a buscar no está en el diccionario"
+id = "a4c2585c-012c-4898-af1e-b5238c0d1cf0"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un diccionario de *n* entradas implementado mediante un árbol binario de búsqueda equilibrado. ¿Cuál es el coste, en el caso peor, de la operación `at`?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""	
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "f85270b4-2fdd-48a0-826f-13ace3758b38"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un diccionario de *n* entradas implementado mediante un árbol binario de búsqueda equilibrado. ¿Cuál es el coste, en el caso peor, de la operación `erase`?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""	
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "cfbd24eb-73c3-4ee1-8352-b6b3c5f4d271"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un diccionario de *n* entradas implementado mediante un árbol binario de búsqueda, pero no sabemos si este árbol está equilibrado o no. ¿Cuál es el coste, en el caso peor, de la operación `contains`?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""	
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "4368fd80-b197-4b65-9cba-cfed68a23886"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un diccionario de *n* entradas implementado mediante un árbol binario de búsqueda equilibrado. ¿Cuál es el coste, en el caso peor, de la operación `insert`?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""	
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "94534f8f-c4a4-45d6-b8fc-415ccdb64f44"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos un diccionario de *n* entradas implementado mediante un árbol binario de búsqueda. ¿Cuál es el coste, en el caso peor, de la operación `size`?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> si el árbol está equilibrado; <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> si es un árbol degenerado
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math> si es un árbol equilibrado, <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> si es un árbol degenerado
+"""	
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math> en cualquier caso
+"""
+id = "fd52b032-078d-44fa-8416-0b3ebbdd772f"
+
+
+

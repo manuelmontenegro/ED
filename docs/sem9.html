@@ -1,0 +1,411 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Diccionarios y recorridos iterativos - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="sem4.html"><strong aria-hidden="true">4.</strong> Pilas, colas y colas dobles</a></li><li class="chapter-item expanded "><a href="sem5.html"><strong aria-hidden="true">5.</strong> Iteradores</a></li><li class="chapter-item expanded "><a href="sem6.html"><strong aria-hidden="true">6.</strong> Árboles binarios</a></li><li class="chapter-item expanded "><a href="sem7.html"><strong aria-hidden="true">7.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="sem8.html"><strong aria-hidden="true">8.</strong> Árboles binarios de búsqueda</a></li><li class="chapter-item expanded "><a href="sem9.html" class="active"><strong aria-hidden="true">9.</strong> Diccionarios y recorridos iterativos</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">10.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">11.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">12.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">13.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">14.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_1.html"><strong aria-hidden="true">15.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_2.html"><strong aria-hidden="true">16.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_3.html"><strong aria-hidden="true">17.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_4.html"><strong aria-hidden="true">18.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_5.html"><strong aria-hidden="true">19.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_1.html"><strong aria-hidden="true">20.</strong> Plantillas en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_2.html"><strong aria-hidden="true">21.</strong> Pilas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_3.html"><strong aria-hidden="true">22.</strong> Colas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_4.html"><strong aria-hidden="true">23.</strong> Colas dobles</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_1.html"><strong aria-hidden="true">24.</strong> ¿Para qué sirven los iteradores?</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_2.html"><strong aria-hidden="true">25.</strong> Iteradores sobre listas</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_3.html"><strong aria-hidden="true">26.</strong> TADs lineales en la STL</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_4.html"><strong aria-hidden="true">27.</strong> STL (1)</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_1.html"><strong aria-hidden="true">28.</strong> Árboles</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_2.html"><strong aria-hidden="true">29.</strong> Número de nodos</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_3.html"><strong aria-hidden="true">30.</strong> Funciones sobre árboles binarios</a></li><li class="chapter-item expanded "><a href="quizzes/sem07_1.html"><strong aria-hidden="true">31.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="quizzes/sem07_2.html"><strong aria-hidden="true">32.</strong> Implementación de recorridos</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_1.html"><strong aria-hidden="true">33.</strong> Inserción en un ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_2.html"><strong aria-hidden="true">34.</strong> Borrado en un ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_3.html"><strong aria-hidden="true">35.</strong> Orden de inserción en ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_4.html"><strong aria-hidden="true">36.</strong> El TAD conjunto</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_1.html"><strong aria-hidden="true">37.</strong> TAD diccionario mediante ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_2.html"><strong aria-hidden="true">38.</strong> Siguiente nodo en inorden</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_3.html"><strong aria-hidden="true">39.</strong> Recorrido inorden iterativo</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html"><strong aria-hidden="true">40.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="semana-9---diccionarios-y-recorridos-iterativos-de-árboles-binarios"><a class="header" href="#semana-9---diccionarios-y-recorridos-iterativos-de-árboles-binarios">Semana 9 - Diccionarios y recorridos iterativos de árboles binarios</a></h1>
+<div class="aims">
+<div class="aims_header">
+✔️ Objetivos
+</div>
+<ul>
+<li>
+<p>Conocer el tipo abstracto de datos Diccionario, e identificar sus casos de uso.</p>
+</li>
+<li>
+<p>Implementar el TAD Diccionario utilizando árboles binarios de búsqueda.</p>
+</li>
+<li>
+<p>Conocer el algoritmo de recorrido en inorden iterativo.</p>
+</li>
+<li>
+<p>Utilizar iteradores en implementaciones de TADs basados en árboles.</p>
+</li>
+<li>
+<p>Saber parametrizar los árboles binarios de búsqueda en función de la relación de orden utilizada.</p>
+</li>
+</ul>
+<div class="aims_header">
+✔️ Tiempo de estudio
+</div>
+<ul>
+<li>
+<p><strong>Vídeos</strong>: 48 min (+16 min opcionales)</p>
+</li>
+<li>
+<p><strong>Total</strong> <em>(incluyendo vídeos, cuestionarios y actividades de autoevaluación)</em>: 2h</p>
+</li>
+</ul>
+</div>
+<p>Esta semana presentamos el TAD Diccionario y una de sus implementaciones, basada en árboles binarios de búsqueda. Existen otras implementaciones, basadas en tablas <em>hash</em>, que estudiaremos la semana que viene.</p>
+<p>También aprovecharemos esta semana para profundizar en los recorridos sobre árboles binarios. Nuestro objetivo será recorrer en inorden los nodos de un árbol binario <strong>de manera iterativa</strong>, mediante iteradores.</p>
+<h2 id="91-operaciones-del-tad-diccionario"><a class="header" href="#91-operaciones-del-tad-diccionario">9.1. Operaciones del TAD Diccionario</a></h2>
+<p>Los diccionarios (<em>maps</em> en inglés) son unos de los tipos abstractos de datos más utilizados para almacenar colecciones de elementos. Cada <em>valor</em> almacenado en un diccionario va asociado a una <em>clave</em>, que es la que utilizamos para posteriormente buscar dicho valor. Comenzamos describiendo las operaciones básicas:</p>
+<p>▶️ <a href="https://youtu.be/KuPRA9gmles">El TAD Diccionario - operaciones</a> (11:29)</p>
+<p>Los diccionarios son la representación abstracta de las tablas de una base de datos relacional. En este tipo de bases de datos, las tablas son conjuntos de filas, cada una de ellas identificada unívocamente mediante una clave. Las bases de datos optimizan la búsqueda de filas a partir de identificadores o claves (o de otros índices que especifique el/la usuario/a). Eso mismo es lo que hace un diccionario.</p>
+<div class="info">
+<div class="title">
+ℹ️ Diferencia entre diccionarios y conjuntos
+</div>
+<div class="body">
+<p>¿Cuál es la diferencia entre el TAD Diccionario y el TAD Conjunto visto anteriormente? Al fin y al cabo, en lugar de un diccionario podríamos tener un objeto <code>SetTree</code> que almacene objetos de tipo <code>pair&lt;clave, valor&gt;</code>, ¿no?</p>
+<p>Pues bien, un diccionario <strong>no</strong> es lo mismo que un conjunto de pares. La diferencia reside en las operaciones de búsqueda:</p>
+<ul>
+<li>
+<p>En un diccionario, las operaciones <code>contains</code> y <code>at</code> permiten buscar un par suponiendo que solo conocemos su primera componente (la clave). Además, la operación <code>at</code> devuelve el valor asociado a esa clave.</p>
+</li>
+<li>
+<p>Por otro lado, en un TAD Conjunto solo tenemos la operación <code>contains</code> de búsqueda, que en este caso tendría que recibir <strong>las dos componentes</strong> del par (clave, valor) que queremos buscar. Es decir, necesitamos pasar a la función <code>contains</code> de un conjunto ambas componentes para que nos diga si ese par está o no en el conjunto.</p>
+</li>
+</ul>
+<p>En resumen: para buscar una entrada en un diccionario tan solo necesitamos la clave de esa entrada. Para buscar un par en un conjunto necesitaríamos las dos componentes: clave y valor.</p>
+<p>El TAD Diccionario y el TAD Conjunto, no obstante, comparten algunas similitudes. Una de ellas es que el orden en el que insertemos las entradas o elementos no afecta al diccionario o conjunto resultante.</p>
+</div>
+</div>
+<h2 id="92-implementación-del-tad-diccionario-mediante-árboles-binarios-de-búsqueda"><a class="header" href="#92-implementación-del-tad-diccionario-mediante-árboles-binarios-de-búsqueda">9.2. Implementación del TAD Diccionario mediante árboles binarios de búsqueda</a></h2>
+<p>Pasamos ahora a implementar las operaciones presentadas en la sección anterior. Queremos realizar búsquedas por clave de manera eficiente. Por tanto, parece razonable utilizar el mismo enfoque que hemos utilizado para el TAD Conjunto de la semana pasada, es decir, utilizar árboles binarios de búsqueda.</p>
+<p>En el siguiente vídeo se describe cómo hacer esto. La implementación resultante es muy similar a la del TAD Conjunto, con la diferencia de que ahora se comparan claves, en lugar de elementos. Al final del vídeo se introduce una nueva operación <code>operator[]</code>, que es similar a la operación <code>at</code>, pero trata de manera diferente los casos en los que la clave a buscar no se encuentra en el diccionario.</p>
+<p>▶️ <a href="https://youtu.be/pY1QnOkEey4">Implementación del TAD Diccionario mediante ABBs</a> (12:52)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/diccionarios/map_tree_v1/map_tree.h">Código fuente</a></p>
+<div class="info">
+<div class="title">
+ℹ️ Inicialización a cero
+</div>
+<div class="body">
+<p>Observa un detalle que no se menciona en los vídeos. Mira en <a href="https://github.com/manuelmontenegro/ED/blob/9e5fe90e3799eb72228222869c6fd98d618f1af7/diccionarios/map_tree_v1/map_tree.h#L33">esta línea</a> uno de los constructores de <code>MapEntry</code>. Utilizando la expresión <code>value()</code> en la lista de inicialización, estamos dando un valor por defecto a <code>value</code>. Si el tipo de <code>value</code> es un objeto, se llamará a su constructor por defecto, pero si el tipo es básico (por ejemplo <code>int</code>), se inicializará a un valor por defecto. En el caso de las variables de tipo <code>int</code>, ese valor es <code>0</code>. Esto nos permite, en el ejemplo de conteo de palabras visto en el vídeo anterior, sustituir toda la sentencia condicional:</p>
+<pre><code class="language-cpp">if (dicc.contains(palabra)) {
+    dicc.at(palabra)++;
+} else {
+    dicc.insert({palabra, 1});
+}
+</code></pre>
+<p>por una única sentencia, mucho más corta:</p>
+<pre><code class="language-cpp">dicc[palabra]++;
+</code></pre>
+<p>En efecto, si la <code>palabra</code> no existe en el diccionario, el operador corchete (<code>operator[]</code>) crea una nueva entrada asociada al valor 0, y luego el operador <code>++</code> incrementa ese valor. En ese caso, la sentencia anterior sería equivalente a <code>dicc.insert({palabra, 1})</code>. Por el contrario, si la palabra ya existe en el diccionario, el uso del corchete es equivalente a <code>at</code>, por lo que <code>dicc[palabra]++</code> sería equivalente a <code>dicc.at(palabra)++</code>.</p>
+</div>
+</div>
+<h3 id="921-relaciones-de-orden-en-árboles-binarios-de-búsqueda"><a class="header" href="#921-relaciones-de-orden-en-árboles-binarios-de-búsqueda">9.2.1. Relaciones de orden en árboles binarios de búsqueda</a></h3>
+<p>Las mayoría de clases que hemos visto en este curso son paramétricas. Por ejemplo, tenemos <code>SetTree&lt;T&gt;</code>, donde <code>T</code> representa el tipo de los elementos del conjunto. En la mayoría de ejemplos que hemos visto, este tipo <code>T</code> ha sido <code>int</code> o <code>string</code>. Es decir, hemos trabajado con conjuntos de enteros o de cadenas de texto. Con los diccionarios pasa algo similar. El tipo <code>MapTree&lt;K, V&gt;</code> es paramétrico con respecto al tipo de las claves <code>K</code> y el tipo de los valores <code>V</code>. Hasta ahora hemos tratado con tipos básicos como claves (<code>int</code> y <code>string</code>). Pero, ¿qué pasa si tenemos un diccionario cuyas claves son objetos definidos por el/la programador/a? Observa el siguiente código:</p>
+<p>💻 <a href="https://godbolt.org/z/4HNjH8">Diccionarios con claves compuestas (1)</a></p>
+<p>¡Se obtiene un error de compilación al descomentar la segunda parte del código! El siguiente vídeo explica por qué se produce este error y cómo solucionarlo. A partir del minuto 7:10 se cuentan algunos detalles de implementación, que son más técnicos, y no es necesario conocerlos.</p>
+<p>▶️ <a href="https://youtu.be/eGD0b_hkvdE">Relaciones de orden en ABBs</a> (8:29)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/diccionarios/map_tree_v2/map_tree.h">Código fuente (TAD Diccionario)</a></p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/arboles/set_tree_v2/set_tree.h">Código fuente (TAD Conjunto)</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.1
+</div>
+<div class="body">
+<p>En el siguiente código puedes experimentar con algunas relaciones de orden:</p>
+<p>💻 <a href="https://godbolt.org/z/9ZyZt9">Diccionarios con claves compuestas (2)</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.2
+</div>
+<div class="body">
+<p>Y ahora un cuestionario de autoevaluación:</p>
+<p>❓ <a href="quizzes/sem09_1.html">Cuestionario - TAD Diccionario mediante ABBs</a></p>
+</div>
+</div>
+<h2 id="93-recorridos-iterativos-e-iteradores-sobre-árboles-binarios"><a class="header" href="#93-recorridos-iterativos-e-iteradores-sobre-árboles-binarios">9.3. Recorridos iterativos e iteradores sobre árboles binarios</a></h2>
+<p>Detenemos un poco nuestro estudio de los diccionarios para volver a un aspecto de los recorridos en un árbol binario que tenemos pendiente. Vamos a centrarnos en los recorridos en inorden de un árbol binario. Hasta ahora teníamos una implementación recursiva bastante concisa:</p>
+<pre><code class="language-cpp">void inorder(const NodePointer &amp;node) {
+  if (node != nullptr) {
+    inorder(node-&gt;left, func);
+    visitar node-&gt;elem;
+    inorder(node-&gt;right, func);
+  }
+}
+</code></pre>
+<p>El objetivo de esta sección es obtener una <strong>implementación equivalente, pero que no utilice recursión</strong>. Es decir, una implementación que recorra el árbol mediante un bucle.</p>
+<p>¿Para qué queremos una implementación iterativa? Si recordáis, cuando estudiábamos el TAD Lista habíamos estudiado los iteradores, que nos permiten recorrer una lista o cualquier otro TAD secuencial. Sería útil poder utilizar iteradores también para recorrer conjuntos o diccionarios. El recorrido que haría el iterador sería similar al recorrido en inorden del árbol correspondiente. Sin embargo, no es fácil implementar las funcionalidades de los iteradores a partir de una implementación recursiva como la anterior. Es más fácil inspirarse en una implementación iterativa. Al fin y al cabo, el recorrido de un iterador es como un bucle, donde cada operación de avanzar el iterador es similar a una iteración de ese bucle.</p>
+<p>Por desgracia, recorrer un árbol binario de manera iterativa es bastante más complicado que recorrer una lista. ¿Por qué?. Cada vez que recorríamos una lista, teníamos un puntero al "nodo actual". Pasar al siguiente nodo era relativamente fácil; cada nodo tiene un puntero al siguiente elemento en el recorrido. Pero ahora tenemos árboles, que no son tan "lineales". Supongamos que estamos situados en un nodo determinado, y que ahora queremos pasar al siguiente del recorrido en inorden. ¿Dónde está el nodo siguiente? ¿Es uno de los hijos? ¿Es su padre?. Depende.</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.3
+</div>
+<div class="body">
+<p>En el siguiente ejercicio vamos a estudiar los distintos casos que pueden surgir a la hora de recorrer un árbol:</p>
+<p>❓ <a href="quizzes/sem09_2.html">Ejercicio - ¿Cuál es el siguiente nodo?</a></p>
+</div>
+</div>
+<p>Con esta información, ahora vamos a ver cómo implementar un recorrido en inorden en un árbol binario de manera iterativa. Para ello vamos a necesitar una pila auxiliar.</p>
+<p>▶️ <a href="https://youtu.be/vlDh2Q6ZCHs">Recorrido en inorden iterativo (1)</a> (10:01)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/arboles/bintree_v6/bintree.h">Código fuente</a></p>
+<p>Para los propósitos de este curso, basta con conocer el algoritmo de recorrido iterativo. No obstante, resulta legítimo preguntarse cómo se ha llegado a ese algoritmo, y si realmente el algoritmo equivale a hacer un recorrido en inorden. Pues bien, es posible derivar este algoritmo iterativo partiendo de su versión recursiva y utilizando una serie de transformaciones elementales. Este mecanismo, además, puede ser aplicado a una gran clase de funciones en las que se hagan dos llamadas recursivas. El siguiente vídeo explica, paso a paso, cómo se transforma la versión recursiva del recorrido en inorden en una versión iterativa:</p>
+<p>▶️ <a href="https://youtu.be/Ux3aC97AiOA">Recorrido en inorden iterativo (2)</a> (Opcional - 16:22)</p>
+<p>Pues bien, ya tenemos un algoritmo iterativo de recorrido en inorden. El último paso consiste en implementar las operaciones de los iteradores para recorrer árboles binarios:</p>
+<p>▶️ <a href="https://youtu.be/RwERdx2hDxE">Iteradores en árboles binarios</a> (5:26)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/arboles/bintree_v7/bintree.h">Código fuente (TAD Árbol Binario)</a></p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/arboles/set_tree_v3/set_tree.h">Código fuente (TAD Conjunto)</a></p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/diccionarios/map_tree_v3/map_tree.h">Código fuente (TAD Diccionario)</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.4
+</div>
+<div class="body">
+<p>Ahora viene un ejercicio muy sencillo con iteradores. Dado un conjunto de la clase <code>SetTree</code>, se trata de obtener la suma de los elementos del conjunto.</p>
+<p>💻 <a href="https://godbolt.org/z/85TT98zjW">Ejercicio: sumar los elementos de un conjunto</a></p>
+<p>💻 <a href="https://godbolt.org/z/qe4cGrMPh">Solución</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.5
+</div>
+<div class="body">
+<p>Finalizamos nuestros recorridos iterativos con un cuestionario:</p>
+<p>❓ <a href="quizzes/sem09_3.html">Cuestionario - Recorrido en inorden iterativo</a></p>
+</div>
+</div>
+<h2 id="94-problemas-de-laboratorio"><a class="header" href="#94-problemas-de-laboratorio">9.4. Problemas de laboratorio</a></h2>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.6
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L09-1.pdf">Tree sort (con solución)</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.7
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L09-2.pdf">Compresión RLE</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 9.8
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L09-3.pdf">Evaluando expresiones aritméticas</a></p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="sem8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="quizzes/sem01_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="sem8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="quizzes/sem01_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

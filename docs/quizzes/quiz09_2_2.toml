@@ -1,0 +1,52 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Ahora tenemos el siguiente árbol:
+
+![Árbol completo de altura 4. Se está visitando el hijo izquierdo de la raíz](09_2/Arbol3.png)
+
+Estamos haciendo un recorrido en inorden de este árbol. Los nodos de color blanco ya han sido visitados. Actualmente estamos visitando el nodo 7. ¿Cuál es el siguiente nodo que tenemos que visitar?
+"""
+
+answer.answer = "9"
+id = "28d5fe45-625b-4022-b909-de6ed71d70da"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Ahora supongamos el siguiente árbol:
+
+![Árbol de altura 4. Se está visitando la raíz](09_2/Arbol4.png)
+
+Estamos haciendo un recorrido en inorden de este árbol. Los nodos de color blanco ya han sido visitados. Actualmente estamos visitando el nodo 15. ¿Cuál es el siguiente nodo que tenemos que visitar?
+"""
+
+answer.answer = "17"
+id = "b1f172d9-e299-4fbd-9b46-61ce4ca1a3eb"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Ahora supongamos el siguiente árbol:
+
+![Árbol de altura 4. Se está visitando la raíz, el hijo derecho de la raíz no tiene hijo izquierdo](09_2/Arbol5.png)
+
+Estamos haciendo un recorrido en inorden de este árbol. Los nodos de color blanco ya han sido visitados. Actualmente estamos visitando el nodo 15. ¿Cuál es el siguiente nodo que tenemos que visitar?
+"""
+
+answer.answer = "23"
+id = "10cf14cf-4e0f-40dc-a565-283a2d7afc55"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En general, supongamos que estamos visitando un nodo X cuyo hijo derecho es Y. ¿Cuál es el nodo que tendremos que visitar después de X?
+"""
+prompt.distractors = [
+	"Partiendo de X, bajaríamos por los hijos izquierdos hasta que lleguemos a un nodo que no tenga hijo izquierdo. Este último es el que sigue a X en el recorrido en inorden.",
+	"El siguiente nodo a visitar sería Y",
+	"El siguiente nodo a visitar sería el de mayor profundidad que esté por debajo de Y."
+]
+
+answer.answer = "Partiendo de Y, bajaríamos por los hijos izquierdos hasta que lleguemos a un nodo que no tenga hijo izquierdo. Este último es el que sigue a X en el recorrido en inorden."
+id = "5bce238b-24fd-4abd-a110-8b4bf4c1f47f"

@@ -1,0 +1,42 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Ahora tenemos el siguiente árbol:
+
+![Árbol completo de altura 4. Se está visitando una de las hojas](09_2/Arbol6.png)
+
+Seguimos haciendo recorridos en inorden. Supongamos que estamos visitando el nodo 16. Los nodos en blanco ya han sido visitados. El nodo 16 no tiene hijo derecho. ¿Cuál es el siguiente nodo a visitar?
+"""
+
+answer.answer = "17"
+id = "03bfd32f-d62a-4644-8b05-79ab56659c25"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Mismo árbol de antes, pero distinta situación:
+
+![Árbol completo de altura 4. Se está visitando una de las hojas, pero el padre ha sido visitado](09_2/Arbol7.png)
+
+Seguimos haciendo recorridos en inorden. Supongamos que estamos visitando el nodo 21. Los nodos en blanco ya han sido visitados. El nodo 21 no tiene hijo derecho. ¿Cuál es el siguiente nodo a visitar?
+"""
+
+answer.answer = "23"
+id = "fd96c143-9bd3-4072-9504-9fbfd7caf199"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que estamos haciendo un recorrido en inorden. El nodo que estamos visitando actualmente es X, que no tiene hijo derecho. ¿Cuál es el siguiente nodo que tenemos que visitar?
+"""
+prompt.distractors = [
+	"El antecesor más lejano que no haya sido visitado",
+	"Su antecesor directo; es decir, el nodo padre"
+]
+
+answer.answer = "El antecesor más cercano que no haya sido visitado"
+id = "0cd22816-f7a1-4e04-a496-c53797fbd5df"
+
+
+
+
