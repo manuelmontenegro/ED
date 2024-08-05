@@ -1,0 +1,17 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Resumiendo: Hemos visto que hay funciones *hash* buenas, y otras funciones menos buenas. ¿Cuál preferiríamos?
+"""
+prompt.distractors = [
+"Una función *hash* que reparta las claves en un subconjunto de los cajones disponibles",
+"Una función *hash* que concentre todas las claves en un mismo cajón"
+]
+
+answer.answer = "Una función *hash* que reparta las claves entre todos los cajones de la manera más uniformemente posible"
+
+context = """
+En efecto, como siempre tendremos que hacer búsqueda lineal por las entradas de un cajón, es preferible que no se concentren las entradas en un subconjunto de los cajones, sino que estén lo más repartidas posible.
+"""
+id = "e35beb08-82b1-4c49-9c94-bb6561175040"
+

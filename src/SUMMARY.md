@@ -11,6 +11,7 @@
 - [Recorridos en árboles binarios](./sem7.md)
 - [Árboles binarios de búsqueda](./sem8.md)
 - [Diccionarios y recorridos iterativos](./sem9.md)
+- [Tablas hash](./sem10.md)
 
 
 # Apéndices
@@ -46,4 +47,7 @@
 - [TAD diccionario mediante ABB](./quizzes/sem09_1.md)
 - [Siguiente nodo en inorden](./quizzes/sem09_2.md)
 - [Recorrido inorden iterativo](./quizzes/sem09_3.md)
+- [Coste en tablas hash](./quizzes/sem10_1.md)
+- [Tablas hash](./quizzes/sem10_2.md)
+- [TADs asociativos en la STL](./quizzes/sem10_3.md)
 - [Como usar compiler explorer](./compiler_explorer.md)

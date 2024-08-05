@@ -1,0 +1,13 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos dos tablas T<sub>1</sub> y T<sub>2</sub>. La primera de ellas tiene 50 cajones. La segunda de ellas tiene 100 cajones. Ahora insertamos 70 claves en cada una de ellas y, tras esto, queremos acceder al valor asociado a una de ellas ¿Cuál de las dos tablas tendrá, con mayor probabilidad, un menor número de entradas por cajón?
+"""
+prompt.distractors = [
+"T<sub>1</sup>"
+]
+
+answer.answer = "T<sub>2</sup>"
+
+id = "792868d3-2e9c-40d2-9589-a7e965e9270e"
+

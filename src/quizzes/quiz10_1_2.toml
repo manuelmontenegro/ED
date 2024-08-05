@@ -1,0 +1,23 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Con esta nueva función *hash*, volvemos a insertar los mismos pares que en el cuestionario anterior:
+
+(3, 5), (7, 9), (-1, 4), (3, 2), (7, 0), (8, 7), (-12, 22), (0, 9)
+
+¿Cuántas posiciones de la tabla *hash* estarán ocupadas tras la inserción de todos ellos?
+"""
+
+answer.answer = "2"
+
+context = """
+Utilizando esta función de *hash*, obtendríamos el siguiente resultado:
+
+
+![Tabla con cajones 0 y 1 rellenos](10_1/Tabla13Rellena2.png)
+
+
+Por tanto, solamente habría **2** posiciones ocupadas.
+"""
+id = "28e11d0c-cd3c-45fe-b4ce-d7f22491d506"
+

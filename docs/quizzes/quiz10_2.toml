@@ -1,0 +1,205 @@
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos una tabla *hash* abierta con 7 cajones (m = 7), en la que insertamos las siguientes claves, por orden:
+
+7, 12, 17, 19, 21, 35
+
+¿Qué cajones de la tabla hash están ocupados, suponiendo que utilizamos la función identidad como función *hash*?
+
+Indica tu respuesta mediante números en el rango 0..6, ordenados de manera ascendente y separados por espacios (por ejemplo, `0 4 5`).
+"""
+
+answer.answer = "0 3 5"
+id = "8fa7cc05-59ff-4816-9e49-aef6b0c9e858"
+
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos una tabla *hash* cerrada con 7 cajones (m = 7) con el mecanismo de sondeo lineal visto en los vídeos de teoría. Insertamos las siguientes claves en el orden indicado a continuación:
+
+7, 12, 17, 19, 21, 35
+
+¿Qué cajones de la tabla hash están ocupados, suponiendo que utilizamos la función identidad como función *hash*?
+
+Indica tu respuesta mediante números en el rango 0..6, ordenados de manera ascendente y separados por espacios (por ejemplo, `0 4 5`).
+"""
+
+answer.answer = "0 1 2 3 5 6"
+
+context = """
+* A la clave 7 le corresponde el cajón 0.
+
+* A la clave 12 le corresponde el cajón 5.
+
+* A la clave 17 le corresponde el cajón 3.
+
+* A la clave 19 le corresponde el cajón 5. Como está ocupado, situamos la clave en el cajón 6.
+
+* A la clave 21 le corresponde el cajón 0. Como está ocupado, situamos la clave en el cajón 1.
+
+* A la clave 35 le corresponde el cajón 0. Como está ocupado (y el cajón 1 también), situamos la clave en el cajón 2.
+
+"""
+id = "7cf6761b-9fa4-45ac-9e9d-3cd79406391c"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos una tabla hash cerrada con *m* cajones. Si recorremos todos los cajones ocupados desde el 0 hasta el *m-1*, obtenemos las claves de la tabla en orden ascendente.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+context = """
+No podemos asegurar, en general, que las tablas hash almacenen las claves en un orden determinado. Por ejemplo, si tenemos 11 cajones, a la clave 20 le corresponde el cajón 9, pero a la clave 23 le corresponde el cajón 1.
+"""
+id = "6ba1c5f8-f6e3-4b70-b79f-469b8598a4d9"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos una función hash sobre números naturales definida del siguiente modo:
+
+<math display="block" class="tml-display" style="display:block math;"><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>k</mi></mrow></math>
+
+En una tabla con 5 cajones, la función *h* cumple la propiedad de dispersión uniforme.
+"""
+prompt.distractors = ["Falso"]
+
+answer.answer = "Verdadero"
+context = """
+
+En este caso 5 es un número impar. Aunque <math><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>2</mn><mi>k</mi></mrow></math> siempre es un número par, el resultado de <math><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo></mo><mspace width="0.6667em"></mspace><mrow><mtext></mtext><mi>mod</mi></mrow><mspace width="0.1667em"></mspace><mspace width="0.1667em"></mspace><mn>5</mn></mrow></math> puede ser cualquier número entre 0 y 4. Por ejemplo:
+
+* El cajón 0 acoge las claves 0, 5, 10, 15, etc.
+
+* El cajón 1 acoge las claves 3, 8, 13, 18, etc.
+
+* El cajón 2 acoge las claves 1, 6, 11, 16, etc.
+
+* El cajón 3 acoge las claves 4, 9, 14, 19, etc.
+
+* El cajón 4 acoge las claves 2, 7, 12, 17, etc.
+"""
+id = "acee98a2-c87a-474c-8d00-2e4aa87e18da"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos una función hash sobre números naturales definida del siguiente modo:
+
+<math display="block" class="tml-display" style="display:block math;"><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>k</mi></mrow></math>
+
+En una tabla con 6 cajones, la función *h* cumple la propiedad de dispersión uniforme.
+"""
+prompt.distractors = ["Verdadero"]
+
+answer.answer = "Falso"
+context = """
+En este caso 6 es un número par. Por otro lado, <math><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> siempre es un número par, por lo que el resultado de <math><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo></mo><mspace width="0.6667em"></mspace><mrow><mtext></mtext><mi>mod</mi></mrow><mspace width="0.1667em"></mspace><mspace width="0.1667em"></mspace><mn>6</mn></mrow></math> es un número par. Por tanto, los cajones 1, 3 y 5 se quedarán vacíos, y sobre el resto:
+
+* El cajón 0 acoge las claves 0, 3, 6, 9, 12, etc.
+
+* El cajón 2 acoge las claves 1, 4, 7, 10, 13, etc.
+
+* El cajón 4 acoge las claves 2, 5, 8, 11, 14, etc.
+"""
+id = "1d81abe8-eb34-47ba-95c4-2b0c307253bd"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Supongamos que tenemos una tabla *hash* cerrada, inicialmente vacía. Insertamos elementos hasta ocupar todas las posiciones de la tabla. A continuación borramos todos los elementos insertados, de modo que la tabla queda vacía. ¿Cuál es el coste de la operación de inserción en esta tabla a partir de este momento?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>m</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>, donde *m* es el número de cajones
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>, donde *m* es el número de cajones
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>, donde *m* es el número de cajones
+"""
+context = """
+Al llenar la tabla y luego vaciarla, todas sus posiciones están en el estado *'borrado'*. A la hora de insertar una nueva clave, tenemos que comprobar si previamente estaba en la tabla. Esto requiere una búsqueda. La operación de búsqueda en una tabla cuyas posiciones están en el estado *'borrado'* tiene coste lineal, ya que tiene que recorrerlas todas.
+"""
+id = "f194a5d7-35c9-409f-a8f3-2a710e40169b"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos una tabla hash cerrada con 17 cajones y 5 elementos. Ahora queremos insertar una clave. Suponiendo que la función hash cumple la suposición de dispersión uniforme. ¿Cuál es la probabilidad de colisión con una clave ya existente en la tabla?
+
+Introduce un número en el intervalo [0, 1] con dos decimales de precisión. Utiliza el punto (`.`) como separador de decimales.
+"""
+
+
+answer.answer = """0.29"""
+context = """
+Hay 17 posiciones, de las cuales 5 están ocupadas. Por tanto, la probabilidad de colisión es 5 / 17 = 0.29.
+"""
+id = "11b795e1-cb4c-41a2-8193-54444ab3effa"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos una tabla hash cerrada con 17 cajones y 8 elementos. Supongamos que la función hash *h* cumple la suposición de dispersión uniforme. Queremos insertar una clave *k*, pero *h(k)* es una posición ocupada, por lo que buscamos una posición alternativa. ¿Cuál es la probabilidad de que esa posición alternativa también esté ocupada?
+
+Introduce un número en el intervalo [0, 1] con dos decimales de precisión. Utiliza el punto (`.`) como separador de decimales.
+"""
+
+
+answer.answer = """0.44"""
+context = """
+Hay 17 posiciones, de las cuales 8 están ocupadas. Para buscar una posición alternativa, buscamos entre las restantes (16), de las cuales 8 - 1 están ocupadas. Por tanto, la probablidad de una segunda colisión es de 7 / 16 = 0.44."""
+id = "1d8c5e4a-0753-49da-a6de-c54803f0ffd4"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Supongamos una tabla hash cerrada con 25 claves insertadas. ¿Cuál es el número mínimo de cajones que necesitamos para mantener el factor de carga α por debajo del 80%? Supongamos que no es necesario que el número de cajones sea primo.
+"""
+
+
+answer.answer = """32"""
+context = """
+Con 31 cajones tendríamos α = 25/31 = 80,6 %. Con 32 cajones ya tenemos α = 25/32 = 78.1 %.
+"""
+id = "c4c0d109-e1d9-4467-8925-20f14f3c4978"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+La tabla hash redimensionable vista en los vídeos conseguía un coste amortizado constante para las operaciones de inserción, búsqueda y borrado. ¿Bajo que suposiciones?
+
+1. Factor de carga entre 0.80 y 1
+
+2. Factor de carga acotado
+
+3. Suposición de dispersión uniforme
+
+Indica los números de las opciones correctas, separados por espacios y en orden ascendente (por ejemplo, `1 2`).
+"""
+
+
+answer.answer = """2 3"""
+id = "80958a9d-371c-49ac-9e7a-025fd81738ce"
+
+
+
+
+

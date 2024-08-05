@@ -1,0 +1,40 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Suponiendo que insertamos en la tabla anterior los siguientes pares de coordenadas:
+
+(3, 5), (7, 9), (-1, 4), (3, 2), (7, 0), (8, 7), (-12, 22), (0, 9)
+
+¿Cuántas posiciones de la tabla *hash* estarán ocupadas tras la inserción de todos ellos?
+"""
+
+answer.answer = "7"
+
+context = """
+Tenemos que:
+
+h((3,5)) = 8. Además, 8 mod 13 = 8.
+
+h((7,9)) = 16. Además, 16 mod 13 = 3.
+
+h((-1,4)) = 3. Además, 3 mod 13 = 3.
+
+h((3,2)) = 5. Además, 5 mod 13 = 5.
+
+h((7,0)) = 7. Además, 7 mod 13 = 7.
+
+h((8,7)) = 15. Además, 15 mod 13 = 2.
+
+h((-12,22)) = 10. Además, 10 mod 13 = 10.
+
+h((0,9)) = 9. Además, 9 mod 13 = 9.
+
+Tenemos, por tanto, la siguiente tabla:
+
+![Tabla con cajones 2, 3, 5, 7, 8, 9 y 10 rellenos](10_1/Tabla13Rellena1.png)
+
+
+Por tanto, hay **7** posiciones ocupadas en la tabla.
+"""
+id = "8e00d063-e300-4b59-8b1c-61ccec2d7cf2"
+

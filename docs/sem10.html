@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tablas hash - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="sem4.html"><strong aria-hidden="true">4.</strong> Pilas, colas y colas dobles</a></li><li class="chapter-item expanded "><a href="sem5.html"><strong aria-hidden="true">5.</strong> Iteradores</a></li><li class="chapter-item expanded "><a href="sem6.html"><strong aria-hidden="true">6.</strong> Árboles binarios</a></li><li class="chapter-item expanded "><a href="sem7.html"><strong aria-hidden="true">7.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="sem8.html"><strong aria-hidden="true">8.</strong> Árboles binarios de búsqueda</a></li><li class="chapter-item expanded "><a href="sem9.html"><strong aria-hidden="true">9.</strong> Diccionarios y recorridos iterativos</a></li><li class="chapter-item expanded "><a href="sem10.html" class="active"><strong aria-hidden="true">10.</strong> Tablas hash</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">11.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">12.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">13.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">14.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">15.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_1.html"><strong aria-hidden="true">16.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_2.html"><strong aria-hidden="true">17.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_3.html"><strong aria-hidden="true">18.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_4.html"><strong aria-hidden="true">19.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_5.html"><strong aria-hidden="true">20.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_1.html"><strong aria-hidden="true">21.</strong> Plantillas en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_2.html"><strong aria-hidden="true">22.</strong> Pilas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_3.html"><strong aria-hidden="true">23.</strong> Colas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_4.html"><strong aria-hidden="true">24.</strong> Colas dobles</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_1.html"><strong aria-hidden="true">25.</strong> ¿Para qué sirven los iteradores?</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_2.html"><strong aria-hidden="true">26.</strong> Iteradores sobre listas</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_3.html"><strong aria-hidden="true">27.</strong> TADs lineales en la STL</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_4.html"><strong aria-hidden="true">28.</strong> STL (1)</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_1.html"><strong aria-hidden="true">29.</strong> Árboles</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_2.html"><strong aria-hidden="true">30.</strong> Número de nodos</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_3.html"><strong aria-hidden="true">31.</strong> Funciones sobre árboles binarios</a></li><li class="chapter-item expanded "><a href="quizzes/sem07_1.html"><strong aria-hidden="true">32.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="quizzes/sem07_2.html"><strong aria-hidden="true">33.</strong> Implementación de recorridos</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_1.html"><strong aria-hidden="true">34.</strong> Inserción en un ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_2.html"><strong aria-hidden="true">35.</strong> Borrado en un ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_3.html"><strong aria-hidden="true">36.</strong> Orden de inserción en ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_4.html"><strong aria-hidden="true">37.</strong> El TAD conjunto</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_1.html"><strong aria-hidden="true">38.</strong> TAD diccionario mediante ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_2.html"><strong aria-hidden="true">39.</strong> Siguiente nodo en inorden</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_3.html"><strong aria-hidden="true">40.</strong> Recorrido inorden iterativo</a></li><li class="chapter-item expanded "><a href="quizzes/sem10_1.html"><strong aria-hidden="true">41.</strong> Coste en tablas hash</a></li><li class="chapter-item expanded "><a href="quizzes/sem10_2.html"><strong aria-hidden="true">42.</strong> Tablas hash</a></li><li class="chapter-item expanded "><a href="quizzes/sem10_3.html"><strong aria-hidden="true">43.</strong> TADs asociativos en la STL</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html"><strong aria-hidden="true">44.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="semana-10---tablas-hash"><a class="header" href="#semana-10---tablas-hash">Semana 10 - Tablas <em>hash</em></a></h1>
+<div class="aims">
+<div class="aims_header">
+✔️ Objetivos
+</div>
+<ul>
+<li>
+<p>Conocer las tablas <em>hash</em> y su utilidad en la implementacion de diccionarios y conjuntos.</p>
+</li>
+<li>
+<p>Conocer los distintos mecanismos de resolución de conflictos en una tabla <em>hash</em>: tablas abiertas y cerradas.</p>
+</li>
+<li>
+<p>Conocer la noción de factor de carga, y su influencia en el coste de las operaciones.</p>
+</li>
+<li>
+<p>Utilizar las clases de la STL relacionadas con conjuntos y diccionarios.</p>
+</li>
+</ul>
+<div class="aims_header">
+✔️ Tiempo de estudio
+</div>
+<ul>
+<li>
+<p><strong>Vídeos</strong>: 45 min (+30 min opcionales)</p>
+</li>
+<li>
+<p><strong>Total</strong> <em>(incluyendo vídeos, cuestionarios y actividades de autoevaluación)</em>: 1h 30min</p>
+</li>
+</ul>
+</div>
+<p>La semana pasada presentamos el TAD Diccionario y lo implementamos utilizando árboles binarios de búsqueda. Esta semana estudiaremos otra forma distinta de implementar los diccionarios: las tablas de dispersión, también conocidas como <strong>tablas</strong> <em><strong>hash</strong></em>. Con ellas conseguiremos que las operaciones de los diccionarios y conjuntos tengan coste en tiempo constante, siempre que se cumplan una serie de requisitos, que se detallarán más adelante.</p>
+<p>Tras estudiar las tablas <em>hash</em> daremos un breve recorrido por las clases de la STL que implementan los tipos abstractos vistos en las últimas semanas: el TAD Diccionario y el TAD Conjunto.</p>
+<h2 id="101-tablas-hash"><a class="header" href="#101-tablas-hash">10.1. Tablas <em>hash</em></a></h2>
+<p>Una tabla <em>hash</em> no es más que un array con un número fijo de posiciones. Cada vez que queremos insertar una entrada en una tabla <em>hash</em>, tenemos que colocarla en una de las posiciones de este array. La posición en particular depende de la clave que queramos insertar. A cada clave le corresponde una posición predeterminada dentro de ese array. ¿Cómo sabemos qué posición corresponde a cada clave? Nos lo dice una función que hayamos definido previamente, también llamada <em>función hash</em>.</p>
+<p>El siguiente vídeo introduce las tablas <em>hash</em> y sus mecanismos básicos de inserción y búsqueda. También se plantea por primera vez el problema de colisión entre claves. Sin duda, es el vídeo más importante de todos los de esta semana. En él se resumen las principales ideas que irán desarrollándose a lo largo de este tema.</p>
+<p>▶️ <a href="https://youtu.be/5voK4x-UBq0">Introducción a las tablas hash</a> (11:26)</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 10.1
+</div>
+<div class="body">
+<p>Un ingrediente básico en este esquema es el de la función <em>hash</em>. En efecto, usar una tabla <em>hash</em> nos requiere saber cómo transformar una clave en un número entero (su <em>código hash</em>). En el vídeo anterior hemos visto posibles formas de calcular el código <em>hash</em> de cadenas de texto. En el siguiente ejercicio vamos a explorar cómo podemos hacerlo para el tipo de datos <code>Fecha</code> que ya conocemos:</p>
+<p>💻 <a href="https://godbolt.org/z/7a7KzMPjY">Ejercicio: función <em>hash</em> aplicada a clase <code>Fecha</code></a></p>
+<p>💻 <a href="https://godbolt.org/z/nbozTKhGh">Solución</a></p>
+</div>
+</div>
+<h2 id="1011-tablas-hash-abiertas"><a class="header" href="#1011-tablas-hash-abiertas">10.1.1. Tablas <em>hash</em> abiertas</a></h2>
+<p>Pasamos a la primera implementación de las tablas <em>hash</em>. Se trata de las tablas abiertas, que gestionan las colisiones almacenando las entradas que colisionan en el mismo cajón. De este modo, cada cajón contiene una <strong>lista</strong> de entradas.</p>
+<p>En el siguiente vídeo se implementa el TAD Diccionario mediante una clase llamada <code>MapHash</code>. Existen algunos detalles técnicos que no son demasiado relevantes (por ejemplo, el uso de <code>erase_after</code>). Lo importante es conocer la idea general de la implementación.</p>
+<p>▶️ <a href="https://youtu.be/PhPweb-ksrc">Diccionarios mediante tablas hash abiertas</a> (9:42)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/diccionarios/map_hash_open_v1/map_hash_open.h">Código fuente</a></p>
+<h2 id="1012-tablas-hash-abiertas"><a class="header" href="#1012-tablas-hash-abiertas">10.1.2. Tablas <em>hash</em> abiertas</a></h2>
+<p>Ahora pasamos a la otra alternativa: tablas <em>hash</em> en las que cada cajón contiene una única entrada. Estas son las tablas <em>hash</em> cerradas.</p>
+<p>¿Cómo se gestionan las colisiones en este tipo de tablas? Supongamos que queremos insertar una entrada y que, tras aplicar la función <em>hash</em> a su clave, determinamos que dicha entrada debe almacenarse en la posición <em>p<sub>0</sub></em> del array, pero esa posición está ocupada. ¿Qué hacemos? Pasamos a realizar un <strong>sondeo</strong> en busca de una posición libre. El procedimiento de sondeo nos devolverá una posición alternativa <em>p<sub>1</sub></em>. Si también está ocupada, hacemos otro sondeo para obtener otra alternativa <em>p<sub>2</sub></em>, y así sucesivamente.</p>
+<p>¿Y en qué consiste exactamente un <em>sondeo</em>? Depende. Los sondeos pueden realizarse de varias formas. En la implementación que mostramos aquí consideramos un <strong>sondeo lineal</strong>, en el que las posiciones alternativas devueltas son las que se encuentran inmediatamente después de la posición <em>p<sub>0</sub></em> inicial. Si no hay más posiciones después de <em>p<sub>0</sub></em>, volvemos a empezar por el principio del array.</p>
+<p>El siguiente vídeo se compone de tres partes:</p>
+<ol>
+<li>
+<p>Visión general de la implementación de una tabla <em>hash</em> cerrada, y los problemas que conlleva el borrado de entradas (hasta minuto 7:01).</p>
+</li>
+<li>
+<p>Implementación en C++ de este tipo de tablas (minuto 7:01 hasta 13:14).</p>
+</li>
+<li>
+<p>Alternativas al mecanismo de sondeo lineal: sondeo cuadrático, redispersión, etc. (desde 13:14 en adelante).</p>
+</li>
+</ol>
+<p>Las dos últimas partes, al abordar detalles más específicos, pueden considerarse opcionales.</p>
+<p>▶️ <a href="https://youtu.be/M4tt_TifZ_w">Diccionarios mediante tablas <em>hash</em> cerradas</a> (17:47)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/diccionarios/map_hash_closed_v1/map_hash_closed.h">Código fuente</a></p>
+<h2 id="1013-análisis-de-coste-y-tablas-hash-extensibles"><a class="header" href="#1013-análisis-de-coste-y-tablas-hash-extensibles">10.1.3. Análisis de coste y tablas <em>hash</em> extensibles</a></h2>
+<p>A estas alturas habrás sido consciente de que no hemos hablado del coste en tiempo en las implementaciones realizadas hasta ahora. En el siguiente ejercicio guiado vamos a explorar los factores que intervienen en el coste:</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 10.2
+</div>
+<div class="body">
+<p>❓ <a href="quizzes/sem10_1.html">Ejercicio - Análisis de coste en el caso peor</a></p>
+</div>
+</div>
+<p>El análisis de coste en el caso peor es demasiado pesimista. Resulta más interesante realizar un análisis del caso medio, pero esto requiere realizar algunos cálculos probabilísticos y suponer ciertas condiciones sobre la función <em>hash</em>. Además, hay que tener en cuenta un componente adicional muy importante: el <em>factor de carga</em> de una tabla. En el siguiente vídeo se realiza parte del desarrollo técnico de este análisis. No es necesario entenderlo en su totalidad, pero sí hay algunos aspectos importantes que es necesario remarcar:</p>
+<ul>
+<li>
+<p>El concepto de factor de carga y la suposición de dispersión uniforme (hasta minuto 2:30).</p>
+</li>
+<li>
+<p>La importancia de mantener el factor de carga acotado en las tablas hash abiertas (desde minuto 5:25 hasta 6:27).</p>
+</li>
+<li>
+<p>La importancia de mantener el factor de carga acotado en las tablas hash cerradas (desde minuto 11:42 hasta final).</p>
+</li>
+</ul>
+<p>▶️ <a href="https://youtu.be/Z1jIjYYxTQI">Análisis de coste en tablas <em>hash</em></a> (12:40)</p>
+<p>Tal y como se extrae del vídeo anterior, una posible forma de mantener α acotado consiste en ampliar el vector de cajones cuando α supera un determinado valor umbral. Esto es lo que hacemos en el vídeo siguiente:</p>
+<p>▶️ <a href="https://youtu.be/ySIl0jF6DXU">Diccionarios mediante tablas <em>hash</em> redimensionables</a> (6:20)</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/diccionarios/map_hash_open_v2/map_hash_open.h">Código fuente (tablas <em>hash</em> abiertas)</a></p>
+<p>Hemos aplicado esta idea a las tablas <em>hash</em> abiertas, pero también podría haberse aplicado a las tablas cerradas.</p>
+<p>📄 <a href="https://github.com/manuelmontenegro/ED/blob/main/diccionarios/map_hash_closed_v2/map_hash_closed.h">Código fuente (tablas <em>hash</em> cerradas)</a></p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 10.3
+</div>
+<div class="body">
+<p>Concluimos esta sección con un cuestionario de autoevaluación:</p>
+<p>❓ <a href="quizzes/sem10_2.html">Cuestionario - Tablas hash</a></p>
+</div>
+</div>
+<h2 id="102-conjuntos-y-diccionarios-en-la-stl"><a class="header" href="#102-conjuntos-y-diccionarios-en-la-stl">10.2. Conjuntos y diccionarios en la STL</a></h2>
+<p>En las últimas semanas hemos introducido dos tipos abstractos de datos nuevos: conjuntos y diccionarios. Estos TADs están implementados en las librerías de C++. Al igual que hicimos la última vez que hablamos de la STL (Semana 5), te animo a que busques por tí mismo/a los nombres de las clases en la documentación de la STL:</p>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 10.4
+</div>
+<div class="body">
+<p>En el siguiente enlace, examina las clases listadas en la sección <em>Associative containers</em> y <em>Unordered associative containers</em>.</p>
+<p>🌎 <a href="https://en.cppreference.com/w/cpp/container">Colecciones en la STL</a></p>
+<p>A continuación rellena el siguiente cuestionario:</p>
+<p>❓ <a href="quizzes/sem10_3.html">Ejercicio - Contenedores asociativos en la STL</a></p>
+</div>
+</div>
+<p>Ahora sí: damos un breve repaso por las clases que implementan los conjuntos y los diccionarios dentro de la STL.</p>
+<p>▶️ <a href="https://youtu.be/yoS3orfCTa0">C++ - Contenedores asociativos en la STL</a> (5:20)</p>
+<p>Independientemente de las clases destinadas a almacenar colecciones de datos (listas, pilas, colas, diccionarios, conjuntos, etc.) la STL también implementa, en el fichero de cabecera <code>&lt;algorithm&gt;</code>, algunas funciones útiles para manipular estos tipos de datos. Ya vimos en su momento dos de ellas: <code>copy</code> y <code>sort</code>.</p>
+<p>En el siguiente vídeo, que es opcional, se explican algunas funciones más avanzadas. Ten en cuenta que se hace uso extensivo de funciones de orden superior.</p>
+<p>▶️ <a href="https://youtu.be/BPnLMFPicGs">C++ - Algoritmos en la STL (2)</a> (Opcional - 10:47)</p>
+<h2 id="103-prácticas-de-laboratorio"><a class="header" href="#103-prácticas-de-laboratorio">10.3. Prácticas de laboratorio</a></h2>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 10.1
+</div>
+<div class="body">
+<p>💻 <a href="https://aceptaelreto.com/problem/statement.php?id=729">El bingo de Azahara</a></p>
+</div>
+</div>
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 10.2
+</div>
+<div class="body">
+<p>💻 <a href="assignments/L10-2.pdf">Cadenas expansivas</a></p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="sem9.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="quizzes/sem01_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="sem9.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="quizzes/sem01_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

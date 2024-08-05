@@ -1,0 +1,34 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Volvemos a insertar los mismos pares que en los cuestionarios anteriores:
+
+(3, 5), (7, 9), (-1, 4), (3, 2), (7, 0), (8, 7), (-12, 22), (0, 9)
+
+¿Cuántas posiciones de la tabla *hash* estarán ocupadas tras la inserción de todos ellos?
+"""
+
+answer.answer = "5"
+
+context = """
+Utilizando esta función de *hash*, obtendríamos el siguiente resultado:
+
+
+![Tabla con cajones 0, 2, 4, 6 y 8 rellenos](10_1/Tabla10Rellena1.png)
+
+
+Por tanto, habría **5** posiciones ocupadas.
+"""
+id = "21805274-5b5b-4a5b-b60a-7e54705f1e59"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Con esta función *hash*, ¿existe alguna una clave que pueda acabar en alguno de los cajones 1, 3, 5, 7 o 9?
+"""
+prompt.distractors = ["Sí"]
+
+answer.answer = "No"
+id = "da8cc0aa-572f-4079-ab7d-e553a3e5ac6c"
+

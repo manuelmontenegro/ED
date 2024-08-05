@@ -1,0 +1,45 @@
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué clase de la STL de C++ implementa el TAD diccionario utilizando árboles binarios de búsqueda?
+"""
+prompt.distractors = ["`unordered_map`", "`unordered_set`", "`set`"]
+
+answer.answer = "`map`"
+id = "4821cd38-1aef-40c6-beb4-2f0d14197889"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué clase de la STL de C++ implementa el TAD diccionario utilizando tablas *hash*?
+"""
+prompt.distractors = ["`map`", "`unordered_set`", "`set`"]
+
+answer.answer = "`unordered_map`"
+id = "49d5c53c-dd63-49e5-99ff-1167e50508e9"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué clase de la STL de C++ implementa el TAD conjunto utilizando árboles binarios de búsqueda?
+"""
+prompt.distractors = ["`unordered_set`", "`unordered_map`", "`map`"]
+
+answer.answer = "`set`"
+id = "9ecfd0d6-bf60-4ff7-9ace-0e24e49679e7"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué clase de la STL de C++ implementa el TAD conjunto utilizando tablas *hash*?
+"""
+prompt.distractors = ["`set`", "`unordered_map`", "`map`"]
+
+answer.answer = "`unordered_set`"
+id = "c1580b6f-7748-49c7-97a1-e9fb321c0b7d"
+
+

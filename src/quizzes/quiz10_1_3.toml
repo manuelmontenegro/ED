@@ -1,0 +1,26 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Con esta última función *hash* que acabamos de utilizar, supongamos que hemos insertado *n* entradas en la tabla. ¿Cuál es el coste en tiempo de la búsqueda de una clave en el caso peor?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+]
+
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+
+context = """
+Todas las entradas de la tabla se encuentran concentradas en las posiciones 0 y 1. Por tanto, una de las posiciones tiene, como mínimo <math><mfrac><mi>n</mi><mn>2</mn></mfrac></math> entradas. En el caso peor, tenemos que recorrer todas ellas para encontrar la clave que queremos buscar, o para determinar que no está en la tabla.
+"""
+id = "86dda575-c34a-45ab-8b3f-77e99e3447dd"
+

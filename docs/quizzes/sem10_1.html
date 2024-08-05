@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Coste en tablas hash - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../acerca.html">Acerca del curso</a></li><li class="chapter-item expanded "><a href="../sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="../sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="../sem4.html"><strong aria-hidden="true">4.</strong> Pilas, colas y colas dobles</a></li><li class="chapter-item expanded "><a href="../sem5.html"><strong aria-hidden="true">5.</strong> Iteradores</a></li><li class="chapter-item expanded "><a href="../sem6.html"><strong aria-hidden="true">6.</strong> Árboles binarios</a></li><li class="chapter-item expanded "><a href="../sem7.html"><strong aria-hidden="true">7.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="../sem8.html"><strong aria-hidden="true">8.</strong> Árboles binarios de búsqueda</a></li><li class="chapter-item expanded "><a href="../sem9.html"><strong aria-hidden="true">9.</strong> Diccionarios y recorridos iterativos</a></li><li class="chapter-item expanded "><a href="../sem10.html"><strong aria-hidden="true">10.</strong> Tablas hash</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="../quizzes/sem01_1.html"><strong aria-hidden="true">11.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem01_2.html"><strong aria-hidden="true">12.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_1.html"><strong aria-hidden="true">13.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_2.html"><strong aria-hidden="true">14.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem02_3.html"><strong aria-hidden="true">15.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_1.html"><strong aria-hidden="true">16.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_2.html"><strong aria-hidden="true">17.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_3.html"><strong aria-hidden="true">18.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_4.html"><strong aria-hidden="true">19.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="../quizzes/sem03_5.html"><strong aria-hidden="true">20.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_1.html"><strong aria-hidden="true">21.</strong> Plantillas en C++</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_2.html"><strong aria-hidden="true">22.</strong> Pilas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_3.html"><strong aria-hidden="true">23.</strong> Colas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem04_4.html"><strong aria-hidden="true">24.</strong> Colas dobles</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_1.html"><strong aria-hidden="true">25.</strong> ¿Para qué sirven los iteradores?</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_2.html"><strong aria-hidden="true">26.</strong> Iteradores sobre listas</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_3.html"><strong aria-hidden="true">27.</strong> TADs lineales en la STL</a></li><li class="chapter-item expanded "><a href="../quizzes/sem05_4.html"><strong aria-hidden="true">28.</strong> STL (1)</a></li><li class="chapter-item expanded "><a href="../quizzes/sem06_1.html"><strong aria-hidden="true">29.</strong> Árboles</a></li><li class="chapter-item expanded "><a href="../quizzes/sem06_2.html"><strong aria-hidden="true">30.</strong> Número de nodos</a></li><li class="chapter-item expanded "><a href="../quizzes/sem06_3.html"><strong aria-hidden="true">31.</strong> Funciones sobre árboles binarios</a></li><li class="chapter-item expanded "><a href="../quizzes/sem07_1.html"><strong aria-hidden="true">32.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="../quizzes/sem07_2.html"><strong aria-hidden="true">33.</strong> Implementación de recorridos</a></li><li class="chapter-item expanded "><a href="../quizzes/sem08_1.html"><strong aria-hidden="true">34.</strong> Inserción en un ABB</a></li><li class="chapter-item expanded "><a href="../quizzes/sem08_2.html"><strong aria-hidden="true">35.</strong> Borrado en un ABB</a></li><li class="chapter-item expanded "><a href="../quizzes/sem08_3.html"><strong aria-hidden="true">36.</strong> Orden de inserción en ABB</a></li><li class="chapter-item expanded "><a href="../quizzes/sem08_4.html"><strong aria-hidden="true">37.</strong> El TAD conjunto</a></li><li class="chapter-item expanded "><a href="../quizzes/sem09_1.html"><strong aria-hidden="true">38.</strong> TAD diccionario mediante ABB</a></li><li class="chapter-item expanded "><a href="../quizzes/sem09_2.html"><strong aria-hidden="true">39.</strong> Siguiente nodo en inorden</a></li><li class="chapter-item expanded "><a href="../quizzes/sem09_3.html"><strong aria-hidden="true">40.</strong> Recorrido inorden iterativo</a></li><li class="chapter-item expanded "><a href="../quizzes/sem10_1.html" class="active"><strong aria-hidden="true">41.</strong> Coste en tablas hash</a></li><li class="chapter-item expanded "><a href="../quizzes/sem10_2.html"><strong aria-hidden="true">42.</strong> Tablas hash</a></li><li class="chapter-item expanded "><a href="../quizzes/sem10_3.html"><strong aria-hidden="true">43.</strong> TADs asociativos en la STL</a></li><li class="chapter-item expanded "><a href="../compiler_explorer.html"><strong aria-hidden="true">44.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ejercicio---análisis-de-coste-en-el-caso-peor-de-tablas-hash"><a class="header" href="#ejercicio---análisis-de-coste-en-el-caso-peor-de-tablas-hash">Ejercicio - Análisis de coste en el caso peor de tablas <em>hash</em></a></h1>
+<p>Partimos de una tabla <em>hash</em> con <em>N</em> = 13. Es decir, con 13 cajones. La tabla <em>hash</em> es <strong>abierta</strong>. Es decir, cada cajón puede tener cero, una o más entradas.</p>
+<p><img src="10_1/Tabla13.png" alt="Tabla con 13 cajones, todos vacíos" /></p>
+<p>Supongamos que queremos insertar claves de tipo Punto, donde Punto es un tipo de datos definido del siguiente modo:</p>
+<pre><code>struct Punto {
+  int x;
+  int y;
+};
+</code></pre>
+<p>Supongamos la siguiente función hash que transforma objetos <em>p</em> de tipo <code>Punto</code> a números enteros:</p>
+<p><math display="block" class="tml-display" style="display:block math;"><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>p</mi><mi>.</mi><mi>x</mi><mo>+</mo><mi>p</mi><mi>.</mi><mi>y</mi></mrow></math></p>
+<div class="quiz-placeholder" data-quiz-name="quiz10_1_1"  data-quiz-questions="{&quot;questions&quot;:[{&quot;context&quot;:&quot;Tenemos que:\n\nh((3,5)) = 8. Además, 8 mod 13 = 8.\n\nh((7,9)) = 16. Además, 16 mod 13 = 3.\n\nh((-1,4)) = 3. Además, 3 mod 13 = 3.\n\nh((3,2)) = 5. Además, 5 mod 13 = 5.\n\nh((7,0)) = 7. Además, 7 mod 13 = 7.\n\nh((8,7)) = 15. Además, 15 mod 13 = 2.\n\nh((-12,22)) = 10. Además, 10 mod 13 = 10.\n\nh((0,9)) = 9. Además, 9 mod 13 = 9.\n\nTenemos, por tanto, la siguiente tabla:\n\n![Tabla con cajones 2, 3, 5, 7, 8, 9 y 10 rellenos](10_1/Tabla13Rellena1.png)\n\n\nPor tanto, hay **7** posiciones ocupadas en la tabla.\n&quot;,&quot;id&quot;:&quot;8e00d063-e300-4b59-8b1c-61ccec2d7cf2&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;7&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Suponiendo que insertamos en la tabla anterior los siguientes pares de coordenadas:\n\n(3, 5), (7, 9), (-1, 4), (3, 2), (7, 0), (8, 7), (-12, 22), (0, 9)\n\n¿Cuántas posiciones de la tabla *hash* estarán ocupadas tras la inserción de todos ellos?\n&quot;}}]}" ></div>
+<p>De nuevo, comenzamos con una tabla hash abierta con 13 cajones, todos vacíos:</p>
+<p><img src="10_1/Tabla13.png" alt="Tabla con 13 cajones, todos vacíos" /></p>
+<p>Ahora supongamos la siguiente función hash:</p>
+<p><math display="block" class="tml-display" style="display:block math;"><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" form="prefix">{</mo><mtable><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><mn>0</mn></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si </mtext><mi>p</mi><mi>.</mi><mi>x</mi><mo>≤</mo><mi>p</mi><mi>.</mi><mi>y</mi></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 0em;"><mn>1</mn></mtd><mtd class="tml-left" style="padding:0.5ex 0em 0.5ex 1em;"><mrow><mtext>si </mtext><mi>p</mi><mi>.</mi><mi>x</mi><mo>&gt;</mo><mi>p</mi><mi>.</mi><mi>y</mi></mrow></mtd></mtr></mtable><mo fence="true" form="postfix"></mo></mrow></mrow></math></p>
+<div class="quiz-placeholder" data-quiz-name="quiz10_1_2"  data-quiz-questions="{&quot;questions&quot;:[{&quot;context&quot;:&quot;Utilizando esta función de *hash*, obtendríamos el siguiente resultado:\n\n\n![Tabla con cajones 0 y 1 rellenos](10_1/Tabla13Rellena2.png)\n\n\nPor tanto, solamente habría **2** posiciones ocupadas.\n&quot;,&quot;id&quot;:&quot;28e11d0c-cd3c-45fe-b4ce-d7f22491d506&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;2&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Con esta nueva función *hash*, volvemos a insertar los mismos pares que en el cuestionario anterior:\n\n(3, 5), (7, 9), (-1, 4), (3, 2), (7, 0), (8, 7), (-12, 22), (0, 9)\n\n¿Cuántas posiciones de la tabla *hash* estarán ocupadas tras la inserción de todos ellos?\n&quot;}}]}" ></div>
+<p>Una pregunta sobre el coste en tiempo, suponiendo que utilizamos esta última función hash:</p>
+<div class="quiz-placeholder" data-quiz-name="quiz10_1_3"  data-quiz-questions="{&quot;questions&quot;:[{&quot;context&quot;:&quot;Todas las entradas de la tabla se encuentran concentradas en las posiciones 0 y 1. Por tanto, una de las posiciones tiene, como mínimo &lt;math&gt;&lt;mfrac&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/math&gt; entradas. En el caso peor, tenemos que recorrer todas ellas para encontrar la clave que queremos buscar, o para determinar que no está en la tabla.\n&quot;,&quot;id&quot;:&quot;86dda575-c34a-45ab-8b3f-77e99e3447dd&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;mspace width=\&quot;0.1667em\&quot;&gt;&lt;/mspace&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;],&quot;prompt&quot;:&quot;Con esta última función *hash* que acabamos de utilizar, supongamos que hemos insertado *n* entradas en la tabla. ¿Cuál es el coste en tiempo de la búsqueda de una clave en el caso peor?\n&quot;}}]}" ></div>
+<p>La función <em>hash</em> anterior es nefasta. Junta todas las claves en los cajones 0 y 1, quedando el resto de cajones vacíos. Vamos a probar con otra función distinta. Suponemos, en este caso, que <em>N = 10</em>:</p>
+<p><img src="10_1/Tabla10.png" alt="Tabla con 10 cajones, todos vacíos" /></p>
+<p>De nuevo, consideramos la clase <code>Punto</code>, pero con la siguiente función <em>hash</em>:</p>
+<p><math display="block" class="tml-display" style="display:block math;"><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo>*</mo><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mi>.</mi><mi>x</mi><mo>+</mo><mi>p</mi><mi>.</mi><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow></math></p>
+<div class="quiz-placeholder" data-quiz-name="quiz10_1_4"  data-quiz-questions="{&quot;questions&quot;:[{&quot;context&quot;:&quot;Utilizando esta función de *hash*, obtendríamos el siguiente resultado:\n\n\n![Tabla con cajones 0, 2, 4, 6 y 8 rellenos](10_1/Tabla10Rellena1.png)\n\n\nPor tanto, habría **5** posiciones ocupadas.\n&quot;,&quot;id&quot;:&quot;21805274-5b5b-4a5b-b60a-7e54705f1e59&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;5&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Volvemos a insertar los mismos pares que en los cuestionarios anteriores:\n\n(3, 5), (7, 9), (-1, 4), (3, 2), (7, 0), (8, 7), (-12, 22), (0, 9)\n\n¿Cuántas posiciones de la tabla *hash* estarán ocupadas tras la inserción de todos ellos?\n&quot;}},{&quot;id&quot;:&quot;da8cc0aa-572f-4079-ab7d-e553a3e5ac6c&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;No&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Sí&quot;],&quot;prompt&quot;:&quot;Con esta función *hash*, ¿existe alguna una clave que pueda acabar en alguno de los cajones 1, 3, 5, 7 o 9?\n&quot;}}]}" ></div>
+<p>Vemos que la función <em>hash</em> <em>h</em> definida mediante <math><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo></mrow><mrow><mn>2</mn><mo>*</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mi>.</mi><mi>x</mi><mo>+</mo><mi>p</mi><mi>.</mi><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> es mejor que la anterior, pero aún deja la mitad de los cajones vacíos.</p>
+<div class="quiz-placeholder" data-quiz-name="quiz10_1_5"  data-quiz-questions="{&quot;questions&quot;:[{&quot;context&quot;:&quot;En efecto, como siempre tendremos que hacer búsqueda lineal por las entradas de un cajón, es preferible que no se concentren las entradas en un subconjunto de los cajones, sino que estén lo más repartidas posible.\n&quot;,&quot;id&quot;:&quot;e35beb08-82b1-4c49-9c94-bb6561175040&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;Una función *hash* que reparta las claves entre todos los cajones de la manera más uniformemente posible&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Una función *hash* que reparta las claves en un subconjunto de los cajones disponibles&quot;,&quot;Una función *hash* que concentre todas las claves en un mismo cajón&quot;],&quot;prompt&quot;:&quot;Resumiendo: Hemos visto que hay funciones *hash* buenas, y otras funciones menos buenas. ¿Cuál preferiríamos?\n&quot;}}]}" ></div>
+<p>Una función <em>hash</em> es mejor cuanto más uniformemente reparta las claves entre los distintos cajones. Normalmente no conocemos de antemano las claves que insertamos en la tabla, pero si consideramos que la clave a insertar <em>k</em> es una variable aleatoria, una función hash es "buena" si todos los cajones de la tabla tienen la misma probabilidad de acoger esa clave. Es decir, si <em>h(k)</em> tiene una distribución de probabilidad uniforme.</p>
+<p>A esta propiedad se le conoce como <strong>dispersión uniforme</strong>.</p>
+<p>A partir de ahora vamos a suponer que nuestra función hash es "buena", en el sentido en el que cumple esta propiedad de dispersión uniforme. Ahora vamos a ver cómo influye el tamaño de la tabla en la eficiencia:</p>
+<p>Supongamos que tenemos dos tablas T1 y T2. La primera de ellas tiene 50 cajones. La segunda de ellas tiene 100 cajones. Ahora insertamos 70 claves en cada una de ellas y, tras esto, queremos acceder al valor asociado a una de ellas ¿Cuál de las dos tablas tiene más probabilidad de proporcionar un acceso más eficiente?</p>
+<div class="quiz-placeholder" data-quiz-name="quiz10_1_6"  data-quiz-questions="{&quot;questions&quot;:[{&quot;id&quot;:&quot;792868d3-2e9c-40d2-9589-a7e965e9270e&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;T&lt;sub&gt;2&lt;/sup&gt;&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;T&lt;sub&gt;1&lt;/sup&gt;&quot;],&quot;prompt&quot;:&quot;Supongamos que tenemos dos tablas T&lt;sub&gt;1&lt;/sub&gt; y T&lt;sub&gt;2&lt;/sub&gt;. La primera de ellas tiene 50 cajones. La segunda de ellas tiene 100 cajones. Ahora insertamos 70 claves en cada una de ellas y, tras esto, queremos acceder al valor asociado a una de ellas ¿Cuál de las dos tablas tendrá, con mayor probabilidad, un menor número de entradas por cajón?\n&quot;}}]}" ></div>
+<p>Concluyendo, hemos visto que hay varios factores que influyen en la rapidez de las operaciones en una tabla <em>hash</em>.</p>
+<ul>
+<li>
+<p>La función <em>hash</em> que se utilice. Cuanto más uniformemente distribuya las claves en los distintos cajones, mejor.</p>
+</li>
+<li>
+<p>El número de cajones en relación al número de entradas en la tabla. Esto tiene relación con el concepto de <strong>factor de carga</strong>, que se introducirá en el siguiente vídeo.</p>
+</li>
+</ul>
+<script type="text/javascript" src="../quiz/quiz-embed.iife.js"></script><link rel="stylesheet" type="text/css" href="../quiz/style.css">
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../quizzes/sem09_3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../quizzes/sem10_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../quizzes/sem09_3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../quizzes/sem10_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
