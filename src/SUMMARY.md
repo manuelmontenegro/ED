@@ -14,9 +14,9 @@
 - [Tablas hash](./sem10.md)
 - [Aplicaciones de TADs](./sem11.md)
 
+- [Indice](./indice.md)
 
 # Apéndices
-
 
 - [Clases en C++](./quizzes/sem01_1.md)
 - [Modelo vs representación](./quizzes/sem01_2.md)
@@ -52,3 +52,4 @@
 - [Tablas hash](./quizzes/sem10_2.md)
 - [TADs asociativos en la STL](./quizzes/sem10_3.md)
 - [Como usar compiler explorer](./compiler_explorer.md)
+
