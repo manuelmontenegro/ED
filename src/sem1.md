@@ -62,7 +62,7 @@ código que tenemos hasta ahora.
 
 ¿Puedes arreglarlo tú mismo? El objetivo es que modifiques la función `main`, añadiendo las funciones auxiliares que necesites, para que puedas cambiar entre las dos implementaciones de `ConjuntoChar` sin tener que realizar cambios en la función `main` resultante.
 
-¿No sabes utilizar *Compiler Explorer*? Aquí tienes un mini-manual: [Cómo usar Compiler Explorer]()
+¿No sabes utilizar *Compiler Explorer*? Aquí tienes un mini-manual: [Cómo usar Compiler Explorer](compiler_explorer.md)
 
 </div>
 </div>
