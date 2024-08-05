@@ -175,7 +175,7 @@ El siguiente cuestionario presenta más ejemplos de TADs y sus correspondientes 
 </div>
 <div class="body">
 
-💻 [TAD de Matrices de Toeplitz](assignments/L01-1.pdf)
+💻 [La hora de la pastilla (con solución)](assignments/L01-4.pdf)
 
 </div>
 </div>
@@ -183,6 +183,17 @@ El siguiente cuestionario presenta más ejemplos de TADs y sus correspondientes 
 <div class="exercise">
 <div class="title">
 📝 Ejercicio 1.7
+</div>
+<div class="body">
+
+💻 [TAD de Matrices de Toeplitz](assignments/L01-1.pdf)
+
+</div>
+</div>
+
+<div class="exercise">
+<div class="title">
+📝 Ejercicio 1.8
 </div>
 <div class="body">
 
@@ -194,7 +205,7 @@ El siguiente cuestionario presenta más ejemplos de TADs y sus correspondientes 
 
 <div class="exercise">
 <div class="title">
-📝 Ejercicio 1.8
+📝 Ejercicio 1.9
 </div>
 <div class="body">
 
