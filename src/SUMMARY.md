@@ -12,6 +12,7 @@
 - [Árboles binarios de búsqueda](./sem8.md)
 - [Diccionarios y recorridos iterativos](./sem9.md)
 - [Tablas hash](./sem10.md)
+- [Aplicaciones de TADs](./sem11.md)
 
 
 # Apéndices
