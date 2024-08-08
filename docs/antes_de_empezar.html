@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html lang="es" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Antes de empezar - Estructuras de datos</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/style.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="acerca.html">Acerca del curso</a></li><li class="chapter-item expanded affix "><a href="antes_de_empezar.html" class="active">Antes de empezar</a></li><li class="chapter-item expanded "><a href="sem1.html"><strong aria-hidden="true">1.</strong> Introducción a los TADs</a></li><li class="chapter-item expanded "><a href="sem2.html"><strong aria-hidden="true">2.</strong> Vectores y listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="sem3.html"><strong aria-hidden="true">3.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="sem4.html"><strong aria-hidden="true">4.</strong> Pilas, colas y colas dobles</a></li><li class="chapter-item expanded "><a href="sem5.html"><strong aria-hidden="true">5.</strong> Iteradores</a></li><li class="chapter-item expanded "><a href="sem6.html"><strong aria-hidden="true">6.</strong> Árboles binarios</a></li><li class="chapter-item expanded "><a href="sem7.html"><strong aria-hidden="true">7.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="sem8.html"><strong aria-hidden="true">8.</strong> Árboles binarios de búsqueda</a></li><li class="chapter-item expanded "><a href="sem9.html"><strong aria-hidden="true">9.</strong> Diccionarios y recorridos iterativos</a></li><li class="chapter-item expanded "><a href="sem10.html"><strong aria-hidden="true">10.</strong> Tablas hash</a></li><li class="chapter-item expanded "><a href="sem11.html"><strong aria-hidden="true">11.</strong> Aplicaciones de TADs</a></li><li class="chapter-item expanded "><a href="indice.html"><strong aria-hidden="true">12.</strong> Indice</a></li><li class="chapter-item expanded affix "><li class="part-title">Apéndices</li><li class="chapter-item expanded "><a href="quizzes/sem01_1.html"><strong aria-hidden="true">13.</strong> Clases en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem01_2.html"><strong aria-hidden="true">14.</strong> Modelo vs representación</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_1.html"><strong aria-hidden="true">15.</strong> Objetos y memoria dinámica</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_2.html"><strong aria-hidden="true">16.</strong> Destructores</a></li><li class="chapter-item expanded "><a href="quizzes/sem02_3.html"><strong aria-hidden="true">17.</strong> Coste de operaciones en TAD lista</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_1.html"><strong aria-hidden="true">18.</strong> Imprimir elementos de lista al reves</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_2.html"><strong aria-hidden="true">19.</strong> Listas simples con puntero last</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_3.html"><strong aria-hidden="true">20.</strong> Listas enlazadas simples</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_4.html"><strong aria-hidden="true">21.</strong> Listas enlazadas dobles y circulares</a></li><li class="chapter-item expanded "><a href="quizzes/sem03_5.html"><strong aria-hidden="true">22.</strong> Sobrecarga de operadores</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_1.html"><strong aria-hidden="true">23.</strong> Plantillas en C++</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_2.html"><strong aria-hidden="true">24.</strong> Pilas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_3.html"><strong aria-hidden="true">25.</strong> Colas</a></li><li class="chapter-item expanded "><a href="quizzes/sem04_4.html"><strong aria-hidden="true">26.</strong> Colas dobles</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_1.html"><strong aria-hidden="true">27.</strong> ¿Para qué sirven los iteradores?</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_2.html"><strong aria-hidden="true">28.</strong> Iteradores sobre listas</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_3.html"><strong aria-hidden="true">29.</strong> TADs lineales en la STL</a></li><li class="chapter-item expanded "><a href="quizzes/sem05_4.html"><strong aria-hidden="true">30.</strong> STL (1)</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_1.html"><strong aria-hidden="true">31.</strong> Árboles</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_2.html"><strong aria-hidden="true">32.</strong> Número de nodos</a></li><li class="chapter-item expanded "><a href="quizzes/sem06_3.html"><strong aria-hidden="true">33.</strong> Funciones sobre árboles binarios</a></li><li class="chapter-item expanded "><a href="quizzes/sem07_1.html"><strong aria-hidden="true">34.</strong> Recorridos en árboles binarios</a></li><li class="chapter-item expanded "><a href="quizzes/sem07_2.html"><strong aria-hidden="true">35.</strong> Implementación de recorridos</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_1.html"><strong aria-hidden="true">36.</strong> Inserción en un ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_2.html"><strong aria-hidden="true">37.</strong> Borrado en un ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_3.html"><strong aria-hidden="true">38.</strong> Orden de inserción en ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem08_4.html"><strong aria-hidden="true">39.</strong> El TAD conjunto</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_1.html"><strong aria-hidden="true">40.</strong> TAD diccionario mediante ABB</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_2.html"><strong aria-hidden="true">41.</strong> Siguiente nodo en inorden</a></li><li class="chapter-item expanded "><a href="quizzes/sem09_3.html"><strong aria-hidden="true">42.</strong> Recorrido inorden iterativo</a></li><li class="chapter-item expanded "><a href="quizzes/sem10_1.html"><strong aria-hidden="true">43.</strong> Coste en tablas hash</a></li><li class="chapter-item expanded "><a href="quizzes/sem10_2.html"><strong aria-hidden="true">44.</strong> Tablas hash</a></li><li class="chapter-item expanded "><a href="quizzes/sem10_3.html"><strong aria-hidden="true">45.</strong> TADs asociativos en la STL</a></li><li class="chapter-item expanded "><a href="compiler_explorer.html"><strong aria-hidden="true">46.</strong> Como usar compiler explorer</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Estructuras de datos</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="antes-de-empezar"><a class="header" href="#antes-de-empezar">Antes de empezar</a></h1>
+<p>Antes de comenzar con el material del curso, vamos a hacer un par de ejercicios. En el primer de ellos sirve como introducción al primer tema de la asignatura. El segundo de ellos es un cuestionario con algunos conceptos sobre C++ y algoritmia que serán necesarios para seguir el curso.</p>
+<h2 id="ejercicio-1"><a class="header" href="#ejercicio-1">Ejercicio 1</a></h2>
+<p>En primer lugar, implementa la función <code>caben_todas</code> expuesta en el siguiente fichero:</p>
+<p>💻 <a href="sem0/HorasA.pdf">Planificación de horarios (1)</a></p>
+<p>¿Ya has terminado? Pues bien, ahora supongamos que queremos cambiar el modo en el que queremos representar la duración de un evento. El siguiente fichero contiene un enunciado alternativo para el ejercicio que acabamos de hacer. Adapta la solución del ejercicio que has hecho anteriormente para acomodar los cambios propuestos a continuación:</p>
+<p>💻 <a href="sem0/HorasB.pdf">Planificación de horarios (2)</a></p>
+<p>¿Has tenido que modificar la función <code>caben_todas</code> para implementar los cambios pedidos? El objetivo del curso es precisamente evitar esto.</p>
+<p>Durante la primera semana semana del curso abordaremos el concepto de <em>Tipo Abstracto de Datos</em> (TAD), que nos permitirá separar la interfaz de un tipo de datos de su representación interna. Esto nos permitirá alterar la representación interna del tipo <code>Duracion</code> y sus operaciones asociadas, sin necesidad de modificar todas las funciones que hacen uso de ese tipo (en particular, <code>caben_todas</code>).</p>
+<h2 id="ejercicio-2"><a class="header" href="#ejercicio-2">Ejercicio 2</a></h2>
+<p>A continuación viene un test con aspectos básicos de C++ y análisis de coste que deberías conocer para abordar el curso:</p>
+<div class="quiz-placeholder" data-quiz-name="test_previo"  data-quiz-questions="{&quot;questions&quot;:[{&quot;context&quot;:&quot;El bucle interno se ejecuta *m* veces. Dentro del bucle interno solo se realizan operaciones elementales, por lo que la ejecución del bucle interno tiene coste &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;. Como este bucle se ejecuta *n* veces, que es el número de iteraciones del bucle externo, el coste total de la función `suma` es &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;*&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;.\n&quot;,&quot;id&quot;:&quot;95fef435-059a-4a05-ba3a-7de27d7c18cc&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;*&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;],&quot;prompt&quot;:&quot;¿Cuál es el coste en tiempo de la función `suma`, en función de sus parámetros *n* y *m*?\n\n```cpp\nint suma(int n, int m) {\n  int sum = 0;\n  for (int i = 0; i &lt; n; i++) {\n    for (int j = 0; j &lt; m; j++) {\n      sum += j;\n    }\n  }\n}\n```\n&quot;}},{&quot;context&quot;:&quot;El bucle interno se ejecuta *i* veces. Por tanto, en el bucle interno se ejecuta *i* veces la operación `sum += j;`. En la primera iteración del bucle externo (es decir, con `i = 0`), el bucle interno hace 0 iteraciones. En la segunda iteración del bucle externo (es decir, con `i = 1`), el bucle interno hace 1 iteración, y así sucesivamente hasta la última iteración del bucle externo (`i = n - 1`) en la que el bucle interno hace `n - 1` iteraciones. El número de veces total que se ejecuta el cuerpo del bucle interno es:\n\n&lt;math display=\&quot;block\&quot; class=\&quot;tml-display\&quot; style=\&quot;display:block math;\&quot;&gt;&lt;mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mo&gt;…&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mrow&gt;&lt;munderover&gt;&lt;mo movablelimits=\&quot;false\&quot;&gt;∑&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;/munderover&gt;&lt;/mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot; lspace=\&quot;0em\&quot; rspace=\&quot;0em\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/math&gt;\n\nque pertenece a &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;id&quot;:&quot;e5129a8a-88a2-4e85-a1e2-2f7fddfdd5b5&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;*&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;mspace width=\&quot;0.1667em\&quot;&gt;&lt;/mspace&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;],&quot;prompt&quot;:&quot;¿Cuál es el coste en tiempo de la función `suma`, en función del parámetro *n*?\n\n```cpp\nint suma(int n) {\n  int sum = 0;\n  for (int i = 0; i &lt; n; i++) {\n    for (int j = 0; j &lt; i; j++) {\n      sum += j;\n    }\n  }\n}\n```\n&quot;}},{&quot;id&quot;:&quot;1f3259b8-7fdf-4512-a574-26af16b7540e&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;mspace width=\&quot;0.1667em\&quot;&gt;&lt;/mspace&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;&quot;],&quot;prompt&quot;:&quot;¿Cuál es el coste en el caso peor, de una búsqueda binaria en un array de tamaño *n*?\n&quot;}},{&quot;context&quot;:&quot;Recuerda que &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt; equivale a  &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;max&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;/mrow&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;{&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo separator=\&quot;true\&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;}&lt;/mo&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;.\n&quot;,&quot;id&quot;:&quot;56e0b5ff-0a4f-4fde-94f3-cce04a093f38&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;1 3&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Si dos programas tienen coste en tiempo &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt; y &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt; respectivamente, ¿cuál es el coste de ejecutar los dos programas en secuencia?\n\n1. &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n\n2. &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo&gt;*&lt;/mo&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n\n3. &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;max&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;/mrow&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;{&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo separator=\&quot;true\&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;}&lt;/mo&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n\n4. &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;min&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;/mrow&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;{&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo separator=\&quot;true\&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;}&lt;/mo&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n\nPuede haber varias opciones correctas. Introduce el número de la opción/opciones correctas. Si hay varias, introduce los números separados por espacios y en orden ascendente (por ejemplo, `1 3 4`).\n&quot;}},{&quot;context&quot;:&quot;Si `n &lt;= m`, el bucle ejecuta `n` iteraciones. Si `m &lt; n`, el bucle ejecuta `m` iteraciones. Por tanto, el bucle realiza `min{n, m}` iteraciones. En cada una de ellas se realizan operaciones de coste constante. Por tanto, el coste total de la función es: &lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;min&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;/mrow&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;{&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo separator=\&quot;true\&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;}&lt;/mo&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;id&quot;:&quot;193c0918-5521-4bec-9ad1-32bc6c38d384&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;min&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;/mrow&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;{&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo separator=\&quot;true\&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;}&lt;/mo&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;,&quot;&lt;math&gt;&lt;mrow&gt;&lt;mi class=\&quot;mathcal\&quot;&gt;𝒪&lt;/mi&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;max&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;/mrow&gt;&lt;mo form=\&quot;prefix\&quot; stretchy=\&quot;false\&quot;&gt;{&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo separator=\&quot;true\&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;}&lt;/mo&gt;&lt;mo form=\&quot;postfix\&quot; stretchy=\&quot;false\&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;\n&quot;],&quot;prompt&quot;:&quot;¿Cuál es el coste, en función de los parámetros de entrada *n* y *m*, del siguiente algoritmo?\nSuponemos que *n* y *m* no son números negativos.\n\n```cpp\nvoid f(int n, int m) {\n  int i = 0;\n  while (i &lt;= n &amp;&amp; i &lt;= m) {\n    i++;\n  }\n}\n```\n&quot;}},{&quot;context&quot;:&quot;Al declarar un puntero `x` sin inicializar, este apunta a una dirección indeterminada de memoria. Al hacer `*x = 10;` estamos escribiendo el valor 10 en una zona indeterminada de memoria, que podría no pertenecer al programa. El comportamiento de esta asignación no está definido.\n&quot;,&quot;id&quot;:&quot;65a22ac7-fa75-44bb-b9ef-e945e168503a&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;No lo sé&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;10&quot;],&quot;prompt&quot;:&quot;¿Qué imprime el siguiente código?\n\n```\nint *x;\n*x = 10;\nstd::cout &lt;&lt; *x;\n```\n&quot;}},{&quot;context&quot;:&quot;Para acceder al atributo `x` de un struct apuntado por el puntero `p` se utiliza `p-&gt;x` o bien `(*p).x`.\n&quot;,&quot;id&quot;:&quot;71a247fa-d4be-4445-b69d-e6f92caa7c6b&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;`std::cout &lt;&lt; p.x &lt;&lt; std::endl;`&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;`(*p).x = 0;`&quot;,&quot;`p-&gt;y = 10;`&quot;,&quot;`delete p;`&quot;],&quot;prompt&quot;:&quot;Suponiendo las siguientes definiciones, ¿cuál de las siguientes opciones es incorrecta?\n\n```cpp\nstruct Punto {\n  int x;\n  int y;\n};\n...\nint main() {\n   Punto *p = new Punto;\n  ...\n}\n```\n&quot;}},{&quot;context&quot;:&quot;En C++, por defecto, al asignar `p1` a `p2` estamos copiando los valores de los atributos de `p1` a `p2`. En este caso, la modificación `p2.x = 20;` no afecta a `p1`.\n\nOjo: en Java, la asignación `Punto p2 = p1` haría que `p2` apuntase al mismo objeto que `p1`. En ese caso, cualquier cambio que se realice sobre `p2` sí afectaría a `p1`.\n&quot;,&quot;id&quot;:&quot;a5784fc0-73cc-4b10-babb-4103a8e54f86&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;10&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;20&quot;,&quot;El programa no es correcto&quot;],&quot;prompt&quot;:&quot;¿Cuánto vale `p1.x` tras la ejecución del siguiente programa?\n\n```cpp\nstruct Punto {\n  int x;\n  int y;\n};\n\nint main() {\n  Punto p1;\n  p1.x = 10; p1.y = 10;\n  Punto p2 = p1;\n  p2.x = 20;\n}\n```\n&quot;}},{&quot;context&quot;:&quot;Nos ha pasado lo mismo que hace tres preguntas. La variable `p1` está sin inicializar, y apunta a una dirección de memoria indeterminada. Luego estamos asignando `p1-&gt;x` y `p1-&gt;y`, lo cual tiene un comportamiento indefinido.\n&quot;,&quot;id&quot;:&quot;533035b6-fe03-48c5-bf73-edcbb9188a26&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;El programa no es correcto&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;20&quot;,&quot;10&quot;],&quot;prompt&quot;:&quot;¿Cuánto vale `p1-&gt;x` tras la ejecución del programa?\n\n```cpp\nstruct Punto {\n  int x;\n  int y;\n};\n\nint main() {\n  Punto *p1;\n  p1-&gt;x = 10; p1-&gt;y = 10;\n  Punto *p2 = p1;\n  p2-&gt;x = 20;\n}\n```\n&quot;}},{&quot;context&quot;:&quot;Ahora sí, `p1` apunta a una dirección de memoria que hemos reservado previamente, antes de escribir en sus atributos.\n\nEn este caso, al asignar `p1` a `p2`, estamos haciendo que `p2` contenga la misma **dirección de memoria** que `p1`. Es decir, copiamos el **puntero**, no el contenido del objeto apuntado. Por tanto, `p2` y `p1` apuntan al mismo objeto. Cualquier cambio que hagamos sobre `p2` afectará a `p1`.\n&quot;,&quot;id&quot;:&quot;4cc10e5d-a873-4cf6-8474-1de6d43edd6d&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;20&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;El programa no es correcto&quot;,&quot;10&quot;],&quot;prompt&quot;:&quot;¿Y ahora? ¿Cuánto vale `p1-&gt;x` tras la ejecución del programa?\n\n```cpp\nstruct Punto {\n  int x;\n  int y;\n};\n\nint main() {\n  Punto *p1 = new Punto;\n  p1-&gt;x = 10; p1-&gt;y = 10;\n  Punto *p2 = p1;\n  p2-&gt;x = 20;\n  // ...\n}\n```\n&quot;}},{&quot;context&quot;:&quot;Aunque tenga dos punteros (`p1` y `p2`) apuntando al mismo objeto, el objeto solo se debe liberar **una vez**, bien a través de `p1`, o bien a través de `p2`. La sintaxis `delete[]` solo se aplica a arrays.\n&quot;,&quot;id&quot;:&quot;017d9ff2-7d3c-443c-a4c0-22e290822702&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;`delete p1;` o `delete p2;` (cualquiera de las dos vale)&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;`delete p1;`&quot;,&quot;`delete p2;`&quot;,&quot;`delete[] p1;`&quot;,&quot;`delete p1; delete p2;` (es decir, ambas)&quot;],&quot;prompt&quot;:&quot;¿Cómo se libera de memoria el struct `Punto` creado al principio del programa anterior?\n\n```cpp\nstruct Punto {\n  int x;\n  int y;\n};\n\nint main() {\n  Punto *p1 = new Punto;\n  p1-&gt;x = 10; p1-&gt;y = 10;\n  Punto *p2 = p1;\n  p2-&gt;x = 20;\n  // ¿cómo se libera la instancia del struct Punto?\n}\n```\n\n&quot;}},{&quot;id&quot;:&quot;33f8ba1d-d584-4e02-95b8-4b2eb53110b1&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;`ps[0].x`&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;`ps[0]-&gt;x`&quot;,&quot;`ps-&gt;0.x`&quot;,&quot;`(*ps[0]).x`&quot;,&quot;`(*ps)[0].x`&quot;],&quot;prompt&quot;:&quot;¿Cómo se accede a la componente `x` de la primera posición del array `ps`?\n\n```cpp\nstruct Punto {\n  int x;\n  int y;\n};\nint main() {\n   Punto *ps = new Punto[10];\n   // ...\n}\n```\n&quot;}},{&quot;context&quot;:&quot;Los punteros pueden declararse sin inicializar, e inicializarse en una sentencia posterior. Por ejemplo:\n\n```cpp\nint z = 3;\nint *x;   // Declaramos `x`\nx = &amp;z;   // Inicializamos `x`\n```\n\nSin embargo, las referencias han de inicializarse en el momento de su declaración.\n\n```cpp\nint z = 3;\nint &amp;y;     // &lt;- Incorrecto\nint &amp;y = z; // &lt;- Correcto\n```\n&quot;,&quot;id&quot;:&quot;62f07fac-44ae-4f9b-b4fb-9c6f46559b2b&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;`int &amp;y;`&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;Las dos&quot;,&quot;`int *x;`&quot;],&quot;prompt&quot;:&quot;¿Cuál de las dos declaraciones siguientes produce un error de compilación?\n&quot;}},{&quot;context&quot;:&quot;Para modificar el valor apuntado por un puntero `p`, hay que escribir `*p = ...;`. Si se escribe `p = ...;`, se está modificando el puntero, no el valor apuntado.\n&quot;,&quot;id&quot;:&quot;501c6107-574a-4b1c-8751-12a162a557f8&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;1 3&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Tras ejecutar estas tres sentencias, ¿de qué formas podemos modificar el valor contenido en la variable `x`?\n```\nint x = 10;\nint *p = &amp;x;\nint &amp;r = x;\n```\n\nIndica los números de las opciones correctas, separados por espacios y en orden ascendente (por ejemplo, `1 3`).\n\n1. `*p = 20;`\n\n2. `p = 20;`\n\n3. `r = 20;`\n\n3. `*r = 20;`\n&quot;}},{&quot;context&quot;:&quot;La sentencia `*p = &amp;y;` modifica el valor apuntado por `p`, no el puntero.\n&quot;,&quot;id&quot;:&quot;4cc5f1a8-db82-473a-949f-24608cfc1f70&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;`p = &amp;y;`&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;`*p = &amp;y;`&quot;,&quot;No es posible&quot;],&quot;prompt&quot;:&quot;En el programa siguiente, el puntero `p` apunta a la variable `x`. ¿Cómo podemos hacer que apunte a la variable `y`?\n\n```cpp\nint x = 10;\nint y = 20;\nint *p = &amp;x;\n```\n&quot;}},{&quot;context&quot;:&quot;Las referencias, una vez inicializadas, apuntan a una posición de memoria y no se puede hacer que apunten a otra.\n\nEn otras palabras, se puede mutar el valor apuntado por una referencia, pero no se puede cambiar la posición a la cual se referencia.\n&quot;,&quot;id&quot;:&quot;37496f5f-0ced-46a5-9030-689a4c7d7002&quot;,&quot;type&quot;:&quot;MultipleChoice&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;No es posible&quot;},&quot;prompt&quot;:{&quot;distractors&quot;:[&quot;`r = y;`&quot;,&quot;`*r = y;`&quot;],&quot;prompt&quot;:&quot;En el programa siguiente, la referencia `r` apunta a la variable `x` ¿Cómo podemos hacer que apunte a la variable `y`?\n\n```cpp\nint x = 10;\nint y = 20;\nint &amp;r = x;\n```\n&quot;}},{&quot;context&quot;:&quot;¡Compruébalo tú mismo/a!\n\n[https://godbolt.org/z/q4z7P7vqd](https://godbolt.org/z/q4z7P7vqd)\n&quot;,&quot;id&quot;:&quot;7be30247-d157-4ec0-8c58-a1f5d67d6c1d&quot;,&quot;type&quot;:&quot;ShortAnswer&quot;,&quot;answer&quot;:{&quot;answer&quot;:&quot;1 3&quot;},&quot;prompt&quot;:{&quot;prompt&quot;:&quot;Suponemos la siguiente función:\n\n```cpp\nint &amp; tercer_elemento(int *array) {\n  return array[2];\n}\n```\n\nSuponemos que el array `b` tiene al menos tres elementos. ¿Cuál/es de las siguientes formas es válida para incrementar el valor de la posición tercera del array?\n\n**Opción 1:**\n   \n```cpp\nint &amp;r = tercer_elemento(b);\nr++;\n```\n\n**Opción 2:**\n\n```cpp\nint r = tercer_elemento(b);\nr++;\n```\n\n**Opción 3:**\n\n```cpp\ntercer_elemento(b)++;\n```\n\nIntroduce las opciones válidas separadas por espacios y en orden ascendente (por ejemplo, `1 2`). Si ninguna opción es válida, introduce `0`.\n&quot;}}]}" ></div>
+<script type="text/javascript" src="quiz/quiz-embed.iife.js"></script><link rel="stylesheet" type="text/css" href="quiz/style.css">
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="acerca.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="sem1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="acerca.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="sem1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

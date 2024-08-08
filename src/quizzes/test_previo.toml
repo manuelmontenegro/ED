@@ -1,0 +1,526 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuál es el coste en tiempo de la función `suma`, en función de sus parámetros *n* y *m*?
+
+```cpp
+int suma(int n, int m) {
+  int sum = 0;
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      sum += j;
+    }
+  }
+}
+```
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>m</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+]
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>*</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+
+context = """
+El bucle interno se ejecuta *m* veces. Dentro del bucle interno solo se realizan operaciones elementales, por lo que la ejecución del bucle interno tiene coste <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>. Como este bucle se ejecuta *n* veces, que es el número de iteraciones del bucle externo, el coste total de la función `suma` es <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>*</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>.
+"""
+id = "95fef435-059a-4a05-ba3a-7de27d7c18cc"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuál es el coste en tiempo de la función `suma`, en función del parámetro *n*?
+
+```cpp
+int suma(int n) {
+  int sum = 0;
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < i; j++) {
+      sum += j;
+    }
+  }
+}
+```
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>*</mo><mi>i</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+]
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+
+context = """
+El bucle interno se ejecuta *i* veces. Por tanto, en el bucle interno se ejecuta *i* veces la operación `sum += j;`. En la primera iteración del bucle externo (es decir, con `i = 0`), el bucle interno hace 0 iteraciones. En la segunda iteración del bucle externo (es decir, con `i = 1`), el bucle interno hace 1 iteración, y así sucesivamente hasta la última iteración del bucle externo (`i = n - 1`) en la que el bucle interno hace `n - 1` iteraciones. El número de veces total que se ejecuta el cuerpo del bucle interno es:
+
+<math display="block" class="tml-display" style="display:block math;"><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mo>…</mo><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mi>i</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>n</mi></mrow><mn>2</mn></mfrac></mrow></math>
+
+que pertenece a <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "e5129a8a-88a2-4e85-a1e2-2f7fddfdd5b5"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuál es el coste en el caso peor, de una búsqueda binaria en un array de tamaño *n*?
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></math>""",
+]
+answer.answer = """
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "1f3259b8-7fdf-4512-a574-26af16b7540e"
+
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Si dos programas tienen coste en tiempo <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> y <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>g</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> respectivamente, ¿cuál es el coste de ejecutar los dos programas en secuencia?
+
+1. <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo>+</mo><mi>g</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+
+2. <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo>*</mo><mi>g</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+
+3. <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo separator="true">,</mo><mi>g</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></math>
+
+4. <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>min</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo separator="true">,</mo><mi>g</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></math>
+
+Puede haber varias opciones correctas. Introduce el número de la opción/opciones correctas. Si hay varias, introduce los números separados por espacios y en orden ascendente (por ejemplo, `1 3 4`).
+"""
+answer.answer = """1 3"""
+
+context = """
+Recuerda que <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo>+</mo><mi>g</mi><mo form="postfix" stretchy="false">)</mo></mrow></math> equivale a  <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo separator="true">,</mo><mi>g</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></math>.
+"""
+id = "56e0b5ff-0a4f-4fde-94f3-cce04a093f38"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuál es el coste, en función de los parámetros de entrada *n* y *m*, del siguiente algoritmo?
+Suponemos que *n* y *m* no son números negativos.
+
+```cpp
+void f(int n, int m) {
+  int i = 0;
+  while (i <= n && i <= m) {
+    i++;
+  }
+}
+```
+"""
+prompt.distractors = [
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>−</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+"""
+<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></math>
+""",
+]
+answer.answer = """<math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>min</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></math>"""
+
+context = """
+Si `n <= m`, el bucle ejecuta `n` iteraciones. Si `m < n`, el bucle ejecuta `m` iteraciones. Por tanto, el bucle realiza `min{n, m}` iteraciones. En cada una de ellas se realizan operaciones de coste constante. Por tanto, el coste total de la función es: <math><mrow><mi class="mathcal">𝒪</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi>min</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></math>
+"""
+id = "193c0918-5521-4bec-9ad1-32bc6c38d384"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Qué imprime el siguiente código?
+
+```
+int *x;
+*x = 10;
+std::cout << *x;
+```
+"""
+prompt.distractors = [
+"""10"""
+]
+answer.answer = "No lo sé"
+
+context = """
+Al declarar un puntero `x` sin inicializar, este apunta a una dirección indeterminada de memoria. Al hacer `*x = 10;` estamos escribiendo el valor 10 en una zona indeterminada de memoria, que podría no pertenecer al programa. El comportamiento de esta asignación no está definido.
+"""
+id = "65a22ac7-fa75-44bb-b9ef-e945e168503a"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+Suponiendo las siguientes definiciones, ¿cuál de las siguientes opciones es incorrecta?
+
+```cpp
+struct Punto {
+  int x;
+  int y;
+};
+...
+int main() {
+   Punto *p = new Punto;
+  ...
+}
+```
+"""
+prompt.distractors = [
+"`(*p).x = 0;`",
+"`p->y = 10;`",
+"`delete p;`"
+]
+answer.answer = "`std::cout << p.x << std::endl;`"
+
+context = """
+Para acceder al atributo `x` de un struct apuntado por el puntero `p` se utiliza `p->x` o bien `(*p).x`.
+"""
+id = "71a247fa-d4be-4445-b69d-e6f92caa7c6b"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuánto vale `p1.x` tras la ejecución del siguiente programa?
+
+```cpp
+struct Punto {
+  int x;
+  int y;
+};
+
+int main() {
+  Punto p1;
+  p1.x = 10; p1.y = 10;
+  Punto p2 = p1;
+  p2.x = 20;
+}
+```
+"""
+prompt.distractors = [
+"20",
+"El programa no es correcto"
+]
+answer.answer = "10"
+
+context = """
+En C++, por defecto, al asignar `p1` a `p2` estamos copiando los valores de los atributos de `p1` a `p2`. En este caso, la modificación `p2.x = 20;` no afecta a `p1`.
+
+Ojo: en Java, la asignación `Punto p2 = p1` haría que `p2` apuntase al mismo objeto que `p1`. En ese caso, cualquier cambio que se realice sobre `p2` sí afectaría a `p1`.
+"""
+id = "a5784fc0-73cc-4b10-babb-4103a8e54f86"
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuánto vale `p1->x` tras la ejecución del programa?
+
+```cpp
+struct Punto {
+  int x;
+  int y;
+};
+
+int main() {
+  Punto *p1;
+  p1->x = 10; p1->y = 10;
+  Punto *p2 = p1;
+  p2->x = 20;
+}
+```
+"""
+prompt.distractors = [
+"20",
+"10"
+]
+answer.answer = "El programa no es correcto"
+
+context = """
+Nos ha pasado lo mismo que hace tres preguntas. La variable `p1` está sin inicializar, y apunta a una dirección de memoria indeterminada. Luego estamos asignando `p1->x` y `p1->y`, lo cual tiene un comportamiento indefinido.
+"""
+id = "533035b6-fe03-48c5-bf73-edcbb9188a26"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Y ahora? ¿Cuánto vale `p1->x` tras la ejecución del programa?
+
+```cpp
+struct Punto {
+  int x;
+  int y;
+};
+
+int main() {
+  Punto *p1 = new Punto;
+  p1->x = 10; p1->y = 10;
+  Punto *p2 = p1;
+  p2->x = 20;
+  // ...
+}
+```
+"""
+prompt.distractors = [
+"El programa no es correcto",
+"10"
+]
+answer.answer = "20"
+
+context = """
+Ahora sí, `p1` apunta a una dirección de memoria que hemos reservado previamente, antes de escribir en sus atributos.
+
+En este caso, al asignar `p1` a `p2`, estamos haciendo que `p2` contenga la misma **dirección de memoria** que `p1`. Es decir, copiamos el **puntero**, no el contenido del objeto apuntado. Por tanto, `p2` y `p1` apuntan al mismo objeto. Cualquier cambio que hagamos sobre `p2` afectará a `p1`.
+"""
+id = "4cc10e5d-a873-4cf6-8474-1de6d43edd6d"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cómo se libera de memoria el struct `Punto` creado al principio del programa anterior?
+
+```cpp
+struct Punto {
+  int x;
+  int y;
+};
+
+int main() {
+  Punto *p1 = new Punto;
+  p1->x = 10; p1->y = 10;
+  Punto *p2 = p1;
+  p2->x = 20;
+  // ¿cómo se libera la instancia del struct Punto?
+}
+```
+
+"""
+prompt.distractors = [
+"`delete p1;`",
+"`delete p2;`",
+"`delete[] p1;`",
+"`delete p1; delete p2;` (es decir, ambas)"
+]
+answer.answer = "`delete p1;` o `delete p2;` (cualquiera de las dos vale)"
+
+context = """
+Aunque tenga dos punteros (`p1` y `p2`) apuntando al mismo objeto, el objeto solo se debe liberar **una vez**, bien a través de `p1`, o bien a través de `p2`. La sintaxis `delete[]` solo se aplica a arrays.
+"""
+id = "017d9ff2-7d3c-443c-a4c0-22e290822702"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cómo se accede a la componente `x` de la primera posición del array `ps`?
+
+```cpp
+struct Punto {
+  int x;
+  int y;
+};
+int main() {
+   Punto *ps = new Punto[10];
+   // ...
+}
+```
+"""
+prompt.distractors = [
+"`ps[0]->x`",
+"`ps->0.x`",
+"`(*ps[0]).x`",
+"`(*ps)[0].x`",
+]
+answer.answer = "`ps[0].x`"
+id = "33f8ba1d-d584-4e02-95b8-4b2eb53110b1"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+¿Cuál de las dos declaraciones siguientes produce un error de compilación?
+"""
+prompt.distractors = [
+"Las dos",
+"`int *x;`",
+]
+answer.answer = "`int &y;`"
+
+context = """
+Los punteros pueden declararse sin inicializar, e inicializarse en una sentencia posterior. Por ejemplo:
+
+```cpp
+int z = 3;
+int *x;   // Declaramos `x`
+x = &z;   // Inicializamos `x`
+```
+
+Sin embargo, las referencias han de inicializarse en el momento de su declaración.
+
+```cpp
+int z = 3;
+int &y;     // <- Incorrecto
+int &y = z; // <- Correcto
+```
+"""
+id = "62f07fac-44ae-4f9b-b4fb-9c6f46559b2b"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Tras ejecutar estas tres sentencias, ¿de qué formas podemos modificar el valor contenido en la variable `x`?
+```
+int x = 10;
+int *p = &x;
+int &r = x;
+```
+
+Indica los números de las opciones correctas, separados por espacios y en orden ascendente (por ejemplo, `1 3`).
+
+1. `*p = 20;`
+
+2. `p = 20;`
+
+3. `r = 20;`
+
+3. `*r = 20;`
+"""
+
+answer.answer = "1 3"
+
+context = """
+Para modificar el valor apuntado por un puntero `p`, hay que escribir `*p = ...;`. Si se escribe `p = ...;`, se está modificando el puntero, no el valor apuntado.
+"""
+id = "501c6107-574a-4b1c-8751-12a162a557f8"
+
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En el programa siguiente, el puntero `p` apunta a la variable `x`. ¿Cómo podemos hacer que apunte a la variable `y`?
+
+```cpp
+int x = 10;
+int y = 20;
+int *p = &x;
+```
+"""
+prompt.distractors = [
+  "`*p = &y;`",
+  "No es posible"
+]
+
+answer.answer = "`p = &y;`"
+
+context = """
+La sentencia `*p = &y;` modifica el valor apuntado por `p`, no el puntero.
+"""
+id = "4cc5f1a8-db82-473a-949f-24608cfc1f70"
+
+
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = """
+En el programa siguiente, la referencia `r` apunta a la variable `x` ¿Cómo podemos hacer que apunte a la variable `y`?
+
+```cpp
+int x = 10;
+int y = 20;
+int &r = x;
+```
+"""
+prompt.distractors = [
+  "`r = y;`",
+  "`*r = y;`"
+]
+
+answer.answer = "No es posible"
+
+context = """
+Las referencias, una vez inicializadas, apuntan a una posición de memoria y no se puede hacer que apunten a otra.
+
+En otras palabras, se puede mutar el valor apuntado por una referencia, pero no se puede cambiar la posición a la cual se referencia.
+"""
+id = "37496f5f-0ced-46a5-9030-689a4c7d7002"
+
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = """
+Suponemos la siguiente función:
+
+```cpp
+int & tercer_elemento(int *array) {
+  return array[2];
+}
+```
+
+Suponemos que el array `b` tiene al menos tres elementos. ¿Cuál/es de las siguientes formas es válida para incrementar el valor de la posición tercera del array?
+
+**Opción 1:**
+   
+```cpp
+int &r = tercer_elemento(b);
+r++;
+```
+
+**Opción 2:**
+
+```cpp
+int r = tercer_elemento(b);
+r++;
+```
+
+**Opción 3:**
+
+```cpp
+tercer_elemento(b)++;
+```
+
+Introduce las opciones válidas separadas por espacios y en orden ascendente (por ejemplo, `1 2`). Si ninguna opción es válida, introduce `0`.
+"""
+
+answer.answer = "1 3"
+
+context = """
+¡Compruébalo tú mismo/a!
+
+[https://godbolt.org/z/q4z7P7vqd](https://godbolt.org/z/q4z7P7vqd)
+"""
+id = "7be30247-d157-4ec0-8c58-a1f5d67d6c1d"

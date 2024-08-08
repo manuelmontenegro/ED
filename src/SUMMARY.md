@@ -2,6 +2,8 @@
 
 [Acerca del curso](./acerca.md)
 
+[Antes de empezar](./antes_de_empezar.md)
+
 - [Introducción a los TADs](./sem1.md)
 - [Vectores y listas enlazadas simples](./sem2.md)
 - [Listas enlazadas dobles y circulares](./sem3.md)
