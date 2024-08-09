@@ -19,7 +19,7 @@
 
 * **Vídeos**: 50 min (+17 min opcionales)
 
-* **Total** *(incluyendo vídeos, cuestionarios y actividades de autoevaluación)*: 2h
+* **Total** *(incluyendo vídeos, cuestionarios y actividades de autoevaluación, pero no los problemas de la sección 11.6)*: 2h
 
 </div>
 
