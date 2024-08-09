@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.book-title {
+    background: #a8ffec;
+    text-align: center;
+    padding: 10px 10px;
+    border: 2px solid #538076;
+    border-radius: 10px;
+    font-size: 4rem;
+}
+
+p {
+    text-align: justify;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Raleway";
+}
 
 .exercise {
     background: #e0f0f0;
@@ -11,6 +29,7 @@
     font-weight: bold;
     color: white;
     margin: 0px;
+    font-family: "Raleway";
 }
 
 .exercise > .body {
@@ -42,6 +61,7 @@
     font-weight: bold;
     color: white;
     margin: 0px;
+    font-family: "Raleway";    
 }
 
 .info > .body {

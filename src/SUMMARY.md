@@ -3,7 +3,6 @@
 [Acerca del curso](./acerca.md)
 
 [Antes de empezar](./antes_de_empezar.md)
-
 - [Introducción a los TADs](./sem1.md)
 - [Vectores y listas enlazadas simples](./sem2.md)
 - [Listas enlazadas dobles y circulares](./sem3.md)
@@ -16,42 +15,79 @@
 - [Tablas hash](./sem10.md)
 - [Aplicaciones de TADs](./sem11.md)
 
-- [Indice](./indice.md)
 
-# Apéndices
+---
 
-- [Clases en C++](./quizzes/sem01_1.md)
-- [Modelo vs representación](./quizzes/sem01_2.md)
-- [Objetos y memoria dinámica](./quizzes/sem02_1.md)
-- [Destructores](./quizzes/sem02_2.md)
-- [Coste de operaciones en TAD lista](./quizzes/sem02_3.md)
-- [Imprimir elementos de lista al reves](./quizzes/sem03_1.md)
-- [Listas simples con puntero last](./quizzes/sem03_2.md)
-- [Listas enlazadas simples](./quizzes/sem03_3.md)
-- [Listas enlazadas dobles y circulares](./quizzes/sem03_4.md)
-- [Sobrecarga de operadores](./quizzes/sem03_5.md)
-- [Plantillas en C++](./quizzes/sem04_1.md)
-- [Pilas](./quizzes/sem04_2.md)
-- [Colas](./quizzes/sem04_3.md)
-- [Colas dobles](./quizzes/sem04_4.md)
-- [¿Para qué sirven los iteradores?](./quizzes/sem05_1.md)
-- [Iteradores sobre listas](./quizzes/sem05_2.md)
-- [TADs lineales en la STL](./quizzes/sem05_3.md)
-- [STL (1)](./quizzes/sem05_4.md)
-- [Árboles](./quizzes/sem06_1.md)
-- [Número de nodos](./quizzes/sem06_2.md)
-- [Funciones sobre árboles binarios](./quizzes/sem06_3.md)
-- [Recorridos en árboles binarios](./quizzes/sem07_1.md)
-- [Implementación de recorridos](./quizzes/sem07_2.md)
-- [Inserción en un ABB](./quizzes/sem08_1.md)
-- [Borrado en un ABB](./quizzes/sem08_2.md)
-- [Orden de inserción en ABB](./quizzes/sem08_3.md)
-- [El TAD conjunto](./quizzes/sem08_4.md)
-- [TAD diccionario mediante ABB](./quizzes/sem09_1.md)
-- [Siguiente nodo en inorden](./quizzes/sem09_2.md)
-- [Recorrido inorden iterativo](./quizzes/sem09_3.md)
-- [Coste en tablas hash](./quizzes/sem10_1.md)
-- [Tablas hash](./quizzes/sem10_2.md)
-- [TADs asociativos en la STL](./quizzes/sem10_3.md)
-- [Como usar compiler explorer](./compiler_explorer.md)
+[Índice de vídeos](./indice.md)
+
+[Cómo usar compiler explorer](./compiler_explorer.md)
+
+---
+
+[](./quizzes/sem01_1.md)
+
+[](./quizzes/sem01_2.md)
+
+[](./quizzes/sem02_1.md)
+
+[](./quizzes/sem02_2.md)
+
+[](./quizzes/sem02_3.md)
+
+[](./quizzes/sem03_1.md)
+
+[](./quizzes/sem03_2.md)
+
+[](./quizzes/sem03_3.md)
+
+[](./quizzes/sem03_4.md)
+
+[](./quizzes/sem03_5.md)
+
+[](./quizzes/sem04_1.md)
+
+[](./quizzes/sem04_2.md)
+
+[](./quizzes/sem04_3.md)
+
+[](./quizzes/sem04_4.md)
+
+[](./quizzes/sem05_1.md)
+
+[](./quizzes/sem05_2.md)
+
+[](./quizzes/sem05_3.md)
+
+[](./quizzes/sem05_4.md)
+
+[](./quizzes/sem06_1.md)
+
+[](./quizzes/sem06_2.md)
+
+[](./quizzes/sem06_3.md)
+
+[](./quizzes/sem07_1.md)
+
+[](./quizzes/sem07_2.md)
+
+[](./quizzes/sem08_1.md)
+
+[](./quizzes/sem08_2.md)
+
+[](./quizzes/sem08_3.md)
+
+[](./quizzes/sem08_4.md)
+
+[](./quizzes/sem09_1.md)
+
+[](./quizzes/sem09_2.md)
+
+[](./quizzes/sem09_3.md)
+
+[](./quizzes/sem10_1.md)
+
+[](./quizzes/sem10_2.md)
+
+[](./quizzes/sem10_3.md)
+
 
