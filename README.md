@@ -1,10 +1,12 @@
-# Estructuras de Datos. Curso 2023/24
+# Estructuras de Datos. Curso 2025/26
 
 **Grado en Ingeniería Informática**
 
 **Grado en Ingeniería del Software**
 
 **Grado en Ingeniería de Computadores**
+
+**Doble grado ADE - Ingeniería Informática**
 
 **Facultad de Informática (Universidad Complutense de Madrid)**
 
