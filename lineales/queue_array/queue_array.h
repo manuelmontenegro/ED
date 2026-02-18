@@ -29,7 +29,7 @@ public:
   }
   QueueArray(const QueueArray &other);
 
-  ~QueueArray() { delete elems; }
+  ~QueueArray() { delete[] elems; }
 
   QueueArray &operator=(const QueueArray &other);
 
